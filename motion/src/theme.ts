@@ -2,6 +2,7 @@ import {continueRender, delayRender, staticFile} from 'remotion';
 
 // Huruf Plus Jakarta Sans disimpan di public/fonts (lisensi OFL), jadi render tidak butuh internet.
 export const fontFamily = 'Plus Jakarta Sans';
+export const monoFamily = 'JetBrains Mono';
 if (typeof document !== 'undefined') {
   const handle = delayRender('Memuat huruf');
   Promise.all(
@@ -11,6 +12,14 @@ if (typeof document !== 'undefined') {
       })
         .load()
         .then((ff) => document.fonts.add(ff)),
+    ).concat(
+      ['500', '800'].map((w) =>
+        new FontFace(monoFamily, `url(${staticFile(`fonts/jetbrains-mono-latin-${w}-normal.woff2`)}) format('woff2')`, {
+          weight: w,
+        })
+          .load()
+          .then((ff) => document.fonts.add(ff)),
+      ),
     ),
   )
     .then(() => continueRender(handle))

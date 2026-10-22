@@ -7,7 +7,9 @@
     "studio": "remotion studio",
     "render:intro": "remotion render Perkenalan out/00_Perkenalan_PID_POS.mp4",
     "render:all": "node render-all.mjs",
-    "suara": "node scripts/export-narasi.mjs && python scripts/make_vo.py"
+    "suara": "node scripts/export-narasi.mjs && python scripts/make_vo.py",
+    "musik": "python scripts/make_music.py",
+    "render:showreel": "remotion render Showreel out/Showreel_SATU_ALUR_60s.mp4 --crf=18"
   },
   "dependencies": {
     "@remotion/cli": "4.0.530",

@@ -13,6 +13,7 @@ Isi dan gambar diambil dari `docs/Manual_Book_PID_POS_per_Peran_20261022` (Gamba
 | Ep5-AdminPurchase | 05_Admin_Purchase.mp4 | 0:56 |
 | Ep6-ApprovePO | 06_Approve_PO.mp4 | 0:47 |
 | Ep7-Kasir | 07_Kasir.mp4 | 1:52 |
+| Showreel | Showreel_SATU_ALUR_60s.mp4 | 1:00 (60 fps) |
 
 ## Menjalankan
 
@@ -53,3 +54,16 @@ Butuh akses internet ke `speech.platform.bing.com` dan `ffprobe`. Tanpa file sua
 ## Logo
 
 `public/brand/pelni_services.png` diambil dari layar aplikasi (Gambar 44). Bila ada file logo resmi beresolusi tinggi, timpa file itu dengan nama yang sama.
+
+## Showreel "SATU ALUR"
+
+Komposisi `Showreel` (60 fps, 60 detik), kode di `src/showreel/`. Semua gerak dikunci ke ketukan musik 124 BPM
+(`src/showreel/beats.ts`). Musiknya orisinal, disintesis oleh `scripts/make_music.py` (bebas royalti):
+
+```bash
+pip install numpy scipy
+npm run musik            # public/music/showreel.wav
+npm run render:showreel
+```
+
+Untuk memakai lagu lain: simpan sebagai `public/music/showreel.wav`, lalu sesuaikan `BPM` dan ketukan babak di `beats.ts`.

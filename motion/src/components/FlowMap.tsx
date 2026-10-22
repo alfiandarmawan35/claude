@@ -50,7 +50,9 @@ export const FlowMap: React.FC<{
   times?: Record<string, number>; // frame munculnya setiap simpul; kosong = semua tampil langsung
   highlight?: string[]; // simpul yang dinyalakan, sisanya redup
   showSap?: boolean;
-}> = ({times, highlight, showSap = true}) => {
+  dark?: boolean; // garis terang untuk latar gelap
+}> = ({times, highlight, showSap = true, dark = false}) => {
+  const ink = dark ? '#8FB8FF' : C.navy;
   const f = useCurrentFrame();
   const gap = times ? 1 : 0;
   const at = (id: string) => (times ? times[id] : 0);
@@ -62,7 +64,7 @@ export const FlowMap: React.FC<{
       <svg width={1920} height={1080} style={{position: 'absolute', inset: 0}}>
         <defs>
           <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 z" fill={C.navy} />
+            <path d="M0,0 L10,5 L0,10 z" fill={ink} />
           </marker>
         </defs>
         {EDGES.map((e) => {
@@ -78,7 +80,7 @@ export const FlowMap: React.FC<{
             <g key={e.from + e.to} opacity={o}>
               <path
                 d={e.d}
-                stroke={C.navy}
+                stroke={ink}
                 strokeWidth={4}
                 fill="none"
                 pathLength={1}
@@ -93,7 +95,7 @@ export const FlowMap: React.FC<{
                   textAnchor="middle"
                   fontSize={22}
                   fontWeight={600}
-                  fill={C.muted}
+                  fill={dark ? '#BFD3F5' : C.muted}
                   opacity={p}
                 >
                   {e.label}
