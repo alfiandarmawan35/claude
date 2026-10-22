@@ -42,7 +42,7 @@ Setiap adegan punya narasi: teks langkah (`text`, atau `vo` bila berbeda) dibaca
 menyesuaikan panjang suaranya. Singkatan diubah ke ucapan (SAP → "es a pe", F12 → "ef dua belas") di `src/data/vo.ts`.
 
 ```bash
-pip install edge-tts==7.0.2
+pip install edge-tts==7.3.1
 npm run suara                     # buat public/vo/*.mp3 dan src/data/vo.json
 python scripts/make_vo.py --voice id-ID-ArdiNeural   # ganti ke suara laki-laki
 node render-all.mjs

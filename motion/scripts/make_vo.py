@@ -1,7 +1,7 @@
 """Buat file suara narasi (public/vo/*.mp3) dengan Microsoft Edge TTS, lalu tulis durasinya ke src/data/vo.json.
 
 Pakai:
-    pip install edge-tts==7.0.2
+    pip install edge-tts==7.3.1
     node scripts/export-narasi.mjs
     python scripts/make_vo.py [--voice id-ID-GadisNeural] [--rate +0%]
 
@@ -33,7 +33,7 @@ def durasi(p: Path) -> float:
 async def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--voice", default="id-ID-GadisNeural")
-    ap.add_argument("--rate", default="+0%")
+    ap.add_argument("--rate", default="+12%")
     ap.add_argument("--proxy", default=os.environ.get("TTS_PROXY"))
     a = ap.parse_args()
 
