@@ -1,6 +1,7 @@
 import {RoleKey} from '../theme';
+import {fitFrames} from './vo';
 
-// Satu langkah = satu adegan. `text` juga dipakai sebagai naskah narasi bila nanti ditambah suara.
+// Satu langkah = satu adegan. `text` tampil di layar dan sekaligus dibacakan sebagai narasi.
 export type Step = {
   img?: string; // nama gambar di public/img (g01..g52) = Gambar 1..52 di manual
   title: string;
@@ -9,6 +10,7 @@ export type Step = {
   focus?: [number, number, number, number];
   sap?: string; // dokumen SAP yang terbentuk di langkah ini
   icon?: 'tolak' | 'info' | 'stok';
+  vo?: string; // naskah narasi bila berbeda dari `text`
 };
 
 export type Episode = {
@@ -169,7 +171,7 @@ export const EPISODES: Episode[] = [
       {img: 'g44', title: 'Buka kasir', text: 'Layar awal memeriksa koneksi, data barang, dan sinkron SAP. Klik Buka kasir.'},
       {img: 'g45', title: 'Scan barang', text: 'Scan barcode, atau ketik nama atau kode lalu Enter.'},
       {img: 'g45', title: 'Ubah jumlah', text: 'Ketik 3*kode untuk 3 pcs sekaligus, atau ubah qty dengan tombol + dan −.'},
-      {img: 'g45', title: 'Tombol cepat', text: 'F2 cari barang · F4 tahan · F8 qty/diskon · F9 riwayat · F12 bayar.', focus: [0.0, 0.88, 0.62, 0.1]},
+      {img: 'g45', title: 'Tombol cepat', text: 'F2 cari barang · F4 tahan · F8 qty/diskon · F9 riwayat · F12 bayar.', vo: 'Tombol cepat: F2 cari barang, F4 tahan, F8 ubah qty atau diskon, F9 riwayat, dan F12 bayar.', focus: [0.0, 0.88, 0.62, 0.1]},
       {icon: 'stok', title: 'Stok habis', text: 'Barang yang stoknya habis di dek ini ditolak. Minta admin kapal memutasi barang dulu.'},
       {img: 'g46', title: 'Bayar (F12)', text: 'Pilih Tunai atau QRIS. Isi uang diterima, kembalian dihitung otomatis.'},
       {img: 'g47', title: 'Struk tercetak', text: 'Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru.'},
@@ -183,16 +185,42 @@ export const EPISODES: Episode[] = [
   },
 ];
 
-// Durasi adegan langkah: cukup waktu untuk membaca teksnya (sekitar 2,6 kata per detik).
-export const stepFrames = (s: Step, fps: number) => {
-  const words = (s.title + ' ' + s.text).split(/\s+/).length;
-  const sec = Math.min(10, Math.max(5, 2.2 + words / 2.6));
-  return Math.round(sec * fps);
+// Kunci file narasi per bagian episode (public/vo/<kunci>.mp3).
+export const voKey = {
+  open: (e: Episode) => `${e.id}/00-pembuka`,
+  map: (e: Episode) => `${e.id}/01-alur`,
+  step: (e: Episode, i: number) => `${e.id}/s${String(i + 1).padStart(2, '0')}`,
+  recap: (e: Episode) => `${e.id}/99-penutup`,
 };
 
-export const OPEN_FRAMES = 150; // pembuka 5 detik
-export const MAP_FRAMES = 150; // posisi di alur 5 detik
-export const RECAP_FRAMES = 210; // penutup 7 detik
+// Naskah narasi episode.
+export const narasiEpisode = (e: Episode, roleName: string) => [
+  {key: voKey.open(e), text: `Episode ${e.no}, ${roleName}: ${e.title}. ${e.goal}`},
+  {key: voKey.map(e), text: `Posisi Anda di alur: giliran ${roleName}.`},
+  ...e.steps.map((s, i) => ({key: voKey.step(e, i), text: s.vo ?? s.text})),
+  {
+    key: voKey.recap(e),
+    text:
+      `Ingat tiga hal. Satu, ${e.recap[0]}. Dua, ${e.recap[1]}. Tiga, ${e.recap[2]}. ` +
+      `Langkah lengkap ada di Manual Book bab ${e.bab}.` +
+      (e.next ? ` Berikutnya, ${e.next.replace(':', ',')}.` : ''),
+  },
+];
+
+// Durasi adegan langkah: cukup untuk membaca teksnya (sekitar 2,6 kata per detik), dan untuk narasinya bila ada.
+export const stepFrames = (e: Episode, i: number, fps: number) => {
+  const s = e.steps[i];
+  const words = (s.title + ' ' + s.text).split(/\s+/).length;
+  const sec = Math.min(10, Math.max(5, 2.2 + words / 2.6));
+  return fitFrames(voKey.step(e, i), Math.round(sec * fps), fps, 1.0);
+};
+
+export const openFrames = (e: Episode, fps: number) => fitFrames(voKey.open(e), 150, fps, 1.2);
+export const mapFrames = (e: Episode, fps: number) => fitFrames(voKey.map(e), 150, fps, 1.2);
+export const recapFrames = (e: Episode, fps: number) => fitFrames(voKey.recap(e), 210, fps, 1.5);
 
 export const episodeFrames = (e: Episode, fps: number) =>
-  OPEN_FRAMES + MAP_FRAMES + e.steps.reduce((a, s) => a + stepFrames(s, fps), 0) + RECAP_FRAMES;
+  openFrames(e, fps) +
+  mapFrames(e, fps) +
+  e.steps.reduce((a, _, i) => a + stepFrames(e, i, fps), 0) +
+  recapFrames(e, fps);

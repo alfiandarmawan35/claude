@@ -34,5 +34,22 @@ Di sesi cloud tanpa unduhan Chrome, set `REMOTION_BROWSER` ke Chromium yang suda
 - Video perkenalan (adegan dan keterangan): `src/Intro.tsx`. Peta alur: `src/components/FlowMap.tsx`.
 - Warna dan peran: `src/theme.ts`.
 
-Teks langkah (`text`) sekaligus naskah narasi, bila nanti ditambah suara.
 Huruf: Plus Jakarta Sans (OFL), disimpan di `public/fonts`.
+
+## Suara narasi
+
+Setiap adegan punya narasi: teks langkah (`text`, atau `vo` bila berbeda) dibacakan, dan durasi adegan
+menyesuaikan panjang suaranya. Singkatan diubah ke ucapan (SAP → "es a pe", F12 → "ef dua belas") di `src/data/vo.ts`.
+
+```bash
+pip install edge-tts==7.0.2
+npm run suara                     # buat public/vo/*.mp3 dan src/data/vo.json
+python scripts/make_vo.py --voice id-ID-ArdiNeural   # ganti ke suara laki-laki
+node render-all.mjs
+```
+
+Butuh akses internet ke `speech.platform.bing.com` dan `ffprobe`. Tanpa file suara, video tetap bisa dirender dengan teks saja.
+
+## Logo
+
+`public/brand/pelni_services.png` diambil dari layar aplikasi (Gambar 44). Bila ada file logo resmi beresolusi tinggi, timpa file itu dengan nama yang sama.

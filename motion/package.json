@@ -6,7 +6,8 @@
   "scripts": {
     "studio": "remotion studio",
     "render:intro": "remotion render Perkenalan out/00_Perkenalan_PID_POS.mp4",
-    "render:all": "node render-all.mjs"
+    "render:all": "node render-all.mjs",
+    "suara": "node scripts/export-narasi.mjs && python scripts/make_vo.py"
   },
   "dependencies": {
     "@remotion/cli": "4.0.530",

@@ -1,12 +1,14 @@
 import React from 'react';
-import {AbsoluteFill, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate, spring, Easing} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate, spring, Easing} from 'remotion';
 import {C, ROLES, RoleKey, fontFamily} from './theme';
-import {Page, SoftBackground, Screen, SapChip, useFade, useRise, clamp} from './components/common';
-import {FlowMap, REVEAL, tokenPos} from './components/FlowMap';
+import {Page, SoftBackground, Screen, SapChip, Logo, useFade, useRise, clamp} from './components/common';
+import {FlowMap, tokenPos} from './components/FlowMap';
 import {DIMS} from './data/dims';
 import {EPISODES} from './data/episodes';
+import {introScenes, TimedScene} from './data/intro';
+import {voFile, voSec} from './data/vo';
 
-// Teks keterangan di bawah layar (pengganti narasi suara).
+// Teks keterangan di bawah layar (sama dengan narasi suara).
 const Caption: React.FC<{text: string; dur: number; dark?: boolean}> = ({text, dur, dark}) => {
   const f = useCurrentFrame();
   const o = Math.min(interpolate(f, [4, 16], [0, 1], clamp), interpolate(f, [dur - 10, dur], [1, 0], clamp));
@@ -42,19 +44,23 @@ const Caption: React.FC<{text: string; dur: number; dark?: boolean}> = ({text, d
   );
 };
 
-// Keterangan berganti sesuai waktu: [frame mulai, teks]
-const Captions: React.FC<{lines: [number, string][]; total: number; dark?: boolean}> = ({lines, total, dark}) => (
+// Kalimat adegan: keterangan di layar dan suara narasi, sesuai waktunya.
+const SceneLines: React.FC<{sc: TimedScene; dark?: boolean}> = ({sc, dark}) => (
   <>
-    {lines.map(([from, t], i) => {
-      const to = i + 1 < lines.length ? lines[i + 1][0] : total;
-      return (
-        <Sequence key={i} from={from} durationInFrames={to - from}>
-          <Caption text={t} dur={to - from} dark={dark} />
-        </Sequence>
-      );
-    })}
+    {sc.lines.map((l) => (
+      <Sequence key={l.key} from={l.from} durationInFrames={l.dur}>
+        {l.caption === false ? null : <Caption text={l.text} dur={l.dur} dark={dark} />}
+        {voSec(l.key) ? (
+          <Sequence from={4}>
+            <Audio src={staticFile(voFile(l.key))} />
+          </Sequence>
+        ) : null}
+      </Sequence>
+    ))}
   </>
 );
+
+type SceneProps = {dur: number; sc: TimedScene};
 
 const Ship: React.FC<{x: number}> = ({x}) => (
   <svg width={760} height={330} viewBox="0 0 760 330" style={{position: 'absolute', left: x, top: 430}}>
@@ -89,7 +95,7 @@ const Waves: React.FC = () => {
   );
 };
 
-const SceneShip: React.FC<{dur: number}> = ({dur}) => {
+const SceneShip: React.FC<SceneProps> = ({dur, sc}) => {
   const f = useCurrentFrame();
   const fade = useFade(dur, 1, 12);
   const title = useRise(20);
@@ -100,12 +106,12 @@ const SceneShip: React.FC<{dur: number}> = ({dur}) => {
       </div>
       <Ship x={interpolate(f, [0, dur], [-200, 700])} />
       <Waves />
-      <Captions lines={[[10, 'Setiap pelayaran, toko di setiap dek harus siap melayani penumpang.']]} total={dur} dark />
+      <SceneLines sc={sc} dark />
     </AbsoluteFill>
   );
 };
 
-const SceneProblem: React.FC<{dur: number}> = ({dur}) => {
+const SceneProblem: React.FC<SceneProps> = ({dur, sc}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const fade = useFade(dur, 10, 1);
@@ -152,36 +158,13 @@ const SceneProblem: React.FC<{dur: number}> = ({dur}) => {
             </div>
           );
         })}
-        <Captions lines={[[10, 'Permintaan, persetujuan, dan stok sering tercatat di banyak tempat.']]} total={dur} />
+        <SceneLines sc={sc} />
       </AbsoluteFill>
     </Page>
   );
 };
 
-const Logo: React.FC<{size?: number}> = ({size = 1}) => (
-  <div style={{display: 'flex', alignItems: 'center', gap: 28 * size}}>
-    <div
-      style={{
-        width: 150 * size,
-        height: 150 * size,
-        borderRadius: 36 * size,
-        background: C.navy,
-        color: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 64 * size,
-        fontWeight: 800,
-        boxShadow: '0 20px 40px rgba(20,40,90,0.3)',
-      }}
-    >
-      POS
-    </div>
-    <div style={{fontSize: 130 * size, fontWeight: 800, color: C.navy, letterSpacing: -2}}>PID POS</div>
-  </div>
-);
-
-const SceneReveal: React.FC<{dur: number}> = ({dur}) => {
+const SceneReveal: React.FC<SceneProps> = ({dur, sc}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const fade = useFade(dur, 1, 12);
@@ -218,19 +201,33 @@ const SceneReveal: React.FC<{dur: number}> = ({dur}) => {
           })}
         </div>
       </AbsoluteFill>
+      <SceneLines sc={sc} />
     </Page>
   );
 };
 
-const FLOW_START = 40;
-const FLOW_GAP = 66;
+// Waktu munculnya simpul peta alur mengikuti kalimat narasinya.
+const flowTimes = (sc: TimedScene) => {
+  const L = sc.lines;
+  return {
+    pesan: L[0].from + 6,
+    so: L[1].from,
+    pilah: L[2].from,
+    pur: L[3].from,
+    po: L[3].from + Math.round(L[3].dur * 0.5),
+    grpo: L[4].from,
+    transfer: L[5].from,
+    terima: L[6].from,
+    jual: L[7].from,
+  };
+};
 
-const SceneFlow: React.FC<{dur: number}> = ({dur}) => {
+const SceneFlow: React.FC<SceneProps> = ({dur, sc}) => {
   const f = useCurrentFrame();
   const fade = useFade(dur, 12, 12);
-  const tok = tokenPos(f, FLOW_START, FLOW_GAP);
+  const times = flowTimes(sc);
+  const tok = tokenPos(f, times);
   const title = useRise(0);
-  const at = (id: string) => FLOW_START + REVEAL.indexOf(id) * FLOW_GAP;
   return (
     <Page>
       <AbsoluteFill style={{opacity: fade}}>
@@ -238,8 +235,8 @@ const SceneFlow: React.FC<{dur: number}> = ({dur}) => {
           <div style={{fontSize: 58, fontWeight: 800, color: C.navy}}>Alur barang: dari kapal sampai kasir</div>
           <div style={{fontSize: 30, color: C.muted, marginTop: 8}}>Contoh: KM Awu · Dek 3 dan Dek 7</div>
         </div>
-        <FlowMap start={FLOW_START} gap={FLOW_GAP} />
-        {f > FLOW_START ? (
+        <FlowMap times={times} />
+        {f > times.pesan ? (
           <div
             style={{
               position: 'absolute',
@@ -261,19 +258,7 @@ const SceneFlow: React.FC<{dur: number}> = ({dur}) => {
             ▤
           </div>
         ) : null}
-        <Captions
-          total={dur}
-          lines={[
-            [0, 'Admin kapal memesan barang ke DC.'],
-            [at('so') - 6, 'Penyetuju menyetujui: Sales Order dibuat di SAP, satu per dek.'],
-            [at('pilah') - 6, 'Admin DC memilah: ambil dari stok DC.'],
-            [at('pur') - 6, 'Yang kurang dibeli lewat Purchase Request dan Purchase Order.'],
-            [at('grpo') - 6, 'Barang vendor diterima di DC dengan GRPO.'],
-            [at('transfer') - 6, 'Barang dikirim ke dek dengan Inventory Transfer.'],
-            [at('terima') - 6, 'Dek menerima barang, kepala toko dan P2 menyetujui.'],
-            [at('jual') - 6, 'Barang siap dijual di kasir.'],
-          ]}
-        />
+        <SceneLines sc={sc} />
       </AbsoluteFill>
     </Page>
   );
@@ -324,12 +309,13 @@ const RoleCard: React.FC<{r: RoleKey; i: number}> = ({r, i}) => {
   );
 };
 
-const SceneRoles: React.FC<{dur: number}> = ({dur}) => {
+const SceneRoles: React.FC<SceneProps> = ({dur, sc}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const fade = useFade(dur);
   const title = useRise(0);
-  const bell = spring({frame: f - 120, fps, config: {damping: 8}});
+  const bellAt = sc.lines[1].from;
+  const bell = spring({frame: f - bellAt, fps, config: {damping: 8}});
   const keys = Object.keys(ROLES) as RoleKey[];
   return (
     <Page>
@@ -356,7 +342,7 @@ const SceneRoles: React.FC<{dur: number}> = ({dur}) => {
           }}
         >
           <div style={{display: 'flex', alignItems: 'center', gap: 18, background: 'white', borderRadius: 999, padding: '14px 34px', boxShadow: '0 10px 24px rgba(20,40,90,0.12)'}}>
-            <svg width={46} height={46} viewBox="0 0 24 24" style={{transform: `rotate(${Math.sin(f / 3) * 12 * Math.max(0, 1 - (f - 120) / 60)}deg)`}}>
+            <svg width={46} height={46} viewBox="0 0 24 24" style={{transform: `rotate(${Math.sin(f / 3) * 12 * Math.max(0, 1 - (f - bellAt) / 60)}deg)`}}>
               <path d="M12 2a6 6 0 0 0-6 6v4l-2 4h16l-2-4V8a6 6 0 0 0-6-6zm0 20a3 3 0 0 0 3-3H9a3 3 0 0 0 3 3z" fill={C.navy} />
             </svg>
             <span style={{background: C.red, color: 'white', borderRadius: 999, padding: '2px 14px', fontSize: 30, fontWeight: 800}}>3</span>
@@ -366,41 +352,31 @@ const SceneRoles: React.FC<{dur: number}> = ({dur}) => {
             Tab Giliran saya
           </div>
         </div>
-        <Captions
-          total={dur}
-          lines={[
-            [0, 'Setiap peran hanya melihat tugasnya sendiri.'],
-            [130, 'Lonceng dan Giliran saya menunjukkan apa yang menunggu Anda.'],
-          ]}
-        />
+        <SceneLines sc={sc} />
       </AbsoluteFill>
     </Page>
   );
 };
 
-const SceneKasir: React.FC<{dur: number}> = ({dur}) => {
+const SceneKasir: React.FC<SceneProps> = ({dur, sc}) => {
   const fade = useFade(dur);
-  const part = Math.floor(dur / 3);
   const box = {x: 160, y: 60, w: 1600, h: 760};
-  const shots: [string, string][] = [
-    ['g45', 'Kasir scan barang: AQUA 2 pcs, total Rp 38.000.'],
-    ['g46', 'Bayar tunai atau QRIS. Kembalian dihitung otomatis.'],
-    ['g47', 'Struk tercetak. Penjualan dikirim ke SAP sebagai DO.'],
-  ];
+  const shots = ['g45', 'g46', 'g47'];
   return (
     <Page>
       <AbsoluteFill style={{opacity: fade}}>
-        {shots.map(([img, t], i) => (
-          <Sequence key={img} from={i * part} durationInFrames={part}>
-            <AbsoluteFill style={{opacity: 1}}>
-              <ShotFade dur={part}>
-                <Screen src={staticFile(`img/${img}.png`)} dims={DIMS[img]} box={box} durationInFrames={part} />
+        {shots.map((img, i) => {
+          const l = sc.lines[i];
+          return (
+            <Sequence key={img} from={l.from} durationInFrames={l.dur}>
+              <ShotFade dur={l.dur}>
+                <Screen src={staticFile(`img/${img}.png`)} dims={DIMS[img]} box={box} durationInFrames={l.dur} />
               </ShotFade>
-              {i === 2 ? <SapChip label="Delivery (DO)" delay={50} /> : null}
-              <Caption text={t} dur={part} />
-            </AbsoluteFill>
-          </Sequence>
-        ))}
+              {i === 2 ? <SapChip label="Delivery (DO)" delay={Math.round(l.dur * 0.4)} /> : null}
+            </Sequence>
+          );
+        })}
+        <SceneLines sc={sc} />
       </AbsoluteFill>
     </Page>
   );
@@ -411,7 +387,7 @@ const ShotFade: React.FC<{dur: number; children: React.ReactNode}> = ({dur, chil
   return <AbsoluteFill style={{opacity: o}}>{children}</AbsoluteFill>;
 };
 
-const SceneOutro: React.FC<{dur: number}> = ({dur}) => {
+const SceneOutro: React.FC<SceneProps> = ({dur, sc}) => {
   const fade = useFade(dur, 12, 1);
   const a = useRise(0);
   const b = useRise(14);
@@ -447,32 +423,35 @@ const SceneOutro: React.FC<{dur: number}> = ({dur}) => {
         </div>
         <div style={{...c, marginTop: 50, fontSize: 40, fontWeight: 800, color: C.green}}>Tonton episode sesuai peran Anda</div>
       </AbsoluteFill>
+      <SceneLines sc={sc} />
     </Page>
   );
 };
 
-export const INTRO_SCENES: [number, React.FC<{dur: number}>][] = [
-  [180, SceneShip],
-  [240, SceneProblem],
-  [180, SceneReveal],
-  [720, SceneFlow],
-  [300, SceneRoles],
-  [360, SceneKasir],
-  [270, SceneOutro],
-];
+const SCENES: Record<string, React.FC<SceneProps>> = {
+  kapal: SceneShip,
+  masalah: SceneProblem,
+  pidpos: SceneReveal,
+  alur: SceneFlow,
+  peran: SceneRoles,
+  kasir: SceneKasir,
+  penutup: SceneOutro,
+};
 
-export const INTRO_FRAMES = INTRO_SCENES.reduce((a, [d]) => a + d, 0);
+export const introFrames = (fps: number) => introScenes(fps).reduce((a, sc) => a + sc.dur, 0);
 
 export const Intro: React.FC = () => {
+  const {fps} = useVideoConfig();
   let at = 0;
   return (
     <AbsoluteFill style={{background: C.bg}}>
-      {INTRO_SCENES.map(([d, S], i) => {
+      {introScenes(fps).map((sc) => {
         const from = at;
-        at += d;
+        at += sc.dur;
+        const S = SCENES[sc.id];
         return (
-          <Sequence key={i} from={from} durationInFrames={d}>
-            <S dur={d} />
+          <Sequence key={sc.id} from={from} durationInFrames={sc.dur}>
+            <S dur={sc.dur} sc={sc} />
           </Sequence>
         );
       })}

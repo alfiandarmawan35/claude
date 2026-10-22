@@ -47,17 +47,14 @@ const EDGES: Edge[] = [
 export const REVEAL = ['pesan', 'so', 'pilah', 'pur', 'po', 'grpo', 'transfer', 'terima', 'jual'];
 
 export const FlowMap: React.FC<{
-  start?: number; // frame mulai animasi
-  gap?: number; // jarak antar simpul (frame); 0 = tampil langsung
+  times?: Record<string, number>; // frame munculnya setiap simpul; kosong = semua tampil langsung
   highlight?: string[]; // simpul yang dinyalakan, sisanya redup
   showSap?: boolean;
-}> = ({start = 0, gap = 0, highlight, showSap = true}) => {
+}> = ({times, highlight, showSap = true}) => {
   const f = useCurrentFrame();
-  const appear = (id: string) => {
-    if (!gap) return 1;
-    const i = REVEAL.indexOf(id);
-    return interpolate(f, [start + i * gap, start + i * gap + 14], [0, 1], clamp);
-  };
+  const gap = times ? 1 : 0;
+  const at = (id: string) => (times ? times[id] : 0);
+  const appear = (id: string) => (times ? interpolate(f, [at(id), at(id) + 14], [0, 1], clamp) : 1);
   const dim = (id: string) => (highlight && !highlight.includes(id) ? 0.28 : 1);
 
   return (
@@ -71,7 +68,7 @@ export const FlowMap: React.FC<{
         {EDGES.map((e) => {
           const p = Math.min(appear(e.from), 1) * (gap ? appear(e.to) : 1);
           const prog = gap
-            ? interpolate(f, [start + REVEAL.indexOf(e.to) * gap - 10, start + REVEAL.indexOf(e.to) * gap + 6], [0, 1], {
+            ? interpolate(f, [at(e.to) - 10, at(e.to) + 6], [0, 1], {
                 ...clamp,
                 easing: Easing.out(Easing.cubic),
               })
@@ -156,9 +153,7 @@ export const FlowMap: React.FC<{
       })}
       {showSap
         ? NODES.filter((n) => n.sap).map((n) => {
-            const a = gap
-              ? interpolate(f, [start + REVEAL.indexOf(n.id) * gap + 10, start + REVEAL.indexOf(n.id) * gap + 22], [0, 1], clamp)
-              : 1;
+            const a = gap ? interpolate(f, [at(n.id) + 10, at(n.id) + 22], [0, 1], clamp) : 1;
             return (
               <div
                 key={'sap' + n.id}
@@ -195,12 +190,12 @@ export const FlowMap: React.FC<{
 };
 
 // Posisi token yang berjalan di sepanjang alur (dipakai di video perkenalan).
-export const tokenPos = (f: number, start: number, gap: number) => {
-  const pts = REVEAL.map((id) => byId[id]);
-  const t = (f - start) / gap;
-  const i = Math.max(0, Math.min(pts.length - 1, Math.floor(t)));
-  const j = Math.min(pts.length - 1, i + 1);
-  const k = Math.max(0, Math.min(1, (t - i) * 1.6 - 0.3));
+export const tokenPos = (f: number, times: Record<string, number>) => {
+  const pts = REVEAL.map((id) => ({...byId[id], t: times[id]}));
+  let i = 0;
+  while (i < pts.length - 1 && f >= pts[i + 1].t) i++;
+  if (i === pts.length - 1) return {x: pts[i].x, y: pts[i].y};
+  const k = Math.max(0, Math.min(1, (f - (pts[i + 1].t - 22)) / 24));
   const e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-  return {x: pts[i].x + (pts[j].x - pts[i].x) * e, y: pts[i].y + (pts[j].y - pts[i].y) * e};
+  return {x: pts[i].x + (pts[i + 1].x - pts[i].x) * e, y: pts[i].y + (pts[i + 1].y - pts[i].y) * e};
 };

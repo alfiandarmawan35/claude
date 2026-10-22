@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
+import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
 import {C, fontFamily} from '../theme';
 
 export const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
@@ -241,3 +241,30 @@ export const SapChip: React.FC<{label: string; delay: number; low?: boolean}> = 
     </div>
   );
 };
+
+// Logo resmi PELNI Services (diambil dari layar aplikasi) + nama aplikasi.
+export const Logo: React.FC<{size?: number}> = ({size = 1}) => (
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 44 * size,
+      background: 'white',
+      borderRadius: 32 * size,
+      padding: `${30 * size}px ${50 * size}px`,
+      boxShadow: '0 20px 40px rgba(20,40,90,0.15)',
+    }}
+  >
+    <Img src={staticFile('brand/pelni_services.png')} style={{width: 470 * size}} />
+    <div style={{width: 4 * size, alignSelf: 'stretch', background: C.line, borderRadius: 2}} />
+    <div style={{fontSize: 120 * size, fontWeight: 800, color: C.navy, letterSpacing: -2, lineHeight: 1}}>PID POS</div>
+  </div>
+);
+
+// Logo kecil di pojok kanan atas setiap adegan episode.
+export const CornerLogo: React.FC = () => (
+  <Img
+    src={staticFile('brand/pelni_services.png')}
+    style={{position: 'absolute', right: 70, top: 26, width: 190, opacity: 0.95}}
+  />
+);

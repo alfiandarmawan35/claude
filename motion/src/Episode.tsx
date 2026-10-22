@@ -1,9 +1,10 @@
 import React from 'react';
-import {AbsoluteFill, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
+import {AbsoluteFill, Audio, Img, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
 import {C, ROLES} from './theme';
-import {Episode as Ep, Step, stepFrames, OPEN_FRAMES, MAP_FRAMES, RECAP_FRAMES, EPISODES} from './data/episodes';
+import {Episode as Ep, Step, stepFrames, openFrames, mapFrames, recapFrames, voKey, EPISODES} from './data/episodes';
+import {voFile, voSec} from './data/vo';
 import {DIMS} from './data/dims';
-import {Page, SoftBackground, Chip, Screen, SapChip, useFade, useRise, clamp} from './components/common';
+import {Page, SoftBackground, Chip, Screen, SapChip, Logo, useFade, useRise, clamp} from './components/common';
 import {FlowMap} from './components/FlowMap';
 
 const Header: React.FC<{ep: Ep; right?: string}> = ({ep, right}) => {
@@ -27,12 +28,13 @@ const Header: React.FC<{ep: Ep; right?: string}> = ({ep, right}) => {
       </div>
       <div style={{flex: 1}} />
       {right ? <div style={{fontSize: 26, fontWeight: 700, color: C.muted}}>{right}</div> : null}
+      <Img src={staticFile('brand/pelni_services.png')} style={{width: 140, marginLeft: 16}} />
     </div>
   );
 };
 
-const OpenScene: React.FC<{ep: Ep}> = ({ep}) => {
-  const fade = useFade(OPEN_FRAMES);
+const OpenScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
+  const fade = useFade(dur);
   const role = ROLES[ep.role];
   const a = useRise(0);
   const b = useRise(8);
@@ -41,6 +43,9 @@ const OpenScene: React.FC<{ep: Ep}> = ({ep}) => {
   return (
     <Page>
       <SoftBackground accent={role.color} />
+      <div style={{position: 'absolute', right: 120, top: 90, opacity: fade}}>
+        <Logo size={0.45} />
+      </div>
       <AbsoluteFill style={{opacity: fade, padding: '0 160px', justifyContent: 'center'}}>
         <div style={a}>
           <Chip color={role.color} style={{fontSize: 30}}>
@@ -59,8 +64,8 @@ const OpenScene: React.FC<{ep: Ep}> = ({ep}) => {
   );
 };
 
-const MapScene: React.FC<{ep: Ep}> = ({ep}) => {
-  const fade = useFade(MAP_FRAMES);
+const MapScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
+  const fade = useFade(dur);
   const t = useRise(0);
   return (
     <Page>
@@ -208,8 +213,8 @@ const StepScene: React.FC<{ep: Ep; step: Step; i: number; n: number; dur: number
   );
 };
 
-const RecapScene: React.FC<{ep: Ep}> = ({ep}) => {
-  const fade = useFade(RECAP_FRAMES, 12, 20);
+const RecapScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
+  const fade = useFade(dur, 12, 20);
   const role = ROLES[ep.role];
   const h = useRise(0);
   const items = [useRise(10), useRise(20), useRise(30)];
@@ -217,6 +222,9 @@ const RecapScene: React.FC<{ep: Ep}> = ({ep}) => {
   return (
     <Page>
       <SoftBackground accent={role.color} />
+      <div style={{position: 'absolute', right: 120, top: 90, opacity: fade}}>
+        <Logo size={0.45} />
+      </div>
       <AbsoluteFill style={{opacity: fade, padding: '0 160px', justifyContent: 'center'}}>
         <div style={{...h, fontSize: 64, fontWeight: 800, color: C.navy}}>Ingat tiga hal</div>
         <div style={{display: 'flex', gap: 36, marginTop: 50}}>
@@ -251,36 +259,37 @@ const RecapScene: React.FC<{ep: Ep}> = ({ep}) => {
   );
 };
 
+// Suara narasi satu bagian, mulai sedikit setelah adegan muncul.
+const Narasi: React.FC<{k: string; delay?: number}> = ({k, delay = 8}) =>
+  voSec(k) ? (
+    <Sequence from={delay}>
+      <Audio src={staticFile(voFile(k))} />
+    </Sequence>
+  ) : null;
+
 export const EpisodeVideo: React.FC<{id: string}> = ({id}) => {
   const ep = EPISODES.find((e) => e.id === id)!;
   const {fps} = useVideoConfig();
   let at = 0;
   const seq: React.ReactNode[] = [];
-  seq.push(
-    <Sequence key="open" from={at} durationInFrames={OPEN_FRAMES}>
-      <OpenScene ep={ep} />
-    </Sequence>,
-  );
-  at += OPEN_FRAMES;
-  seq.push(
-    <Sequence key="map" from={at} durationInFrames={MAP_FRAMES}>
-      <MapScene ep={ep} />
-    </Sequence>,
-  );
-  at += MAP_FRAMES;
-  ep.steps.forEach((s, i) => {
-    const d = stepFrames(s, fps);
+  const add = (key: string, d: number, node: React.ReactNode, k: string) => {
     seq.push(
-      <Sequence key={'s' + i} from={at} durationInFrames={d}>
-        <StepScene ep={ep} step={s} i={i} n={ep.steps.length} dur={d} />
+      <Sequence key={key} from={at} durationInFrames={d}>
+        {node}
+        <Narasi k={k} />
       </Sequence>,
     );
     at += d;
+  };
+  const o = openFrames(ep, fps);
+  add('open', o, <OpenScene ep={ep} dur={o} />, voKey.open(ep));
+  const m = mapFrames(ep, fps);
+  add('map', m, <MapScene ep={ep} dur={m} />, voKey.map(ep));
+  ep.steps.forEach((s, i) => {
+    const d = stepFrames(ep, i, fps);
+    add('s' + i, d, <StepScene ep={ep} step={s} i={i} n={ep.steps.length} dur={d} />, voKey.step(ep, i));
   });
-  seq.push(
-    <Sequence key="recap" from={at} durationInFrames={RECAP_FRAMES}>
-      <RecapScene ep={ep} />
-    </Sequence>,
-  );
+  const r = recapFrames(ep, fps);
+  add('recap', r, <RecapScene ep={ep} dur={r} />, voKey.recap(ep));
   return <AbsoluteFill style={{background: C.bg}}>{seq}</AbsoluteFill>;
 };
