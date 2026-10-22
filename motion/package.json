@@ -1,0 +1,21 @@
+{
+  "name": "pidpos-motion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Motion graphics PID POS: video perkenalan dan tutorial per peran (Remotion)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render:intro": "remotion render Perkenalan out/00_Perkenalan_PID_POS.mp4",
+    "render:all": "node render-all.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.530",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}
