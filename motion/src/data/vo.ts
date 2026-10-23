@@ -47,6 +47,7 @@ export const ucapan = (t: string) =>
     .replace(/\bHP\b/g, 'ha pe')
     .replace(/\bQR\b/g, 'kiu ar')
     .replace(/\bKM\b/g, 'ka em')
+    .replace(/\bWA\b/g, 'we a')
     .replace(/\bPOS\b/g, 'pos')
     // istilah Inggris, dieja seperti diucapkan orang Indonesia
     .replace(/\bApproval\b/g, 'Apruval')

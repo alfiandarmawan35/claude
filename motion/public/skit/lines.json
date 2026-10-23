@@ -1,0 +1,194 @@
+[
+ {
+  "key": "Skit-Kapal/01",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Aduh, Teh Pucuk di Dek 7 habis lagi.",
+  "say": "Aduh, Teh Pucuk di Dek 7 habis lagi."
+ },
+ {
+  "key": "Skit-Kapal/02",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Kemarin udah minta ke DC lewat WA, kok belum ada kabar, ya?",
+  "say": "Kemarin udah minta ke D-C lewat we a, kok belum ada kabar, ya?"
+ },
+ {
+  "key": "Skit-Kapal/03",
+  "voice": "id-ID-GadisNeural",
+  "text": "Lagi ngapain sih, Dim? Kok mukanya kusut gitu?",
+  "say": "Lagi ngapain sih, Dim? Kok mukanya kusut gitu?"
+ },
+ {
+  "key": "Skit-Kapal/04",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Ini, Mbak. Pesan barang ke DC, tapi nggak tahu udah sampai mana.",
+  "say": "Ini, Mbak. Pesan barang ke D-C, tapi nggak tahu udah sampai mana."
+ },
+ {
+  "key": "Skit-Kapal/05",
+  "voice": "id-ID-GadisNeural",
+  "text": "Pesan lewat WA mah nggak kelacak. Sini, aku ajarin pakai PID POS.",
+  "say": "Pesan lewat we a mah nggak kelacak. Sini, aku ajarin pakai P-I-D pos."
+ },
+ {
+  "key": "Skit-Kapal/06",
+  "voice": "id-ID-GadisNeural",
+  "text": "Pertama, buka menu Pesan DC, terus klik Pesanan baru.",
+  "say": "Pertama, buka menu Pesan D-C, terus klik Pesanan baru."
+ },
+ {
+  "key": "Skit-Kapal/07",
+  "voice": "id-ID-GadisNeural",
+  "text": "Pilih voyage-nya, terus isi tanggal butuhnya. Minimal lima hari sebelumnya, ya.",
+  "say": "Pilih voyej-nya, terus isi tanggal butuhnya. Minimal lima hari sebelumnya, ya."
+ },
+ {
+  "key": "Skit-Kapal/08",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Oh, terus barangnya dipilih per dek, gitu?",
+  "say": "Oh, terus barangnya dipilih per dek, gitu?"
+ },
+ {
+  "key": "Skit-Kapal/09",
+  "voice": "id-ID-GadisNeural",
+  "text": "Betul. Isi jumlahnya, terus klik Kirim ke DC.",
+  "say": "Betul. Isi jumlahnya, terus klik Kirim ke D-C."
+ },
+ {
+  "key": "Skit-Kapal/10",
+  "voice": "id-ID-GadisNeural",
+  "text": "Nah, langsung dapat nomor permintaan.",
+  "say": "Nah, langsung dapat nomor permintaan."
+ },
+ {
+  "key": "Skit-Kapal/11",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Wah, ini bisa dipantau? Udah disetujui, udah jadi Sales Order.",
+  "say": "Wah, ini bisa dipantau? Udah disetujui, udah jadi Sels Order."
+ },
+ {
+  "key": "Skit-Kapal/12",
+  "voice": "id-ID-GadisNeural",
+  "text": "Iya. Pas barang datang, tinggal buka Terima barang.",
+  "say": "Iya. Pas barang datang, tinggal buka Terima barang."
+ },
+ {
+  "key": "Skit-Kapal/13",
+  "voice": "id-ID-GadisNeural",
+  "text": "Hitung barangnya, centang checklist, terus setujui. Stok dek langsung bertambah.",
+  "say": "Hitung barangnya, centang ceklis, terus setujui. Stok dek langsung bertambah."
+ },
+ {
+  "key": "Skit-Kapal/14",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Wah, jadi nggak perlu nanya-nanya ke DC lagi, ya!",
+  "say": "Wah, jadi nggak perlu nanya-nanya ke D-C lagi, ya!"
+ },
+ {
+  "key": "Skit-Kapal/15",
+  "voice": "id-ID-GadisNeural",
+  "text": "Jadi buat kalian di kapal, mau pesan barang ke DC? Pakai PID POS aja.",
+  "say": "Jadi buat kalian di kapal, mau pesan barang ke D-C? Pakai P-I-D pos aja."
+ },
+ {
+  "key": "Skit-Kapal/16",
+  "voice": "id-ID-GadisNeural",
+  "text": "Semua tercatat, bisa dipantau, dan langsung masuk SAP.",
+  "say": "Semua tercatat, bisa dipantau, dan langsung masuk es a pe."
+ },
+ {
+  "key": "Skit-Gudang/01",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Waduh, ada permintaan dari KM Awu.",
+  "say": "Waduh, ada permintaan dari ka em Awu."
+ },
+ {
+  "key": "Skit-Gudang/02",
+  "voice": "id-ID-ArdiNeural",
+  "text": "AQUA ada di gudang, tapi Teh Pucuk kosong. Terus gimana, nih?",
+  "say": "AQUA ada di gudang, tapi Teh Pucuk kosong. Terus gimana, nih?"
+ },
+ {
+  "key": "Skit-Gudang/03",
+  "voice": "id-ID-GadisNeural",
+  "text": "Kenapa, Bay? Bingung, ya?",
+  "say": "Kenapa, Bay? Bingung, ya?"
+ },
+ {
+  "key": "Skit-Gudang/04",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Iya, Mbak. Biasanya kan dicatat manual dulu.",
+  "say": "Iya, Mbak. Biasanya kan dicatat manual dulu."
+ },
+ {
+  "key": "Skit-Gudang/05",
+  "voice": "id-ID-GadisNeural",
+  "text": "Sekarang nggak perlu. Semuanya ada di PID POS. Sini, aku tunjukin.",
+  "say": "Sekarang nggak perlu. Semuanya ada di P-I-D pos. Sini, aku tunjukin."
+ },
+ {
+  "key": "Skit-Gudang/06",
+  "voice": "id-ID-GadisNeural",
+  "text": "Buka Permintaan barang, terus tab Giliran saya. Ini tugas kamu.",
+  "say": "Buka Permintaan barang, terus tab Giliran saya. Ini tugas kamu."
+ },
+ {
+  "key": "Skit-Gudang/07",
+  "voice": "id-ID-GadisNeural",
+  "text": "Isi kolom Transfer DC sesuai stok yang ada. AQUA enam, ambil dari gudang.",
+  "say": "Isi kolom Transfer D-C sesuai stok yang ada. AQUA enam, ambil dari gudang."
+ },
+ {
+  "key": "Skit-Gudang/08",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Teh Pucuk diisi nol, dong?",
+  "say": "Teh Pucuk diisi nol, dong?"
+ },
+ {
+  "key": "Skit-Gudang/09",
+  "voice": "id-ID-GadisNeural",
+  "text": "Iya. Sisanya otomatis jadi PUR, untuk dibeli. Terus klik Setujui.",
+  "say": "Iya. Sisanya otomatis jadi pe u er, untuk dibeli. Terus klik Setujui."
+ },
+ {
+  "key": "Skit-Gudang/10",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Terus, kalau barang dari vendor udah datang?",
+  "say": "Terus, kalau barang dari vendor udah datang?"
+ },
+ {
+  "key": "Skit-Gudang/11",
+  "voice": "id-ID-GadisNeural",
+  "text": "Isi jumlah yang diterima, lalu klik Ajukan GRPO.",
+  "say": "Isi jumlah yang diterima, lalu klik Ajukan G-R-P-O."
+ },
+ {
+  "key": "Skit-Gudang/12",
+  "voice": "id-ID-GadisNeural",
+  "text": "Habis itu, panel Inventory Transfer muncul. Jumlahnya udah diusulin otomatis.",
+  "say": "Habis itu, panel Inventori Transfer muncul. Jumlahnya udah diusulin otomatis."
+ },
+ {
+  "key": "Skit-Gudang/13",
+  "voice": "id-ID-GadisNeural",
+  "text": "Cek jumlah per dek, terus Ajukan Inventory Transfer. Barang siap dikirim ke kapal.",
+  "say": "Cek jumlah per dek, terus Ajukan Inventori Transfer. Barang siap dikirim ke kapal."
+ },
+ {
+  "key": "Skit-Gudang/14",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Wah, jadi nggak perlu catat manual lagi, ya!",
+  "say": "Wah, jadi nggak perlu catat manual lagi, ya!"
+ },
+ {
+  "key": "Skit-Gudang/15",
+  "voice": "id-ID-GadisNeural",
+  "text": "Jadi buat kalian di gudang DC, pilah stok, GRPO, sampai kirim ke kapal,",
+  "say": "Jadi buat kalian di gudang D-C, pilah stok, G-R-P-O, sampai kirim ke kapal,"
+ },
+ {
+  "key": "Skit-Gudang/16",
+  "voice": "id-ID-GadisNeural",
+  "text": "semuanya lewat PID POS. Langsung tercatat di SAP.",
+  "say": "semuanya lewat P-I-D pos. Langsung tercatat di es a pe."
+ }
+]
