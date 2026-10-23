@@ -1,5 +1,6 @@
 // Render semua video ke folder out/. Pakai: node render-all.mjs [id ...]
 import {execFileSync} from 'node:child_process';
+import {rmSync} from 'node:fs';
 
 const all = [
   ['Perkenalan', '00_Perkenalan_PID_POS'],
@@ -15,7 +16,11 @@ const pick = process.argv.slice(2);
 for (const [id, name] of all) {
   if (pick.length && !pick.includes(id)) continue;
   console.log(`== ${id}`);
-  execFileSync('npx', ['remotion', 'render', 'src/index.ts', id, `out/${name}.mp4`, '--crf=20', '--log=error'], {
+  execFileSync('npx', ['remotion', 'render', 'src/index.ts', id, `out/${name}.raw.mp4`, '--crf=20', '--log=error'], {
     stdio: 'inherit',
   });
+  // Samakan kenyaringan audio ke standar video web (-16 LUFS), gambar tidak diubah.
+  execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', `out/${name}.raw.mp4`, '-c:v', 'copy', '-af', 'loudnorm=I=-16:TP=-1.5:LRA=11',
+    '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', `out/${name}.mp4`], {stdio: 'inherit'});
+  rmSync(`out/${name}.raw.mp4`);
 }
