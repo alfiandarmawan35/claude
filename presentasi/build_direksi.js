@@ -1,4 +1,4 @@
-// Paparan direksi 3 halaman: nilai PID POS, alur besar, status uji coba dan usulan langkah berikutnya.
+// Paparan direksi 3 halaman: nilai PID POS, alur besar, kesiapan dan usulan langkah berikutnya.
 // Pakai: npm install && node build_direksi.js  ->  ../docs/PID_POS_Paparan_Direksi.pptx
 const fs = require('fs');
 const path = require('path');
@@ -64,7 +64,7 @@ pres.defineSlideMaster({
   objects: [
     {placeholder: {options: {name: 'title', type: 'title', x: 0.5, y: 0.35, w: 10.4, h: 0.75, fontSize: 34, bold: true, color: C.text2, align: 'left', valign: 'middle', margin: 0}, text: ''}},
     {image: {path: LOGO, x: 11.45, y: 0.4, w: 1.38, h: 0.63}},
-    {text: {text: 'PID POS · Paparan direksi · Data uji coba 22-10-2026 (SAP DB_TEST)', options: {x: 0.5, y: 7.0, w: 8, h: 0.3, fontSize: 10, color: C.accent5, margin: 0}}},
+    {text: {text: 'PID POS · Paparan direksi', options: {x: 0.5, y: 7.0, w: 8, h: 0.3, fontSize: 10, color: C.accent5, margin: 0}}},
   ],
   slideNumber: {x: 12.4, y: 7.0, w: 0.5, h: 0.3, fontSize: 10, color: K.accent5, align: 'right'},
 });
@@ -178,31 +178,36 @@ const fitImage = (slide, g, box, name) => {
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x: 0.5, y: 6.3, w: 12.33, h: 0.55, rectRadius: 0.1, fill: {color: K.lt2}, line: {color: K.lt2}, objectName: 'Contoh'});
   s.addText(
     [
-      {text: 'Contoh: ', options: {bold: true, color: K.accent1}},
-      {text: 'PERMINTAAN-AWU/2610/0008 · KM Awu · AQUA 6 pcs ke Dek 3 dari stok DC · Teh Pucuk 24 pcs ke Dek 7 dibeli lewat PUR dan PO', options: {color: K.dk1}},
+      {text: 'Contohnya: ', options: {bold: true, color: K.accent1}},
+      {text: 'barang yang ada di gudang langsung dikirim ke dek; yang kurang dibeli dulu lewat PUR dan PO, lalu dikirim bersama.', options: {color: K.dk1}},
     ],
     {x: 0.75, y: 6.3, w: 11.9, h: 0.55, fontSize: 14, valign: 'middle', margin: 0, isTextBox: true},
   );
-  s.addNotes(DATA.notes.peta + ' ' + DATA.notes.variasi);
+  s.addNotes('Satu permintaan dari kapal bisa dilacak sampai barangnya terjual. Jalur atas selalu dijalani: kapal memesan, Sales Order disetujui, DC memilah stok, barang dikirim ke dek, diterima, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Jalur bawah, PUR, PO, dan GRPO, hanya dijalani bila stok DC tidak cukup. Label hijau menunjukkan dokumen SAP yang dibuat otomatis setelah tiap tahap disetujui.');
 }
 
-// ---------- 3. Status uji coba dan usulan langkah berikutnya ----------
+// ---------- 3. Pengguna, kesiapan, dan usulan langkah berikutnya ----------
 {
   const s = pres.addSlide({masterName: 'ISI'});
-  s.addText('Uji coba berhasil, siap ke tahap berikutnya', {placeholder: 'title'});
-  // kiri: hasil uji coba
-  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x: 0.5, y: 1.3, w: 6.0, h: 3.55, rectRadius: 0.12, fill: {color: K.lt2}, line: {color: K.lt2}, objectName: 'Hasil uji coba'});
-  s.addText('Hasil uji coba 22-10-2026', {x: 0.75, y: 1.45, w: 5.5, h: 0.4, fontSize: 18, bold: true, color: K.dk2, margin: 0, isTextBox: true});
-  const hasil = [
-    ['✓', 'Satu permintaan dijalankan penuh, 9 tahap, oleh 7 peran', K.accent2],
-    ['✓', 'Semua dokumen terbentuk di SAP: SO, PUR, PO, GRPO, Inventory Transfer, DO', K.accent2],
-    ['✓', 'Temuan hak akses penyetuju sudah diperbaiki (rilis 20261022_2202)', K.accent2],
-    ['!', 'Terbuka: Sales Order masih memakai customer umum; kode customer per dek perlu diisi', K.accent1],
+  s.addText('Siap diterapkan di kapal, DC, dan kantor pusat', {placeholder: 'title'});
+  // kiri: siapa memakai PID POS
+  s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x: 0.5, y: 1.3, w: 6.0, h: 3.55, rectRadius: 0.12, fill: {color: K.lt2}, line: {color: K.lt2}, objectName: 'Pengguna'});
+  s.addText('Pengguna PID POS', {x: 0.75, y: 1.45, w: 5.5, h: 0.4, fontSize: 18, bold: true, color: K.dk2, margin: 0, isTextBox: true});
+  const lokasi = [
+    ['Kapal', ['Kepala Toko / Admin Kapal', 'Kasir (per dek)'], '0F766E'],
+    ['DC / Gudang', ['Admin DC'], 'EA580C'],
+    ['Kantor pusat', ['Approve SO (P2)', 'Approve PUR', 'Admin Purchase', 'Approve PO'], '2563EB'],
   ];
-  hasil.forEach(([m, t, col], i) => {
-    const y = 2.0 + i * 0.68;
-    s.addText(m, {x: 0.75, y, w: 0.42, h: 0.42, shape: pres.shapes.OVAL, fill: {color: col}, line: {color: col}, color: 'FFFFFF', bold: true, fontSize: 14, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
-    s.addText(t, {x: 1.35, y: y - 0.06, w: 4.95, h: 0.56, fontSize: 14, color: K.dk1, valign: 'middle', margin: 0, isTextBox: true});
+  let ly = 2.0;
+  lokasi.forEach(([tempat, peran, col]) => {
+    s.addText(tempat, {x: 0.75, y: ly, w: 1.6, h: 0.42, fontSize: 13, bold: true, color: 'FFFFFF', shape: pres.shapes.ROUNDED_RECTANGLE, rectRadius: 0.08,
+      fill: {color: col}, line: {color: col}, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
+    peran.forEach((r, k) => {
+      const row = Math.floor(k / 2);
+      s.addText(r, {x: 2.5 + (k % 2) * 1.95, y: ly + row * 0.5, w: 1.85, h: 0.42, fontSize: 12, color: K.dk1, shape: pres.shapes.ROUNDED_RECTANGLE, rectRadius: 0.08,
+        fill: {color: 'FFFFFF'}, line: {color: K.accent6, width: 1}, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
+    });
+    ly += Math.ceil(peran.length / 2) * 0.5 + 0.22;
   });
   // kanan: kesiapan sosialisasi
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x: 6.83, y: 1.3, w: 6.0, h: 3.55, rectRadius: 0.12, fill: {color: K.lt2}, line: {color: K.lt2}, objectName: 'Materi sosialisasi'});
@@ -217,7 +222,7 @@ const fitImage = (slide, g, box, name) => {
   // usulan langkah berikutnya
   s.addText('Usulan langkah berikutnya', {x: 0.5, y: 5.1, w: 8, h: 0.4, fontSize: 18, bold: true, color: K.dk2, margin: 0, isTextBox: true});
   const langkah = [
-    ['1', 'Lengkapi kode customer per dek di SAP', 'menutup temuan terbuka'],
+    ['1', 'Siapkan akun dan level approval', 'untuk setiap peran dan kapal'],
     ['2', 'Pilot di satu kapal (KM Awu)', 'dengan SAP produksi'],
     ['3', 'Sosialisasi ke seluruh peran', 'memakai manual dan video'],
   ];
@@ -229,7 +234,7 @@ const fitImage = (slide, g, box, name) => {
       {x: x + 0.75, y: 5.68, w: 3.05, h: 0.95, valign: 'middle', margin: 0, isTextBox: true});
   });
   s.addNotes(
-    'Uji coba menyeluruh dilakukan pada 22 Oktober 2026 di server dev dengan SAP DB_TEST. Satu permintaan dari KM Awu dijalankan lengkap melewati sembilan tahap oleh tujuh peran, dan semua dokumen terbentuk di SAP: Sales Order, Purchase Request, Purchase Order, GRPO, Inventory Transfer, dan Delivery Order. Satu temuan hak akses sudah diperbaiki; satu masih terbuka, yaitu kode customer per dek di SAP. Materi sosialisasi sudah siap: manual book per peran, sembilan video tutorial, dan empat video pendek. Usulan langkah berikutnya: lengkapi kode customer per dek, pilot di satu kapal dengan SAP produksi, lalu sosialisasi ke seluruh peran.',
+    'PID POS dipakai di tiga tempat: di kapal oleh kepala toko dan kasir, di DC oleh admin gudang, dan di kantor pusat oleh para penyetuju dan admin purchase. Materi sosialisasi sudah siap: manual book per peran, sembilan video tutorial, dan empat video pendek. Usulan langkah berikutnya: menyiapkan akun dan level approval untuk setiap peran, menjalankan pilot di satu kapal dengan SAP produksi, lalu sosialisasi ke seluruh peran.',
   );
 }
 
