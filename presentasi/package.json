@@ -1,0 +1,7 @@
+{
+  "name": "pidpos-presentasi",
+  "private": true,
+  "description": "Deck PowerPoint alur lengkap PID POS (pptxgenjs)",
+  "scripts": {"build": "node build_alur.js"},
+  "dependencies": {"pptxgenjs": "3.12.0"}
+}

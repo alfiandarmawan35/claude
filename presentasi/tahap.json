@@ -1,0 +1,249 @@
+{
+ "peran": {
+  "kapal": "Memesan barang ke DC, menerima kiriman di dek, approval kepala toko, dan mutasi antar dek.",
+  "so": "Menyetujui permintaan kapal (Sales Order) dan, sebagai P2, menyetujui penerimaan di dek.",
+  "dc": "Memilah stok DC, mengajukan GRPO, dan mengajukan Inventory Transfer ke dek.",
+  "pur": "Menyetujui Purchase Request, GRPO, dan Inventory Transfer.",
+  "purchase": "Memilih vendor, mengisi qty dan harga beli, lalu mengajukan Purchase Order.",
+  "po": "Menyetujui Purchase Order; persetujuan bisa bertingkat.",
+  "kasir": "Menjual barang di dek, mengirim DO harian ke SAP, dan menutup kasir."
+ },
+ "tahap": [
+  {
+   "judul": "Admin kapal memesan ke DC",
+   "img": "g02",
+   "oleh": [
+    "kapal"
+   ],
+   "langkah": [
+    "Pesan DC → Pesanan baru",
+    "Pilih voyage, periode, dan pelabuhan suplai",
+    "Isi tanggal dibutuhkan (minimal H-5)",
+    "Cari barang, pilih Dek tujuan, isi Dipesan",
+    "Klik Kirim ke DC"
+   ],
+   "sap": [],
+   "catatan": "Semuanya dimulai di kapal. Admin kapal KM Awu memesan enam AQUA untuk Dek 3 dan dua puluh empat Teh Pucuk untuk Dek 7, lalu klik Kirim ke DC. Permintaan langsung mendapat nomor PERMINTAAN-AWU/2610/0008 dan statusnya Menunggu persetujuan. Belum ada dokumen di SAP."
+  },
+  {
+   "judul": "Approve SO menyetujui",
+   "img": "g19",
+   "oleh": [
+    "so"
+   ],
+   "langkah": [
+    "Lonceng atau Giliran saya → buka permintaan",
+    "Periksa barang, stok dek, dan stok DC",
+    "Isi harga jual bila masih kosong",
+    "Klik Setujui level 1 (atau Tolak dengan alasan)"
+   ],
+   "sap": [
+    [
+     "Sales Order Dek 3",
+     "266000699"
+    ],
+    [
+     "Sales Order Dek 7",
+     "266000700"
+    ]
+   ],
+   "catatan": "Approve SO memeriksa barang dan harga jualnya, lalu menyetujui. Begitu disetujui, dua Sales Order langsung dibuat di SAP, satu untuk setiap dek. Bila ada yang tidak sesuai, tolak dengan alasan; permintaan kembali ke admin kapal."
+  },
+  {
+   "judul": "Admin DC memilah stok",
+   "img": "g27",
+   "oleh": [
+    "dc"
+   ],
+   "langkah": [
+    "Giliran saya → permintaan berlabel Pilah stok DC",
+    "Isi Transfer DC: AQUA 6 dari stok gudang",
+    "Teh Pucuk 0 → otomatis Qty PUR 24",
+    "Klik Setujui PUR tahap 1"
+   ],
+   "sap": [],
+   "catatan": "Admin DC memilah. AQUA masih ada di gudang, jadi enam diambil dari stok DC. Teh Pucuk kosong, jadi dua puluh empat harus dibeli dan otomatis menjadi Qty PUR. Bila semua barang ada di stok DC, tahap PUR, PO, dan GRPO dilewati."
+  },
+  {
+   "judul": "Approve PUR menyetujui PUR",
+   "img": "g33",
+   "oleh": [
+    "pur"
+   ],
+   "langkah": [
+    "Buka tab Approval PUR",
+    "Periksa Transfer DC dan Qty PUR",
+    "Ubah Qty PUR bila perlu, lalu Simpan",
+    "Klik Setujui PUR level 1"
+   ],
+   "sap": [
+    [
+     "Purchase Request Dek 7",
+     "262000460"
+    ]
+   ],
+   "catatan": "Approve PUR memeriksa jumlah yang harus dibeli lalu menyetujuinya. Purchase Request untuk Dek 7 pun dibuat di SAP. Giliran berikutnya admin purchase membuat PO."
+  },
+  {
+   "judul": "Purchase Order dibuat dan disetujui",
+   "img": "g39",
+   "oleh": [
+    "purchase",
+    "po"
+   ],
+   "langkah": [
+    "Admin purchase memilih vendor: BERKAH COD",
+    "Isi Qty PO dan harga beli: 24 × Rp 8.000",
+    "Klik Ajukan Purchase Order",
+    "Approve PO memeriksa lalu Setujui (bisa bertingkat)"
+   ],
+   "sap": [
+    [
+     "Purchase Order",
+     "262002060"
+    ]
+   ],
+   "catatan": "Admin purchase memilih vendor, mengisi jumlah dan harga beli, lalu mengajukan Purchase Order. Approve PO memeriksa vendor dan harganya lalu menyetujui. Setelah level terakhir menyetujui, Purchase Order dibuat di SAP."
+  },
+  {
+   "judul": "Barang vendor diterima di DC (GRPO)",
+   "img": "g28",
+   "oleh": [
+    "dc",
+    "pur"
+   ],
+   "langkah": [
+    "Barang vendor tiba di gudang DC",
+    "Admin DC mengisi Qty diterima (GRPO)",
+    "Klik Ajukan GRPO",
+    "Approve PUR menyetujui; stok DC bertambah"
+   ],
+   "sap": [
+    [
+     "GRPO",
+     "262001908"
+    ]
+   ],
+   "catatan": "Beberapa hari kemudian barang dari vendor tiba di gudang. Admin DC mengisi jumlah yang benar-benar diterima, lalu mengajukan GRPO. Approve PUR menyetujui, GRPO dibuat di SAP, dan stok DC bertambah."
+  },
+  {
+   "judul": "Inventory Transfer ke dek",
+   "img": "g30",
+   "oleh": [
+    "dc",
+    "pur"
+   ],
+   "langkah": [
+    "Usulan qty = stok DC + hasil GRPO",
+    "Periksa Dikirim ke dek per barang",
+    "Klik Ajukan Inventory Transfer",
+    "Approve PUR menyetujui"
+   ],
+   "sap": [
+    [
+     "Inventory Transfer Dek 3",
+     "262000146"
+    ],
+    [
+     "Inventory Transfer Dek 7",
+     "262000147"
+    ]
+   ],
+   "catatan": "Barang siap dikirim. Admin DC memeriksa jumlah untuk tiap dek lalu mengajukan Inventory Transfer. Approve PUR menyetujui, dan Inventory Transfer dibuat di SAP, satu untuk setiap dek. Kiriman langsung muncul di menu Terima barang kapal."
+  },
+  {
+   "judul": "Barang diterima di dek",
+   "img": "g08",
+   "oleh": [
+    "kapal",
+    "so"
+   ],
+   "langkah": [
+    "Stok → Terima barang → Periksa & terima",
+    "Isi Diterima baik dan Rusak, lalu Konfirmasi",
+    "Kepala toko mencentang checklist, lalu Setujui",
+    "P2 (approve.so) menyetujui penerimaan"
+   ],
+   "sap": [
+    [
+     "Sales Order Dek 3 / Dek 7",
+     "ditutup"
+    ]
+   ],
+   "catatan": "Kiriman tiba di kapal. Admin kapal memeriksa dan menerima barang per dek, lalu kepala toko mencentang semua checklist dan menyetujui. Terakhir P2 menyetujui: stok dek bertambah dan Sales Order ditutup di SAP."
+  },
+  {
+   "judul": "Kasir menjual dan mengirim DO",
+   "img": "g49",
+   "oleh": [
+    "kasir"
+   ],
+   "langkah": [
+    "Buka kasir",
+    "Scan barang: AQUA 2 pcs, total Rp 38.000",
+    "Bayar (F12): tunai atau QRIS",
+    "Rekap shift → Kirim DO hari ini",
+    "Tutup kasir"
+   ],
+   "sap": [
+    [
+     "Delivery (DO) KM Awu Dek 3",
+     "266000512"
+    ]
+   ],
+   "catatan": "Barang sudah ada di dek dan siap dijual. Kasir scan dua AQUA, totalnya tiga puluh delapan ribu rupiah, pembeli membayar dan kembalian dihitung otomatis. Di akhir hari kasir klik Kirim DO hari ini, dan penjualan masuk ke SAP sebagai Delivery Order. Alur selesai."
+  }
+ ],
+ "dokumen": [
+  [
+   "2 · Approval SO",
+   "Approve SO",
+   "Sales Order Dek 3 / Dek 7",
+   "266000699 / 266000700"
+  ],
+  [
+   "4 · PUR",
+   "Approve PUR",
+   "Purchase Request Dek 7",
+   "262000460"
+  ],
+  [
+   "5 · PO",
+   "Approve PO",
+   "Purchase Order (BERKAH COD)",
+   "262002060"
+  ],
+  [
+   "6 · GRPO",
+   "Approve PUR",
+   "GRPO",
+   "262001908"
+  ],
+  [
+   "7 · Transfer ke dek",
+   "Approve PUR",
+   "Inventory Transfer Dek 3 / Dek 7",
+   "262000146 / 262000147"
+  ],
+  [
+   "8 · Terima di dek",
+   "Kepala toko + P2",
+   "Sales Order ditutup",
+   "266000699 / 266000700"
+  ],
+  [
+   "9 · Jual & DO",
+   "Kasir (Kirim DO)",
+   "Delivery KM Awu Dek 3",
+   "266000512"
+  ]
+ ],
+ "notes": {
+  "judul": "Di presentasi ini kita ikuti satu permintaan barang dari awal sampai akhir: dari kapal memesan ke DC, sampai barangnya terjual di kasir dan dikirim ke SAP sebagai Delivery Order. Contohnya PERMINTAAN-AWU/2610/0008 untuk KM Awu. Semua nomor dokumen adalah data uji SAP DB_TEST.",
+  "peta": "Ada sembilan tahap. Jalur atas selalu dijalani. Jalur bawah, PUR, PO, dan GRPO, hanya dijalani bila stok DC tidak cukup. Label hijau menunjukkan dokumen SAP yang terbentuk setelah tahap itu disetujui.",
+  "peran": "Tujuh peran terlibat, dan masing-masing hanya melihat tugasnya sendiri. Lonceng dan tab Giliran saya menunjukkan apa yang sedang menunggu. Akun yang tertulis adalah akun uji di server dev.",
+  "dokumen": "Ini jejak dokumen SAP dari satu permintaan. Setiap dokumen baru dibuat setelah persetujuannya selesai di web. Selama statusnya masih Approval, belum ada apa pun di SAP.",
+  "variasi": "Bila semua barang ada di stok DC, tahap PUR, PO, dan GRPO dilewati. Bila sebagian harus dibeli, seperti contoh ini, semua tahap dijalani, dan Inventory Transfer menunggu GRPO lalu dikirim sekali, tetap satu dokumen per dek.",
+  "penutup": "Ringkasnya: satu permintaan mengalir melewati tujuh peran. Dokumen SAP dibuat setelah setiap persetujuan, dan semuanya berakhir di Delivery Order kasir. Untuk detail tiap peran, tonton video episode satu sampai tujuh atau buka Manual Book per peran."
+ }
+}
