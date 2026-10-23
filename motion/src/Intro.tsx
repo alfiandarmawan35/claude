@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate, spring, Easing} from 'remotion';
 import {C, ROLES, RoleKey, fontFamily} from './theme';
-import {Page, SoftBackground, Screen, SapChip, Logo, useFade, useRise, clamp} from './components/common';
+import {Page, SoftBackground, Screen, SapChip, Logo, BedMusic, useFade, useRise, clamp} from './components/common';
 import {FlowMap, tokenPos} from './components/FlowMap';
 import {DIMS} from './data/dims';
 import {EPISODES} from './data/episodes';
@@ -442,10 +442,21 @@ export const introFrames = (fps: number) => introScenes(fps).reduce((a, sc) => a
 
 export const Intro: React.FC = () => {
   const {fps} = useVideoConfig();
+  const scenes = introScenes(fps);
+  const speech: [number, number][] = [];
+  let pos = 0;
+  for (const sc of scenes) {
+    for (const l of sc.lines) {
+      const v = voSec(l.key);
+      if (v) speech.push([pos + l.from + 4, pos + l.from + 4 + Math.round(v * fps)]);
+    }
+    pos += sc.dur;
+  }
   let at = 0;
   return (
     <AbsoluteFill style={{background: C.bg}}>
-      {introScenes(fps).map((sc) => {
+      <BedMusic total={pos} speech={speech} />
+      {scenes.map((sc) => {
         const from = at;
         at += sc.dur;
         const S = SCENES[sc.id];

@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
+import {AbsoluteFill, Audio, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig, Easing} from 'remotion';
 import {C, fontFamily} from '../theme';
 
 export const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
@@ -268,3 +268,24 @@ export const CornerLogo: React.FC = () => (
     style={{position: 'absolute', right: 70, top: 26, width: 190, opacity: 0.95}}
   />
 );
+
+// Musik latar berulang. Volume turun saat narasi berbicara (ducking), naik di sela-selanya.
+export const BedMusic: React.FC<{total: number; speech: [number, number][]}> = ({total, speech}) => {
+  const RAMP = 10;
+  const volume = (f: number) => {
+    let duck = 0;
+    for (const [a, b] of speech) {
+      const k = interpolate(f, [a - RAMP, a, b, b + RAMP * 2], [0, 1, 1, 0], {
+        extrapolateLeft: 'clamp',
+        extrapolateRight: 'clamp',
+      });
+      duck = Math.max(duck, k);
+    }
+    const fade = Math.min(
+      interpolate(f, [0, 30], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}),
+      interpolate(f, [total - 75, total - 5], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}),
+    );
+    return (0.4 - 0.25 * duck) * fade;
+  };
+  return <Audio src={staticFile('music/bed.wav')} loop volume={volume} />;
+};

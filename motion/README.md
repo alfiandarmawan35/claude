@@ -51,6 +51,11 @@ node render-all.mjs
 
 Butuh akses internet ke `speech.platform.bing.com` dan `ffprobe`. Tanpa file suara, video tetap bisa dirender dengan teks saja.
 
+## Musik latar
+
+Video perkenalan dan episode memakai `public/music/bed.wav` (orisinal, 100 BPM, 38,4 detik, diulang mulus),
+dibuat oleh `scripts/make_bed.py`. Volumenya turun otomatis saat narasi berbicara (`BedMusic` di `src/components/common.tsx`).
+
 ## Logo
 
 `public/brand/pelni_services.png` diambil dari layar aplikasi (Gambar 44). Bila ada file logo resmi beresolusi tinggi, timpa file itu dengan nama yang sama.

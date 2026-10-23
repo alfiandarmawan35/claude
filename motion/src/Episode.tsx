@@ -4,7 +4,7 @@ import {C, ROLES} from './theme';
 import {Episode as Ep, Step, stepFrames, openFrames, mapFrames, recapFrames, voKey, EPISODES} from './data/episodes';
 import {voFile, voSec} from './data/vo';
 import {DIMS} from './data/dims';
-import {Page, SoftBackground, Chip, Screen, SapChip, Logo, useFade, useRise, clamp} from './components/common';
+import {Page, SoftBackground, Chip, Screen, SapChip, Logo, BedMusic, useFade, useRise, clamp} from './components/common';
 import {FlowMap} from './components/FlowMap';
 
 const Header: React.FC<{ep: Ep; right?: string}> = ({ep, right}) => {
@@ -272,7 +272,10 @@ export const EpisodeVideo: React.FC<{id: string}> = ({id}) => {
   const {fps} = useVideoConfig();
   let at = 0;
   const seq: React.ReactNode[] = [];
+  const speech: [number, number][] = [];
   const add = (key: string, d: number, node: React.ReactNode, k: string) => {
+    const v = voSec(k);
+    if (v) speech.push([at + 8, at + 8 + Math.round(v * fps)]);
     seq.push(
       <Sequence key={key} from={at} durationInFrames={d}>
         {node}
@@ -291,5 +294,10 @@ export const EpisodeVideo: React.FC<{id: string}> = ({id}) => {
   });
   const r = recapFrames(ep, fps);
   add('recap', r, <RecapScene ep={ep} dur={r} />, voKey.recap(ep));
-  return <AbsoluteFill style={{background: C.bg}}>{seq}</AbsoluteFill>;
+  return (
+    <AbsoluteFill style={{background: C.bg}}>
+      {seq}
+      <BedMusic total={at} speech={speech} />
+    </AbsoluteFill>
+  );
 };
