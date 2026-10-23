@@ -1,522 +1,522 @@
 [
  {
   "key": "intro/01-kapal",
-  "text": "Setiap pelayaran, toko di setiap dek harus siap melayani penumpang.",
-  "say": "Setiap pelayaran, toko di setiap dek harus siap melayani penumpang."
+  "text": "Setiap kali kapal berlayar, toko di setiap dek harus siap melayani penumpang.",
+  "say": "Setiap kali kapal berlayar, toko di setiap dek harus siap melayani penumpang."
  },
  {
   "key": "intro/02-masalah",
-  "text": "Permintaan, persetujuan, dan stok sering tercatat di banyak tempat.",
-  "say": "Permintaan, persetujuan, dan stok sering tercatat di banyak tempat."
+  "text": "Tapi selama ini, permintaan barang, persetujuan, dan stok, tercatat di banyak tempat. Ada di kertas, di chat, di Excel.",
+  "say": "Tapi selama ini, permintaan barang, persetujuan, dan stok, tercatat di banyak tempat. Ada di kertas, di chat, di Excel."
  },
  {
   "key": "intro/03-pidpos",
-  "text": "Kini ada PID POS: satu aplikasi, satu alur, langsung terhubung ke SAP.",
-  "say": "Kini ada pe i de pos: satu aplikasi, satu alur, langsung terhubung ke es a pe."
+  "text": "Sekarang, ada PID POS. Satu aplikasi, satu alur, dan langsung terhubung ke SAP.",
+  "say": "Sekarang, ada pe i de pos. Satu aplikasi, satu alur, dan langsung terhubung ke es a pe."
  },
  {
   "key": "intro/04-alur-1",
-  "text": "Admin kapal memesan barang ke DC.",
-  "say": "Admin kapal memesan barang ke de ce."
+  "text": "Semuanya dimulai dari kapal. Admin kapal memesan barang ke DC.",
+  "say": "Semuanya dimulai dari kapal. Admin kapal memesan barang ke de ce."
  },
  {
   "key": "intro/04-alur-2",
-  "text": "Penyetuju menyetujui: Sales Order dibuat di SAP, satu per dek.",
-  "say": "Penyetuju menyetujui: Sales Order dibuat di es a pe, satu per dek."
+  "text": "Setelah disetujui, Sales Order langsung dibuat di SAP, satu untuk setiap dek.",
+  "say": "Setelah disetujui, Sales Order langsung dibuat di es a pe, satu untuk setiap dek."
  },
  {
   "key": "intro/04-alur-3",
-  "text": "Admin DC memilah: ambil dari stok DC.",
-  "say": "Admin de ce memilah: ambil dari stok de ce."
+  "text": "Lalu admin DC memilah, mana yang bisa diambil dari stok gudang.",
+  "say": "Lalu admin de ce memilah, mana yang bisa diambil dari stok gudang."
  },
  {
   "key": "intro/04-alur-4",
-  "text": "Yang kurang dibeli lewat Purchase Request dan Purchase Order.",
-  "say": "Yang kurang dibeli lewat Purchase Request dan Purchase Order."
+  "text": "Kalau stoknya kurang, barang dibeli lewat Purchase Request, dan Purchase Order.",
+  "say": "Kalau stoknya kurang, barang dibeli lewat Purchase Request, dan Purchase Order."
  },
  {
   "key": "intro/04-alur-5",
-  "text": "Barang vendor diterima di DC dengan GRPO.",
-  "say": "Barang vendor diterima di de ce dengan ge er pe o."
+  "text": "Barang dari vendor diterima di DC, dengan GRPO.",
+  "say": "Barang dari vendor diterima di de ce, dengan ge er pe o."
  },
  {
   "key": "intro/04-alur-6",
-  "text": "Barang dikirim ke dek dengan Inventory Transfer.",
-  "say": "Barang dikirim ke dek dengan Inventory Transfer."
+  "text": "Kemudian, barang dikirim ke dek, lewat Inventory Transfer.",
+  "say": "Kemudian, barang dikirim ke dek, lewat Inventory Transfer."
  },
  {
   "key": "intro/04-alur-7",
-  "text": "Dek menerima barang, kepala toko dan P2 menyetujui.",
-  "say": "Dek menerima barang, kepala toko dan pe dua menyetujui."
+  "text": "Di kapal, barang diperiksa, lalu disetujui kepala toko, dan P2.",
+  "say": "Di kapal, barang diperiksa, lalu disetujui kepala toko, dan pe dua."
  },
  {
   "key": "intro/04-alur-8",
-  "text": "Barang siap dijual di kasir.",
-  "say": "Barang siap dijual di kasir."
+  "text": "Dan akhirnya, barang siap dijual di kasir.",
+  "say": "Dan akhirnya, barang siap dijual di kasir."
  },
  {
   "key": "intro/05-peran-1",
-  "text": "Setiap peran hanya melihat tugasnya sendiri.",
-  "say": "Setiap peran hanya melihat tugasnya sendiri."
+  "text": "Ada tujuh peran dalam alur ini, dan masing-masing hanya melihat tugasnya sendiri.",
+  "say": "Ada tujuh peran dalam alur ini, dan masing-masing hanya melihat tugasnya sendiri."
  },
  {
   "key": "intro/05-peran-2",
-  "text": "Lonceng dan Giliran saya menunjukkan apa yang menunggu Anda.",
-  "say": "Lonceng dan Giliran saya menunjukkan apa yang menunggu Anda."
+  "text": "Jadi Anda tidak perlu mencari-cari. Lonceng, dan tab Giliran saya, selalu menunjukkan apa yang menunggu Anda.",
+  "say": "Jadi Anda tidak perlu mencari-cari. Lonceng, dan tab Giliran saya, selalu menunjukkan apa yang menunggu Anda."
  },
  {
   "key": "intro/06-kasir-1",
-  "text": "Kasir scan barang: AQUA 2 pcs, total Rp 38.000.",
-  "say": "Kasir scan barang: AQUA 2 pis, total Rp 38.000."
+  "text": "Di dek, kasir tinggal scan barang. Totalnya langsung muncul.",
+  "say": "Di dek, kasir tinggal scan barang. Totalnya langsung muncul."
  },
  {
   "key": "intro/06-kasir-2",
-  "text": "Bayar tunai atau QRIS. Kembalian dihitung otomatis.",
-  "say": "Bayar tunai atau kiu-ris. Kembalian dihitung otomatis."
+  "text": "Pembeli bisa bayar tunai, atau pakai QRIS. Kembaliannya dihitung otomatis.",
+  "say": "Pembeli bisa bayar tunai, atau pakai kiu-ris. Kembaliannya dihitung otomatis."
  },
  {
   "key": "intro/06-kasir-3",
-  "text": "Struk tercetak. Penjualan dikirim ke SAP sebagai DO.",
-  "say": "Struk tercetak. Penjualan dikirim ke es a pe sebagai de o."
+  "text": "Struk tercetak, dan penjualan hari itu dikirim ke SAP, cukup dengan satu klik.",
+  "say": "Struk tercetak, dan penjualan hari itu dikirim ke es a pe, cukup dengan satu klik."
  },
  {
   "key": "intro/07-penutup",
-  "text": "PID POS. Dari permintaan kapal sampai struk kasir, semua tercatat. Tonton video sesuai peran Anda.",
-  "say": "pe i de pos. Dari permintaan kapal sampai struk kasir, semua tercatat. Tonton video sesuai peran Anda."
+  "text": "PID POS. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda.",
+  "say": "pe i de pos. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda."
  },
  {
   "key": "Ep1-AdminKapal/00-pembuka",
-  "text": "Episode 1, Admin kapal: Pesan, terima, dan mutasi barang. Memesan barang ke DC, menerima kiriman di dek, menyetujui sebagai kepala toko, dan memindahkan barang antar dek.",
-  "say": "Episode 1, Admin kapal: Pesan, terima, dan mutasi barang. Memesan barang ke de ce, menerima kiriman di dek, menyetujui sebagai kepala toko, dan memindahkan barang antar dek."
+  "text": "Halo, Admin kapal! Di episode ini, kita akan pesan barang ke DC, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai.",
+  "say": "Halo, Admin kapal! Di episode ini, kita akan pesan barang ke de ce, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai."
  },
  {
   "key": "Ep1-AdminKapal/01-alur",
-  "text": "Posisi Anda di alur: giliran Admin kapal.",
-  "say": "Posisi Anda di alur: giliran Admin kapal."
+  "text": "Anda ada di dua titik alur: di awal, saat memesan barang, dan menjelang akhir, saat barang tiba di dek.",
+  "say": "Anda ada di dua titik alur: di awal, saat memesan barang, dan menjelang akhir, saat barang tiba di dek."
  },
  {
   "key": "Ep1-AdminKapal/s01",
-  "text": "Beranda menampilkan kiriman dari DC, tugas berikutnya, dan penjualan hari ini per dek.",
-  "say": "Beranda menampilkan kiriman dari de ce, tugas berikutnya, dan penjualan hari ini per dek."
+  "text": "Begitu masuk, Anda langsung disambut Beranda. Di sini terlihat kiriman dari DC, tugas berikutnya, dan penjualan hari ini di setiap dek.",
+  "say": "Begitu masuk, Anda langsung disambut Beranda. Di sini terlihat kiriman dari de ce, tugas berikutnya, dan penjualan hari ini di setiap dek."
  },
  {
   "key": "Ep1-AdminKapal/s02",
-  "text": "Klik tombol kapal di kanan atas untuk berpindah dek atau melihat semua dek.",
-  "say": "Klik tombol kapal di kanan atas untuk berpindah dek atau melihat semua dek."
+  "text": "Mau pindah dek? Klik tombol kapal di kanan atas. Dari situ, Anda bisa pilih satu dek, atau lihat semuanya sekaligus.",
+  "say": "Mau pindah dek? Klik tombol kapal di kanan atas. Dari situ, Anda bisa pilih satu dek, atau lihat semuanya sekaligus."
  },
  {
   "key": "Ep1-AdminKapal/s03",
-  "text": "Klik Pesan DC lalu Pesanan baru. Pilih No. voyage, periode voyage, dan pelabuhan suplai.",
-  "say": "Klik Pesan de ce lalu Pesanan baru. Pilih nomor voyage, periode voyage, dan pelabuhan suplai."
+  "text": "Sekarang, kita buat pesanan. Klik Pesan DC, lalu Pesanan baru. Pilih nomor voyage, periode, dan pelabuhan suplainya.",
+  "say": "Sekarang, kita buat pesanan. Klik Pesan de ce, lalu Pesanan baru. Pilih nomor voyage, periode, dan pelabuhan suplainya."
  },
  {
   "key": "Ep1-AdminKapal/s04",
-  "text": "Isi Barang dibutuhkan tanggal, minimal H-5, dan catatan untuk DC.",
-  "say": "Isi Barang dibutuhkan tanggal, minimal ha min lima, dan catatan untuk de ce."
+  "text": "Lalu isi tanggal barang dibutuhkan. Ingat, minimal lima hari sebelumnya, ya. Tambahkan juga catatan untuk DC kalau perlu.",
+  "say": "Lalu isi tanggal barang dibutuhkan. Ingat, minimal lima hari sebelumnya, ya. Tambahkan juga catatan untuk de ce kalau perlu."
  },
  {
   "key": "Ep1-AdminKapal/s05",
-  "text": "Cari barang atau scan barcode. Pilih Dek tujuan dan isi jumlah Dipesan.",
-  "say": "Cari barang atau scan barcode. Pilih Dek tujuan dan isi jumlah Dipesan."
+  "text": "Berikutnya, cari barangnya, atau langsung scan barcode. Untuk setiap barang, pilih dek tujuannya, lalu isi jumlah yang dipesan.",
+  "say": "Berikutnya, cari barangnya, atau langsung scan barcode. Untuk setiap barang, pilih dek tujuannya, lalu isi jumlah yang dipesan."
  },
  {
   "key": "Ep1-AdminKapal/s06",
-  "text": "Klik Kirim ke DC. Bila belum selesai, klik Simpan draft.",
-  "say": "Klik Kirim ke de ce. Bila belum selesai, klik Simpan draft."
+  "text": "Sudah lengkap? Klik Kirim ke DC. Kalau belum selesai, tenang saja, klik Simpan draft dulu.",
+  "say": "Sudah lengkap? Klik Kirim ke de ce. Kalau belum selesai, tenang saja, klik Simpan draft dulu."
  },
  {
   "key": "Ep1-AdminKapal/s07",
-  "text": "Permintaan mendapat nomor dan berstatus Menunggu persetujuan di daftar Pesan DC.",
-  "say": "Permintaan mendapat nomor dan berstatus Menunggu persetujuan di daftar Pesan de ce."
+  "text": "Permintaan Anda langsung dapat nomor, dan statusnya menunggu persetujuan.",
+  "say": "Permintaan Anda langsung dapat nomor, dan statusnya menunggu persetujuan."
  },
  {
   "key": "Ep1-AdminKapal/s08",
-  "text": "Klik nomor permintaan untuk melihat status, Sales Order per dek, dan riwayat persetujuan.",
-  "say": "Klik nomor permintaan untuk melihat status, Sales Order per dek, dan riwayat persetujuan."
+  "text": "Untuk memantau, klik nomor permintaannya. Anda bisa lihat statusnya, Sales Order per dek, dan siapa saja yang sudah menyetujui.",
+  "say": "Untuk memantau, klik nomor permintaannya. Anda bisa lihat statusnya, Sales Order per dek, dan siapa saja yang sudah menyetujui."
  },
  {
   "key": "Ep1-AdminKapal/s09",
-  "text": "Buka Stok, Terima barang, tab Kiriman masuk. Klik Periksa & terima pada kiriman.",
-  "say": "Buka Stok, Terima barang, tab Kiriman masuk. Klik Periksa dan terima pada kiriman."
+  "text": "Saat kiriman dari DC tiba, buka Stok, lalu Terima barang. Di tab Kiriman masuk, klik Periksa dan terima.",
+  "say": "Saat kiriman dari de ce tiba, buka Stok, lalu Terima barang. Di tab Kiriman masuk, klik Periksa dan terima."
  },
  {
   "key": "Ep1-AdminKapal/s10",
-  "text": "Isi Diterima baik dan Rusak. Kolom Selisih menunjukkan beda dengan yang dikirim. Klik Konfirmasi diterima.",
-  "say": "Isi Diterima baik dan Rusak. Kolom Selisih menunjukkan beda dengan yang dikirim. Klik Konfirmasi diterima."
+  "text": "Hitung barangnya, lalu isi jumlah yang diterima baik, dan yang rusak. Kolom selisih akan langsung menunjukkan kalau ada yang kurang. Lalu klik Konfirmasi diterima.",
+  "say": "Hitung barangnya, lalu isi jumlah yang diterima baik, dan yang rusak. Kolom selisih akan langsung menunjukkan kalau ada yang kurang. Lalu klik Konfirmasi diterima."
  },
  {
   "key": "Ep1-AdminKapal/s11",
-  "text": "Buka tab Menunggu approval. Centang semua butir checklist terima barang.",
-  "say": "Buka tab Menunggu approval. Centang semua butir checklist terima barang."
+  "text": "Sekarang giliran kepala toko. Buka tab Menunggu approval, lalu centang semua butir checklist-nya.",
+  "say": "Sekarang giliran kepala toko. Buka tab Menunggu approval, lalu centang semua butir checklist-nya."
  },
  {
   "key": "Ep1-AdminKapal/s12",
-  "text": "Setelah checklist lengkap, klik Setujui. Status menjadi Menunggu P2.",
-  "say": "Setelah checklist lengkap, klik Setujui. Status menjadi Menunggu pe dua."
+  "text": "Kalau semua sudah dicentang, klik Setujui. Penerimaan lanjut ke P2 untuk persetujuan terakhir.",
+  "say": "Kalau semua sudah dicentang, klik Setujui. Penerimaan lanjut ke pe dua untuk persetujuan terakhir."
  },
  {
   "key": "Ep1-AdminKapal/s13",
-  "text": "Buka Stok, Mutasi gudang. Pilih Dari dan Ke, isi jumlah, lalu klik Pindahkan.",
-  "say": "Buka Stok, Mutasi gudang. Pilih Dari dan Ke, isi jumlah, lalu klik Pindahkan."
+  "text": "Perlu memindahkan barang ke dek lain? Buka Mutasi gudang, pilih dari mana, dan ke mana. Isi jumlahnya, lalu klik Pindahkan. Mutasinya langsung tercatat di SAP.",
+  "say": "Perlu memindahkan barang ke dek lain? Buka Mutasi gudang, pilih dari mana, dan ke mana. Isi jumlahnya, lalu klik Pindahkan. Mutasinya langsung tercatat di es a pe."
  },
  {
   "key": "Ep1-AdminKapal/s14",
-  "text": "Menu Kas: kas keluar, setor ke pusat, kas masuk, dan buku kas bulan ini.",
-  "say": "Menu Kas: kas keluar, setor ke pusat, kas masuk, dan buku kas bulan ini."
+  "text": "Di menu Kas, Anda bisa catat kas keluar, setoran ke pusat, kas masuk, dan melihat buku kas bulan ini.",
+  "say": "Di menu Kas, Anda bisa catat kas keluar, setoran ke pusat, kas masuk, dan melihat buku kas bulan ini."
  },
  {
   "key": "Ep1-AdminKapal/s15",
-  "text": "Stok per barang di setiap dek, total, dan terjual 7 hari.",
-  "say": "Stok per barang di setiap dek, total, dan terjual 7 hari."
+  "text": "Posisi stok menunjukkan stok setiap barang di tiap dek, lengkap dengan penjualan tujuh hari terakhir.",
+  "say": "Posisi stok menunjukkan stok setiap barang di tiap dek, lengkap dengan penjualan tujuh hari terakhir."
  },
  {
   "key": "Ep1-AdminKapal/s16",
-  "text": "Laporan penjualan, persediaan, mutasi, kas, dan rekap permintaan. Bisa dicetak.",
-  "say": "Laporan penjualan, persediaan, mutasi, kas, dan rekap permintaan. Bisa dicetak."
+  "text": "Butuh laporan? Ada laporan penjualan, persediaan, mutasi, dan kas. Semuanya bisa langsung dicetak.",
+  "say": "Butuh laporan? Ada laporan penjualan, persediaan, mutasi, dan kas. Semuanya bisa langsung dicetak."
  },
  {
   "key": "Ep1-AdminKapal/s17",
-  "text": "QR per dek untuk memasang aplikasi Android kasir, dan daftar HP terdaftar.",
-  "say": "kiu ar per dek untuk memasang aplikasi Android kasir, dan daftar ha pe terdaftar."
+  "text": "Dan untuk memasang aplikasi kasir di HP, cukup scan kode QR untuk dek tersebut.",
+  "say": "Dan untuk memasang aplikasi kasir di ha pe, cukup scan kode kiu ar untuk dek tersebut."
  },
  {
   "key": "Ep1-AdminKapal/s18",
-  "text": "Permintaan kembali dengan alasan penolakan. Perbaiki isinya, lalu kirim ulang ke DC.",
-  "say": "Permintaan kembali dengan alasan penolakan. Perbaiki isinya, lalu kirim ulang ke de ce."
+  "text": "Satu lagi. Kalau permintaan Anda ditolak, alasannya akan muncul. Perbaiki saja isinya, lalu kirim ulang.",
+  "say": "Satu lagi. Kalau permintaan Anda ditolak, alasannya akan muncul. Perbaiki saja isinya, lalu kirim ulang."
  },
  {
   "key": "Ep1-AdminKapal/99-penutup",
-  "text": "Ingat tiga hal. Satu, Pesan ke DC minimal H-5. Dua, Terima per dek + checklist. Tiga, Mutasi antar dek langsung ke SAP. Langkah lengkap ada di Manual Book bab 2. Berikutnya, Episode 2, Approve SO (P2).",
-  "say": "Ingat tiga hal. Satu, Pesan ke de ce minimal ha min lima. Dua, Terima per dek + checklist. Tiga, Mutasi antar dek langsung ke es a pe. Langkah lengkap ada di Manual Book bab 2. Berikutnya, Episode 2, Approve es o pe dua."
+  "text": "Jadi, ingat tiga hal ini. Pesan ke DC paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di SAP. Sampai jumpa di episode berikutnya!",
+  "say": "Jadi, ingat tiga hal ini. Pesan ke de ce paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di es a pe. Sampai jumpa di episode berikutnya!"
  },
  {
   "key": "Ep2-ApproveSO/00-pembuka",
-  "text": "Episode 2, Approve SO (P2): Menyetujui Sales Order dan P2. Menyetujui permintaan kapal menjadi Sales Order, dan menyetujui penerimaan barang di kapal sebagai P2.",
-  "say": "Episode 2, Approve es o pe dua: Menyetujui Sales Order dan pe dua. Menyetujui permintaan kapal menjadi Sales Order, dan menyetujui penerimaan barang di kapal sebagai pe dua."
+  "text": "Halo! Episode ini khusus untuk penyetuju Sales Order, sekaligus P2. Tugas Anda ada dua: menyetujui permintaan kapal, dan menyetujui barang yang sudah diterima di dek.",
+  "say": "Halo! Episode ini khusus untuk penyetuju Sales Order, sekaligus pe dua. Tugas Anda ada dua: menyetujui permintaan kapal, dan menyetujui barang yang sudah diterima di dek."
  },
  {
   "key": "Ep2-ApproveSO/01-alur",
-  "text": "Posisi Anda di alur: giliran Approve SO (P2).",
-  "say": "Posisi Anda di alur: giliran Approve es o pe dua."
+  "text": "Anda muncul dua kali di alur: setelah kapal memesan, dan setelah barang diterima di dek.",
+  "say": "Anda muncul dua kali di alur: setelah kapal memesan, dan setelah barang diterima di dek."
  },
  {
   "key": "Ep2-ApproveSO/s01",
-  "text": "Kartu biru di Ringkasan dan angka di lonceng menunjukkan permintaan yang menunggu Anda.",
-  "say": "Kartu biru di Ringkasan dan angka di lonceng menunjukkan permintaan yang menunggu Anda."
+  "text": "Setiap ada permintaan yang menunggu, Anda akan melihat kartu biru di Ringkasan, dan angka di lonceng.",
+  "say": "Setiap ada permintaan yang menunggu, Anda akan melihat kartu biru di Ringkasan, dan angka di lonceng."
  },
  {
   "key": "Ep2-ApproveSO/s02",
-  "text": "Buka Permintaan barang, tab Giliran saya. Periksa barang per dek, stok, dan harga jual.",
-  "say": "Buka Permintaan barang, tab Giliran saya. Periksa barang per dek, stok, dan harga jual."
+  "text": "Buka Permintaan barang, lalu tab Giliran saya. Periksa barang untuk setiap dek, stoknya, dan harga jualnya.",
+  "say": "Buka Permintaan barang, lalu tab Giliran saya. Periksa barang untuk setiap dek, stoknya, dan harga jualnya."
  },
  {
   "key": "Ep2-ApproveSO/s03",
-  "text": "Isi harga jual bila kosong, lalu klik Setujui level 1 (Approval SO).",
-  "say": "Isi harga jual bila kosong, lalu klik Setujui level 1 Approval es o."
+  "text": "Kalau ada harga jual yang masih kosong, isi dulu. Setelah itu, klik Setujui.",
+  "say": "Kalau ada harga jual yang masih kosong, isi dulu. Setelah itu, klik Setujui."
  },
  {
   "key": "Ep2-ApproveSO/s04",
-  "text": "Sales Order dibuat di SAP, satu per dek. Permintaan lanjut ke admin DC.",
-  "say": "Sales Order dibuat di es a pe, satu per dek. Permintaan lanjut ke admin de ce."
+  "text": "Begitu disetujui, Sales Order langsung dibuat di SAP, satu untuk setiap dek. Permintaan pun lanjut ke admin DC.",
+  "say": "Begitu disetujui, Sales Order langsung dibuat di es a pe, satu untuk setiap dek. Permintaan pun lanjut ke admin de ce."
  },
  {
   "key": "Ep2-ApproveSO/s05",
-  "text": "Isi Catatan approval atau alasan, lalu klik Tolak. Permintaan kembali ke admin kapal.",
-  "say": "Isi Catatan approval atau alasan, lalu klik Tolak. Permintaan kembali ke admin kapal."
+  "text": "Kalau ada yang tidak sesuai, tulis alasannya, lalu klik Tolak. Permintaan akan kembali ke admin kapal untuk diperbaiki.",
+  "say": "Kalau ada yang tidak sesuai, tulis alasannya, lalu klik Tolak. Permintaan akan kembali ke admin kapal untuk diperbaiki."
  },
  {
   "key": "Ep2-ApproveSO/s06",
-  "text": "Buka Stok, Dokumen stok, status Menunggu approval terima. Klik dokumen bertanda Giliran Anda.",
-  "say": "Buka Stok, Dokumen stok, status Menunggu approval terima. Klik dokumen bertanda Giliran Anda."
+  "text": "Tugas kedua Anda adalah sebagai P2. Buka Dokumen stok, lalu pilih yang menunggu approval terima.",
+  "say": "Tugas kedua Anda adalah sebagai pe dua. Buka Dokumen stok, lalu pilih yang menunggu approval terima."
  },
  {
   "key": "Ep2-ApproveSO/s07",
-  "text": "Periksa jumlah diterima, rusak, dan riwayat kepala toko. Klik Setujui (P2).",
-  "say": "Periksa jumlah diterima, rusak, dan riwayat kepala toko. Klik Setujui pe dua."
+  "text": "Periksa jumlah yang diterima, yang rusak, dan catatan dari kepala toko. Kalau sudah sesuai, klik Setujui.",
+  "say": "Periksa jumlah yang diterima, yang rusak, dan catatan dari kepala toko. Kalau sudah sesuai, klik Setujui."
  },
  {
   "key": "Ep2-ApproveSO/s08",
-  "text": "Setelah P2 menyetujui, stok dek bertambah dan Sales Order dek ditutup di SAP.",
-  "say": "Setelah pe dua menyetujui, stok dek bertambah dan Sales Order dek ditutup di es a pe."
+  "text": "Setelah itu, stok di dek otomatis bertambah, dan Sales Order-nya ditutup di SAP.",
+  "say": "Setelah itu, stok di dek otomatis bertambah, dan Sales Order-nya ditutup di es a pe."
  },
  {
   "key": "Ep2-ApproveSO/s09",
-  "text": "Akun ini juga menyetujui perubahan harga jual yang diajukan kapal.",
-  "say": "Akun ini juga menyetujui perubahan harga jual yang diajukan kapal."
+  "text": "Selain itu, Anda juga menyetujui perubahan harga jual yang diajukan oleh kapal.",
+  "say": "Selain itu, Anda juga menyetujui perubahan harga jual yang diajukan oleh kapal."
  },
  {
   "key": "Ep2-ApproveSO/s10",
-  "text": "P2 mengisi kebutuhan sebulan per DC dan 10 barang prioritas.",
-  "say": "pe dua mengisi kebutuhan sebulan per de ce dan 10 barang prioritas."
+  "text": "Sebagai P2, Anda juga mengisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap DC.",
+  "say": "Sebagai pe dua, Anda juga mengisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap de ce."
  },
  {
   "key": "Ep2-ApproveSO/s11",
-  "text": "Semua menu admin bisa dibuka untuk memantau, tetapi hanya tugas persetujuan yang bisa dikerjakan.",
-  "say": "Semua menu admin bisa dibuka untuk memantau, tetapi hanya tugas persetujuan yang bisa dikerjakan."
+  "text": "Oh ya, Anda bisa membuka hampir semua menu untuk memantau. Tapi yang bisa diubah, hanya tugas persetujuan Anda.",
+  "say": "Oh ya, Anda bisa membuka hampir semua menu untuk memantau. Tapi yang bisa diubah, hanya tugas persetujuan Anda."
  },
  {
   "key": "Ep2-ApproveSO/99-penutup",
-  "text": "Ingat tiga hal. Satu, Lonceng = tugas Anda. Dua, Setujui SO, satu per dek. Tiga, P2 menutup penerimaan. Langkah lengkap ada di Manual Book bab 3. Berikutnya, Episode 3, Admin DC.",
-  "say": "Ingat tiga hal. Satu, Lonceng = tugas Anda. Dua, Setujui es o, satu per dek. Tiga, pe dua menutup penerimaan. Langkah lengkap ada di Manual Book bab 3. Berikutnya, Episode 3, Admin de ce."
+  "text": "Jadi, ingat tiga hal ini. Lonceng menunjukkan tugas Anda. Setujui Sales Order, satu per dek. Dan sebagai P2, Anda yang menutup penerimaan. Sampai jumpa di episode tiga!",
+  "say": "Jadi, ingat tiga hal ini. Lonceng menunjukkan tugas Anda. Setujui Sales Order, satu per dek. Dan sebagai pe dua, Anda yang menutup penerimaan. Sampai jumpa di episode tiga!"
  },
  {
   "key": "Ep3-AdminDC/00-pembuka",
-  "text": "Episode 3, Admin DC: Pilah stok, GRPO, dan transfer ke dek. Memilah stok DC, mencatat barang vendor dengan GRPO, dan mengirim barang ke dek dengan Inventory Transfer.",
-  "say": "Episode 3, Admin de ce: Pilah stok, ge er pe o, dan transfer ke dek. Memilah stok de ce, mencatat barang vendor dengan ge er pe o, dan mengirim barang ke dek dengan Inventory Transfer."
+  "text": "Halo, Admin DC! Di episode ini, kita pilah stok di gudang, catat barang dari vendor, lalu kirim barangnya ke dek.",
+  "say": "Halo, Admin de ce! Di episode ini, kita pilah stok di gudang, catat barang dari vendor, lalu kirim barangnya ke dek."
  },
  {
   "key": "Ep3-AdminDC/01-alur",
-  "text": "Posisi Anda di alur: giliran Admin DC.",
-  "say": "Posisi Anda di alur: giliran Admin de ce."
+  "text": "Posisi Anda ada di tengah alur. Dari memilah stok, sampai barang dikirim ke dek.",
+  "say": "Posisi Anda ada di tengah alur. Dari memilah stok, sampai barang dikirim ke dek."
  },
  {
   "key": "Ep3-AdminDC/s01",
-  "text": "Tab Giliran saya menampilkan permintaan yang menunggu Anda, dengan label tugasnya.",
-  "say": "Tab Giliran saya menampilkan permintaan yang menunggu Anda, dengan label tugasnya."
+  "text": "Mulai dari tab Giliran saya. Di sini, semua permintaan yang menunggu Anda sudah lengkap dengan label tugasnya.",
+  "say": "Mulai dari tab Giliran saya. Di sini, semua permintaan yang menunggu Anda sudah lengkap dengan label tugasnya."
  },
  {
   "key": "Ep3-AdminDC/s02",
-  "text": "Isi qty yang diambil dari stok DC. Sisanya otomatis menjadi Qty PUR.",
-  "say": "Isi jumlah yang diambil dari stok de ce. Sisanya otomatis menjadi jumlah pe u er."
+  "text": "Buka permintaannya, lalu isi kolom Transfer DC dengan jumlah yang bisa diambil dari stok gudang. Sisanya, otomatis jadi PUR.",
+  "say": "Buka permintaannya, lalu isi kolom Transfer de ce dengan jumlah yang bisa diambil dari stok gudang. Sisanya, otomatis jadi pe u er."
  },
  {
   "key": "Ep3-AdminDC/s03",
-  "text": "Bila tidak ada di stok DC, klik Tidak ada di stok DC. Lalu klik Setujui PUR tahap 1.",
-  "say": "Bila tidak ada di stok de ce, klik Tidak ada di stok de ce. Lalu klik Setujui pe u er tahap 1."
+  "text": "Kalau barangnya sama sekali tidak ada di gudang, klik Tidak ada di stok DC. Lalu, klik Setujui PUR tahap satu.",
+  "say": "Kalau barangnya sama sekali tidak ada di gudang, klik Tidak ada di stok de ce. Lalu, klik Setujui pe u er tahap satu."
  },
  {
   "key": "Ep3-AdminDC/s04",
-  "text": "Setelah PO disetujui dan barang tiba, isi Qty diterima (GRPO) sesuai barang yang datang.",
-  "say": "Setelah pe o disetujui dan barang tiba, isi jumlah diterima ge er pe o sesuai barang yang datang."
+  "text": "Setelah PO disetujui, barang dari vendor akan datang. Isi jumlah yang benar-benar diterima.",
+  "say": "Setelah pe o disetujui, barang dari vendor akan datang. Isi jumlah yang benar-benar diterima."
  },
  {
   "key": "Ep3-AdminDC/s05",
-  "text": "Klik Ajukan GRPO. GRPO dibuat di SAP setelah disetujui Approve PUR.",
-  "say": "Klik Ajukan ge er pe o. ge er pe o dibuat di es a pe setelah disetujui Approve pe u er."
+  "text": "Lalu klik Ajukan GRPO. GRPO-nya akan dibuat di SAP, setelah disetujui oleh approve PUR.",
+  "say": "Lalu klik Ajukan ge er pe o. ge er pe o-nya akan dibuat di es a pe, setelah disetujui oleh approve pe u er."
  },
  {
   "key": "Ep3-AdminDC/s06",
-  "text": "Panel Inventory Transfer muncul dengan usulan qty: stok DC ditambah hasil GRPO.",
-  "say": "Panel Inventory Transfer muncul dengan usulan jumlah: stok de ce ditambah hasil ge er pe o."
+  "text": "Selanjutnya, panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil GRPO.",
+  "say": "Selanjutnya, panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil ge er pe o."
  },
  {
   "key": "Ep3-AdminDC/s07",
-  "text": "Periksa qty per dek, lalu klik Ajukan Inventory Transfer.",
-  "say": "Periksa jumlah per dek, lalu klik Ajukan Inventory Transfer."
+  "text": "Periksa jumlah untuk setiap dek, lalu klik Ajukan Inventory Transfer.",
+  "say": "Periksa jumlah untuk setiap dek, lalu klik Ajukan Inventory Transfer."
  },
  {
   "key": "Ep3-AdminDC/s08",
-  "text": "Lihat gudang DC dan kartu stok per barang. Bisa diekspor ke CSV.",
-  "say": "Lihat gudang de ce dan kartu stok per barang. Bisa diekspor ke ce es ve."
+  "text": "Untuk memantau gudang, buka Laporan stok DC. Kartu stoknya bahkan bisa diekspor ke Excel.",
+  "say": "Untuk memantau gudang, buka Laporan stok de ce. Kartu stoknya bahkan bisa diekspor ke Excel."
  },
  {
   "key": "Ep3-AdminDC/s09",
-  "text": "Alasan penolakan tampil di panel. Periksa qty, perbaiki, lalu ajukan ulang.",
-  "say": "Alasan penolakan tampil di panel. Periksa jumlah, perbaiki, lalu ajukan ulang."
+  "text": "Kalau pengajuan Anda ditolak, alasannya akan tampil di panel. Perbaiki jumlahnya, lalu ajukan ulang.",
+  "say": "Kalau pengajuan Anda ditolak, alasannya akan tampil di panel. Perbaiki jumlahnya, lalu ajukan ulang."
  },
  {
   "key": "Ep3-AdminDC/99-penutup",
-  "text": "Ingat tiga hal. Satu, Isi Transfer DC, sisanya PUR. Dua, Ajukan GRPO saat barang tiba. Tiga, Ajukan transfer per dek. Langkah lengkap ada di Manual Book bab 4. Berikutnya, Episode 4, Approve PUR.",
-  "say": "Ingat tiga hal. Satu, Isi Transfer de ce, sisanya pe u er. Dua, Ajukan ge er pe o saat barang tiba. Tiga, Ajukan transfer per dek. Langkah lengkap ada di Manual Book bab 4. Berikutnya, Episode 4, Approve pe u er."
+  "text": "Jadi, ingat tiga hal ini. Isi Transfer DC, sisanya jadi PUR. Ajukan GRPO saat barang tiba. Dan ajukan transfer untuk setiap dek. Sampai jumpa di episode empat!",
+  "say": "Jadi, ingat tiga hal ini. Isi Transfer de ce, sisanya jadi pe u er. Ajukan ge er pe o saat barang tiba. Dan ajukan transfer untuk setiap dek. Sampai jumpa di episode empat!"
  },
  {
   "key": "Ep4-ApprovePUR/00-pembuka",
-  "text": "Episode 4, Approve PUR: Menyetujui PUR, GRPO, dan transfer. Menyetujui Purchase Request, GRPO, dan Inventory Transfer yang diajukan admin DC.",
-  "say": "Episode 4, Approve pe u er: Menyetujui pe u er, ge er pe o, dan transfer. Menyetujui Purchase Request, ge er pe o, dan Inventory Transfer yang diajukan admin de ce."
+  "text": "Halo! Episode ini untuk penyetuju PUR. Anda akan menyetujui tiga hal: Purchase Request, GRPO, dan Inventory Transfer.",
+  "say": "Halo! Episode ini untuk penyetuju pe u er. Anda akan menyetujui tiga hal: Purchase Request, ge er pe o, dan Inventory Transfer."
  },
  {
   "key": "Ep4-ApprovePUR/01-alur",
-  "text": "Posisi Anda di alur: giliran Approve PUR.",
-  "say": "Posisi Anda di alur: giliran Approve pe u er."
+  "text": "Anda menjaga bagian pembelian. Setiap PUR, GRPO, dan transfer, lewat persetujuan Anda.",
+  "say": "Anda menjaga bagian pembelian. Setiap pe u er, ge er pe o, dan transfer, lewat persetujuan Anda."
  },
  {
   "key": "Ep4-ApprovePUR/s01",
-  "text": "Buka permintaan di tab Approval PUR. Periksa Transfer DC dan Qty PUR.",
-  "say": "Buka permintaan di tab Approval pe u er. Periksa Transfer de ce dan jumlah pe u er."
+  "text": "Buka permintaan di tab Approval PUR. Periksa berapa yang diambil dari stok DC, dan berapa yang harus dibeli.",
+  "say": "Buka permintaan di tab Approval pe u er. Periksa berapa yang diambil dari stok de ce, dan berapa yang harus dibeli."
  },
  {
   "key": "Ep4-ApprovePUR/s02",
-  "text": "Qty PUR masih bisa diubah. Klik Setujui PUR level 1, atau isi alasan lalu Tolak PUR.",
-  "say": "jumlah pe u er masih bisa diubah. Klik Setujui pe u er level 1, atau isi alasan lalu Tolak pe u er."
+  "text": "Jumlah PUR masih bisa Anda ubah. Kalau sudah pas, klik Setujui. Atau, tulis alasannya, lalu tolak.",
+  "say": "Jumlah pe u er masih bisa Anda ubah. Kalau sudah pas, klik Setujui. Atau, tulis alasannya, lalu tolak."
  },
  {
   "key": "Ep4-ApprovePUR/s03",
-  "text": "Purchase Request dibuat di SAP untuk dek yang punya qty PUR.",
-  "say": "Purchase Request dibuat di es a pe untuk dek yang punya jumlah pe u er."
+  "text": "Setelah disetujui, Purchase Request langsung dibuat di SAP.",
+  "say": "Setelah disetujui, Purchase Request langsung dibuat di es a pe."
  },
  {
   "key": "Ep4-ApprovePUR/s04",
-  "text": "Periksa Qty diterima yang diajukan admin DC, lalu klik Setujui.",
-  "say": "Periksa jumlah diterima yang diajukan admin de ce, lalu klik Setujui."
+  "text": "Saat barang dari vendor tiba, admin DC mengajukan GRPO. Periksa jumlahnya, lalu klik Setujui.",
+  "say": "Saat barang dari vendor tiba, admin de ce mengajukan ge er pe o. Periksa jumlahnya, lalu klik Setujui."
  },
  {
   "key": "Ep4-ApprovePUR/s05",
-  "text": "Periksa barang, dek tujuan, dan qty dikirim. Klik Setujui.",
-  "say": "Periksa barang, dek tujuan, dan jumlah dikirim. Klik Setujui."
+  "text": "Berikutnya, transfer ke dek. Periksa barang, dek tujuan, dan jumlah yang dikirim. Lalu, klik Setujui.",
+  "say": "Berikutnya, transfer ke dek. Periksa barang, dek tujuan, dan jumlah yang dikirim. Lalu, klik Setujui."
  },
  {
   "key": "Ep4-ApprovePUR/s06",
-  "text": "Inventory Transfer dibuat di SAP, satu per dek, lalu muncul di Terima barang kapal.",
-  "say": "Inventory Transfer dibuat di es a pe, satu per dek, lalu muncul di Terima barang kapal."
+  "text": "Inventory Transfer pun dibuat di SAP, satu untuk setiap dek. Dan kirimannya langsung muncul di kapal.",
+  "say": "Inventory Transfer pun dibuat di es a pe, satu untuk setiap dek. Dan kirimannya langsung muncul di kapal."
  },
  {
   "key": "Ep4-ApprovePUR/s07",
-  "text": "Isi catatan lalu klik Tolak. Dokumen kembali ke admin DC.",
-  "say": "Isi catatan lalu klik Tolak. Dokumen kembali ke admin de ce."
+  "text": "Kalau ada yang perlu diperbaiki, tulis catatan, lalu klik Tolak. Dokumennya kembali ke admin DC.",
+  "say": "Kalau ada yang perlu diperbaiki, tulis catatan, lalu klik Tolak. Dokumennya kembali ke admin de ce."
  },
  {
   "key": "Ep4-ApprovePUR/99-penutup",
-  "text": "Ingat tiga hal. Satu, Setujui PUR. Dua, Setujui GRPO. Tiga, Setujui transfer per dek. Langkah lengkap ada di Manual Book bab 5. Berikutnya, Episode 5, Admin purchase.",
-  "say": "Ingat tiga hal. Satu, Setujui pe u er. Dua, Setujui ge er pe o. Tiga, Setujui transfer per dek. Langkah lengkap ada di Manual Book bab 5. Berikutnya, Episode 5, Admin purchase."
+  "text": "Jadi, ada tiga yang Anda setujui. PUR, GRPO, dan transfer ke dek. Sampai jumpa di episode lima!",
+  "say": "Jadi, ada tiga yang Anda setujui. pe u er, ge er pe o, dan transfer ke dek. Sampai jumpa di episode lima!"
  },
  {
   "key": "Ep5-AdminPurchase/00-pembuka",
-  "text": "Episode 5, Admin purchase: Membuat Purchase Order. Membuat dan mengajukan Purchase Order dari Purchase Request.",
-  "say": "Episode 5, Admin purchase: Membuat Purchase Order. Membuat dan mengajukan Purchase Order dari Purchase Request."
+  "text": "Halo, Admin purchase! Episode ini singkat saja. Kita buat Purchase Order dari Purchase Request yang sudah disetujui.",
+  "say": "Halo, Admin purchase! Episode ini singkat saja. Kita buat Purchase Order dari Purchase Request yang sudah disetujui."
  },
  {
   "key": "Ep5-AdminPurchase/01-alur",
-  "text": "Posisi Anda di alur: giliran Admin purchase.",
-  "say": "Posisi Anda di alur: giliran Admin purchase."
+  "text": "Anda ada di jalur pembelian, tepat setelah PUR disetujui.",
+  "say": "Anda ada di jalur pembelian, tepat setelah pe u er disetujui."
  },
  {
   "key": "Ep5-AdminPurchase/s01",
-  "text": "Kartu biru di Ringkasan menunjukkan PUR yang menunggu dibuatkan Purchase Order.",
-  "say": "Kartu biru di Ringkasan menunjukkan pe u er yang menunggu dibuatkan Purchase Order."
+  "text": "Kartu biru di Ringkasan menunjukkan berapa PUR yang menunggu dibuatkan Purchase Order.",
+  "say": "Kartu biru di Ringkasan menunjukkan berapa pe u er yang menunggu dibuatkan Purchase Order."
  },
  {
   "key": "Ep5-AdminPurchase/s02",
-  "text": "Buka permintaan berlabel Buat PO. Cari dan pilih vendor.",
-  "say": "Buka permintaan berlabel Buat pe o. Cari dan pilih vendor."
+  "text": "Buka permintaan yang berlabel Buat PO, lalu cari dan pilih vendornya.",
+  "say": "Buka permintaan yang berlabel Buat pe o, lalu cari dan pilih vendornya."
  },
  {
   "key": "Ep5-AdminPurchase/s03",
-  "text": "Periksa Qty PO dan isi Harga beli sebelum PPN. Total dihitung otomatis.",
-  "say": "Periksa jumlah pe o dan isi Harga beli sebelum pe pe en. Total dihitung otomatis."
+  "text": "Periksa jumlah PO-nya, lalu isi harga beli sebelum pajak. Totalnya akan dihitung otomatis.",
+  "say": "Periksa jumlah pe o-nya, lalu isi harga beli sebelum pajak. Totalnya akan dihitung otomatis."
  },
  {
   "key": "Ep5-AdminPurchase/s04",
-  "text": "Klik Ajukan Purchase Order. PO dibuat di SAP setelah disetujui Approve PO.",
-  "say": "Klik Ajukan Purchase Order. pe o dibuat di es a pe setelah disetujui Approve pe o."
+  "text": "Kalau sudah, klik Ajukan Purchase Order. PO akan dibuat di SAP setelah disetujui.",
+  "say": "Kalau sudah, klik Ajukan Purchase Order. pe o akan dibuat di es a pe setelah disetujui."
  },
  {
   "key": "Ep5-AdminPurchase/s05",
-  "text": "Alasan tampil di panel. Vendor, qty, dan harga terisi lagi. Perbaiki lalu ajukan ulang.",
-  "say": "Alasan tampil di panel. Vendor, jumlah, dan harga terisi lagi. Perbaiki lalu ajukan ulang."
+  "text": "Kalau PO Anda ditolak, alasannya akan muncul. Vendor, jumlah, dan harga sudah terisi lagi, jadi tinggal diperbaiki, lalu ajukan ulang.",
+  "say": "Kalau pe o Anda ditolak, alasannya akan muncul. Vendor, jumlah, dan harga sudah terisi lagi, jadi tinggal diperbaiki, lalu ajukan ulang."
  },
  {
   "key": "Ep5-AdminPurchase/99-penutup",
-  "text": "Ingat tiga hal. Satu, Pilih vendor. Dua, Isi qty dan harga beli. Tiga, Ajukan PO. Langkah lengkap ada di Manual Book bab 6. Berikutnya, Episode 6, Approve PO.",
-  "say": "Ingat tiga hal. Satu, Pilih vendor. Dua, Isi jumlah dan harga beli. Tiga, Ajukan pe o. Langkah lengkap ada di Manual Book bab 6. Berikutnya, Episode 6, Approve pe o."
+  "text": "Jadi, cukup tiga langkah. Pilih vendor, isi jumlah dan harga, lalu ajukan PO. Sampai jumpa di episode enam!",
+  "say": "Jadi, cukup tiga langkah. Pilih vendor, isi jumlah dan harga, lalu ajukan pe o. Sampai jumpa di episode enam!"
  },
  {
   "key": "Ep6-ApprovePO/00-pembuka",
-  "text": "Episode 6, Approve PO: Menyetujui Purchase Order. Menyetujui Purchase Order yang diajukan admin purchase. Persetujuan bisa bertingkat.",
-  "say": "Episode 6, Approve pe o: Menyetujui Purchase Order. Menyetujui Purchase Order yang diajukan admin purchase. Persetujuan bisa bertingkat."
+  "text": "Halo! Episode ini untuk penyetuju Purchase Order. Yuk, kita lihat cara menyetujui, dan juga cara menolaknya.",
+  "say": "Halo! Episode ini untuk penyetuju Purchase Order. Yuk, kita lihat cara menyetujui, dan juga cara menolaknya."
  },
  {
   "key": "Ep6-ApprovePO/01-alur",
-  "text": "Posisi Anda di alur: giliran Approve PO.",
-  "say": "Posisi Anda di alur: giliran Approve pe o."
+  "text": "Anda ada di jalur pembelian, tepat setelah admin purchase mengajukan PO.",
+  "say": "Anda ada di jalur pembelian, tepat setelah admin purchase mengajukan pe o."
  },
  {
   "key": "Ep6-ApprovePO/s01",
-  "text": "Klik Buka di kartu biru, atau buka permintaan berlabel Approval PO.",
-  "say": "Klik Buka di kartu biru, atau buka permintaan berlabel Approval pe o."
+  "text": "Ada PO yang menunggu? Klik Buka di kartu biru, atau buka permintaan yang berlabel Approval PO.",
+  "say": "Ada pe o yang menunggu? Klik Buka di kartu biru, atau buka permintaan yang berlabel Approval pe o."
  },
  {
   "key": "Ep6-ApprovePO/s02",
-  "text": "Periksa vendor, barang, qty, dan harga beli. Isi catatan bila perlu, lalu klik Setujui.",
-  "say": "Periksa vendor, barang, jumlah, dan harga beli. Isi catatan bila perlu, lalu klik Setujui."
+  "text": "Periksa vendornya, barangnya, jumlah, dan harga belinya. Tambahkan catatan kalau perlu, lalu klik Setujui.",
+  "say": "Periksa vendornya, barangnya, jumlah, dan harga belinya. Tambahkan catatan kalau perlu, lalu klik Setujui."
  },
  {
   "key": "Ep6-ApprovePO/s03",
-  "text": "Setelah level terakhir menyetujui, Purchase Order dibuat di SAP.",
-  "say": "Setelah level terakhir menyetujui, Purchase Order dibuat di es a pe."
+  "text": "Setelah level terakhir menyetujui, Purchase Order langsung dibuat di SAP.",
+  "say": "Setelah level terakhir menyetujui, Purchase Order langsung dibuat di es a pe."
  },
  {
   "key": "Ep6-ApprovePO/s04",
-  "text": "Isi catatan (wajib), lalu klik Tolak. PO kembali ke admin purchase.",
-  "say": "Isi catatan wajib, lalu klik Tolak. pe o kembali ke admin purchase."
+  "text": "Kalau mau menolak, catatannya wajib diisi, ya. Lalu klik Tolak, dan PO akan kembali ke admin purchase.",
+  "say": "Kalau mau menolak, catatannya wajib diisi, ya. Lalu klik Tolak, dan pe o akan kembali ke admin purchase."
  },
  {
   "key": "Ep6-ApprovePO/99-penutup",
-  "text": "Ingat tiga hal. Satu, Periksa vendor dan harga. Dua, Setujui per level. Tiga, Tolak wajib dengan catatan. Langkah lengkap ada di Manual Book bab 7. Berikutnya, Episode 7, Kasir.",
-  "say": "Ingat tiga hal. Satu, Periksa vendor dan harga. Dua, Setujui per level. Tiga, Tolak wajib dengan catatan. Langkah lengkap ada di Manual Book bab 7. Berikutnya, Episode 7, Kasir."
+  "text": "Jadi, ingat tiga hal ini. Periksa vendor dan harga. Setujui per level. Dan kalau menolak, wajib dengan catatan. Sampai jumpa di episode tujuh!",
+  "say": "Jadi, ingat tiga hal ini. Periksa vendor dan harga. Setujui per level. Dan kalau menolak, wajib dengan catatan. Sampai jumpa di episode tujuh!"
  },
  {
   "key": "Ep7-Kasir/00-pembuka",
-  "text": "Episode 7, Kasir: Dari buka kasir sampai tutup kasir. Menjual barang di dek, menerima pembayaran, mengirim DO ke SAP, dan menutup kasir.",
-  "say": "Episode 7, Kasir: Dari buka kasir sampai tutup kasir. Menjual barang di dek, menerima pembayaran, mengirim de o ke es a pe, dan menutup kasir."
+  "text": "Halo, Kasir! Di video ini, kita jalani satu shift penuh. Mulai dari buka kasir, melayani pembeli, sampai tutup kasir.",
+  "say": "Halo, Kasir! Di video ini, kita jalani satu shift penuh. Mulai dari buka kasir, melayani pembeli, sampai tutup kasir."
  },
  {
   "key": "Ep7-Kasir/01-alur",
-  "text": "Posisi Anda di alur: giliran Kasir.",
-  "say": "Posisi Anda di alur: giliran Kasir."
+  "text": "Anda ada di ujung alur. Barang sudah sampai di dek, dan sekarang saatnya dijual.",
+  "say": "Anda ada di ujung alur. Barang sudah sampai di dek, dan sekarang saatnya dijual."
  },
  {
   "key": "Ep7-Kasir/s01",
-  "text": "Layar awal memeriksa koneksi, data barang, dan sinkron SAP. Klik Buka kasir.",
-  "say": "Layar awal memeriksa koneksi, data barang, dan sinkron es a pe. Klik Buka kasir."
+  "text": "Begitu masuk, layar awal mengecek koneksi, data barang, dan sinkron SAP. Kalau semuanya hijau, klik Buka kasir.",
+  "say": "Begitu masuk, layar awal mengecek koneksi, data barang, dan sinkron es a pe. Kalau semuanya hijau, klik Buka kasir."
  },
  {
   "key": "Ep7-Kasir/s02",
-  "text": "Scan barcode, atau ketik nama atau kode lalu Enter.",
-  "say": "Scan barcode, atau ketik nama atau kode lalu Enter."
+  "text": "Ada pembeli datang? Scan barcode barangnya. Atau, ketik nama atau kodenya, lalu tekan Enter.",
+  "say": "Ada pembeli datang? Scan barcode barangnya. Atau, ketik nama atau kodenya, lalu tekan Enter."
  },
  {
   "key": "Ep7-Kasir/s03",
-  "text": "Ketik 3*kode untuk 3 pcs sekaligus, atau ubah qty dengan tombol + dan −.",
-  "say": "Ketik tiga bintang kode untuk 3 pis sekaligus, atau ubah jumlah dengan tombol plus dan minus."
+  "text": "Mau tiga barang sekaligus? Ketik tiga bintang, lalu kodenya. Atau, ubah jumlahnya dengan tombol plus dan minus.",
+  "say": "Mau tiga barang sekaligus? Ketik tiga bintang, lalu kodenya. Atau, ubah jumlahnya dengan tombol plus dan minus."
  },
  {
   "key": "Ep7-Kasir/s04",
-  "text": "Tombol cepat: F2 cari barang, F4 tahan, F8 ubah qty atau diskon, F9 riwayat, dan F12 bayar.",
-  "say": "Tombol cepat: ef dua cari barang, ef empat tahan, ef delapan ubah jumlah atau diskon, ef sembilan riwayat, dan ef dua belas bayar."
+  "text": "Supaya lebih cepat, hafalkan tombol ini. F2 untuk cari barang, F4 untuk tahan pesanan, F8 untuk ubah jumlah atau diskon, F9 untuk riwayat, dan F12 untuk bayar.",
+  "say": "Supaya lebih cepat, hafalkan tombol ini. ef dua untuk cari barang, ef empat untuk tahan pesanan, ef delapan untuk ubah jumlah atau diskon, ef sembilan untuk riwayat, dan ef dua belas untuk bayar."
  },
  {
   "key": "Ep7-Kasir/s05",
-  "text": "Barang yang stoknya habis di dek ini ditolak. Minta admin kapal memutasi barang dulu.",
-  "say": "Barang yang stoknya habis di dek ini ditolak. Minta admin kapal memutasi barang dulu."
+  "text": "Kalau muncul pesan stok habis, artinya barang itu belum ada di dek ini. Minta admin kapal untuk memindahkannya dulu.",
+  "say": "Kalau muncul pesan stok habis, artinya barang itu belum ada di dek ini. Minta admin kapal untuk memindahkannya dulu."
  },
  {
   "key": "Ep7-Kasir/s06",
-  "text": "Pilih Tunai atau QRIS. Isi uang diterima, kembalian dihitung otomatis.",
-  "say": "Pilih Tunai atau kiu-ris. Isi uang diterima, kembalian dihitung otomatis."
+  "text": "Saatnya bayar. Tekan F12, lalu pilih tunai atau QRIS. Isi uang yang diterima, dan kembaliannya langsung dihitung.",
+  "say": "Saatnya bayar. Tekan ef dua belas, lalu pilih tunai atau kiu-ris. Isi uang yang diterima, dan kembaliannya langsung dihitung."
  },
  {
   "key": "Ep7-Kasir/s07",
-  "text": "Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru.",
-  "say": "Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru."
+  "text": "Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru untuk pembeli berikutnya.",
+  "say": "Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru untuk pembeli berikutnya."
  },
  {
   "key": "Ep7-Kasir/s08",
-  "text": "Di Riwayat bisa cetak ulang struk. Retur butuh qty, alasan, dan PIN kepala toko.",
-  "say": "Di Riwayat bisa cetak ulang struk. Retur butuh jumlah, alasan, dan PIN kepala toko."
+  "text": "Perlu cetak ulang struk? Buka Riwayat. Di sini juga ada retur barang, yang butuh PIN kepala toko.",
+  "say": "Perlu cetak ulang struk? Buka Riwayat. Di sini juga ada retur barang, yang butuh PIN kepala toko."
  },
  {
   "key": "Ep7-Kasir/s09",
-  "text": "Buka Rekap shift, klik Kirim DO hari ini. Tunggu sampai nomor DO muncul.",
-  "say": "Buka Rekap shift, klik Kirim de o hari ini. Tunggu sampai nomor de o muncul."
+  "text": "Di akhir hari, buka Rekap shift, lalu klik Kirim DO hari ini. Tunggu sebentar sampai nomor DO-nya muncul, ya.",
+  "say": "Di akhir hari, buka Rekap shift, lalu klik Kirim de o hari ini. Tunggu sebentar sampai nomor de o-nya muncul, ya."
  },
  {
   "key": "Ep7-Kasir/s10",
-  "text": "Catat kas keluar, setor ke pusat, dan kas masuk. Kas keluar besar perlu PIN kepala toko.",
-  "say": "Catat kas keluar, setor ke pusat, dan kas masuk. Kas keluar besar perlu PIN kepala toko."
+  "text": "Di menu Kas, catat setiap kas keluar, setoran ke pusat, dan kas masuk. Untuk kas keluar yang besar, perlu PIN kepala toko.",
+  "say": "Di menu Kas, catat setiap kas keluar, setoran ke pusat, dan kas masuk. Untuk kas keluar yang besar, perlu PIN kepala toko."
  },
  {
   "key": "Ep7-Kasir/s11",
-  "text": "Kosongkan keranjang. Klik inisial akun, Tutup kasir, lalu Tutup kasir & cetak laporan.",
-  "say": "Kosongkan keranjang. Klik inisial akun, Tutup kasir, lalu Tutup kasir dan cetak laporan."
+  "text": "Selesai berjualan? Kosongkan keranjang, klik inisial akun Anda, lalu pilih Tutup kasir, dan cetak laporannya.",
+  "say": "Selesai berjualan? Kosongkan keranjang, klik inisial akun Anda, lalu pilih Tutup kasir, dan cetak laporannya."
  },
  {
   "key": "Ep7-Kasir/s12",
-  "text": "Setelah ditutup, struk shift ini tidak bisa ditambah. Tunai yang belum disetor ditampilkan.",
-  "say": "Setelah ditutup, struk shift ini tidak bisa ditambah. Tunai yang belum disetor ditampilkan."
+  "text": "Dan kasir pun ditutup. Uang tunai yang belum disetor akan ditampilkan, sebagai pengingat. Terima kasih sudah melayani hari ini!",
+  "say": "Dan kasir pun ditutup. Uang tunai yang belum disetor akan ditampilkan, sebagai pengingat. Terima kasih sudah melayani hari ini!"
  },
  {
   "key": "Ep7-Kasir/99-penutup",
-  "text": "Ingat tiga hal. Satu, Jual dan bayar. Dua, Kirim DO hari ini. Tiga, Tutup kasir. Langkah lengkap ada di Manual Book bab 8.",
-  "say": "Ingat tiga hal. Satu, Jual dan bayar. Dua, Kirim de o hari ini. Tiga, Tutup kasir. Langkah lengkap ada di Manual Book bab 8."
+  "text": "Jadi, ingat tiga hal ini. Jual dan bayar. Kirim DO setiap hari. Dan jangan lupa tutup kasir. Langkah lengkapnya ada di Manual Book bab delapan. Selamat bertugas!",
+  "say": "Jadi, ingat tiga hal ini. Jual dan bayar. Kirim de o setiap hari. Dan jangan lupa tutup kasir. Langkah lengkapnya ada di Manual Book bab delapan. Selamat bertugas!"
  }
 ]

@@ -1,4 +1,5 @@
 import {fitFrames} from './vo';
+import {INTRO_UCAPAN} from './naskah';
 
 // Naskah video perkenalan: setiap adegan berisi satu atau beberapa kalimat.
 // `caption: false` = kalimat hanya diucapkan, tidak ditulis di layar (layar sudah memuat teksnya).
@@ -95,4 +96,4 @@ export const introScenes = (fps: number): TimedScene[] =>
     return {id: d.id, dur: at + d.tail, lines};
   });
 
-export const INTRO_LINES = DEFS.flatMap((d) => d.lines.map((l) => ({key: l.key, text: l.text})));
+export const INTRO_LINES = DEFS.flatMap((d) => d.lines.map((l) => ({key: l.key, text: INTRO_UCAPAN[l.key] ?? l.text})));

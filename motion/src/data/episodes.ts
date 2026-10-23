@@ -1,5 +1,6 @@
 import {RoleKey} from '../theme';
 import {fitFrames} from './vo';
+import {LANGKAH, PEMBUKA, PENUTUP, POSISI} from './naskah';
 
 // Satu langkah = satu adegan. `text` tampil di layar dan sekaligus dibacakan sebagai narasi.
 export type Step = {
@@ -193,19 +194,19 @@ export const voKey = {
   recap: (e: Episode) => `${e.id}/99-penutup`,
 };
 
-// Naskah narasi episode.
-export const narasiEpisode = (e: Episode, roleName: string) => [
-  {key: voKey.open(e), text: `Episode ${e.no}, ${roleName}: ${e.title}. ${e.goal}`},
-  {key: voKey.map(e), text: `Posisi Anda di alur: giliran ${roleName}.`},
-  ...e.steps.map((s, i) => ({key: voKey.step(e, i), text: s.vo ?? s.text})),
-  {
-    key: voKey.recap(e),
-    text:
-      `Ingat tiga hal. Satu, ${e.recap[0]}. Dua, ${e.recap[1]}. Tiga, ${e.recap[2]}. ` +
-      `Langkah lengkap ada di Manual Book bab ${e.bab}.` +
-      (e.next ? ` Berikutnya, ${e.next.replace(':', ',')}.` : ''),
-  },
-];
+// Naskah narasi episode: gaya bicara dari naskah.ts, cadangannya teks layar.
+export const narasiEpisode = (e: Episode, roleName: string) => {
+  const langkah = LANGKAH[e.id] ?? [];
+  if (langkah.length && langkah.length !== e.steps.length) {
+    throw new Error(`Naskah ${e.id}: ${langkah.length} kalimat untuk ${e.steps.length} langkah`);
+  }
+  return [
+    {key: voKey.open(e), text: PEMBUKA[e.id] ?? `Episode ${e.no}, ${roleName}: ${e.title}. ${e.goal}`},
+    {key: voKey.map(e), text: POSISI[e.id] ?? `Posisi Anda di alur: giliran ${roleName}.`},
+    ...e.steps.map((s, i) => ({key: voKey.step(e, i), text: langkah[i] ?? s.vo ?? s.text})),
+    {key: voKey.recap(e), text: PENUTUP[e.id] ?? `Ingat tiga hal: ${e.recap.join(', ')}.`},
+  ];
+};
 
 // Durasi adegan langkah: cukup untuk membaca teksnya (sekitar 2,6 kata per detik), dan untuk narasinya bila ada.
 export const stepFrames = (e: Episode, i: number, fps: number) => {
