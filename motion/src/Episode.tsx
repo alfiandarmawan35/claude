@@ -1,14 +1,14 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Img, Sequence, staticFile, useCurrentFrame, useVideoConfig, interpolate} from 'remotion';
-import {C, ROLES} from './theme';
+import {C, ROLES, RoleKey} from './theme';
 import {Episode as Ep, Step, stepFrames, openFrames, mapFrames, recapFrames, voKey, EPISODES} from './data/episodes';
 import {voFile, voSec} from './data/vo';
 import {DIMS} from './data/dims';
 import {Page, SoftBackground, Chip, Screen, SapChip, Logo, BedMusic, useFade, useRise, clamp} from './components/common';
-import {FlowMap} from './components/FlowMap';
+import {FlowMap, NODES, REVEAL} from './components/FlowMap';
 
-const Header: React.FC<{ep: Ep; right?: string}> = ({ep, right}) => {
-  const role = ROLES[ep.role];
+const Header: React.FC<{ep: Ep; right?: string; roleKey?: RoleKey}> = ({ep, right, roleKey}) => {
+  const role = ROLES[roleKey ?? ep.role];
   return (
     <div
       style={{
@@ -24,7 +24,7 @@ const Header: React.FC<{ep: Ep; right?: string}> = ({ep, right}) => {
     >
       <Chip color={role.color}>{role.name}</Chip>
       <div style={{fontSize: 30, fontWeight: 700, color: C.navy}}>
-        Episode {ep.no} · {ep.title}
+        {ep.progress ? 'Alur lengkap' : `Episode ${ep.no} · ${ep.title}`}
       </div>
       <div style={{flex: 1}} />
       {right ? <div style={{fontSize: 26, fontWeight: 700, color: C.muted}}>{right}</div> : null}
@@ -48,8 +48,8 @@ const OpenScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
       </div>
       <AbsoluteFill style={{opacity: fade, padding: '0 160px', justifyContent: 'center'}}>
         <div style={a}>
-          <Chip color={role.color} style={{fontSize: 30}}>
-            Episode {ep.no} · {role.name}
+          <Chip color={ep.progress ? C.navy : role.color} style={{fontSize: 30}}>
+            {ep.progress ? 'Tutorial alur lengkap · 7 peran' : `Episode ${ep.no} · ${role.name}`}
           </Chip>
         </div>
         <div style={{...b, fontSize: 92, fontWeight: 800, color: C.navy, lineHeight: 1.05, marginTop: 34, maxWidth: 1500}}>
@@ -57,7 +57,13 @@ const OpenScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
         </div>
         <div style={{...c, fontSize: 38, color: C.ink, marginTop: 30, maxWidth: 1400, lineHeight: 1.35}}>{ep.goal}</div>
         <div style={{...d, fontSize: 28, color: C.muted, marginTop: 40}}>
-          Akun contoh: <b>{role.akun}</b> · Manual Book bab {ep.bab}
+          {ep.progress ? (
+            <>Contoh: KM Awu · Dek 3 dan Dek 7 · Manual Book bab 1.2</>
+          ) : (
+            <>
+              Akun contoh: <b>{role.akun}</b> · Manual Book bab {ep.bab}
+            </>
+          )}
         </div>
       </AbsoluteFill>
     </Page>
@@ -71,9 +77,9 @@ const MapScene: React.FC<{ep: Ep; dur: number}> = ({ep, dur}) => {
     <Page>
       <AbsoluteFill style={{opacity: fade}}>
         <div style={{...t, position: 'absolute', left: 0, right: 0, top: 90, textAlign: 'center'}}>
-          <div style={{fontSize: 30, fontWeight: 700, color: C.muted}}>Posisi Anda di alur</div>
+          <div style={{fontSize: 30, fontWeight: 700, color: C.muted}}>{ep.progress ? '7 peran · 9 tahap' : 'Posisi Anda di alur'}</div>
           <div style={{fontSize: 56, fontWeight: 800, color: C.navy, marginTop: 8}}>
-            Giliran {ROLES[ep.role].name}
+            {ep.progress ? 'Dari pesan ke DC sampai Delivery Order' : `Giliran ${ROLES[ep.role].name}`}
           </div>
         </div>
         <div style={{position: 'absolute', inset: 0, transform: 'translateY(40px)'}}>
@@ -132,16 +138,58 @@ const IconPanel: React.FC<{icon: Step['icon']}> = ({icon}) => {
   );
 };
 
+// Penanda posisi di alur lengkap: 9 tahap, tahap yang sedang berjalan menyala.
+const ProgressStrip: React.FC<{node: string}> = ({node}) => {
+  const cur = REVEAL.indexOf(node);
+  const f = useCurrentFrame();
+  const pop = interpolate(f, [4, 16], [0.85, 1], clamp);
+  return (
+    <div style={{position: 'absolute', left: 80, right: 80, top: 118, height: 62, display: 'flex', gap: 10}}>
+      {REVEAL.map((id, k) => {
+        const nd = NODES.find((x) => x.id === id)!;
+        const c = ROLES[nd.roles[0]].color;
+        const now = k === cur;
+        const done = k < cur;
+        return (
+          <div
+            key={id}
+            style={{
+              flex: now ? 1.6 : 1,
+              borderRadius: 14,
+              background: now ? c : done ? '#DCE6F5' : 'white',
+              border: `3px solid ${now ? c : done ? '#DCE6F5' : C.line}`,
+              color: now ? 'white' : done ? C.navy : C.muted,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              fontSize: now ? 24 : 19,
+              fontWeight: 800,
+              whiteSpace: 'nowrap',
+              transform: now ? `scale(${pop})` : undefined,
+              boxShadow: now ? `0 10px 24px ${c}55` : undefined,
+            }}
+          >
+            {done ? '✓ ' : ''}
+            {nd.label}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const StepScene: React.FC<{ep: Ep; step: Step; i: number; n: number; dur: number}> = ({ep, step, i, n, dur}) => {
   const fade = useFade(dur, 10, 10);
-  const role = ROLES[ep.role];
+  const role = ROLES[step.role ?? ep.role];
   const cap = useRise(6, 60);
   const txt = useRise(14, 30);
-  const box = {x: 80, y: 130, w: 1760, h: 640};
+  const box = ep.progress ? {x: 80, y: 196, w: 1760, h: 584} : {x: 80, y: 130, w: 1760, h: 640};
   return (
     <Page>
       <AbsoluteFill style={{opacity: fade}}>
-        <Header ep={ep} right={`Langkah ${i + 1} / ${n}`} />
+        <Header ep={ep} right={`Langkah ${i + 1} / ${n}`} roleKey={step.role} />
+        {ep.progress && step.node ? <ProgressStrip node={step.node} /> : null}
         {step.img ? (
           <Screen
             src={staticFile(`img/${step.img}.png`)}

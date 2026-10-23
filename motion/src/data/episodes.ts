@@ -12,6 +12,8 @@ export type Step = {
   sap?: string; // dokumen SAP yang terbentuk di langkah ini
   icon?: 'tolak' | 'info' | 'stok';
   vo?: string; // naskah narasi bila berbeda dari `text`
+  role?: RoleKey; // peran yang mengerjakan langkah ini (video alur lengkap)
+  node?: string; // simpul peta alur yang sedang berjalan (video alur lengkap)
 };
 
 export type Episode = {
@@ -25,9 +27,47 @@ export type Episode = {
   steps: Step[];
   recap: [string, string, string];
   next?: string;
+  label?: string; // teks label pengganti nama peran
+  progress?: boolean; // tampilkan penanda posisi alur di atas layar
 };
 
 export const EPISODES: Episode[] = [
+  {
+    id: 'Ep0-AlurLengkap',
+    no: 0,
+    role: 'kapal',
+    label: 'Semua peran',
+    progress: true,
+    title: 'Alur lengkap: dari pesan sampai Delivery Order',
+    bab: 1,
+    goal: 'Satu permintaan, PERMINTAAN-AWU/2610/0008, diikuti dari kapal memesan ke DC sampai terjual di kasir dan dikirim ke SAP sebagai DO.',
+    flow: ['pesan', 'so', 'pilah', 'pur', 'po', 'grpo', 'transfer', 'terima', 'jual'],
+    steps: [
+      {role: 'kapal', node: 'pesan', img: 'g02', title: 'Admin kapal memesan ke DC', text: 'AQUA 6 pcs ke Dek 3 dan Teh Pucuk 24 pcs ke Dek 7. Klik Kirim ke DC.', focus: [0.795, 0.885, 0.195, 0.1]},
+      {role: 'kapal', node: 'pesan', img: 'g03', title: 'Permintaan terkirim', text: 'Nomor PERMINTAAN-AWU/2610/0008, status Menunggu persetujuan.'},
+      {role: 'so', node: 'so', img: 'g19', title: 'Approve SO menyetujui', text: 'Periksa barang dan harga jual per dek, lalu klik Setujui level 1.', focus: [0.69, 0.845, 0.28, 0.08]},
+      {role: 'so', node: 'so', img: 'g20', title: 'Sales Order per dek', text: 'Dua Sales Order dibuat di SAP: Dek 3 dan Dek 7.', sap: 'Sales Order 266000699 / 266000700'},
+      {role: 'dc', node: 'pilah', img: 'g27', title: 'Admin DC memilah stok', text: 'AQUA 6 diambil dari stok DC. Teh Pucuk 0, jadi 24 pcs harus dibeli (PUR).', focus: [0.57, 0.57, 0.27, 0.26]},
+      {role: 'pur', node: 'pur', img: 'g33', title: 'Approve PUR menyetujui', text: 'Periksa Transfer DC dan Qty PUR, lalu klik Setujui PUR.'},
+      {role: 'pur', node: 'pur', img: 'g34', title: 'Purchase Request terbentuk', text: 'Purchase Request untuk Dek 7 dibuat di SAP.', sap: 'Purchase Request 262000460'},
+      {role: 'purchase', node: 'po', img: 'g39', title: 'Admin purchase membuat PO', text: 'Pilih vendor BERKAH COD, isi 24 pcs × Rp 8.000, lalu Ajukan Purchase Order.', focus: [0.53, 0.75, 0.31, 0.09]},
+      {role: 'po', node: 'po', img: 'g42', title: 'Approve PO menyetujui', text: 'Periksa vendor, jumlah, dan harga beli, lalu klik Setujui.'},
+      {role: 'po', node: 'po', img: 'g43', title: 'Purchase Order terbentuk', text: 'Setelah level terakhir menyetujui, PO dibuat di SAP.', sap: 'Purchase Order 262002060'},
+      {role: 'dc', node: 'grpo', img: 'g28', title: 'Barang vendor tiba di DC', text: 'Admin DC mengisi Qty diterima, lalu klik Ajukan GRPO.'},
+      {role: 'pur', node: 'grpo', img: 'g35', title: 'GRPO disetujui', text: 'Approve PUR menyetujui GRPO. Stok DC bertambah.', sap: 'GRPO 262001908'},
+      {role: 'dc', node: 'transfer', img: 'g30', title: 'Admin DC mengirim ke dek', text: 'Jumlah kirim sudah diusulkan: stok DC + hasil GRPO. Klik Ajukan Inventory Transfer.'},
+      {role: 'pur', node: 'transfer', img: 'g37', title: 'Inventory Transfer terbentuk', text: 'Approve PUR menyetujui. Satu transfer untuk setiap dek.', sap: 'Inventory Transfer 262000146 / 147'},
+      {role: 'kapal', node: 'terima', img: 'g05', title: 'Kiriman tiba di kapal', text: 'Admin kapal membuka Terima barang dan klik Periksa & terima.'},
+      {role: 'kapal', node: 'terima', img: 'g06', title: 'Periksa & terima', text: 'Isi Diterima baik dan Rusak, lalu Konfirmasi diterima.'},
+      {role: 'kapal', node: 'terima', img: 'g08', title: 'Checklist kepala toko', text: 'Centang semua checklist, lalu Setujui (Kepala toko).', focus: [0.82, 0.8, 0.16, 0.08]},
+      {role: 'so', node: 'terima', img: 'g22', title: 'P2 menyetujui', text: 'Stok dek bertambah dan Sales Order ditutup di SAP.', sap: 'SO ditutup'},
+      {role: 'kasir', node: 'jual', img: 'g45', title: 'Kasir menjual', text: 'Scan AQUA 2 pcs. Total Rp 38.000.'},
+      {role: 'kasir', node: 'jual', img: 'g46', title: 'Bayar', text: 'Tunai Rp 50.000, kembalian Rp 12.000 dihitung otomatis.'},
+      {role: 'kasir', node: 'jual', img: 'g49', title: 'Kirim DO hari ini', text: 'Di Rekap shift, klik Kirim DO hari ini. Penjualan masuk SAP sebagai Delivery Order.', sap: 'Delivery (DO) 266000512', focus: [0.86, 0.015, 0.135, 0.05]},
+    ],
+    recap: ['Satu permintaan, satu alur', 'SAP dibuat setelah disetujui', 'Berakhir di DO kasir'],
+    next: 'Episode 1: Admin kapal',
+  },
   {
     id: 'Ep1-AdminKapal',
     no: 1,

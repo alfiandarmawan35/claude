@@ -3,6 +3,8 @@
 // Urutan kalimat = urutan langkah di episodes.ts.
 
 export const PEMBUKA: Record<string, string> = {
+  'Ep0-AlurLengkap':
+    'Halo! Di video ini, kita ikuti satu permintaan barang dari awal sampai akhir. Mulai dari kapal memesan ke DC, sampai barangnya terjual di kasir, dan dikirim ke SAP sebagai Delivery Order.',
   'Ep1-AdminKapal':
     'Halo, Admin kapal! Di episode ini, kita akan pesan barang ke DC, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai.',
   'Ep2-ApproveSO':
@@ -20,6 +22,7 @@ export const PEMBUKA: Record<string, string> = {
 };
 
 export const POSISI: Record<string, string> = {
+  'Ep0-AlurLengkap': 'Ada tujuh peran yang terlibat, dan sembilan tahap. Perhatikan penanda di bagian atas layar, supaya Anda tahu sedang di tahap mana.',
   'Ep1-AdminKapal': 'Anda ada di dua titik alur: di awal, saat memesan barang, dan menjelang akhir, saat barang tiba di dek.',
   'Ep2-ApproveSO': 'Anda muncul dua kali di alur: setelah kapal memesan, dan setelah barang diterima di dek.',
   'Ep3-AdminDC': 'Posisi Anda ada di tengah alur. Dari memilah stok, sampai barang dikirim ke dek.',
@@ -30,6 +33,29 @@ export const POSISI: Record<string, string> = {
 };
 
 export const LANGKAH: Record<string, string[]> = {
+  'Ep0-AlurLengkap': [
+    'Semuanya dimulai di kapal. Admin kapal KM Awu memesan enam AQUA untuk Dek 3, dan dua puluh empat Teh Pucuk untuk Dek 7. Lalu klik Kirim ke DC.',
+    'Permintaan langsung dapat nomor, dan statusnya menunggu persetujuan.',
+    'Sekarang giliran Approve SO. Periksa barang dan harga jualnya, lalu klik Setujui.',
+    'Begitu disetujui, dua Sales Order langsung dibuat di SAP. Satu untuk Dek 3, satu untuk Dek 7.',
+    'Lanjut ke admin DC. AQUA masih ada di gudang, jadi enam diambil dari stok DC. Teh Pucuk kosong, jadi dua puluh empat harus dibeli.',
+    'Approve PUR memeriksa jumlah yang harus dibeli, lalu menyetujuinya.',
+    'Purchase Request untuk Dek 7 pun dibuat di SAP.',
+    'Admin purchase memilih vendor, mengisi jumlah dan harga beli, lalu mengajukan Purchase Order.',
+    'Approve PO memeriksa vendor dan harganya, lalu klik Setujui.',
+    'Setelah level terakhir menyetujui, Purchase Order dibuat di SAP.',
+    'Beberapa hari kemudian, barang dari vendor tiba di gudang. Admin DC mengisi jumlah yang diterima, lalu mengajukan GRPO.',
+    'Approve PUR menyetujui GRPO, dan stok di DC bertambah.',
+    'Sekarang barang siap dikirim. Admin DC memeriksa jumlah untuk tiap dek, lalu mengajukan Inventory Transfer.',
+    'Approve PUR menyetujui, dan Inventory Transfer dibuat di SAP, satu untuk setiap dek.',
+    'Kiriman tiba di kapal. Admin kapal membuka Terima barang, lalu klik Periksa dan terima.',
+    'Barangnya dihitung. Isi jumlah yang diterima baik, dan yang rusak, lalu konfirmasi.',
+    'Kepala toko mencentang semua checklist, lalu menyetujui penerimaan.',
+    'Terakhir, P2 menyetujui. Stok dek bertambah, dan Sales Order ditutup di SAP.',
+    'Barang sudah ada di dek, dan siap dijual. Kasir scan dua AQUA, totalnya tiga puluh delapan ribu rupiah.',
+    'Pembeli bayar lima puluh ribu, dan kembaliannya, dua belas ribu, langsung dihitung.',
+    'Di akhir hari, kasir klik Kirim DO hari ini. Penjualan pun masuk ke SAP sebagai Delivery Order. Dan alurnya selesai.',
+  ],
   'Ep1-AdminKapal': [
     'Begitu masuk, Anda langsung disambut Beranda. Di sini terlihat kiriman dari DC, tugas berikutnya, dan penjualan hari ini di setiap dek.',
     'Mau pindah dek? Klik tombol kapal di kanan atas. Dari situ, Anda bisa pilih satu dek, atau lihat semuanya sekaligus.',
@@ -113,6 +139,8 @@ export const LANGKAH: Record<string, string[]> = {
 };
 
 export const PENUTUP: Record<string, string> = {
+  'Ep0-AlurLengkap':
+    'Jadi, satu permintaan mengalir melewati tujuh peran. Dokumen SAP dibuat setelah setiap persetujuan, dan semuanya berakhir di Delivery Order kasir. Untuk detail tiap peran, tonton episode satu sampai tujuh.',
   'Ep1-AdminKapal':
     'Jadi, ingat tiga hal ini. Pesan ke DC paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di SAP. Sampai jumpa di episode berikutnya!',
   'Ep2-ApproveSO':

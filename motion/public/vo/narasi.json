@@ -85,6 +85,126 @@
   "say": "P-I-D pos. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda."
  },
  {
+  "key": "Ep0-AlurLengkap/00-pembuka",
+  "text": "Halo! Di video ini, kita ikuti satu permintaan barang dari awal sampai akhir. Mulai dari kapal memesan ke DC, sampai barangnya terjual di kasir, dan dikirim ke SAP sebagai Delivery Order.",
+  "say": "Halo! Di video ini, kita ikuti satu permintaan barang dari awal sampai akhir. Mulai dari kapal memesan ke de ce, sampai barangnya terjual di kasir, dan dikirim ke es a pe sebagai Delivery Order."
+ },
+ {
+  "key": "Ep0-AlurLengkap/01-alur",
+  "text": "Ada tujuh peran yang terlibat, dan sembilan tahap. Perhatikan penanda di bagian atas layar, supaya Anda tahu sedang di tahap mana.",
+  "say": "Ada tujuh peran yang terlibat, dan sembilan tahap. Perhatikan penanda di bagian atas layar, supaya Anda tahu sedang di tahap mana."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s01",
+  "text": "Semuanya dimulai di kapal. Admin kapal KM Awu memesan enam AQUA untuk Dek 3, dan dua puluh empat Teh Pucuk untuk Dek 7. Lalu klik Kirim ke DC.",
+  "say": "Semuanya dimulai di kapal. Admin kapal ka em Awu memesan enam AQUA untuk Dek 3, dan dua puluh empat Teh Pucuk untuk Dek 7. Lalu klik Kirim ke de ce."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s02",
+  "text": "Permintaan langsung dapat nomor, dan statusnya menunggu persetujuan.",
+  "say": "Permintaan langsung dapat nomor, dan statusnya menunggu persetujuan."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s03",
+  "text": "Sekarang giliran Approve SO. Periksa barang dan harga jualnya, lalu klik Setujui.",
+  "say": "Sekarang giliran apruv es o. Periksa barang dan harga jualnya, lalu klik Setujui."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s04",
+  "text": "Begitu disetujui, dua Sales Order langsung dibuat di SAP. Satu untuk Dek 3, satu untuk Dek 7.",
+  "say": "Begitu disetujui, dua Sels Order langsung dibuat di es a pe. Satu untuk Dek 3, satu untuk Dek 7."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s05",
+  "text": "Lanjut ke admin DC. AQUA masih ada di gudang, jadi enam diambil dari stok DC. Teh Pucuk kosong, jadi dua puluh empat harus dibeli.",
+  "say": "Lanjut ke admin de ce. AQUA masih ada di gudang, jadi enam diambil dari stok de ce. Teh Pucuk kosong, jadi dua puluh empat harus dibeli."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s06",
+  "text": "Approve PUR memeriksa jumlah yang harus dibeli, lalu menyetujuinya.",
+  "say": "apruv pe u er memeriksa jumlah yang harus dibeli, lalu menyetujuinya."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s07",
+  "text": "Purchase Request untuk Dek 7 pun dibuat di SAP.",
+  "say": "Percis Rikues untuk Dek 7 pun dibuat di es a pe."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s08",
+  "text": "Admin purchase memilih vendor, mengisi jumlah dan harga beli, lalu mengajukan Purchase Order.",
+  "say": "Admin purchase memilih vendor, mengisi jumlah dan harga beli, lalu mengajukan Percis Order."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s09",
+  "text": "Approve PO memeriksa vendor dan harganya, lalu klik Setujui.",
+  "say": "apruv pe o memeriksa vendor dan harganya, lalu klik Setujui."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s10",
+  "text": "Setelah level terakhir menyetujui, Purchase Order dibuat di SAP.",
+  "say": "Setelah level terakhir menyetujui, Percis Order dibuat di es a pe."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s11",
+  "text": "Beberapa hari kemudian, barang dari vendor tiba di gudang. Admin DC mengisi jumlah yang diterima, lalu mengajukan GRPO.",
+  "say": "Beberapa hari kemudian, barang dari vendor tiba di gudang. Admin de ce mengisi jumlah yang diterima, lalu mengajukan ge er pe o."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s12",
+  "text": "Approve PUR menyetujui GRPO, dan stok di DC bertambah.",
+  "say": "apruv pe u er menyetujui ge er pe o, dan stok di de ce bertambah."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s13",
+  "text": "Sekarang barang siap dikirim. Admin DC memeriksa jumlah untuk tiap dek, lalu mengajukan Inventory Transfer.",
+  "say": "Sekarang barang siap dikirim. Admin de ce memeriksa jumlah untuk tiap dek, lalu mengajukan Inventori Transfer."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s14",
+  "text": "Approve PUR menyetujui, dan Inventory Transfer dibuat di SAP, satu untuk setiap dek.",
+  "say": "apruv pe u er menyetujui, dan Inventori Transfer dibuat di es a pe, satu untuk setiap dek."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s15",
+  "text": "Kiriman tiba di kapal. Admin kapal membuka Terima barang, lalu klik Periksa dan terima.",
+  "say": "Kiriman tiba di kapal. Admin kapal membuka Terima barang, lalu klik Periksa dan terima."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s16",
+  "text": "Barangnya dihitung. Isi jumlah yang diterima baik, dan yang rusak, lalu konfirmasi.",
+  "say": "Barangnya dihitung. Isi jumlah yang diterima baik, dan yang rusak, lalu konfirmasi."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s17",
+  "text": "Kepala toko mencentang semua checklist, lalu menyetujui penerimaan.",
+  "say": "Kepala toko mencentang semua ceklis, lalu menyetujui penerimaan."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s18",
+  "text": "Terakhir, P2 menyetujui. Stok dek bertambah, dan Sales Order ditutup di SAP.",
+  "say": "Terakhir, pe dua menyetujui. Stok dek bertambah, dan Sels Order ditutup di es a pe."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s19",
+  "text": "Barang sudah ada di dek, dan siap dijual. Kasir scan dua AQUA, totalnya tiga puluh delapan ribu rupiah.",
+  "say": "Barang sudah ada di dek, dan siap dijual. Kasir sken dua AQUA, totalnya tiga puluh delapan ribu rupiah."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s20",
+  "text": "Pembeli bayar lima puluh ribu, dan kembaliannya, dua belas ribu, langsung dihitung.",
+  "say": "Pembeli bayar lima puluh ribu, dan kembaliannya, dua belas ribu, langsung dihitung."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s21",
+  "text": "Di akhir hari, kasir klik Kirim DO hari ini. Penjualan pun masuk ke SAP sebagai Delivery Order. Dan alurnya selesai.",
+  "say": "Di akhir hari, kasir klik Kirim D-O hari ini. Penjualan pun masuk ke es a pe sebagai Delivery Order. Dan alurnya selesai."
+ },
+ {
+  "key": "Ep0-AlurLengkap/99-penutup",
+  "text": "Jadi, satu permintaan mengalir melewati tujuh peran. Dokumen SAP dibuat setelah setiap persetujuan, dan semuanya berakhir di Delivery Order kasir. Untuk detail tiap peran, tonton episode satu sampai tujuh.",
+  "say": "Jadi, satu permintaan mengalir melewati tujuh peran. Dokumen es a pe dibuat setelah setiap persetujuan, dan semuanya berakhir di Delivery Order kasir. Untuk detail tiap peran, tonton episode satu sampai tujuh."
+ },
+ {
   "key": "Ep1-AdminKapal/00-pembuka",
   "text": "Halo, Admin kapal! Di episode ini, kita akan pesan barang ke DC, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai.",
   "say": "Halo, Admin kapal! Di episode ini, kita akan pesan barang ke de ce, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai."
