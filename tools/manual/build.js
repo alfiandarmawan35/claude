@@ -25,9 +25,9 @@ const rich = (s, o = {}) => s.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map((p) =
 const H1 = (t, pb = true) => { out.push(new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: pb, children: [run(t)] })) }
 const H2 = (t) => out.push(new Paragraph({ heading: HeadingLevel.HEADING_2, children: [run(t)] }))
 const H3 = (t) => out.push(new Paragraph({ heading: HeadingLevel.HEADING_3, children: [run(t)] }))
-const P = (t, o = {}) => out.push(new Paragraph({ spacing: { after: 120 }, children: rich(t, o) }))
-const steps = (items) => { stepList++; items.forEach((t) => out.push(new Paragraph({ numbering: { reference: 'steps', level: 0, instance: stepList }, spacing: { after: 60 }, children: rich(t) }))) }
-const bullets = (items) => items.forEach((t) => out.push(new Paragraph({ numbering: { reference: 'bullets', level: 0 }, spacing: { after: 60 }, children: rich(t) })))
+const P = (t, o = {}) => out.push(new Paragraph({ alignment: AlignmentType.JUSTIFIED, spacing: { after: 120 }, children: rich(t, o) }))
+const steps = (items) => { stepList++; items.forEach((t) => out.push(new Paragraph({ numbering: { reference: 'steps', level: 0, instance: stepList }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 60 }, children: rich(t) }))) }
+const bullets = (items) => items.forEach((t) => out.push(new Paragraph({ numbering: { reference: 'bullets', level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 60 }, children: rich(t) })))
 
 function figure(name, caption, maxH = 7.4) {
   const f = path.join(IMG, name + '.png')
@@ -61,7 +61,7 @@ function note(title, text) {
     width: { size: CONTENT, type: WidthType.DXA }, shading: { fill: TINT, type: ShadingType.CLEAR, color: 'auto' },
     borders: { top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, bottom: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' }, left: { style: BorderStyle.SINGLE, size: 24, color: NAVY } },
     margins: { top: 100, bottom: 100, left: 180, right: 140 },
-    children: [new Paragraph({ children: [run(title, { bold: true, color: NAVY })] }), ...[].concat(text).map((t) => new Paragraph({ spacing: { before: 40 }, children: rich(t) }))] })] })] }))
+    children: [new Paragraph({ children: [run(title, { bold: true, color: NAVY })] }), ...[].concat(text).map((t) => new Paragraph({ alignment: AlignmentType.JUSTIFIED, spacing: { before: 40 }, children: rich(t) }))] })] })] }))
   out.push(new Paragraph({ spacing: { after: 120 }, children: [] }))
 }
 const roleCard = (akun, tampilan, tugas) => table(['Hal', 'Keterangan'], [['Akun uji', akun], ['Tampilan', tampilan], ['Tugas di alur utama', tugas]], [1, 3])
@@ -70,7 +70,7 @@ const roleCard = (akun, tampilan, tugas) => table(['Hal', 'Keterangan'], [['Akun
 const cover = [
   new Paragraph({ spacing: { before: 2400 }, children: [run('PID POS', { size: 28, bold: true, color: NAVY })] }),
   new Paragraph({ spacing: { before: 120 }, children: [run('Manual Book per Peran', { size: 60, bold: true, color: INK })] }),
-  new Paragraph({ spacing: { before: 120, after: 600 }, children: [run('Permintaan barang kapal sampai barang dijual: admin kapal, approve SO (P2), admin DC, approve PUR, admin purchase, approve PO, dan kasir', { size: 26, color: MUTE })] }),
+  new Paragraph({ alignment: AlignmentType.JUSTIFIED, spacing: { before: 120, after: 600 }, children: [run('Permintaan barang kapal sampai barang dijual: admin kapal, approve SO (P2), admin DC, approve PUR, admin purchase, approve PO, dan kasir', { size: 26, color: MUTE })] }),
 ]
 // ============================ ISI ============================
 H1('Daftar isi', false)
