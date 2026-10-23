@@ -16,7 +16,8 @@ export type Tokoh = {name: string; peran: string; gender: 'm' | 'f'; voice: stri
 export type Skit = {
   id: string;
   judul: string;
-  tempat: 'kapal' | 'gudang';
+  tempat: 'kapal' | 'gudang' | 'kantor';
+  papan?: string; // tulisan di papan latar
   a: Tokoh;
   b: Tokoh;
   lines: Line[];
@@ -26,8 +27,10 @@ export type Skit = {
 // Kata yang ditulis kuning di takarir.
 export const SOROT = [
   'PID', 'POS', 'Pesan', 'DC', 'Pesanan', 'baru', 'voyage', 'lima', 'dek', 'Kirim', 'nomor', 'dipantau', 'Sales', 'Order',
-  'Terima', 'barang', 'checklist', 'stok', 'SAP', 'Giliran', 'saya', 'Transfer', 'PUR', 'GRPO', 'Inventory', 'otomatis',
+  'Terima', 'barang', 'checklist', 'stok', 'SAP', 'Giliran', 'Transfer', 'PUR', 'GRPO', 'Inventory', 'otomatis',
   'Setujui', 'kapal', 'gudang', 'WA', 'tercatat', 'manual', 'vendor', 'nol',
+  'kasir', 'scan', 'barcode', 'F12', 'tunai', 'QRIS', 'struk', 'Struknya', 'Retur', 'PIN', 'Riwayat', 'Rekap', 'shift', 'DO',
+  'lonceng', 'Tolak', 'alasan', 'PO', 'Purchase', 'otomatis', 'kalkulator', 'Buka', 'tutup', 'biru',
 ];
 
 export const SKITS: Skit[] = [
@@ -82,6 +85,60 @@ export const SKITS: Skit[] = [
       {who: 'b', pose: 'kamera', text: 'semuanya lewat PID POS. Langsung tercatat di SAP.'},
     ],
     penutup: {judul: 'Stok DC kurang?', sub: 'Pilah, GRPO, dan kirim ke kapal lewat PID POS.'},
+  },
+  {
+    id: 'Skit-Kasir',
+    judul: 'Antrean panjang, kasir pusing',
+    tempat: 'kapal',
+    papan: 'TOKO · DEK 3',
+    a: {name: 'Putri', peran: 'Kasir Dek 3', gender: 'f', voice: 'id-ID-GadisNeural', baju: '15803D', aksen: 'D97706'},
+    b: {name: 'Hendra', peran: 'Kepala toko', gender: 'm', voice: 'id-ID-ArdiNeural', baju: '1F3B7A', aksen: '15306B'},
+    lines: [
+      {who: 'a', pose: 'bingung', text: 'Aduh, antreannya panjang banget. Aku masih hitung pakai kalkulator.'},
+      {who: 'a', pose: 'bingung', text: 'Terus nanti setor penjualannya ke SAP gimana, ya?'},
+      {who: 'b', text: 'Tenang, Put. Di PID POS semuanya udah otomatis.'},
+      {who: 'a', text: 'Serius, Pak? Caranya gimana?'},
+      {who: 'b', pose: 'senang', screen: {img: 'g44'}, text: 'Sini, Bapak tunjukin. Pertama, klik Buka kasir.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g45'}, text: 'Tinggal scan barcode barangnya. Mau tiga sekaligus? Ketik tiga bintang kode.'},
+      {who: 'a', screen: {img: 'g45', focus: [0.0, 0.88, 0.62, 0.1]}, text: 'Oh, tombol F12 itu buat bayar, ya?'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g46'}, text: 'Betul. Pilih tunai atau QRIS. Kembaliannya langsung dihitung.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g47'}, text: 'Struknya langsung tercetak. Klik Transaksi baru buat pembeli berikutnya.'},
+      {who: 'a', text: 'Terus kalau pembeli mau retur?'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g48'}, text: 'Buka Riwayat, pilih struknya, klik Retur. Pakai PIN kepala toko, ya.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g49', focus: [0.86, 0.015, 0.135, 0.05]}, text: 'Sorenya, buka Rekap shift, klik Kirim DO hari ini. Penjualan langsung masuk SAP.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g51', focus: [0.02, 0.85, 0.4, 0.09]}, text: 'Terakhir, tutup kasir dan cetak laporannya.'},
+      {who: 'a', pose: 'senang', text: 'Wah, nggak perlu kalkulator lagi, dong!'},
+      {who: 'b', pose: 'kamera', text: 'Jadi buat kasir di setiap dek: jualan, kirim DO, dan tutup kasir,'},
+      {who: 'b', pose: 'kamera', text: 'semuanya cukup lewat PID POS.'},
+    ],
+    penutup: {judul: 'Jualan di dek?', sub: 'Scan, bayar, kirim DO. Semua di PID POS.'},
+  },
+  {
+    id: 'Skit-Approve',
+    judul: 'Mana yang harus saya setujui?',
+    tempat: 'kantor',
+    papan: 'KANTOR PUSAT',
+    a: {name: 'Maya', peran: 'Penyetuju', gender: 'f', voice: 'id-ID-GadisNeural', baju: '6D28D9', aksen: '1F3B7A'},
+    b: {name: 'Fajar', peran: 'Admin sistem', gender: 'm', voice: 'id-ID-ArdiNeural', baju: '334155', aksen: '1E293B'},
+    lines: [
+      {who: 'a', pose: 'bingung', text: 'Aduh, katanya ada permintaan yang nunggu persetujuan saya.'},
+      {who: 'a', pose: 'bingung', text: 'Dari kapal, dari DC, dari purchasing. Yang mana duluan, ya?'},
+      {who: 'b', text: 'Permisi, Bu. Ada yang bisa saya bantu?'},
+      {who: 'a', text: 'Ini, Jar. Saya bingung mau setujui yang mana.'},
+      {who: 'b', pose: 'senang', text: 'Gampang, Bu. Di PID POS, tugas Ibu udah dikumpulin.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g18'}, text: 'Lihat angka di lonceng sama kartu biru ini. Itu yang lagi nunggu Ibu.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g19', focus: [0.02, 0.48, 0.95, 0.2]}, text: 'Klik, terus periksa barang, stok, dan harga jualnya.'},
+      {who: 'a', screen: {img: 'g19', focus: [0.69, 0.845, 0.28, 0.08]}, text: 'Kalau sudah sesuai, tinggal klik Setujui?'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g20'}, text: 'Iya, Bu. Sales Order langsung dibuat di SAP, satu per dek.'},
+      {who: 'a', text: 'Kalau ada yang nggak sesuai?'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g19'}, text: 'Tulis alasannya, lalu klik Tolak. Dokumennya balik ke pembuatnya.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g33'}, text: 'Buat PUR, GRPO, dan transfer juga sama. Polanya persis begitu.'},
+      {who: 'b', pose: 'tunjuk', screen: {img: 'g42'}, text: 'Purchase Order juga sama, dan bisa bertingkat.'},
+      {who: 'a', pose: 'senang', text: 'Wah, jadi nggak perlu tanda tangan kertas lagi, ya!'},
+      {who: 'b', pose: 'kamera', text: 'Jadi buat para penyetuju: cek lonceng, periksa, lalu setujui.'},
+      {who: 'b', pose: 'kamera', text: 'Semua jejaknya tercatat di PID POS dan SAP.'},
+    ],
+    penutup: {judul: 'Ada yang menunggu persetujuan?', sub: 'Cek lonceng di PID POS. Setujui, atau tolak dengan alasan.'},
   },
 ];
 

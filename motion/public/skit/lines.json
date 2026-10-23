@@ -190,5 +190,197 @@
   "voice": "id-ID-GadisNeural",
   "text": "semuanya lewat PID POS. Langsung tercatat di SAP.",
   "say": "semuanya lewat P-I-D pos. Langsung tercatat di es a pe."
+ },
+ {
+  "key": "Skit-Kasir/01",
+  "voice": "id-ID-GadisNeural",
+  "text": "Aduh, antreannya panjang banget. Aku masih hitung pakai kalkulator.",
+  "say": "Aduh, antreannya panjang banget. Aku masih hitung pakai kalkulator."
+ },
+ {
+  "key": "Skit-Kasir/02",
+  "voice": "id-ID-GadisNeural",
+  "text": "Terus nanti setor penjualannya ke SAP gimana, ya?",
+  "say": "Terus nanti setor penjualannya ke es a pe gimana, ya?"
+ },
+ {
+  "key": "Skit-Kasir/03",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Tenang, Put. Di PID POS semuanya udah otomatis.",
+  "say": "Tenang, Put. Di P-I-D pos semuanya udah otomatis."
+ },
+ {
+  "key": "Skit-Kasir/04",
+  "voice": "id-ID-GadisNeural",
+  "text": "Serius, Pak? Caranya gimana?",
+  "say": "Serius, Pak? Caranya gimana?"
+ },
+ {
+  "key": "Skit-Kasir/05",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Sini, Bapak tunjukin. Pertama, klik Buka kasir.",
+  "say": "Sini, Bapak tunjukin. Pertama, klik Buka kasir."
+ },
+ {
+  "key": "Skit-Kasir/06",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Tinggal scan barcode barangnya. Mau tiga sekaligus? Ketik tiga bintang kode.",
+  "say": "Tinggal sken barkod barangnya. Mau tiga sekaligus? Ketik tiga bintang kode."
+ },
+ {
+  "key": "Skit-Kasir/07",
+  "voice": "id-ID-GadisNeural",
+  "text": "Oh, tombol F12 itu buat bayar, ya?",
+  "say": "Oh, tombol ef dua belas itu buat bayar, ya?"
+ },
+ {
+  "key": "Skit-Kasir/08",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Betul. Pilih tunai atau QRIS. Kembaliannya langsung dihitung.",
+  "say": "Betul. Pilih tunai atau ki-ris. Kembaliannya langsung dihitung."
+ },
+ {
+  "key": "Skit-Kasir/09",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Struknya langsung tercetak. Klik Transaksi baru buat pembeli berikutnya.",
+  "say": "Struknya langsung tercetak. Klik Transaksi baru buat pembeli berikutnya."
+ },
+ {
+  "key": "Skit-Kasir/10",
+  "voice": "id-ID-GadisNeural",
+  "text": "Terus kalau pembeli mau retur?",
+  "say": "Terus kalau pembeli mau retur?"
+ },
+ {
+  "key": "Skit-Kasir/11",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Buka Riwayat, pilih struknya, klik Retur. Pakai PIN kepala toko, ya.",
+  "say": "Buka Riwayat, pilih struknya, klik Retur. Pakai PIN kepala toko, ya."
+ },
+ {
+  "key": "Skit-Kasir/12",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Sorenya, buka Rekap shift, klik Kirim DO hari ini. Penjualan langsung masuk SAP.",
+  "say": "Sorenya, buka Rekap syif, klik Kirim D-O hari ini. Penjualan langsung masuk es a pe."
+ },
+ {
+  "key": "Skit-Kasir/13",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Terakhir, tutup kasir dan cetak laporannya.",
+  "say": "Terakhir, tutup kasir dan cetak laporannya."
+ },
+ {
+  "key": "Skit-Kasir/14",
+  "voice": "id-ID-GadisNeural",
+  "text": "Wah, nggak perlu kalkulator lagi, dong!",
+  "say": "Wah, nggak perlu kalkulator lagi, dong!"
+ },
+ {
+  "key": "Skit-Kasir/15",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Jadi buat kasir di setiap dek: jualan, kirim DO, dan tutup kasir,",
+  "say": "Jadi buat kasir di setiap dek: jualan, kirim D-O, dan tutup kasir,"
+ },
+ {
+  "key": "Skit-Kasir/16",
+  "voice": "id-ID-ArdiNeural",
+  "text": "semuanya cukup lewat PID POS.",
+  "say": "semuanya cukup lewat P-I-D pos."
+ },
+ {
+  "key": "Skit-Approve/01",
+  "voice": "id-ID-GadisNeural",
+  "text": "Aduh, katanya ada permintaan yang nunggu persetujuan saya.",
+  "say": "Aduh, katanya ada permintaan yang nunggu persetujuan saya."
+ },
+ {
+  "key": "Skit-Approve/02",
+  "voice": "id-ID-GadisNeural",
+  "text": "Dari kapal, dari DC, dari purchasing. Yang mana duluan, ya?",
+  "say": "Dari kapal, dari D-C, dari purchasing. Yang mana duluan, ya?"
+ },
+ {
+  "key": "Skit-Approve/03",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Permisi, Bu. Ada yang bisa saya bantu?",
+  "say": "Permisi, Bu. Ada yang bisa saya bantu?"
+ },
+ {
+  "key": "Skit-Approve/04",
+  "voice": "id-ID-GadisNeural",
+  "text": "Ini, Jar. Saya bingung mau setujui yang mana.",
+  "say": "Ini, Jar. Saya bingung mau setujui yang mana."
+ },
+ {
+  "key": "Skit-Approve/05",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Gampang, Bu. Di PID POS, tugas Ibu udah dikumpulin.",
+  "say": "Gampang, Bu. Di P-I-D pos, tugas Ibu udah dikumpulin."
+ },
+ {
+  "key": "Skit-Approve/06",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Lihat angka di lonceng sama kartu biru ini. Itu yang lagi nunggu Ibu.",
+  "say": "Lihat angka di lonceng sama kartu biru ini. Itu yang lagi nunggu Ibu."
+ },
+ {
+  "key": "Skit-Approve/07",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Klik, terus periksa barang, stok, dan harga jualnya.",
+  "say": "Klik, terus periksa barang, stok, dan harga jualnya."
+ },
+ {
+  "key": "Skit-Approve/08",
+  "voice": "id-ID-GadisNeural",
+  "text": "Kalau sudah sesuai, tinggal klik Setujui?",
+  "say": "Kalau sudah sesuai, tinggal klik Setujui?"
+ },
+ {
+  "key": "Skit-Approve/09",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Iya, Bu. Sales Order langsung dibuat di SAP, satu per dek.",
+  "say": "Iya, Bu. Sels Order langsung dibuat di es a pe, satu per dek."
+ },
+ {
+  "key": "Skit-Approve/10",
+  "voice": "id-ID-GadisNeural",
+  "text": "Kalau ada yang nggak sesuai?",
+  "say": "Kalau ada yang nggak sesuai?"
+ },
+ {
+  "key": "Skit-Approve/11",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Tulis alasannya, lalu klik Tolak. Dokumennya balik ke pembuatnya.",
+  "say": "Tulis alasannya, lalu klik Tolak. Dokumennya balik ke pembuatnya."
+ },
+ {
+  "key": "Skit-Approve/12",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Buat PUR, GRPO, dan transfer juga sama. Polanya persis begitu.",
+  "say": "Buat pe u er, G-R-P-O, dan transfer juga sama. Polanya persis begitu."
+ },
+ {
+  "key": "Skit-Approve/13",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Purchase Order juga sama, dan bisa bertingkat.",
+  "say": "Percis Order juga sama, dan bisa bertingkat."
+ },
+ {
+  "key": "Skit-Approve/14",
+  "voice": "id-ID-GadisNeural",
+  "text": "Wah, jadi nggak perlu tanda tangan kertas lagi, ya!",
+  "say": "Wah, jadi nggak perlu tanda tangan kertas lagi, ya!"
+ },
+ {
+  "key": "Skit-Approve/15",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Jadi buat para penyetuju: cek lonceng, periksa, lalu setujui.",
+  "say": "Jadi buat para penyetuju: cek lonceng, periksa, lalu setujui."
+ },
+ {
+  "key": "Skit-Approve/16",
+  "voice": "id-ID-ArdiNeural",
+  "text": "Semua jejaknya tercatat di PID POS dan SAP.",
+  "say": "Semua jejaknya tercatat di P-I-D pos dan es a pe."
  }
 ]

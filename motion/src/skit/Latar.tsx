@@ -27,7 +27,7 @@ const Rak: React.FC<{x: number; y: number; w: number; items: string[]}> = ({x, y
   </g>
 );
 
-export const LatarKapal: React.FC<{t: number}> = ({t}) => {
+export const LatarKapal: React.FC<{t: number; papan?: string}> = ({t, papan = 'TOKO · DEK 7'}) => {
   const sway = Math.sin(t / 55) * 0.5;
   const porthole = (cx: number, cy: number) => (
     <g>
@@ -68,7 +68,7 @@ export const LatarKapal: React.FC<{t: number}> = ({t}) => {
         {/* papan nama toko */}
         <rect x={340} y={150} width={400} height={86} rx={16} fill="#1F3B7A" />
         <text x={540} y={207} textAnchor="middle" fontSize={44} fontWeight={800} fill="white" fontFamily="Plus Jakarta Sans">
-          TOKO · DEK 7
+          {papan}
         </text>
         {porthole(165, 470)}
         {porthole(915, 470)}
@@ -85,7 +85,7 @@ export const LatarKapal: React.FC<{t: number}> = ({t}) => {
   );
 };
 
-export const LatarGudang: React.FC<{t: number}> = ({t}) => {
+export const LatarGudang: React.FC<{t: number; papan?: string}> = ({t, papan = 'GUDANG DC-JKT'}) => {
   const box = (x: number, y: number, w: number, h: number, label?: string) => (
     <g key={`${x}-${y}`}>
       <rect x={x} y={y} width={w} height={h} rx={4} fill="#C89B62" />
@@ -118,7 +118,7 @@ export const LatarGudang: React.FC<{t: number}> = ({t}) => {
         ))}
         <rect x={340} y={140} width={400} height={80} rx={14} fill="#1F3B7A" />
         <text x={540} y={194} textAnchor="middle" fontSize={40} fontWeight={800} fill="white" fontFamily="Plus Jakarta Sans">
-          GUDANG DC-JKT
+          {papan}
         </text>
         {/* rak tinggi */}
         {[30, 1035].map((x) => (
@@ -139,9 +139,9 @@ export const LatarGudang: React.FC<{t: number}> = ({t}) => {
 };
 
 // Meja atau konter di depan tokoh, dengan laptop di tengah.
-export const Konter: React.FC<{tempat: 'kapal' | 'gudang'}> = ({tempat}) => {
-  const top = tempat === 'kapal' ? '#B07A45' : '#8E99A8';
-  const front = tempat === 'kapal' ? '#1F3B7A' : '#5B6B86';
+export const Konter: React.FC<{tempat: 'kapal' | 'gudang' | 'kantor'}> = ({tempat}) => {
+  const top = {kapal: '#B07A45', gudang: '#8E99A8', kantor: '#D9B88F'}[tempat];
+  const front = {kapal: '#1F3B7A', gudang: '#5B6B86', kantor: '#8A6A45'}[tempat];
   return (
     <svg width={1080} height={420} viewBox="0 0 1080 420" style={{position: 'absolute', left: 0, top: 1500, overflow: 'visible'}}>
       <path d="M 380 40 L 700 40 L 680 -150 L 400 -150 Z" fill="#AEB8C6" />
@@ -151,5 +151,62 @@ export const Konter: React.FC<{tempat: 'kapal' | 'gudang'}> = ({tempat}) => {
       <rect x={0} y={80} width={1080} height={340} fill={front} />
       <rect x={0} y={80} width={1080} height={10} fill="black" opacity={0.15} />
     </svg>
+  );
+};
+
+// Kantor pusat: jendela dengan pemandangan pelabuhan, papan tulis alur, jam dinding, tanaman.
+export const LatarKantor: React.FC<{t: number; papan?: string}> = ({t, papan = 'KANTOR PUSAT'}) => {
+  const jam = (t / 30) * 6;
+  return (
+    <AbsoluteFill>
+      <svg width={1080} height={1920} viewBox="0 0 1080 1920">
+        <defs>
+          <linearGradient id="langit" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#9CC9F5" />
+            <stop offset="1" stopColor="#DCEEFF" />
+          </linearGradient>
+        </defs>
+        <rect width={1080} height={1920} fill="#F4F1EC" />
+        <rect y={0} width={1080} height={80} fill="#E4DED4" />
+        {/* jendela */}
+        <rect x={60} y={300} width={560} height={620} rx={12} fill="#7C8796" />
+        <rect x={78} y={318} width={524} height={584} fill="url(#langit)" />
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <rect key={i} x={95 + i * 85} y={640 - (i % 3) * 70} width={70} height={262 + (i % 3) * 70} fill="#7F93AE" opacity={0.75} />
+        ))}
+        <rect x={78} y={820} width={524} height={82} fill="#2E6FB5" />
+        <g transform={`translate(${((t * 1.2) % 700) - 120} 0)`}>
+          <path d="M 0 812 L 150 812 L 135 836 L 15 836 Z" fill="#1F3B7A" />
+          <rect x={40} y={790} width={70} height={22} fill="white" />
+        </g>
+        <rect x={337} y={318} width={6} height={584} fill="#7C8796" />
+        <rect x={78} y={608} width={524} height={6} fill="#7C8796" />
+        {/* papan tulis alur */}
+        <rect x={660} y={300} width={370} height={430} rx={14} fill="white" stroke="#C9C2B6" strokeWidth={6} />
+        {['Pesan', 'SO', 'PUR', 'PO', 'DO'].map((w, i) => (
+          <g key={w}>
+            <rect x={690} y={330 + i * 78} width={150} height={52} rx={10} fill={['#0F766E', '#6D28D9', '#BE185D', '#CA8A04', '#15803D'][i]} />
+            <text x={765} y={364 + i * 78} textAnchor="middle" fontSize={26} fontWeight={800} fill="white" fontFamily="Plus Jakarta Sans">
+              {w}
+            </text>
+            <path d={`M 860 356 L ${900 + i * 18} 356`} stroke="#9AA6BD" strokeWidth={6} strokeLinecap="round" />
+            <circle cx={950 + (i % 2) * 30} cy={356 + i * 78} r={14} fill="#22C55E" />
+          </g>
+        ))}
+        {/* jam dinding */}
+        <circle cx={845} cy={180} r={62} fill="white" stroke="#3E4A5E" strokeWidth={8} />
+        <line x1={845} y1={180} x2={845 + Math.sin((jam * Math.PI) / 180) * 42} y2={180 - Math.cos((jam * Math.PI) / 180) * 42} stroke="#C0392B" strokeWidth={4} strokeLinecap="round" />
+        <line x1={845} y1={180} x2={870} y2={160} stroke="#1B2437" strokeWidth={8} strokeLinecap="round" />
+        <rect x={160} y={150} width={400} height={80} rx={14} fill="#1F3B7A" />
+        <text x={360} y={204} textAnchor="middle" fontSize={40} fontWeight={800} fill="white" fontFamily="Plus Jakarta Sans">
+          {papan}
+        </text>
+        {/* tanaman */}
+        <path d="M 1000 1080 Q 960 940 1010 860 Q 1040 950 1030 1080 Z" fill="#2F855A" />
+        <path d="M 990 1080 Q 930 980 950 900 Q 1000 980 1010 1080 Z" fill="#38A169" />
+        <rect x={960} y={1060} width={90} height={60} rx={10} fill="#C05621" />
+        <rect x={0} y={1100} width={1080} height={820} fill="#D8D0C2" />
+      </svg>
+    </AbsoluteFill>
   );
 };

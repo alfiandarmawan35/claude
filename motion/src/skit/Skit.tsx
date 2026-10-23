@@ -5,7 +5,7 @@ import {DIMS} from '../data/dims';
 import {Screen, BedMusic} from '../components/common';
 import {SKITS, SOROT, Skit as SkitT, skitKey, Line} from './data';
 import {Person} from './Person';
-import {LatarGudang, LatarKapal, Konter} from './Latar';
+import {LatarGudang, LatarKapal, LatarKantor, Konter} from './Latar';
 import voJson from './skit_vo.json';
 
 type Word = {w: string; s: number; e: number};
@@ -168,7 +168,7 @@ const Adegan: React.FC<{s: SkitT; line: Line; prev?: Line; vo?: Vo; dur: number;
   const punch = line.pose === 'bingung' ? 1 + 0.05 * spring({frame: f, fps, config: {damping: 9}}) : 1;
   const newScreen = line.screen && (!prev?.screen || prev.screen.img !== line.screen.img);
   const scr = line.screen ? (newScreen ? spring({frame: f, fps, config: {damping: 14}}) : 1) : 0;
-  const Latar = s.tempat === 'kapal' ? LatarKapal : LatarGudang;
+  const Latar = {kapal: LatarKapal, gudang: LatarGudang, kantor: LatarKantor}[s.tempat];
   const tokoh = (k: 'a' | 'b') => {
     const T = s[k];
     const talking = k === speaker;
@@ -195,7 +195,7 @@ const Adegan: React.FC<{s: SkitT; line: Line; prev?: Line; vo?: Vo; dur: number;
   return (
     <AbsoluteFill style={{filter: `grayscale(${grey})`, overflow: 'hidden'}}>
       <AbsoluteFill style={{transform: `scale(${punch}) translateX(${camX}px)`}}>
-        <Latar t={f} />
+        <Latar t={f} papan={s.papan} />
         {kamera ? (
           <div
             style={{

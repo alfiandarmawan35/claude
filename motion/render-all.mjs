@@ -14,6 +14,8 @@ const all = [
   ['Ep0-AlurLengkap', '08_Alur_Lengkap'],
   ['Skit-Kapal', 'Skit_Kapal_Barang_kok_belum_datang'],
   ['Skit-Gudang', 'Skit_Gudang_Stok_kurang'],
+  ['Skit-Kasir', 'Skit_Kasir_Antrean_panjang'],
+  ['Skit-Approve', 'Skit_Approve_Mana_yang_disetujui'],
 ];
 const pick = process.argv.slice(2);
 for (const [id, name] of all) {
