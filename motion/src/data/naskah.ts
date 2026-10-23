@@ -129,7 +129,7 @@ export const LANGKAH: Record<string, string[]> = {
     'Supaya lebih cepat, hafalkan tombol ini. F2 untuk cari barang, F4 untuk tahan pesanan, F8 untuk ubah jumlah atau diskon, F9 untuk riwayat, dan F12 untuk bayar.',
     'Kalau muncul pesan stok habis, artinya barang itu belum ada di dek ini. Minta admin kapal untuk memindahkannya dulu.',
     'Saatnya bayar. Tekan F12, lalu pilih tunai atau QRIS. Isi uang yang diterima, dan kembaliannya langsung dihitung.',
-    'Klik Selesaikan pembayaran. Struk tercetak, lalu klik Transaksi baru untuk pembeli berikutnya.',
+    'Klik Selesaikan pembayaran. Struknya langsung tercetak, lalu klik Transaksi baru untuk pembeli berikutnya.',
     'Perlu cetak ulang struk? Buka Riwayat. Di sini juga ada retur barang, yang butuh PIN kepala toko.',
     'Di akhir hari, buka Rekap shift, lalu klik Kirim DO hari ini. Tunggu sebentar sampai nomor DO-nya muncul, ya.',
     'Di menu Kas, catat setiap kas keluar, setoran ke pusat, dan kas masuk. Untuk kas keluar yang besar, perlu PIN kepala toko.',
@@ -174,7 +174,7 @@ export const INTRO_UCAPAN: Record<string, string> = {
   'intro/05-peran-2': 'Jadi Anda tidak perlu mencari-cari. Lonceng, dan tab Giliran saya, selalu menunjukkan apa yang menunggu Anda.',
   'intro/06-kasir-1': 'Di dek, kasir tinggal scan barang. Totalnya langsung muncul.',
   'intro/06-kasir-2': 'Pembeli bisa bayar tunai, atau pakai QRIS. Kembaliannya dihitung otomatis.',
-  'intro/06-kasir-3': 'Struk tercetak, dan penjualan hari itu dikirim ke SAP, cukup dengan satu klik.',
+  'intro/06-kasir-3': 'Struknya langsung tercetak, dan penjualan hari itu dikirim ke SAP, cukup dengan satu klik.',
   'intro/07-penutup':
     'PID POS. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda.',
 };

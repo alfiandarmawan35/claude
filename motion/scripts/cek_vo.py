@@ -43,11 +43,14 @@ def load(p):
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--model", default="medium")
+ap.add_argument("--cari", default="", help="hanya kalimat yang naskahnya cocok dengan regex ini")
 a = ap.parse_args()
 m = WhisperModel(a.model, device="cpu", compute_type="int8", cpu_threads=4)
 hasil = []
 E_ = N_ = 0
 for n in json.loads((VO / "narasi.json").read_text(encoding="utf-8")):
+    if a.cari and not re.search(a.cari, n["text"]):
+        continue
     seg, _ = m.transcribe(load(VO / f"{n['key']}.mp3"), language="id", beam_size=5)
     dengar = " ".join(s.text.strip() for s in seg)
     e, k = selisih(n["text"], dengar)

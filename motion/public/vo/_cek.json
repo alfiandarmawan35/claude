@@ -1,0 +1,200 @@
+[
+ {
+  "key": "Ep0-AlurLengkap/s01",
+  "salah": 9,
+  "naskah": "Semuanya dimulai di kapal. Admin kapal KM Awu memesan enam AQUA untuk Dek 3, dan dua puluh empat Teh Pucuk untuk Dek 7. Lalu klik Kirim ke DC.",
+  "terdengar": "Semuanya dimulai di kapal. Admin kapal KMAW memesan 6 akua untuk Deck 3 dan 24 teh pucuk untuk Deck 7. Lalu klik kirim ke DC."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s05",
+  "salah": 5,
+  "naskah": "Lanjut ke admin DC. AQUA masih ada di gudang, jadi enam diambil dari stok DC. Teh Pucuk kosong, jadi dua puluh empat harus dibeli.",
+  "terdengar": "Lanjut ke admin DC Aqua masih ada di gudang, jadi 6 diambil dari stok DC-Teh Pucu Kosong, jadi 24 harus dibeli."
+ },
+ {
+  "key": "Ep1-AdminKapal/99-penutup",
+  "salah": 4,
+  "naskah": "Jadi, ingat tiga hal ini. Pesan ke DC paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di SAP. Sampai jumpa di episode berikutnya!",
+  "terdengar": "Jadi, ingat tiga hal ini. Pesan ke DC paling lambat 5 hari sebelumnya. Terima barang per deck dengan ceklis. Dan mutasi antar deck langsung tercatat di SAP. Sampai jumpa di episode berikutnya."
+ },
+ {
+  "key": "Ep1-AdminKapal/00-pembuka",
+  "salah": 2,
+  "naskah": "Halo, Admin kapal! Di episode ini, kita akan pesan barang ke DC, terima kirimannya di dek, lalu pindahkan barang antar dek. Yuk, kita mulai.",
+  "terdengar": "Halo, Admin Kapal. Di episode ini, kita akan pesan barang ke DC, terima kirimannya di Deck, lalu pindahkan barang antar Deck. Yuk, kita mulai."
+ },
+ {
+  "key": "Ep4-ApprovePUR/99-penutup",
+  "salah": 2,
+  "naskah": "Jadi, ada tiga yang Anda setujui. PUR, GRPO, dan transfer ke dek. Sampai jumpa di episode lima!",
+  "terdengar": "Jadi, ada tiga yang Anda setujui, PUR, GRPO, dan transfer ke DEC. Sampai jumpa di episode 5."
+ },
+ {
+  "key": "intro/04-alur-3",
+  "salah": 1,
+  "naskah": "Lalu admin DC memilah, mana yang bisa diambil dari stok gudang.",
+  "terdengar": "Lalu admin DC memilah, mana yang bisa diambil dari stop gudang."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s12",
+  "salah": 1,
+  "naskah": "Approve PUR menyetujui GRPO, dan stok di DC bertambah.",
+  "terdengar": "Aprof PUR menyetujui GRPO dan stok di DC bertambah."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s13",
+  "salah": 1,
+  "naskah": "Sekarang barang siap dikirim. Admin DC memeriksa jumlah untuk tiap dek, lalu mengajukan Inventory Transfer.",
+  "terdengar": "Sekarang barang siap dikirim. Admin DC memeriksa jumlah untuk tiap deck, lalu mengajukan inventory transfer."
+ },
+ {
+  "key": "Ep1-AdminKapal/s01",
+  "salah": 1,
+  "naskah": "Begitu masuk, Anda langsung disambut Beranda. Di sini terlihat kiriman dari DC, tugas berikutnya, dan penjualan hari ini di setiap dek.",
+  "terdengar": "Begitu masuk, Anda langsung disambut beranda. Di sini terlihat kiriman dari DC, tugas berikutnya, dan penjualan hari ini di setiap deck."
+ },
+ {
+  "key": "Ep1-AdminKapal/s04",
+  "salah": 1,
+  "naskah": "Lalu isi tanggal barang dibutuhkan. Ingat, minimal lima hari sebelumnya, ya. Tambahkan juga catatan untuk DC kalau perlu.",
+  "terdengar": "lalu isi tanggal barang dibutuhkan. Ingat, minimal 5 hari sebelumnya, ya. Tambahkan juga catatan untuk DC kalau perlu."
+ },
+ {
+  "key": "Ep1-AdminKapal/s09",
+  "salah": 1,
+  "naskah": "Saat kiriman dari DC tiba, buka Stok, lalu Terima barang. Di tab Kiriman masuk, klik Periksa dan terima.",
+  "terdengar": "Saat kiriman dari DC tiba, buka stok, lalu terima barang. Di tag kiriman masuk, klik periksa dan terima."
+ },
+ {
+  "key": "Ep2-ApproveSO/s04",
+  "salah": 1,
+  "naskah": "Begitu disetujui, Sales Order langsung dibuat di SAP, satu untuk setiap dek. Permintaan pun lanjut ke admin DC.",
+  "terdengar": "Begitu disetujui, sales order langsung dibuat di SAP, satu untuk setiap DAG. Permintaan pun lanjut ke Admin DC."
+ },
+ {
+  "key": "Ep2-ApproveSO/s10",
+  "salah": 1,
+  "naskah": "Sebagai P2, Anda juga mengisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap DC.",
+  "terdengar": "Sebagai P2, Anda juga menyisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap DC."
+ },
+ {
+  "key": "Ep3-AdminDC/00-pembuka",
+  "salah": 1,
+  "naskah": "Halo, Admin DC! Di episode ini, kita pilah stok di gudang, catat barang dari vendor, lalu kirim barangnya ke dek.",
+  "terdengar": "Halo, Admin DC, di episode ini, kita pilah stok di gudang, catat barang dari vendor, lalu kirim barangnya ke DAG."
+ },
+ {
+  "key": "Ep3-AdminDC/s03",
+  "salah": 1,
+  "naskah": "Kalau barangnya sama sekali tidak ada di gudang, klik Tidak ada di stok DC. Lalu, klik Setujui PUR tahap satu.",
+  "terdengar": "Kalau barangnya sama sekali tidak ada di gudang, klik Tidak ada di stok DC, lalu klik Setujui PUR tahap 1."
+ },
+ {
+  "key": "Ep3-AdminDC/s06",
+  "salah": 1,
+  "naskah": "Selanjutnya, panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil GRPO.",
+  "terdengar": "Selanjutnya, Panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis dari stop gudang ditambah hasil GRPO."
+ },
+ {
+  "key": "Ep3-AdminDC/99-penutup",
+  "salah": 1,
+  "naskah": "Jadi, ingat tiga hal ini. Isi Transfer DC, sisanya jadi PUR. Ajukan GRPO saat barang tiba. Dan ajukan transfer untuk setiap dek. Sampai jumpa di episode empat!",
+  "terdengar": "Jadi, ingat tiga hal ini, isi transfer DC, sisanya jadi PUR, ajukan GRPO saat barang tiba, dan ajukan transfer untuk setiap dek. Sampai jumpa di episode 4."
+ },
+ {
+  "key": "Ep4-ApprovePUR/00-pembuka",
+  "salah": 1,
+  "naskah": "Halo! Episode ini untuk penyetuju PUR. Anda akan menyetujui tiga hal: Purchase Request, GRPO, dan Inventory Transfer.",
+  "terdengar": "Halo, episode ini untuk penyetujuan PUR. Anda akan menyetujui tiga hal, Purchase Request, GRPO, dan Inventory Transfer."
+ },
+ {
+  "key": "Ep4-ApprovePUR/s01",
+  "salah": 1,
+  "naskah": "Buka permintaan di tab Approval PUR. Periksa berapa yang diambil dari stok DC, dan berapa yang harus dibeli.",
+  "terdengar": "Buka permintaan di tab Aproval PUR. Periksa berapa yang diambil dari stok DC dan berapa yang harus dibeli."
+ },
+ {
+  "key": "intro/04-alur-1",
+  "salah": 0,
+  "naskah": "Semuanya dimulai dari kapal. Admin kapal memesan barang ke DC.",
+  "terdengar": "Semuanya dimulai dari kapal. Admin kapal memesan barang ke DC."
+ },
+ {
+  "key": "intro/04-alur-5",
+  "salah": 0,
+  "naskah": "Barang dari vendor diterima di DC, dengan GRPO.",
+  "terdengar": "Barang dari vendor diterima di DC dengan GRPO."
+ },
+ {
+  "key": "intro/06-kasir-3",
+  "salah": 0,
+  "naskah": "Struknya langsung tercetak, dan penjualan hari itu dikirim ke SAP, cukup dengan satu klik.",
+  "terdengar": "Struknya langsung tercetak, dan penjualan hari itu dikirim ke SAP, cukup dengan satu klik."
+ },
+ {
+  "key": "Ep0-AlurLengkap/00-pembuka",
+  "salah": 0,
+  "naskah": "Halo! Di video ini, kita ikuti satu permintaan barang dari awal sampai akhir. Mulai dari kapal memesan ke DC, sampai barangnya terjual di kasir, dan dikirim ke SAP sebagai Delivery Order.",
+  "terdengar": "Halo, di video ini kita ikuti satu permintaan barang dari awal sampai akhir, mulai dari kapal memesan ke DC sampai barangnya terjual di Kasir dan dikirim ke SAP sebagai Delivery Order."
+ },
+ {
+  "key": "Ep0-AlurLengkap/s11",
+  "salah": 0,
+  "naskah": "Beberapa hari kemudian, barang dari vendor tiba di gudang. Admin DC mengisi jumlah yang diterima, lalu mengajukan GRPO.",
+  "terdengar": "Beberapa hari kemudian, barang dari vendor tiba di gudang. Admin DC mengisi jumlah yang diterima, lalu mengajukan GRPO."
+ },
+ {
+  "key": "Ep1-AdminKapal/s03",
+  "salah": 0,
+  "naskah": "Sekarang, kita buat pesanan. Klik Pesan DC, lalu Pesanan baru. Pilih nomor voyage, periode, dan pelabuhan suplainya.",
+  "terdengar": "Sekarang, kita buat pesanan. Klik Pesan DC, lalu Pesanan Baru. Pilih nomor voyage, periode, dan pelabuhan suplainya."
+ },
+ {
+  "key": "Ep1-AdminKapal/s06",
+  "salah": 0,
+  "naskah": "Sudah lengkap? Klik Kirim ke DC. Kalau belum selesai, tenang saja, klik Simpan draft dulu.",
+  "terdengar": "Sudah lengkap? Klik kirim ke DC. Kalau belum selesai, tenang saja, klik simpan draft dulu."
+ },
+ {
+  "key": "Ep3-AdminDC/s02",
+  "salah": 0,
+  "naskah": "Buka permintaannya, lalu isi kolom Transfer DC dengan jumlah yang bisa diambil dari stok gudang. Sisanya, otomatis jadi PUR.",
+  "terdengar": "Buka permintaannya, lalu isi kolom transfer DC dengan jumlah yang bisa diambil dari stok gudang. Sisanya otomatis jadi PUR."
+ },
+ {
+  "key": "Ep3-AdminDC/s05",
+  "salah": 0,
+  "naskah": "Lalu klik Ajukan GRPO. GRPO-nya akan dibuat di SAP, setelah disetujui oleh approve PUR.",
+  "terdengar": "Lalu klik ajukan GRPO, GRPonya akan dibuat di SAP setelah disetujui oleh Approve PUR."
+ },
+ {
+  "key": "Ep3-AdminDC/s08",
+  "salah": 0,
+  "naskah": "Untuk memantau gudang, buka Laporan stok DC. Kartu stoknya bahkan bisa diekspor ke Excel.",
+  "terdengar": "Untuk memantau gudang, buka laporan stok DC, kartu stoknya bahkan bisa diekspor ke Excel."
+ },
+ {
+  "key": "Ep4-ApprovePUR/01-alur",
+  "salah": 0,
+  "naskah": "Anda menjaga bagian pembelian. Setiap PUR, GRPO, dan transfer, lewat persetujuan Anda.",
+  "terdengar": "Anda menjaga bagian pembelian setiap PUR, GRPO, dan transfer lewat persetujuan Anda."
+ },
+ {
+  "key": "Ep4-ApprovePUR/s04",
+  "salah": 0,
+  "naskah": "Saat barang dari vendor tiba, admin DC mengajukan GRPO. Periksa jumlahnya, lalu klik Setujui.",
+  "terdengar": "Saat barang dari vendor tiba, admin DC mengajukan GRPO, periksa jumlahnya, lalu klik Setujui."
+ },
+ {
+  "key": "Ep4-ApprovePUR/s07",
+  "salah": 0,
+  "naskah": "Kalau ada yang perlu diperbaiki, tulis catatan, lalu klik Tolak. Dokumennya kembali ke admin DC.",
+  "terdengar": "Kalau ada yang perlu diperbaiki, tulis catatan, lalu klik Tolak. Dokumennya kembali ke Admin DC."
+ },
+ {
+  "key": "Ep7-Kasir/s07",
+  "salah": 0,
+  "naskah": "Klik Selesaikan pembayaran. Struknya langsung tercetak, lalu klik Transaksi baru untuk pembeli berikutnya.",
+  "terdengar": "Klik Selesaikan Pembayaran. Struknya langsung tercetak, lalu klik Transaksi Baru untuk pembeli berikutnya."
+ }
+]
