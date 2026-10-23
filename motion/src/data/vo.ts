@@ -21,7 +21,8 @@ const ANGKA: Record<string, string> = {
   '12': 'dua belas',
 };
 
-// Ubah teks layar menjadi teks ucapan agar singkatan dibaca dengan benar.
+// Ubah teks menjadi teks ucapan untuk suara id-ID-GadisNeural, agar singkatan dan istilah Inggris
+// dibaca dengan benar. Ejaan di sini sudah diuji dengan speech-to-text (Whisper) pada suara tersebut.
 export const ucapan = (t: string) =>
   t
     .replace(/·/g, ',')
@@ -31,14 +32,15 @@ export const ucapan = (t: string) =>
     .replace(/H-5/g, 'ha min lima')
     .replace(/\bF(\d+)\b/g, (_, n) => `ef ${ANGKA[n] ?? n}`)
     .replace(/\/(?=\w)/g, ' atau ')
+    .replace(/\bPID POS\b/g, 'P-I-D pos')
     .replace(/\bGRPO\b/g, 'ge er pe o')
     .replace(/\bPUR\b/g, 'pe u er')
     .replace(/\bPO\b/g, 'pe o')
     .replace(/\bSO\b/g, 'es o')
     .replace(/\bSAP\b/g, 'es a pe')
     .replace(/\bDC\b/g, 'de ce')
-    .replace(/\bDO\b/g, 'de o')
-    .replace(/\bQRIS\b/g, 'kiu-ris')
+    .replace(/\bDO\b/g, 'D-O')
+    .replace(/\bQRIS\b/g, 'ki-ris')
     .replace(/\bPPN\b/g, 'pe pe en')
     .replace(/\bP2\b/g, 'pe dua')
     .replace(/\bCSV\b/g, 'ce es ve')
@@ -46,7 +48,23 @@ export const ucapan = (t: string) =>
     .replace(/\bQR\b/g, 'kiu ar')
     .replace(/\bKM\b/g, 'ka em')
     .replace(/\bPOS\b/g, 'pos')
-    .replace(/\bPID\b/g, 'pe i de')
+    // istilah Inggris, dieja seperti diucapkan orang Indonesia
+    .replace(/\bApproval\b/g, 'Apruval')
+    .replace(/\bapproval\b/g, 'apruval')
+    .replace(/\b[Aa]pprove\b/g, 'apruv')
+    .replace(/\bPurchase\b/g, 'Percis')
+    .replace(/\bRequest\b/g, 'Rikues')
+    .replace(/\bInventory\b/g, 'Inventori')
+    .replace(/\bSales\b/g, 'Sels')
+    .replace(/\bchecklist\b/g, 'ceklis')
+    .replace(/\b[Ss]can\b/g, 'sken')
+    .replace(/\bbarcode\b/g, 'barkod')
+    .replace(/\b[Ss]hift\b/g, 'syif')
+    .replace(/\bforecast\b/g, 'forkes')
+    .replace(/\bdraft\b/g, 'draf')
+    .replace(/\bvoyage\b/g, 'voyej')
+    .replace(/\bManual Book\b/g, 'Manual Buk')
+    .replace(/\bExcel\b/g, 'eksel')
     .replace(/\b[Qq]ty\b/g, 'jumlah')
     .replace(/\bpcs\b/g, 'pis')
     .replace(/\bNo\. /g, 'nomor ')

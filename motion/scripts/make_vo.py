@@ -33,7 +33,7 @@ def durasi(p: Path) -> float:
 async def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--voice", default="id-ID-GadisNeural")
-    ap.add_argument("--rate", default="+12%")
+    ap.add_argument("--rate", default="+5%")
     ap.add_argument("--proxy", default=os.environ.get("TTS_PROXY"))
     a = ap.parse_args()
 

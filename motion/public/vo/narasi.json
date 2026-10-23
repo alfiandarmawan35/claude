@@ -7,12 +7,12 @@
  {
   "key": "intro/02-masalah",
   "text": "Tapi selama ini, permintaan barang, persetujuan, dan stok, tercatat di banyak tempat. Ada di kertas, di chat, di Excel.",
-  "say": "Tapi selama ini, permintaan barang, persetujuan, dan stok, tercatat di banyak tempat. Ada di kertas, di chat, di Excel."
+  "say": "Tapi selama ini, permintaan barang, persetujuan, dan stok, tercatat di banyak tempat. Ada di kertas, di chat, di eksel."
  },
  {
   "key": "intro/03-pidpos",
   "text": "Sekarang, ada PID POS. Satu aplikasi, satu alur, dan langsung terhubung ke SAP.",
-  "say": "Sekarang, ada pe i de pos. Satu aplikasi, satu alur, dan langsung terhubung ke es a pe."
+  "say": "Sekarang, ada P-I-D pos. Satu aplikasi, satu alur, dan langsung terhubung ke es a pe."
  },
  {
   "key": "intro/04-alur-1",
@@ -22,7 +22,7 @@
  {
   "key": "intro/04-alur-2",
   "text": "Setelah disetujui, Sales Order langsung dibuat di SAP, satu untuk setiap dek.",
-  "say": "Setelah disetujui, Sales Order langsung dibuat di es a pe, satu untuk setiap dek."
+  "say": "Setelah disetujui, Sels Order langsung dibuat di es a pe, satu untuk setiap dek."
  },
  {
   "key": "intro/04-alur-3",
@@ -32,7 +32,7 @@
  {
   "key": "intro/04-alur-4",
   "text": "Kalau stoknya kurang, barang dibeli lewat Purchase Request, dan Purchase Order.",
-  "say": "Kalau stoknya kurang, barang dibeli lewat Purchase Request, dan Purchase Order."
+  "say": "Kalau stoknya kurang, barang dibeli lewat Percis Rikues, dan Percis Order."
  },
  {
   "key": "intro/04-alur-5",
@@ -42,7 +42,7 @@
  {
   "key": "intro/04-alur-6",
   "text": "Kemudian, barang dikirim ke dek, lewat Inventory Transfer.",
-  "say": "Kemudian, barang dikirim ke dek, lewat Inventory Transfer."
+  "say": "Kemudian, barang dikirim ke dek, lewat Inventori Transfer."
  },
  {
   "key": "intro/04-alur-7",
@@ -67,12 +67,12 @@
  {
   "key": "intro/06-kasir-1",
   "text": "Di dek, kasir tinggal scan barang. Totalnya langsung muncul.",
-  "say": "Di dek, kasir tinggal scan barang. Totalnya langsung muncul."
+  "say": "Di dek, kasir tinggal sken barang. Totalnya langsung muncul."
  },
  {
   "key": "intro/06-kasir-2",
   "text": "Pembeli bisa bayar tunai, atau pakai QRIS. Kembaliannya dihitung otomatis.",
-  "say": "Pembeli bisa bayar tunai, atau pakai kiu-ris. Kembaliannya dihitung otomatis."
+  "say": "Pembeli bisa bayar tunai, atau pakai ki-ris. Kembaliannya dihitung otomatis."
  },
  {
   "key": "intro/06-kasir-3",
@@ -82,7 +82,7 @@
  {
   "key": "intro/07-penutup",
   "text": "PID POS. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda.",
-  "say": "pe i de pos. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda."
+  "say": "P-I-D pos. Dari permintaan kapal, sampai struk kasir, semuanya tercatat. Yuk, tonton video sesuai peran Anda."
  },
  {
   "key": "Ep1-AdminKapal/00-pembuka",
@@ -107,7 +107,7 @@
  {
   "key": "Ep1-AdminKapal/s03",
   "text": "Sekarang, kita buat pesanan. Klik Pesan DC, lalu Pesanan baru. Pilih nomor voyage, periode, dan pelabuhan suplainya.",
-  "say": "Sekarang, kita buat pesanan. Klik Pesan de ce, lalu Pesanan baru. Pilih nomor voyage, periode, dan pelabuhan suplainya."
+  "say": "Sekarang, kita buat pesanan. Klik Pesan de ce, lalu Pesanan baru. Pilih nomor voyej, periode, dan pelabuhan suplainya."
  },
  {
   "key": "Ep1-AdminKapal/s04",
@@ -117,12 +117,12 @@
  {
   "key": "Ep1-AdminKapal/s05",
   "text": "Berikutnya, cari barangnya, atau langsung scan barcode. Untuk setiap barang, pilih dek tujuannya, lalu isi jumlah yang dipesan.",
-  "say": "Berikutnya, cari barangnya, atau langsung scan barcode. Untuk setiap barang, pilih dek tujuannya, lalu isi jumlah yang dipesan."
+  "say": "Berikutnya, cari barangnya, atau langsung sken barkod. Untuk setiap barang, pilih dek tujuannya, lalu isi jumlah yang dipesan."
  },
  {
   "key": "Ep1-AdminKapal/s06",
   "text": "Sudah lengkap? Klik Kirim ke DC. Kalau belum selesai, tenang saja, klik Simpan draft dulu.",
-  "say": "Sudah lengkap? Klik Kirim ke de ce. Kalau belum selesai, tenang saja, klik Simpan draft dulu."
+  "say": "Sudah lengkap? Klik Kirim ke de ce. Kalau belum selesai, tenang saja, klik Simpan draf dulu."
  },
  {
   "key": "Ep1-AdminKapal/s07",
@@ -132,7 +132,7 @@
  {
   "key": "Ep1-AdminKapal/s08",
   "text": "Untuk memantau, klik nomor permintaannya. Anda bisa lihat statusnya, Sales Order per dek, dan siapa saja yang sudah menyetujui.",
-  "say": "Untuk memantau, klik nomor permintaannya. Anda bisa lihat statusnya, Sales Order per dek, dan siapa saja yang sudah menyetujui."
+  "say": "Untuk memantau, klik nomor permintaannya. Anda bisa lihat statusnya, Sels Order per dek, dan siapa saja yang sudah menyetujui."
  },
  {
   "key": "Ep1-AdminKapal/s09",
@@ -147,7 +147,7 @@
  {
   "key": "Ep1-AdminKapal/s11",
   "text": "Sekarang giliran kepala toko. Buka tab Menunggu approval, lalu centang semua butir checklist-nya.",
-  "say": "Sekarang giliran kepala toko. Buka tab Menunggu approval, lalu centang semua butir checklist-nya."
+  "say": "Sekarang giliran kepala toko. Buka tab Menunggu apruval, lalu centang semua butir ceklis-nya."
  },
  {
   "key": "Ep1-AdminKapal/s12",
@@ -177,7 +177,7 @@
  {
   "key": "Ep1-AdminKapal/s17",
   "text": "Dan untuk memasang aplikasi kasir di HP, cukup scan kode QR untuk dek tersebut.",
-  "say": "Dan untuk memasang aplikasi kasir di ha pe, cukup scan kode kiu ar untuk dek tersebut."
+  "say": "Dan untuk memasang aplikasi kasir di ha pe, cukup sken kode kiu ar untuk dek tersebut."
  },
  {
   "key": "Ep1-AdminKapal/s18",
@@ -187,12 +187,12 @@
  {
   "key": "Ep1-AdminKapal/99-penutup",
   "text": "Jadi, ingat tiga hal ini. Pesan ke DC paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di SAP. Sampai jumpa di episode berikutnya!",
-  "say": "Jadi, ingat tiga hal ini. Pesan ke de ce paling lambat lima hari sebelumnya. Terima barang per dek, dengan checklist. Dan mutasi antar dek, langsung tercatat di es a pe. Sampai jumpa di episode berikutnya!"
+  "say": "Jadi, ingat tiga hal ini. Pesan ke de ce paling lambat lima hari sebelumnya. Terima barang per dek, dengan ceklis. Dan mutasi antar dek, langsung tercatat di es a pe. Sampai jumpa di episode berikutnya!"
  },
  {
   "key": "Ep2-ApproveSO/00-pembuka",
   "text": "Halo! Episode ini khusus untuk penyetuju Sales Order, sekaligus P2. Tugas Anda ada dua: menyetujui permintaan kapal, dan menyetujui barang yang sudah diterima di dek.",
-  "say": "Halo! Episode ini khusus untuk penyetuju Sales Order, sekaligus pe dua. Tugas Anda ada dua: menyetujui permintaan kapal, dan menyetujui barang yang sudah diterima di dek."
+  "say": "Halo! Episode ini khusus untuk penyetuju Sels Order, sekaligus pe dua. Tugas Anda ada dua: menyetujui permintaan kapal, dan menyetujui barang yang sudah diterima di dek."
  },
  {
   "key": "Ep2-ApproveSO/01-alur",
@@ -217,7 +217,7 @@
  {
   "key": "Ep2-ApproveSO/s04",
   "text": "Begitu disetujui, Sales Order langsung dibuat di SAP, satu untuk setiap dek. Permintaan pun lanjut ke admin DC.",
-  "say": "Begitu disetujui, Sales Order langsung dibuat di es a pe, satu untuk setiap dek. Permintaan pun lanjut ke admin de ce."
+  "say": "Begitu disetujui, Sels Order langsung dibuat di es a pe, satu untuk setiap dek. Permintaan pun lanjut ke admin de ce."
  },
  {
   "key": "Ep2-ApproveSO/s05",
@@ -227,7 +227,7 @@
  {
   "key": "Ep2-ApproveSO/s06",
   "text": "Tugas kedua Anda adalah sebagai P2. Buka Dokumen stok, lalu pilih yang menunggu approval terima.",
-  "say": "Tugas kedua Anda adalah sebagai pe dua. Buka Dokumen stok, lalu pilih yang menunggu approval terima."
+  "say": "Tugas kedua Anda adalah sebagai pe dua. Buka Dokumen stok, lalu pilih yang menunggu apruval terima."
  },
  {
   "key": "Ep2-ApproveSO/s07",
@@ -237,7 +237,7 @@
  {
   "key": "Ep2-ApproveSO/s08",
   "text": "Setelah itu, stok di dek otomatis bertambah, dan Sales Order-nya ditutup di SAP.",
-  "say": "Setelah itu, stok di dek otomatis bertambah, dan Sales Order-nya ditutup di es a pe."
+  "say": "Setelah itu, stok di dek otomatis bertambah, dan Sels Order-nya ditutup di es a pe."
  },
  {
   "key": "Ep2-ApproveSO/s09",
@@ -247,7 +247,7 @@
  {
   "key": "Ep2-ApproveSO/s10",
   "text": "Sebagai P2, Anda juga mengisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap DC.",
-  "say": "Sebagai pe dua, Anda juga mengisi forecast, yaitu perkiraan kebutuhan sebulan untuk setiap de ce."
+  "say": "Sebagai pe dua, Anda juga mengisi forkes, yaitu perkiraan kebutuhan sebulan untuk setiap de ce."
  },
  {
   "key": "Ep2-ApproveSO/s11",
@@ -257,7 +257,7 @@
  {
   "key": "Ep2-ApproveSO/99-penutup",
   "text": "Jadi, ingat tiga hal ini. Lonceng menunjukkan tugas Anda. Setujui Sales Order, satu per dek. Dan sebagai P2, Anda yang menutup penerimaan. Sampai jumpa di episode tiga!",
-  "say": "Jadi, ingat tiga hal ini. Lonceng menunjukkan tugas Anda. Setujui Sales Order, satu per dek. Dan sebagai pe dua, Anda yang menutup penerimaan. Sampai jumpa di episode tiga!"
+  "say": "Jadi, ingat tiga hal ini. Lonceng menunjukkan tugas Anda. Setujui Sels Order, satu per dek. Dan sebagai pe dua, Anda yang menutup penerimaan. Sampai jumpa di episode tiga!"
  },
  {
   "key": "Ep3-AdminDC/00-pembuka",
@@ -292,22 +292,22 @@
  {
   "key": "Ep3-AdminDC/s05",
   "text": "Lalu klik Ajukan GRPO. GRPO-nya akan dibuat di SAP, setelah disetujui oleh approve PUR.",
-  "say": "Lalu klik Ajukan ge er pe o. ge er pe o-nya akan dibuat di es a pe, setelah disetujui oleh approve pe u er."
+  "say": "Lalu klik Ajukan ge er pe o. ge er pe o-nya akan dibuat di es a pe, setelah disetujui oleh apruv pe u er."
  },
  {
   "key": "Ep3-AdminDC/s06",
   "text": "Selanjutnya, panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil GRPO.",
-  "say": "Selanjutnya, panel Inventory Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil ge er pe o."
+  "say": "Selanjutnya, panel Inventori Transfer muncul. Jumlahnya sudah diusulkan otomatis, dari stok gudang ditambah hasil ge er pe o."
  },
  {
   "key": "Ep3-AdminDC/s07",
   "text": "Periksa jumlah untuk setiap dek, lalu klik Ajukan Inventory Transfer.",
-  "say": "Periksa jumlah untuk setiap dek, lalu klik Ajukan Inventory Transfer."
+  "say": "Periksa jumlah untuk setiap dek, lalu klik Ajukan Inventori Transfer."
  },
  {
   "key": "Ep3-AdminDC/s08",
   "text": "Untuk memantau gudang, buka Laporan stok DC. Kartu stoknya bahkan bisa diekspor ke Excel.",
-  "say": "Untuk memantau gudang, buka Laporan stok de ce. Kartu stoknya bahkan bisa diekspor ke Excel."
+  "say": "Untuk memantau gudang, buka Laporan stok de ce. Kartu stoknya bahkan bisa diekspor ke eksel."
  },
  {
   "key": "Ep3-AdminDC/s09",
@@ -322,7 +322,7 @@
  {
   "key": "Ep4-ApprovePUR/00-pembuka",
   "text": "Halo! Episode ini untuk penyetuju PUR. Anda akan menyetujui tiga hal: Purchase Request, GRPO, dan Inventory Transfer.",
-  "say": "Halo! Episode ini untuk penyetuju pe u er. Anda akan menyetujui tiga hal: Purchase Request, ge er pe o, dan Inventory Transfer."
+  "say": "Halo! Episode ini untuk penyetuju pe u er. Anda akan menyetujui tiga hal: Percis Rikues, ge er pe o, dan Inventori Transfer."
  },
  {
   "key": "Ep4-ApprovePUR/01-alur",
@@ -332,7 +332,7 @@
  {
   "key": "Ep4-ApprovePUR/s01",
   "text": "Buka permintaan di tab Approval PUR. Periksa berapa yang diambil dari stok DC, dan berapa yang harus dibeli.",
-  "say": "Buka permintaan di tab Approval pe u er. Periksa berapa yang diambil dari stok de ce, dan berapa yang harus dibeli."
+  "say": "Buka permintaan di tab Apruval pe u er. Periksa berapa yang diambil dari stok de ce, dan berapa yang harus dibeli."
  },
  {
   "key": "Ep4-ApprovePUR/s02",
@@ -342,7 +342,7 @@
  {
   "key": "Ep4-ApprovePUR/s03",
   "text": "Setelah disetujui, Purchase Request langsung dibuat di SAP.",
-  "say": "Setelah disetujui, Purchase Request langsung dibuat di es a pe."
+  "say": "Setelah disetujui, Percis Rikues langsung dibuat di es a pe."
  },
  {
   "key": "Ep4-ApprovePUR/s04",
@@ -357,7 +357,7 @@
  {
   "key": "Ep4-ApprovePUR/s06",
   "text": "Inventory Transfer pun dibuat di SAP, satu untuk setiap dek. Dan kirimannya langsung muncul di kapal.",
-  "say": "Inventory Transfer pun dibuat di es a pe, satu untuk setiap dek. Dan kirimannya langsung muncul di kapal."
+  "say": "Inventori Transfer pun dibuat di es a pe, satu untuk setiap dek. Dan kirimannya langsung muncul di kapal."
  },
  {
   "key": "Ep4-ApprovePUR/s07",
@@ -372,7 +372,7 @@
  {
   "key": "Ep5-AdminPurchase/00-pembuka",
   "text": "Halo, Admin purchase! Episode ini singkat saja. Kita buat Purchase Order dari Purchase Request yang sudah disetujui.",
-  "say": "Halo, Admin purchase! Episode ini singkat saja. Kita buat Purchase Order dari Purchase Request yang sudah disetujui."
+  "say": "Halo, Admin purchase! Episode ini singkat saja. Kita buat Percis Order dari Percis Rikues yang sudah disetujui."
  },
  {
   "key": "Ep5-AdminPurchase/01-alur",
@@ -382,7 +382,7 @@
  {
   "key": "Ep5-AdminPurchase/s01",
   "text": "Kartu biru di Ringkasan menunjukkan berapa PUR yang menunggu dibuatkan Purchase Order.",
-  "say": "Kartu biru di Ringkasan menunjukkan berapa pe u er yang menunggu dibuatkan Purchase Order."
+  "say": "Kartu biru di Ringkasan menunjukkan berapa pe u er yang menunggu dibuatkan Percis Order."
  },
  {
   "key": "Ep5-AdminPurchase/s02",
@@ -397,7 +397,7 @@
  {
   "key": "Ep5-AdminPurchase/s04",
   "text": "Kalau sudah, klik Ajukan Purchase Order. PO akan dibuat di SAP setelah disetujui.",
-  "say": "Kalau sudah, klik Ajukan Purchase Order. pe o akan dibuat di es a pe setelah disetujui."
+  "say": "Kalau sudah, klik Ajukan Percis Order. pe o akan dibuat di es a pe setelah disetujui."
  },
  {
   "key": "Ep5-AdminPurchase/s05",
@@ -412,7 +412,7 @@
  {
   "key": "Ep6-ApprovePO/00-pembuka",
   "text": "Halo! Episode ini untuk penyetuju Purchase Order. Yuk, kita lihat cara menyetujui, dan juga cara menolaknya.",
-  "say": "Halo! Episode ini untuk penyetuju Purchase Order. Yuk, kita lihat cara menyetujui, dan juga cara menolaknya."
+  "say": "Halo! Episode ini untuk penyetuju Percis Order. Yuk, kita lihat cara menyetujui, dan juga cara menolaknya."
  },
  {
   "key": "Ep6-ApprovePO/01-alur",
@@ -422,7 +422,7 @@
  {
   "key": "Ep6-ApprovePO/s01",
   "text": "Ada PO yang menunggu? Klik Buka di kartu biru, atau buka permintaan yang berlabel Approval PO.",
-  "say": "Ada pe o yang menunggu? Klik Buka di kartu biru, atau buka permintaan yang berlabel Approval pe o."
+  "say": "Ada pe o yang menunggu? Klik Buka di kartu biru, atau buka permintaan yang berlabel Apruval pe o."
  },
  {
   "key": "Ep6-ApprovePO/s02",
@@ -432,7 +432,7 @@
  {
   "key": "Ep6-ApprovePO/s03",
   "text": "Setelah level terakhir menyetujui, Purchase Order langsung dibuat di SAP.",
-  "say": "Setelah level terakhir menyetujui, Purchase Order langsung dibuat di es a pe."
+  "say": "Setelah level terakhir menyetujui, Percis Order langsung dibuat di es a pe."
  },
  {
   "key": "Ep6-ApprovePO/s04",
@@ -447,7 +447,7 @@
  {
   "key": "Ep7-Kasir/00-pembuka",
   "text": "Halo, Kasir! Di video ini, kita jalani satu shift penuh. Mulai dari buka kasir, melayani pembeli, sampai tutup kasir.",
-  "say": "Halo, Kasir! Di video ini, kita jalani satu shift penuh. Mulai dari buka kasir, melayani pembeli, sampai tutup kasir."
+  "say": "Halo, Kasir! Di video ini, kita jalani satu syif penuh. Mulai dari buka kasir, melayani pembeli, sampai tutup kasir."
  },
  {
   "key": "Ep7-Kasir/01-alur",
@@ -462,7 +462,7 @@
  {
   "key": "Ep7-Kasir/s02",
   "text": "Ada pembeli datang? Scan barcode barangnya. Atau, ketik nama atau kodenya, lalu tekan Enter.",
-  "say": "Ada pembeli datang? Scan barcode barangnya. Atau, ketik nama atau kodenya, lalu tekan Enter."
+  "say": "Ada pembeli datang? sken barkod barangnya. Atau, ketik nama atau kodenya, lalu tekan Enter."
  },
  {
   "key": "Ep7-Kasir/s03",
@@ -482,7 +482,7 @@
  {
   "key": "Ep7-Kasir/s06",
   "text": "Saatnya bayar. Tekan F12, lalu pilih tunai atau QRIS. Isi uang yang diterima, dan kembaliannya langsung dihitung.",
-  "say": "Saatnya bayar. Tekan ef dua belas, lalu pilih tunai atau kiu-ris. Isi uang yang diterima, dan kembaliannya langsung dihitung."
+  "say": "Saatnya bayar. Tekan ef dua belas, lalu pilih tunai atau ki-ris. Isi uang yang diterima, dan kembaliannya langsung dihitung."
  },
  {
   "key": "Ep7-Kasir/s07",
@@ -497,7 +497,7 @@
  {
   "key": "Ep7-Kasir/s09",
   "text": "Di akhir hari, buka Rekap shift, lalu klik Kirim DO hari ini. Tunggu sebentar sampai nomor DO-nya muncul, ya.",
-  "say": "Di akhir hari, buka Rekap shift, lalu klik Kirim de o hari ini. Tunggu sebentar sampai nomor de o-nya muncul, ya."
+  "say": "Di akhir hari, buka Rekap syif, lalu klik Kirim D-O hari ini. Tunggu sebentar sampai nomor D-O-nya muncul, ya."
  },
  {
   "key": "Ep7-Kasir/s10",
@@ -517,6 +517,6 @@
  {
   "key": "Ep7-Kasir/99-penutup",
   "text": "Jadi, ingat tiga hal ini. Jual dan bayar. Kirim DO setiap hari. Dan jangan lupa tutup kasir. Langkah lengkapnya ada di Manual Book bab delapan. Selamat bertugas!",
-  "say": "Jadi, ingat tiga hal ini. Jual dan bayar. Kirim de o setiap hari. Dan jangan lupa tutup kasir. Langkah lengkapnya ada di Manual Book bab delapan. Selamat bertugas!"
+  "say": "Jadi, ingat tiga hal ini. Jual dan bayar. Kirim D-O setiap hari. Dan jangan lupa tutup kasir. Langkah lengkapnya ada di Manual Buk bab delapan. Selamat bertugas!"
  }
 ]
