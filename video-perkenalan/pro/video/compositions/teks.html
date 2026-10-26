@@ -1,0 +1,39 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Jakarta", sans-serif; }
+    .tk { position: absolute; left: 0; right: 0; bottom: 60px; height: 70px; display: flex; justify-content: center; }
+    .tk-kartu { height: 70px; padding: 0 30px; display: flex; align-items: center; background: rgba(5, 12, 30, 0.78); border-radius: 10px; font-weight: 600; font-size: 38px; color: #ffffff; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="teks" data-width="1920" data-height="1080">
+    <div id="tk-1" class="clip tk" data-start="0.8" data-duration="3.6"><div class="tk-kartu">Setiap hari, toko di atas kapal melayani ribuan penumpang.</div></div>
+    <div id="tk-2" class="clip tk" data-start="5.6" data-duration="2.5"><div class="tk-kartu">PID POS adalah aplikasi toko kapal PELNI Services,</div></div>
+    <div id="tk-3" class="clip tk" data-start="8.1" data-duration="3.5"><div class="tk-kartu">yang terhubung langsung dengan SAP Business One.</div></div>
+    <div id="tk-4" class="clip tk" data-start="13.6" data-duration="2.1"><div class="tk-kartu">Admin kapal memesan barang ke DC,</div></div>
+    <div id="tk-5" class="clip tk" data-start="15.7" data-duration="2.9"><div class="tk-kartu">dan setiap permintaan disetujui secara berjenjang.</div></div>
+    <div id="tk-6" class="clip tk" data-start="21.6" data-duration="2.7"><div class="tk-kartu">Stok setiap dek terpantau secara real-time.</div></div>
+    <div id="tk-7" class="clip tk" data-start="27.0" data-duration="2.5"><div class="tk-kartu">Dari permintaan kapal hingga penerimaan di dek,</div></div>
+    <div id="tk-8" class="clip tk" data-start="29.5" data-duration="2.9"><div class="tk-kartu">setiap langkah otomatis tercatat di SAP.</div></div>
+    <div id="tk-9" class="clip tk" data-start="38.8" data-duration="2.8"><div class="tk-kartu">Di kasir, cukup scan dan bayar.</div></div>
+    <div id="tk-10" class="clip tk" data-start="41.7" data-duration="3.1"><div class="tk-kartu">Penjualan harian terkirim sebagai Delivery Order.</div></div>
+    <div id="tk-11" class="clip tk" data-start="48.6" data-duration="3.3"><div class="tk-kartu">Transparan, terkendali, terintegrasi.</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#tk-1 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 0.8);
+    tl.fromTo("#tk-2 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 5.6);
+    tl.fromTo("#tk-3 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 8.1);
+    tl.fromTo("#tk-4 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 13.6);
+    tl.fromTo("#tk-5 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 15.7);
+    tl.fromTo("#tk-6 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 21.6);
+    tl.fromTo("#tk-7 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 27.0);
+    tl.fromTo("#tk-8 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 29.5);
+    tl.fromTo("#tk-9 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 38.8);
+    tl.fromTo("#tk-10 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 41.7);
+    tl.fromTo("#tk-11 .tk-kartu", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 48.6);
+    window.__timelines["teks"] = tl;
+  </script>
+</template>

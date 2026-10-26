@@ -1,0 +1,10 @@
+[
+ {"id": "A1", "text": "Setiap hari, toko di atas kapal melayani ribuan penumpang.", "say": "Setiap hari, toko di atas kapal melayani ribuan penumpang."},
+ {"id": "A2", "text": "PID POS adalah aplikasi toko kapal PELNI Services, yang terhubung langsung dengan SAP Business One.", "say": "P-I-D pos adalah aplikasi toko kapal PELNI Services, yang terhubung langsung dengan es a pe Bisnis Wan."},
+ {"id": "A3", "text": "Admin kapal memesan barang ke DC, dan setiap permintaan disetujui secara berjenjang.", "say": "Admin kapal memesan barang ke D-C, dan setiap permintaan disetujui secara berjenjang."},
+ {"id": "A4", "text": "Stok setiap dek terpantau secara real-time.", "say": "Stok setiap dek terpantau secara riil taim."},
+ {"id": "A5", "text": "Dari permintaan kapal hingga penerimaan di dek, setiap langkah otomatis tercatat di SAP.", "say": "Dari permintaan kapal hingga penerimaan di dek, setiap langkah otomatis tercatat di es a pe."},
+ {"id": "A6", "text": "Di kasir, cukup scan dan bayar. Penjualan harian terkirim sebagai Delivery Order.", "say": "Di kasir, cukup scan dan bayar. Penjualan harian terkirim sebagai Delivery Order."},
+ {"id": "A7", "text": "Transparan, terkendali, terintegrasi.", "say": "Transparan, terkendali, terintegrasi."},
+ {"id": "A8", "text": "PID POS. Satu alur, dari kapal sampai kasir.", "say": "P-I-D pos. Satu alur, dari kapal sampai kasir."}
+]

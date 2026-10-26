@@ -1,0 +1,75 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Jakarta", sans-serif; overflow: hidden; color: #fff; }
+    #al-isi { position: absolute; inset: 0; }
+    #al-label { position: absolute; left: 120px; top: 110px; font-weight: 700; font-size: 28px; letter-spacing: 0.24em; color: #ff6b1a; }
+    #al-judul { position: absolute; left: 120px; top: 158px; font-weight: 800; font-size: 72px; letter-spacing: -0.02em; }
+    #al-judul span { display: inline-block; }
+    #al-garis { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .al-node { position: absolute; top: 400px; width: 250px; height: 136px; margin-left: -125px; border-radius: 20px; background: #13265a; border: 2px solid #3d6fc2; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .al-node b { font-weight: 800; font-size: 30px; letter-spacing: 0.04em; }
+    .al-node small { font-weight: 600; font-size: 28px; color: #8fa6d8; margin-top: 6px; white-space: nowrap; }
+    #al-sap { position: absolute; left: 180px; top: 700px; width: 1560px; height: 150px; border-radius: 26px; background: #fff; color: #0b1a3a; }
+    #al-sap-nama { position: absolute; left: 40px; top: 30px; font-weight: 800; font-size: 46px; }
+    #al-sap-sub { position: absolute; left: 40px; top: 90px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #al-cek { position: absolute; left: 40px; top: 96px; font-weight: 700; font-size: 28px; color: #17663a; opacity: 0; }
+    #al-hitung span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+    #al-hitung { position: absolute; left: 540px; top: 40px; width: 130px; height: 70px; font-weight: 800; font-size: 56px; color: #ff6b1a; }
+    .al-slot { position: absolute; top: 32px; width: 132px; height: 86px; border-radius: 14px; border: 3px dashed #c9d2e3; }
+    .al-dok { position: absolute; top: 32px; width: 132px; height: 86px; border-radius: 14px; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 32px; }
+  </style>
+  <div id="root" data-composition-id="alur" data-width="1920" data-height="1080">
+    <div id="al-isi">
+      <div id="al-label">ALUR END-TO-END</div>
+      <div id="al-judul"><span>Setiap</span> <span>langkah</span> <span>tercatat</span> <span>di</span> <span>SAP</span></div>
+      <svg id="al-garis" viewBox="0 0 1920 1080"><path id="al-jalur" d="M 225 468 L 1695 468" stroke="#3d6fc2" stroke-width="4" fill="none" /></svg>
+      <div class="al-node" id="al-n1" style="left: 225px"><b>KAPAL</b><small>Pesan ke DC</small></div>
+      <div class="al-node" id="al-n2" style="left: 519px"><b>APPROVE SO</b><small>Kantor pusat</small></div>
+      <div class="al-node" id="al-n3" style="left: 813px"><b>DC</b><small>Pilah stok</small></div>
+      <div class="al-node" id="al-n4" style="left: 1107px"><b>PURCHASING</b><small>Beli ke vendor</small></div>
+      <div class="al-node" id="al-n5" style="left: 1401px"><b>DEK</b><small>Terima barang</small></div>
+      <div class="al-node" id="al-n6" style="left: 1695px"><b>KASIR</b><small>Penjualan</small></div>
+      <div id="al-sap">
+        <div id="al-sap-nama">SAP Business One</div>
+        <div id="al-sap-sub">Dokumen dibuat otomatis</div><div id="al-cek">✓ Tanpa input ulang</div>
+        <div id="al-hitung"><span id="al-h0">0 / 6</span><span id="al-h1" style="opacity: 0">1 / 6</span><span id="al-h2" style="opacity: 0">2 / 6</span><span id="al-h3" style="opacity: 0">3 / 6</span><span id="al-h4" style="opacity: 0">4 / 6</span><span id="al-h5" style="opacity: 0">5 / 6</span><span id="al-h6" style="opacity: 0">6 / 6</span></div>
+        <div class="al-slot" style="left: 690px"></div><div class="al-slot" style="left: 834px"></div><div class="al-slot" style="left: 978px"></div>
+        <div class="al-slot" style="left: 1122px"></div><div class="al-slot" style="left: 1266px"></div><div class="al-slot" style="left: 1410px"></div>
+        <div class="al-dok" id="al-d1" style="left: 690px; background: #4a8a3c">SO</div>
+        <div class="al-dok" id="al-d2" style="left: 834px; background: #a87412">PR</div>
+        <div class="al-dok" id="al-d3" style="left: 978px; background: #c85a1c">PO</div>
+        <div class="al-dok" id="al-d4" style="left: 1122px; background: #7c68b8">GRPO</div>
+        <div class="al-dok" id="al-d5" style="left: 1266px; background: #c45c8e">IT</div>
+        <div class="al-dok" id="al-d6" style="left: 1410px; background: #cf5140">DO</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#al-label", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    tl.fromTo("#al-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08 }, 0.2);
+    const L = document.getElementById("al-jalur").getTotalLength();
+    tl.fromTo("#al-jalur", { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.7, ease: "power2.inOut" }, 0.5);
+    ["#al-n1", "#al-n2", "#al-n3", "#al-n4", "#al-n5", "#al-n6"].forEach((id, i) => tl.fromTo(id, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 0.5 + i * 0.28));
+    tl.fromTo("#al-sap", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }, 2.0);
+    // dokumen turun dari simpul asalnya ke slot SAP: [dokumen, simpul, waktu]
+    const DOK = [["#al-d1", 519, 2.8], ["#al-d2", 1107, 3.9], ["#al-d3", 1107, 5.0], ["#al-d4", 813, 6.1], ["#al-d5", 813, 7.2], ["#al-d6", 1695, 8.3]];
+    const slot = [756, 900, 1044, 1188, 1332, 1476];   // pusat slot di layar (180 + left + 66)
+    DOK.forEach(([id, nx, t], i) => {
+      tl.fromTo(id, { opacity: 0, x: nx - slot[i], y: -230, scale: 0.7 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.7, ease: "power3.inOut" }, t);
+      tl.to("#al-h" + i, { opacity: 0, duration: 0.05 }, t + 0.6);
+      tl.fromTo("#al-h" + (i + 1), { opacity: 0 }, { opacity: 1, duration: 0.05 }, t + 0.6);
+    });
+    // penutup adegan: kartu SAP menegaskan semua dokumen lengkap
+    tl.to("#al-sap-sub", { opacity: 0, duration: 0.2 }, 9.4);
+    tl.to("#al-cek", { opacity: 1, duration: 0.3 }, 9.55);
+    tl.fromTo("#al-sap", { scale: 1 }, { scale: 1.03, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out" }, 9.4);
+    tl.fromTo(".al-node", { borderColor: "#3d6fc2" }, { borderColor: "#ff6b1a", duration: 0.25, stagger: 0.12 }, 10.4);
+    tl.to("#al-isi", { opacity: 0, filter: "blur(10px)", duration: 0.25 }, 12.35);
+    window.__timelines["alur"] = tl;
+  </script>
+</template>

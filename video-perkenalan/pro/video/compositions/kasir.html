@@ -1,0 +1,53 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Jakarta", sans-serif; overflow: hidden; color: #fff; }
+    #ks-isi { position: absolute; inset: 0; }
+    #ks-label { position: absolute; left: 120px; top: 170px; font-weight: 700; font-size: 28px; letter-spacing: 0.24em; color: #ff6b1a; }
+    #ks-judul { position: absolute; left: 120px; top: 218px; width: 560px; font-weight: 800; font-size: 72px; line-height: 1.04; letter-spacing: -0.02em; }
+    .ks-langkah { position: absolute; left: 120px; display: flex; align-items: center; gap: 22px; font-weight: 700; font-size: 34px; color: #5f75a8; }
+    .ks-langkah b { width: 54px; height: 54px; border-radius: 50%; border: 3px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+    #ks-tab { position: absolute; left: 700px; top: 160px; width: 1120px; height: 670px; background: #1a2132; border-radius: 34px; padding: 22px; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5); }
+    #ks-layar { position: relative; width: 1076px; height: 626px; background: #eef2f8; border-radius: 14px; overflow: hidden; }
+    .ks-g { position: absolute; }
+    .ks-g img { width: 100%; height: 100%; display: block; }
+    .ks-sorot { position: absolute; border: 5px solid #ff6b1a; border-radius: 12px; box-shadow: 0 0 0 4000px rgba(8, 16, 36, 0.32); }
+  </style>
+  <div id="root" data-composition-id="kasir" data-width="1920" data-height="1080">
+    <div id="ks-isi">
+      <div id="ks-label">KASIR · ANDROID</div>
+      <div id="ks-judul">Scan, bayar, selesai.</div>
+      <div id="ks-l1" class="ks-langkah" style="top: 470px"><b>1</b>Scan barang</div>
+      <div id="ks-l2" class="ks-langkah" style="top: 556px"><b>2</b>Bayar tunai atau QRIS</div>
+      <div id="ks-l3" class="ks-langkah" style="top: 642px"><b>3</b>Struk tercetak</div>
+      <div id="ks-l4" class="ks-langkah" style="top: 728px"><b>4</b>DO terkirim ke SAP</div>
+      <div id="ks-tab"><div id="ks-layar">
+        <div id="ks-g1" class="ks-g" style="left: 0; top: -2px; width: 1076px; height: 630px"><img src="assets/img/g45.png" alt="Scan barang" /><div class="ks-sorot" style="left: 74.5%; top: 9.5%; width: 24.5%; height: 18%"></div></div>
+        <div id="ks-g2" class="ks-g" style="left: 0; top: 52px; width: 1076px; height: 522px"><img src="assets/img/g46.png" alt="Bayar" /><div class="ks-sorot" style="left: 1%; top: 78%; width: 48.5%; height: 8%"></div></div>
+        <div id="ks-g3" class="ks-g" style="left: 0; top: 70px; width: 1076px; height: 487px"><img src="assets/img/g47.png" alt="Struk tercetak" /></div>
+        <div id="ks-g4" class="ks-g" style="left: 125px; top: 0; width: 826px; height: 626px"><img src="assets/img/g49.png" alt="DO terkirim ke SAP" /><div class="ks-sorot" style="left: 39.5%; top: 92.5%; width: 21%; height: 5.6%"></div></div>
+      </div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ks-label", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.1);
+    tl.fromTo("#ks-judul", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3 }, 0.2);
+    tl.fromTo("#ks-tab", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.1);
+    tl.fromTo(["#ks-l1", "#ks-l2", "#ks-l3", "#ks-l4"], { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out", stagger: 0.1 }, 0.4);
+    tl.fromTo(["#ks-g2", "#ks-g3", "#ks-g4"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo(".ks-sorot", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    // langkah aktif: layar berganti, nomor menyala putih
+    const S = [["#ks-l1", "#ks-g1", 0.7], ["#ks-l2", "#ks-g2", 2.1], ["#ks-l3", "#ks-g3", 3.4], ["#ks-l4", "#ks-g4", 4.7]];
+    S.forEach(([l, g, t], i) => {
+      tl.to(l, { color: "#ffffff", duration: 0.2 }, t);
+      if (i > 0) { tl.to(S[i - 1][0], { color: "#8fa6d8", duration: 0.2 }, t); tl.to(S[i - 1][1], { opacity: 0, x: -60, duration: 0.3, ease: "power2.in" }, t - 0.1); tl.fromTo(g, { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, t + 0.1); }
+      if (i !== 2) tl.to(g + " .ks-sorot", { opacity: 1, duration: 0.3 }, t + 0.5);
+    });
+    tl.to("#ks-isi", { opacity: 0, filter: "blur(10px)", duration: 0.25 }, 9.75);
+    window.__timelines["kasir"] = tl;
+  </script>
+</template>

@@ -1,0 +1,51 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Jakarta", sans-serif; overflow: hidden; color: #fff; }
+    #pb-isi { position: absolute; inset: 0; }
+    #pb-label { position: absolute; left: 120px; top: 120px; font-weight: 700; font-size: 28px; letter-spacing: 0.24em; color: #8fa6d8; }
+    #pb-judul { position: absolute; left: 120px; top: 180px; font-weight: 800; font-size: 104px; line-height: 1.04; letter-spacing: -0.025em; }
+    #pb-judul span { display: inline-block; }
+    .pb-oren { color: #ff6b1a; }
+    #pb-kapal { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #pb-kapal path { fill: none; stroke: #ffffff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    #pb-kapal .laut { stroke: #3d6fc2; stroke-width: 2.5; }
+    #pb-kapal .aksen { stroke: #ff6b1a; }
+  </style>
+  <div id="root" data-composition-id="pembuka" data-width="1920" data-height="1080">
+    <div id="pb-isi">
+      <div id="pb-label">PELNI SERVICES · TOKO KAPAL</div>
+      <div id="pb-judul"><span>Ribuan</span> <span>penumpang.</span><br /><span class="pb-oren">Setiap</span> <span class="pb-oren">hari.</span></div>
+      <svg id="pb-kapal" viewBox="0 0 1920 1080">
+        <!-- siluet kapal penumpang, digambar dengan garis -->
+        <path id="pb-lambung" d="M 760 760 L 1760 760 L 1700 860 L 860 860 Z" />
+        <path id="pb-dek1" d="M 820 760 L 820 690 L 1640 690 L 1640 760" />
+        <path id="pb-dek2" d="M 900 690 L 900 630 L 1500 630 L 1500 690" />
+        <path id="pb-dek3" d="M 980 630 L 980 580 L 1340 580 L 1340 630" />
+        <path id="pb-jendela" d="M 860 725 L 1600 725 M 940 660 L 1460 660" stroke-dasharray="18 14" />
+        <path id="pb-cerobong" class="aksen" d="M 1180 580 L 1180 520 L 1260 520 L 1260 580" />
+        <path id="pb-laut1" class="laut" d="M 640 880 C 760 868, 880 892, 1000 880 S 1240 868, 1360 880 S 1600 892, 1720 880 S 1840 870, 1900 878" />
+        <path id="pb-laut2" class="laut" d="M 700 920 C 820 908, 940 932, 1060 920 S 1300 908, 1420 920 S 1660 932, 1780 920" />
+      </svg>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const garis = ["#pb-lambung", "#pb-dek1", "#pb-dek2", "#pb-dek3", "#pb-cerobong", "#pb-laut1", "#pb-laut2"];
+    garis.forEach((id, i) => {
+      const L = document.querySelector(id).getTotalLength();
+      tl.fromTo(id, { strokeDasharray: L, strokeDashoffset: L * 0.85 }, { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }, i * 0.18);
+    });
+    tl.fromTo("#pb-jendela", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.4);
+    tl.fromTo("#pb-label", { opacity: 0.4 }, { opacity: 1, duration: 0.4 }, 0);
+    tl.fromTo("#pb-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, stagger: 0.1 }, 1.0);
+    // kapal bergerak pelan ke kiri sepanjang adegan (kamera mengikuti laut)
+    tl.fromTo("#pb-kapal", { x: 60 }, { x: -40, duration: 5.2, ease: "none" }, 0);
+    // keluar: blur swap di panggung yang sama
+    tl.to("#pb-isi", { opacity: 0, filter: "blur(10px)", duration: 0.25 }, 4.95);
+    window.__timelines["pembuka"] = tl;
+  </script>
+</template>

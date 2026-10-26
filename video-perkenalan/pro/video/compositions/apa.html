@@ -1,0 +1,49 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Jakarta", sans-serif; overflow: hidden; color: #fff; }
+    #ap-isi { position: absolute; inset: 0; }
+    #ap-label { position: absolute; left: 120px; top: 250px; font-weight: 700; font-size: 28px; letter-spacing: 0.24em; color: #8fa6d8; }
+    #ap-nama { position: absolute; left: 116px; top: 300px; font-weight: 800; font-size: 150px; letter-spacing: -0.03em; line-height: 1; }
+    #ap-sub { position: absolute; left: 120px; top: 480px; width: 540px; font-weight: 600; font-size: 40px; line-height: 1.3; color: #c9d6f2; }
+    #ap-sub span { display: inline-block; }
+    #ap-laptop { position: absolute; left: 820px; top: 150px; width: 1000px; height: 640px; }
+    #ap-layar { position: absolute; left: 0; top: 0; width: 1000px; height: 610px; background: #1a2132; border-radius: 22px; padding: 20px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45); }
+    #ap-layar img { width: 960px; height: 570px; object-fit: cover; object-position: top left; border-radius: 6px; display: block; }
+    #ap-alas { position: absolute; left: -60px; top: 606px; width: 1120px; height: 30px; background: #8a94a8; border-radius: 0 0 28px 28px; }
+    #ap-hp { position: absolute; left: 760px; top: 580px; width: 470px; height: 280px; background: #1a2132; border-radius: 32px; padding: 18px 24px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
+    #ap-hp img { width: 422px; height: 244px; object-fit: cover; object-position: top left; border-radius: 10px; display: block; }
+    #ap-sap { position: absolute; left: 1330px; top: 810px; height: 84px; padding: 0 34px; border-radius: 42px; background: #fff; color: #0b1a3a; display: flex; align-items: center; gap: 16px; font-weight: 800; font-size: 34px; white-space: nowrap; }
+    #ap-sap i { width: 18px; height: 18px; border-radius: 50%; background: #22c55e; }
+    #ap-garis { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  </style>
+  <div id="root" data-composition-id="apa" data-width="1920" data-height="1080">
+    <div id="ap-isi">
+      <div id="ap-label">APLIKASI TOKO KAPAL</div>
+      <div id="ap-nama">PID POS</div>
+      <div id="ap-sub"><span>Web</span> <span>untuk</span> <span>admin</span> <span>dan</span> <span>kantor</span> <span>pusat.</span> <span>Android</span> <span>untuk</span> <span>kasir</span> <span>dek.</span></div>
+      <svg id="ap-garis" viewBox="0 0 1920 1080"><path id="ap-g" d="M 1320 790 L 1320 850 L 1330 850" fill="none" stroke="#8fa6d8" stroke-width="3" stroke-dasharray="8 8" /><path id="ap-g2" d="M 1230 780 C 1270 810, 1280 852, 1330 852" fill="none" stroke="#8fa6d8" stroke-width="3" stroke-dasharray="8 8" /></svg>
+      <div id="ap-laptop"><div id="ap-layar"><img src="assets/img/g01.png" alt="Beranda kapal PID POS" /></div><div id="ap-alas"></div></div>
+      <div id="ap-hp"><img src="assets/img/g45.png" alt="Kasir PID POS" /></div>
+      <div id="ap-sap"><i></i>Terhubung SAP Business One</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ap-label", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.15);
+    tl.fromTo("#ap-nama", { opacity: 0, filter: "blur(12px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35 }, 0.3);
+    tl.fromTo("#ap-laptop", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.8, ease: "expo.out" }, 0.5);
+    tl.fromTo("#ap-hp", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 1.4);
+    tl.fromTo("#ap-sub span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.07 }, 1.6);
+    // "SAP Business One" (lokal 4,7)
+    tl.fromTo(["#ap-g", "#ap-g2"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 4.5);
+    tl.fromTo("#ap-sap", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "expo.out" }, 4.6);
+    // dorong pelan ke layar laptop, lalu blur swap ke adegan platform
+    tl.fromTo("#ap-laptop", { scale: 1 }, { scale: 1.04, duration: 6, ease: "none", transformOrigin: "50% 40%" }, 1.3);
+    tl.to("#ap-isi", { opacity: 0, filter: "blur(10px)", duration: 0.25 }, 7.65);
+    window.__timelines["apa"] = tl;
+  </script>
+</template>
