@@ -10,8 +10,9 @@ function kapal(x, y, w, o = {}) {
   let g = `<g fill="none" stroke="${s}" stroke-width="${sw}" stroke-linejoin="round" stroke-linecap="round">`;
   g += `<path d="M ${x} ${y - h} L ${x + w} ${y - h} L ${x + w * 0.94} ${y} L ${x + w * 0.07} ${y} Z" fill="${f}"/>`;
   if (!o.lambungSaja) {
-    g += `<path d="${d(0.06, 0.88, 0)}" fill="${f === 'none' ? 'none' : o.fill2 || f}"/><path d="${d(0.14, 0.76, 0.06)}" fill="${f === 'none' ? 'none' : o.fill2 || f}"/><path d="${d(0.22, 0.62, 0.12)}" fill="${f === 'none' ? 'none' : o.fill2 || f}"/>`;
-    g += `<path d="M ${x + w * 0.4} ${y - h - 0.18 * w} L ${x + w * 0.4} ${y - h - 0.25 * w} L ${x + w * 0.47} ${y - h - 0.25 * w} L ${x + w * 0.47} ${y - h - 0.18 * w}" stroke="${o.cerobong || C.oren}" fill="${o.cerobong && f !== 'none' ? o.cerobong : 'none'}"/>`;
+    const tingkat = o.tingkat ?? 3, isi = f === 'none' ? 'none' : o.fill2 || f;
+    [[0.06, 0.88, 0], [0.14, 0.76, 0.06], [0.22, 0.62, 0.12]].slice(0, tingkat).forEach(([p, q, r]) => { g += `<path d="${d(p, q, r)}" fill="${isi}"/>`; });
+    if (tingkat >= 3 && !o.tanpaCerobong) g += `<path d="M ${x + w * 0.4} ${y - h - 0.18 * w} L ${x + w * 0.4} ${y - h - 0.25 * w} L ${x + w * 0.47} ${y - h - 0.25 * w} L ${x + w * 0.47} ${y - h - 0.18 * w}" stroke="${o.cerobong || C.oren}" fill="${o.cerobong && f !== 'none' ? o.cerobong : 'none'}"/>`;
     if (!o.tanpaJendela) g += `<path d="M ${x + w * 0.1} ${y - h - 0.03 * w} L ${x + w * 0.84} ${y - h - 0.03 * w} M ${x + w * 0.18} ${y - h - 0.09 * w} L ${x + w * 0.72} ${y - h - 0.09 * w}" stroke="${o.jendela || s}" stroke-dasharray="${w * 0.018} ${w * 0.014}" stroke-width="${o.jendelaW || sw}"/>`;
   }
   return g + '</g>';
@@ -174,7 +175,8 @@ const KONSEP = [
   },
 ];
 
-const halaman = KONSEP.map((k) => `
+function tulis(konsep, judulDok, berkas, catatanBawaan = 'Semua aset digambar sendiri; tidak memerlukan footage stok.') {
+const halaman = konsep.map((k) => `
 <section class="hal">
   <header>
     <div class="no">${k.no}</div>
@@ -193,10 +195,10 @@ const halaman = KONSEP.map((k) => `
       </figcaption>
     </figure>`).join('')}
   </div>
-  <footer><span>${k.catatan || 'Semua aset digambar sendiri; tidak memerlukan footage stok.'}</span><span>Storyboard Konsep Visual Kapal · PID POS · ${k.no}/5</span></footer>
+  <footer><span>${k.catatan || catatanBawaan}</span><span>${judulDok} · PID POS · ${k.no}/${konsep.length}</span></footer>
 </section>`).join('');
 
-const html = `<!doctype html><html lang="id"><head><meta charset="utf-8"><title>Storyboard Konsep Visual Kapal</title><style>
+const html = `<!doctype html><html lang="id"><head><meta charset="utf-8"><title>${judulDok}</title><style>
 @font-face{font-family:Jakarta;font-weight:600;src:url(foto/plus-jakarta-sans-latin-600-normal.woff2)}
 @font-face{font-family:Jakarta;font-weight:700 800;src:url(foto/plus-jakarta-sans-latin-800-normal.woff2)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -221,5 +223,9 @@ dt{color:#5b6b86;font-weight:700}dd{color:#0b1a3a}
 footer{display:flex;justify-content:space-between;font-size:13px;color:#5b6b86;margin-top:16px}
 @page{size:1600px 1320px;margin:0}@media print{body{background:#fff}.hal{margin:0}}
 </style></head><body>${halaman}</body></html>`;
-fs.writeFileSync(__dirname + '/storyboard.html', html);
-console.log('storyboard.html');
+fs.writeFileSync(__dirname + '/' + berkas, html);
+console.log(berkas);
+}
+
+module.exports = {C, kapal, kisi, teks, panah, kamera, laut, foto, pulau, titik, rute, iso, orang, maket, PELABUHAN, tulis};
+if (require.main === module) tulis(KONSEP, 'Storyboard Konsep Visual Kapal', 'storyboard.html');
