@@ -103,7 +103,7 @@ const ikon = async (Icon, color) => {
   // ---------- 3. alur ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Alur end-to-end: setiap langkah tercatat di SAP', {placeholder: 'title'});
-  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'Kantor pusat · P2', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
+  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'P2', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
   const nw = 1.78, gap = 0.235, y1 = 2.2, chip = (x, y, d) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.84, h: 0.34, rectRadius: 0.08, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Dokumen ${d}`});
     s.addText(d, {x, y, w: 0.84, h: 0.34, fontSize: 12, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
