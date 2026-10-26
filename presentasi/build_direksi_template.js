@@ -85,7 +85,7 @@ const ikon = async (Icon, color) => {
   s.addText('PID POS', {placeholder: 'title'});
   teks(s, 'Aplikasi Toko Kapal Terintegrasi SAP Business One', {x: 0.67, y: 3.55, w: 7.4, h: 0.5, fontSize: 22, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, fitur utama, kasir, dan keunggulannya.');
+  s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, fitur utama, kasir, keunggulan, dan batasannya saat ini.');
 
   // ---------- 2. satu aplikasi ----------
   pres.addSection({title: 'Aplikasi'});
@@ -207,6 +207,29 @@ const ikon = async (Icon, color) => {
     teks(s, d, {x: x + 0.3, y: 3.95, w: 3.15, h: 1.35, fontSize: 14, color: K.dk1});
   }
   s.addNotes('Keunggulan PID POS ada tiga. Transparan: stok setiap dek dan status permintaan terpantau real-time. Terkendali: setiap tahap disetujui berjenjang, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan. Terintegrasi: dokumen SAP dibuat otomatis, termasuk penjualan harian setiap dek sebagai Delivery Order.');
+
+  // ---------- 8. batasan ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
+  s.addText('Batasan aplikasi saat ini', {placeholder: 'title'});
+  const batas = [
+    [FA.FaWifi, 'Memerlukan koneksi internet', 'Aplikasi web dan aplikasi kasir hanya dapat digunakan saat perangkat terhubung ke internet.', 'Koneksi internet di kapal, DC, dan kantor pusat.'],
+    [FA.FaAndroid, 'Kasir hanya di Android', 'Aplikasi kasir baru tersedia untuk perangkat Android. Versi iOS (iPhone dan iPad) belum tersedia.', 'Perangkat kasir Android di setiap dek.'],
+  ];
+  for (let i = 0; i < 2; i++) {
+    const [Ic, j, d, siap] = batas[i], x = 0.75 + i * 6.05;
+    kartu(s, x, 1.9, 5.8, 3.75, `Batasan ${j}`);
+    await lingkaranIkon(s, x + 0.35, 2.2, 0.95, Ic, K.dk2, 'FFFFFF', `Ikon ${j}`);
+    if (i === 1) [['Android', 'Tersedia', '4A8A3C'], ['iOS', 'Belum tersedia', K.accent5]].forEach(([os, st, c], k) => {
+      const cx = x + 1.6 + k * 2.0;
+      s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x: cx, y: 2.47, w: 1.85, h: 0.42, rectRadius: 0.21, fill: {color: k ? 'EEF1F6' : 'E8F2E4'}, line: {color: c, width: 1}, objectName: `Status ${os}`});
+      s.addText([{text: os + ': ', options: {bold: true}}, {text: st}], {x: cx, y: 2.47, w: 1.85, h: 0.42, fontSize: 12, color: c, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
+    });
+    teks(s, j, {x: x + 0.35, y: 3.35, w: 5.1, h: 0.55, fontSize: 24, bold: true, color: K.dk2});
+    teks(s, d, {x: x + 0.35, y: 3.95, w: 5.1, h: 0.8, fontSize: 15, color: K.dk1});
+    s.addShape(pres.shapes.LINE, {x: x + 0.35, y: 4.85, w: 5.1, h: 0, line: {color: 'E3E9F3', width: 1}, objectName: 'Pemisah'});
+    teks(s, [{text: 'Perlu disiapkan: ', options: {bold: true, color: K.dk2}}, {text: siap, options: {color: K.dk1}}], {x: x + 0.35, y: 4.98, w: 5.1, h: 0.5, fontSize: 14});
+  }
+  s.addNotes('Ada dua batasan PID POS saat ini. Pertama, aplikasi web dan kasir memerlukan koneksi internet, jadi kapal, DC, dan kantor pusat perlu terhubung saat aplikasi dipakai. Kedua, aplikasi kasir baru tersedia di Android; versi iOS untuk iPhone dan iPad belum tersedia, jadi perangkat kasir di setiap dek perlu memakai Android.');
 
   // ---------- 8. penutup ----------
   pres.addSection({title: 'Penutup'});
