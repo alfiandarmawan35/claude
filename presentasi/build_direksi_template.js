@@ -104,7 +104,7 @@ const ikon = async (Icon, color) => {
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Alur end-to-end: setiap langkah tercatat di SAP', {placeholder: 'title'});
   const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'Kantor pusat', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
-  const nw = 1.78, gap = 0.235, y1 = 1.95, chip = (x, y, d) => {
+  const nw = 1.78, gap = 0.235, y1 = 2.2, chip = (x, y, d) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.84, h: 0.34, rectRadius: 0.08, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Dokumen ${d}`});
     s.addText(d, {x, y, w: 0.84, h: 0.34, fontSize: 12, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
   };
@@ -115,7 +115,13 @@ const ikon = async (Icon, color) => {
     if (i < atas.length - 1) s.addShape(pres.shapes.LINE, {x: x + nw + 0.03, y: y1 + 0.525, w: gap - 0.06, h: 0, line: {color: K.accent3, width: 2, endArrowType: 'triangle'}, objectName: 'Panah alur'});
     if (d) chip(x + nw / 2 - 0.42, y1 + 1.13, d);
   });
-  const xb0 = 0.75 + 2 * (nw + gap), y2 = 3.7;
+  // siklus: setelah terjual, stok dek menipis dan kapal memesan lagi ke DC
+  const xa = 0.75 + nw / 2, xz = 0.75 + 5 * (nw + gap) + nw / 2, yl = 1.9, garisUlang = {color: K.accent1, width: 2.25};
+  s.addShape(pres.shapes.LINE, {x: xa, y: yl, w: xz - xa, h: 0, line: garisUlang, objectName: 'Siklus ulang'});
+  s.addShape(pres.shapes.LINE, {x: xz, y: yl, w: 0, h: y1 - yl, line: garisUlang, objectName: 'Siklus ulang dari kasir'});
+  s.addShape(pres.shapes.LINE, {x: xa, y: yl, w: 0, h: y1 - yl - 0.02, line: {...garisUlang, endArrowType: 'triangle'}, objectName: 'Siklus ulang ke pesan'});
+  s.addText('↻  Stok dek menipis: kapal memesan lagi ke DC', {x: 4.4, y: yl - 0.17, w: 4.6, h: 0.34, fontSize: 12, bold: true, color: K.accent1, align: 'center', valign: 'middle', margin: 0, fill: {color: 'FFFFFF'}, isTextBox: true});
+  const xb0 = 0.75 + 2 * (nw + gap), y2 = 3.9;
   teks(s, 'Bila stok DC kurang:', {x: 0.75, y: y2 + 0.32, w: 3.85, h: 0.4, fontSize: 14, italic: true, color: K.accent5, align: 'right'});
   s.addShape(pres.shapes.LINE, {x: xb0 + nw / 2, y: y1 + 1.05, w: 0, h: y2 - y1 - 1.05, line: {color: K.accent3, width: 2, dashType: 'dash', endArrowType: 'triangle'}, objectName: 'Cabang pembelian'});
   [['Permintaan pembelian', 'Kantor pusat', 'PR'], ['Pesanan ke vendor', 'Purchasing', 'PO'], ['Barang vendor tiba', 'Admin DC', 'GRPO']].forEach(([j, p, d], i) => {
@@ -128,16 +134,16 @@ const ikon = async (Icon, color) => {
   const x3 = 0.75 + 3 * (nw + gap) + nw / 2, x4 = 0.75 + 4 * (nw + gap) + nw / 2;
   s.addShape(pres.shapes.LINE, {x: x3, y: y1 + 1.52, w: x4 - x3, h: y2 - y1 - 1.52, line: {color: K.accent3, width: 2, dashType: 'dash', beginArrowType: 'triangle'}, objectName: 'Kembali ke transfer'});
   // keterangan singkatan: 6 dokumen SAP yang dibuat otomatis
-  kartu(s, 1.75, 5.35, 10.85, 1.3, 'Keterangan dokumen SAP', K.lt2);
-  teks(s, 'Dokumen SAP yang dibuat otomatis:', {x: 2.0, y: 5.43, w: 6, h: 0.3, fontSize: 13, bold: true, color: K.dk2});
+  kartu(s, 1.75, 5.48, 10.85, 1.2, 'Keterangan dokumen SAP', K.lt2);
+  teks(s, 'Dokumen SAP yang dibuat otomatis:', {x: 2.0, y: 5.53, w: 6, h: 0.3, fontSize: 13, bold: true, color: K.dk2});
   [['SO', 'Sales Order', 'pesanan per dek'], ['PR', 'Purchase Request', 'permintaan pembelian'], ['PO', 'Purchase Order', 'pesanan ke vendor'],
    ['GRPO', 'Goods Receipt PO', 'penerimaan barang vendor'], ['IT', 'Inventory Transfer', 'kiriman DC ke dek'], ['DO', 'Delivery Order', 'penjualan harian kasir']].forEach(([d, n, a], i) => {
-    const x = 2.0 + (i % 3) * 3.55, y = 5.8 + Math.floor(i / 3) * 0.4;
+    const x = 2.0 + (i % 3) * 3.55, y = 5.88 + Math.floor(i / 3) * 0.38;
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.72, h: 0.3, rectRadius: 0.06, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Keterangan ${d}`});
     s.addText(d, {x, y, w: 0.72, h: 0.3, fontSize: 11, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
     teks(s, [{text: n, options: {bold: true, color: K.dk2}}, {text: ' · ' + a, options: {color: K.accent5}}], {x: x + 0.82, y: y - 0.02, w: 2.65, h: 0.34, fontSize: 12, valign: 'middle'});
   });
-  s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan Goods Receipt PO (GRPO) saat barang tiba di DC.');
+  s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan Goods Receipt PO (GRPO) saat barang tiba di DC. Alur ini berulang: setelah barang terjual dan stok dek menipis, kapal memesan lagi ke DC.');
 
   // ---------- 4. tujuh peran ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
