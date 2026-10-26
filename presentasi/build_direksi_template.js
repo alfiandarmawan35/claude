@@ -2,6 +2,7 @@
 // Latar sampul/penutup dan latar isi diambil dari template (logo Danantara dan PELNI Services sudah ada di latar).
 // Area aman halaman isi: logo di atas sampai ±0,95", chevron di kiri bawah (x < 1,6" untuk y > 5,5"), garis navy di dasar.
 // Pakai: npm install && node build_direksi_template.js  ->  ../docs/PID_POS_Paparan_Direksi_Template.pptx
+const fs = require('fs');
 const path = require('path');
 const pptxgen = require('pptxgenjs');
 const React = require('react');
@@ -9,6 +10,8 @@ const ReactDOMServer = require('react-dom/server');
 const sharp = require('sharp');
 const FA = require('react-icons/fa');
 const {applyTheme} = require('./apply_theme.js');
+const NASKAH = require('./naskah_direksi.js');
+const catatan = (i) => NASKAH[i].teks.join('\n\n');
 
 const ROOT = path.resolve(__dirname, '..');
 const IMG = (g) => path.join(ROOT, 'motion/public/img', `${g}.png`);
@@ -85,7 +88,7 @@ const ikon = async (Icon, color) => {
   s.addText('PID POS', {placeholder: 'title'});
   teks(s, 'Aplikasi Toko Kapal Terintegrasi SAP Business One', {x: 0.67, y: 3.55, w: 7.4, h: 0.5, fontSize: 22, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, fitur utama, kasir, keunggulan, dan batasannya saat ini.');
+  s.addNotes(catatan(0));
 
   // ---------- 2. satu aplikasi ----------
   pres.addSection({title: 'Aplikasi'});
@@ -98,7 +101,7 @@ const ikon = async (Icon, color) => {
     teks(s, [{text: j, options: {bold: true, fontSize: 19, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 14, color: K.dk1}}], {x: 1.85, y: y - 0.05, w: 4.9, h: 1.1});
   }
   gambar(s, 'g01', {x: 7.0, y: 1.95, w: 5.6, h: 4.3}, 'Beranda admin kapal');
-  s.addNotes('PID POS terdiri dari aplikasi web untuk admin kapal, Distribution Center atau DC, dan kantor pusat, serta aplikasi kasir Android untuk setiap dek. Keduanya terhubung langsung dengan SAP Business One, sehingga dokumen dibuat otomatis setelah disetujui.');
+  s.addNotes(catatan(1));
 
   // ---------- 3. alur ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -143,7 +146,7 @@ const ikon = async (Icon, color) => {
     s.addText(d, {x, y, w: 0.72, h: 0.3, fontSize: 11, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
     teks(s, [{text: n, options: {bold: true, color: K.dk2}}, {text: ' · ' + a, options: {color: K.accent5}}], {x: x + 0.82, y: y - 0.02, w: 2.65, h: 0.34, fontSize: 12, valign: 'middle'});
   });
-  s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan Goods Receipt PO (GRPO) saat barang tiba di DC. Alur ini berulang: setelah barang terjual dan stok dek menipis, kapal memesan lagi ke DC.');
+  s.addNotes(catatan(2));
 
   // ---------- 4. tujuh peran ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -167,7 +170,7 @@ const ikon = async (Icon, color) => {
     });
     zx += zw[z] + 0.3;
   }
-  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve SO oleh P2, Approve PUR oleh Pergudangan, serta Approve PO dan Admin PO oleh Purchasing. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
+  s.addNotes(catatan(3));
 
   // ---------- 5. fitur web ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -179,7 +182,7 @@ const ikon = async (Icon, color) => {
     gambar(s, g, {x: x + 0.22, y: 2.1, w: 3.31, h: 2.0}, j);
     teks(s, [{text: j, options: {bold: true, fontSize: 18, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 13, color: K.dk1}}], {x: x + 0.25, y: 4.3, w: 3.25, h: 1.1, paraSpaceAfter: 4});
   });
-  s.addNotes('Tiga fitur utama aplikasi web: admin kapal memesan barang ke DC per dek; setiap permintaan disetujui berjenjang dan statusnya terlihat per tahap, lalu menjadi Sales Order di SAP; dan posisi stok setiap dek terpantau dalam satu tabel.');
+  s.addNotes(catatan(4));
 
   // ---------- 6. kasir ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -193,7 +196,7 @@ const ikon = async (Icon, color) => {
     s.addText(n, {x, y: 5.65, w: 0.52, h: 0.52, fontSize: 15, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
     teks(s, [{text: j, options: {bold: true, fontSize: 15, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 12, color: K.accent5}}], {x: x + 0.65, y: 5.55, w: 1.95, h: 0.8, valign: 'middle'});
   });
-  s.addNotes('Di setiap dek, kasir cukup scan barang, menerima pembayaran tunai atau QRIS dengan kembalian dihitung otomatis, lalu struk tercetak. Di akhir hari, penjualan dikirim ke SAP sebagai Delivery Order.');
+  s.addNotes(catatan(5));
 
   // ---------- 7. keunggulan ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -206,7 +209,7 @@ const ikon = async (Icon, color) => {
     teks(s, j, {x: x + 0.3, y: 3.35, w: 3.15, h: 0.55, fontSize: 24, bold: true, color: K.dk2});
     teks(s, d, {x: x + 0.3, y: 3.95, w: 3.15, h: 1.35, fontSize: 14, color: K.dk1});
   }
-  s.addNotes('Keunggulan PID POS ada tiga. Transparan: stok setiap dek dan status permintaan terpantau real-time. Terkendali: setiap tahap disetujui berjenjang, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan. Terintegrasi: dokumen SAP dibuat otomatis, termasuk penjualan harian setiap dek sebagai Delivery Order.');
+  s.addNotes(catatan(6));
 
   // ---------- 8. batasan ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -229,7 +232,7 @@ const ikon = async (Icon, color) => {
     s.addShape(pres.shapes.LINE, {x: x + 0.35, y: 4.85, w: 5.1, h: 0, line: {color: 'E3E9F3', width: 1}, objectName: 'Pemisah'});
     teks(s, [{text: 'Perlu disiapkan: ', options: {bold: true, color: K.dk2}}, {text: siap, options: {color: K.dk1}}], {x: x + 0.35, y: 4.98, w: 5.1, h: 0.5, fontSize: 14});
   }
-  s.addNotes('Ada dua batasan PID POS saat ini. Pertama, aplikasi web dan kasir memerlukan koneksi internet, jadi kapal, DC, dan kantor pusat perlu terhubung saat aplikasi dipakai. Kedua, aplikasi kasir baru tersedia di Android; versi iOS untuk iPhone dan iPad belum tersedia, jadi perangkat kasir di setiap dek perlu memakai Android.');
+  s.addNotes(catatan(7));
 
   // ---------- 8. penutup ----------
   pres.addSection({title: 'Penutup'});
@@ -237,9 +240,13 @@ const ikon = async (Icon, color) => {
   s.addText('Terima Kasih', {placeholder: 'title'});
   teks(s, 'PID POS · Satu alur, dari kapal sampai kasir.', {x: 0.67, y: 3.55, w: 7.4, h: 0.5, fontSize: 20, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes('PID POS: satu alur, dari kapal sampai kasir. Terima kasih.');
+  s.addNotes(catatan(8));
 
   await pres.writeFile({fileName: OUT});
+  // naskah yang sama sebagai dokumen untuk pembicara
+  const md = ['# Naskah Paparan Direksi: PID POS', '', 'Perkiraan durasi total ± 9 menit. Naskah ini juga tersimpan sebagai catatan pembicara di setiap halaman deck.', '',
+    ...NASKAH.flatMap((h, i) => ['---', '', `## Halaman ${i + 1}: ${h.judul}`, '', `*Durasi ± ${h.durasi}*`, '', ...h.teks.flatMap((t) => [t, ''])])];
+  fs.writeFileSync(path.join(__dirname, '..', 'docs', 'Naskah_Paparan_Direksi_PID_POS.md'), md.join('\n'));
   await applyTheme(OUT, THEME);
   console.log(OUT);
 })();
