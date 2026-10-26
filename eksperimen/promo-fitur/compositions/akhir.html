@@ -1,0 +1,28 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #213a7c; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; }
+    #a-logo { position: absolute; left: 90px; width: 900px; top: 560px; height: 230px; background: #fff; border-radius: 32px; display: flex; align-items: center; justify-content: center; gap: 34px; box-shadow: 0 24px 50px rgba(8, 16, 40, 0.35); }
+    #a-logo img { width: 380px; }
+    #a-garis { width: 4px; height: 130px; background: #d5deec; border-radius: 2px; }
+    #a-nama { font-weight: 800; font-size: 104px; color: #1f3b7a; letter-spacing: -0.02em; white-space: nowrap; }
+    #a-baris { position: absolute; left: 0; right: 0; top: 860px; text-align: center; color: #fff; font-weight: 800; font-size: 56px; letter-spacing: -0.01em; line-height: 1.2; }
+    #a-baris span { display: inline-block; }
+    #a-pita { position: absolute; left: 140px; width: 800px; top: 1040px; height: 112px; border-radius: 56px; background: #ff6b1a; color: #0f1b3d; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 42px; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="akhir" data-width="1080" data-height="1920">
+    <div id="a-logo"><img src="assets/pelni_services.png" alt="PELNI Services" /><div id="a-garis"></div><div id="a-nama">PID POS</div></div>
+    <div id="a-baris"><span>Satu alur,</span> <span>dari kapal</span><br /><span>sampai kasir.</span></div>
+    <div id="a-pita">Mulai Selasa, 27 Oktober 2026</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // logo dibawa masuk dari bawah dan mendarat
+    tl.fromTo("#a-logo", { y: 520, scale: 0.7 }, { y: 0, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 0.1);
+    tl.fromTo("#a-nama", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.55);
+    tl.fromTo("#a-baris span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.09 }, 1.0);
+    tl.fromTo("#a-pita", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 1.6);
+    window.__timelines["akhir"] = tl;
+  </script>
+</template>

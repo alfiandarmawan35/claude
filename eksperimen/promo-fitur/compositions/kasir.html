@@ -1,0 +1,110 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #213a7c; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; color: #0f1b3d; }
+    #k-judul { position: absolute; left: 64px; top: 210px; color: #fff; font-weight: 800; font-size: 104px; letter-spacing: -0.03em; line-height: 1.02; }
+    #k-judul span { display: inline-block; }
+    .k-oren { color: #ff8a3d; }
+    #k-kartu { position: absolute; left: 60px; top: 520px; width: 960px; height: 790px; background: #fff; border-radius: 28px; box-shadow: 0 30px 60px rgba(8, 16, 40, 0.35); }
+    .k-lapis { position: absolute; inset: 0; }
+    #k-kepala { position: absolute; left: 40px; top: 34px; font-weight: 700; font-size: 28px; color: #5b6b86; }
+    #k-scan { position: absolute; left: 40px; right: 40px; top: 84px; height: 88px; border-radius: 16px; background: #f3f6fb; display: flex; align-items: center; padding: 0 26px; gap: 18px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #k-baris { position: absolute; left: 40px; right: 40px; top: 196px; height: 124px; border-radius: 16px; background: #e9f0fb; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+    .k-nama { font-weight: 800; font-size: 32px; }
+    .k-harga { font-weight: 600; font-size: 28px; color: #5b6b86; margin-top: 4px; }
+    #k-qty { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 34px; }
+    .k-btn { width: 52px; height: 52px; border-radius: 12px; border: 3px solid #d5deec; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #3c4c6c; background: #fff; }
+    .k-angka { position: relative; width: 70px; height: 52px; border-radius: 12px; background: #fff; border: 3px solid #d5deec; }
+    .k-angka span, .k-jml span, .k-total span { position: absolute; }
+    .k-angka span { inset: 0; display: flex; align-items: center; justify-content: center; }
+    .k-jml { position: relative; width: 150px; height: 44px; font-weight: 800; font-size: 34px; }
+    .k-jml span { right: 0; top: 0; }
+    #k-panel { position: absolute; left: 40px; right: 40px; top: 344px; height: 270px; border-radius: 22px; background: #213a7c; color: #fff; padding: 30px 34px; }
+    .k-kecil { font-weight: 600; font-size: 28px; color: #c9d6f2; }
+    .k-total { position: relative; height: 120px; font-weight: 800; font-size: 104px; letter-spacing: -0.02em; }
+    .k-total span { left: 0; top: 0; white-space: nowrap; }
+    #k-bayar { position: absolute; left: 40px; right: 40px; top: 640px; height: 112px; border-radius: 20px; background: #2f7a3a; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 34px; font-weight: 800; font-size: 42px; }
+    #k-f12 { font-size: 28px; padding: 6px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.2); }
+    #k-panel2 { position: absolute; left: 40px; right: 40px; top: 40px; height: 190px; border-radius: 22px; background: #213a7c; color: #fff; padding: 26px 34px; }
+    .k-pil { position: absolute; top: 254px; width: 430px; height: 92px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 34px; }
+    #k-tunai { left: 40px; border: 4px solid #213a7c; background: #e9f0fb; }
+    #k-qris { left: 490px; border: 3px solid #d5deec; }
+    #k-label { position: absolute; left: 40px; top: 372px; font-weight: 700; font-size: 28px; color: #5b6b86; }
+    #k-uang { position: absolute; left: 40px; right: 40px; top: 414px; height: 110px; border-radius: 18px; border: 4px solid #213a7c; display: flex; align-items: center; justify-content: flex-end; padding: 0 30px; font-weight: 800; font-size: 64px; }
+    #k-kembali { position: absolute; left: 40px; right: 40px; top: 548px; display: flex; justify-content: space-between; align-items: baseline; }
+    #k-kembali-l { font-weight: 600; font-size: 36px; color: #3c4c6c; }
+    #k-kembali-n { font-weight: 800; font-size: 52px; color: #2f7a3a; }
+    #k-selesai { position: absolute; left: 40px; right: 40px; top: 640px; height: 112px; border-radius: 20px; background: #213a7c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; }
+    #k-struk { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    #k-teks-selesai { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    #k-dip { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 20; }
+    #k-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="kasir" data-width="1080" data-height="1920">
+    <div id="k-judul"><span>Scan, bayar,</span><br /><span>kembalian</span> <span class="k-oren">otomatis</span></div>
+    <div id="k-kartu">
+      <div id="k-a" class="k-lapis">
+        <div id="k-kepala">Kasir · KM Awu – Dek 3</div>
+        <div id="k-scan">
+          <svg width="40" height="34" viewBox="0 0 40 34"><path d="M2 10V2h8M30 2h8v8M38 24v8h-8M10 32H2v-8" stroke="#3c4c6c" stroke-width="3" fill="none" /><path d="M11 9v16M16 9v16M21 9v16M27 9v16" stroke="#3c4c6c" stroke-width="3" /></svg>
+          Scan barcode, atau ketik nama / kode lalu Enter
+        </div>
+        <div id="k-baris">
+          <div><div class="k-nama">AQUA BTL1500 ML/12</div><div class="k-harga">19.000</div></div>
+          <div id="k-qty"><div class="k-btn">−</div><div class="k-angka"><span id="k-q1">1</span><span id="k-q2">2</span></div><div class="k-btn">+</div></div>
+          <div class="k-jml"><span id="k-j1">19.000</span><span id="k-j2">38.000</span></div>
+        </div>
+        <div id="k-panel">
+          <div class="k-kecil">Total · 1 barang, 2 pcs</div>
+          <div class="k-total"><span id="k-t1">Rp 19.000</span><span id="k-t2">Rp 38.000</span></div>
+          <div class="k-kecil">Harga sudah termasuk PPN</div>
+        </div>
+        <div id="k-bayar"><span>Bayar</span><span id="k-f12">F12</span></div>
+      </div>
+      <div id="k-b" class="k-lapis">
+        <div id="k-panel2"><div class="k-kecil">Total belanja (2 item)</div><div class="k-total"><span>Rp 38.000</span></div></div>
+        <div id="k-tunai" class="k-pil">Tunai</div>
+        <div id="k-qris" class="k-pil">QRIS</div>
+        <div id="k-label">Uang diterima</div>
+        <div id="k-uang">50.000</div>
+        <div id="k-kembali"><span id="k-kembali-l">Kembalian</span><span id="k-kembali-n">Rp 12.000</span></div>
+        <div id="k-selesai"><span id="k-teks-selesai">Selesaikan pembayaran</span><span id="k-struk">✓ Struk tercetak</span></div>
+      </div>
+    </div>
+    <svg id="k-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+    <div id="k-dip"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // judul dan kartu muncul dari warna tombol yang baru diklik
+    tl.fromTo("#k-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08 }, 0.05);
+    tl.fromTo("#k-kartu", { scale: 0.86, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: "expo.out" }, 0.1);
+    tl.fromTo("#k-b", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#k-struk", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo(["#k-q2", "#k-j2", "#k-t2"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    // scan: baris AQUA masuk, lalu scan kedua menaikkan qty ke 2
+    tl.fromTo("#k-baris", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.47);
+    tl.to(["#k-q1", "#k-j1", "#k-t1"], { opacity: 0, duration: 0.06 }, 1.17);
+    tl.fromTo(["#k-q2", "#k-j2", "#k-t2"], { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.17);
+    // klik Bayar (ketukan 37, lokal 2,34)
+    tl.fromTo("#k-kursor", { x: 1180, y: 1760 }, { x: 560, y: 1200, duration: 0.9, ease: "power2.inOut" }, 1.3);
+    tl.fromTo("#k-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 2.27);
+    tl.fromTo("#k-bayar", { scale: 1 }, { scale: 0.96, duration: 0.07, yoyo: true, repeat: 1 }, 2.27);
+    // layar bayar menggantikan keranjang di panggung yang sama
+    tl.to("#k-a", { opacity: 0, filter: "blur(8px)", duration: 0.16 }, 2.36);
+    tl.fromTo("#k-b", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16 }, 2.44);
+    tl.fromTo("#k-uang", { color: "#ffffff" }, { color: "#0f1b3d", duration: 0.2 }, 2.8);
+    tl.fromTo("#k-kembali-n", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 3.28);
+    // klik Selesaikan pembayaran (ketukan 41, lokal 4,22)
+    tl.fromTo("#k-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 4.15);
+    tl.to("#k-selesai", { backgroundColor: "#2f7a3a", duration: 0.15 }, 4.22);
+    tl.to("#k-teks-selesai", { opacity: 0, duration: 0.1 }, 4.22);
+    tl.fromTo("#k-struk", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 4.26);
+    tl.to("#k-kursor", { x: 1180, y: 1600, duration: 0.7, ease: "power2.in" }, 4.6);
+    // dip sebelum potongan ke rekap shift
+    tl.fromTo("#k-dip", { opacity: 0 }, { opacity: 0.4, duration: 0.1 }, 5.52);
+    window.__timelines["kasir"] = tl;
+  </script>
+</template>

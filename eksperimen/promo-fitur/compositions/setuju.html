@@ -1,0 +1,79 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; }
+    #s-dunia { position: absolute; inset: 0; background: #eef2f8; color: #0f1b3d; }
+    #s-judul { position: absolute; left: 64px; top: 220px; font-weight: 800; font-size: 104px; letter-spacing: -0.03em; line-height: 1.02; }
+    #s-judul span { display: inline-block; }
+    .s-oren { color: #e2550c; }
+    #s-kartu { position: absolute; left: 60px; top: 520px; width: 960px; height: 760px; background: #fff; border-radius: 28px; box-shadow: 0 30px 60px rgba(15, 27, 61, 0.16); }
+    #s-no { position: absolute; left: 48px; top: 44px; font-weight: 700; font-size: 28px; letter-spacing: 0.04em; color: #5b6b86; }
+    #s-kapal { position: absolute; left: 48px; top: 86px; font-weight: 800; font-size: 52px; }
+    .s-chip { position: absolute; left: 48px; top: 168px; height: 64px; padding: 0 28px; border-radius: 999px; display: flex; align-items: center; gap: 14px; font-weight: 800; font-size: 30px; white-space: nowrap; }
+    #s-tunggu { background: #fdf1d6; color: #8a5a00; }
+    #s-so { background: #dcf5e3; color: #17663a; }
+    #s-langkah { position: absolute; left: 48px; top: 268px; display: flex; gap: 10px; }
+    .s-l { height: 76px; padding: 0 30px 0 40px; display: flex; align-items: center; font-weight: 700; font-size: 28px; background: #e8eef8; color: #3c4c6c; clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%); }
+    .s-l:first-child { clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%); padding-left: 28px; }
+    #s-l2 { background: #213a7c; color: #fff; }
+    .s-baris { position: absolute; left: 48px; right: 48px; height: 112px; border-top: 3px solid #e8eef8; display: flex; align-items: center; justify-content: space-between; }
+    .s-nama { font-weight: 800; font-size: 34px; }
+    .s-dek { font-weight: 600; font-size: 28px; color: #5b6b86; margin-top: 4px; }
+    .s-angka { text-align: right; font-weight: 800; font-size: 34px; }
+    .s-angka small { display: block; font-size: 28px; font-weight: 600; color: #5b6b86; }
+    #s-setujui { position: absolute; left: 48px; right: 48px; top: 618px; height: 100px; border-radius: 18px; background: #213a7c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 36px; }
+    #s-catatan { position: absolute; left: 64px; top: 1308px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #s-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="setuju" data-width="1080" data-height="1920">
+    <div id="s-dunia">
+      <div id="s-judul"><span>Disetujui,</span><br /><span>jadi</span> <span class="s-oren">Sales&nbsp;Order</span></div>
+      <div id="s-kartu">
+        <div id="s-no">PERMINTAAN-AWU/2610/0008</div>
+        <div id="s-kapal">KM Awu</div>
+        <div id="s-tunggu" class="s-chip">● Menunggu persetujuan</div>
+        <div id="s-so" class="s-chip">✓ Sales Order 266000699 di SAP</div>
+        <div id="s-langkah">
+          <div id="s-l1" class="s-l">Diajukan</div>
+          <div id="s-l2" class="s-l">Approval SO</div>
+          <div id="s-l3" class="s-l">Sales Order</div>
+        </div>
+        <div class="s-baris" style="top: 384px">
+          <div><div class="s-nama">AQUA BTL1500 ML/12</div><div class="s-dek">KM Awu - Dek 3</div></div>
+          <div class="s-angka">6<small>Rp 19.000</small></div>
+        </div>
+        <div class="s-baris" style="top: 496px">
+          <div><div class="s-nama">TEH PUCUK HARUM 350ML/24</div><div class="s-dek">KM Awu - Dek 7</div></div>
+          <div class="s-angka">24<small>Rp 12.000</small></div>
+        </div>
+        <div id="s-setujui">Setujui level 1 (Approval SO)</div>
+      </div>
+      <div id="s-catatan">Approve SO memeriksa barang dan harga jual per dek</div>
+    </div>
+    <svg id="s-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // iris dari titik klik "Kirim ke DC" di adegan sebelumnya
+    tl.fromTo("#s-dunia", { clipPath: "circle(0px at 816px 1146px)" }, { clipPath: "circle(2300px at 816px 1146px)", duration: 0.42, ease: "power2.in" }, 0);
+    tl.fromTo("#s-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08 }, 0.3);
+    tl.fromTo("#s-kartu", { y: 120 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0.05);
+    tl.fromTo("#s-so", { opacity: 0, scale: 0.6 }, { opacity: 0, scale: 0.6, duration: 0.01 }, 0);
+    // kursor ke tombol Setujui, klik di ketukan 15 (lokal 2,81 s)
+    tl.fromTo("#s-kursor", { x: 1180, y: 1700 }, { x: 560, y: 1190, duration: 1.0, ease: "power2.inOut" }, 1.5);
+    tl.fromTo("#s-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 2.74);
+    tl.fromTo("#s-setujui", { scale: 1 }, { scale: 0.96, duration: 0.07, yoyo: true, repeat: 1 }, 2.74);
+    // status berubah: chip kuning -> hijau, langkah maju
+    tl.to("#s-tunggu", { opacity: 0, scale: 0.8, duration: 0.12, ease: "power2.in" }, 2.82);
+    tl.to("#s-so", { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 2.86);
+    tl.to("#s-l2", { backgroundColor: "#dcf5e3", color: "#17663a", duration: 0.2 }, 2.86);
+    tl.to("#s-l3", { backgroundColor: "#213a7c", color: "#ffffff", duration: 0.2 }, 2.96);
+    tl.to("#s-setujui", { backgroundColor: "#22a35a", duration: 0.2 }, 2.86);
+    tl.to("#s-kursor", { x: 1180, y: 1500, duration: 0.8, ease: "power2.in" }, 3.4);
+    // whip ke atas saat adegan terima masuk (lokal 5,156)
+    tl.to("#s-dunia", { y: -700, filter: "blur(18px)", duration: 0.32, ease: "power3.in" }, 5.12);
+    window.__timelines["setuju"] = tl;
+  </script>
+</template>

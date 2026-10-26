@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #1f3b7a; }
+      #root { width: 100%; height: 100%; font-family: "Plus Jakarta Sans", sans-serif; }
+    </style>
+  </head>
+  <body>
+    <!-- Satu botol AQUA: pesan -> setuju -> terima -> jual -> DO. Waktu mengikuti musik 128 BPM (1 ketukan = 0,46875 s). -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="pesan" data-composition-id="pesan" data-composition-src="compositions/pesan.html" data-start="0" data-duration="4.6875" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="setuju" data-composition-id="setuju" data-composition-src="compositions/setuju.html" data-start="4.21875" data-duration="5.55" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="terima" data-composition-id="terima" data-composition-src="compositions/terima.html" data-start="9.375" data-duration="5.725" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
+      <div id="kasir" data-composition-id="kasir" data-composition-src="compositions/kasir.html" data-start="15" data-duration="5.75" data-track-index="4" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>
+      <div id="kirimdo" data-composition-id="kirimdo" data-composition-src="compositions/kirimdo.html" data-start="20.625" data-duration="4.6" data-track-index="5" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="akhir" data-composition-id="akhir" data-composition-src="compositions/akhir.html" data-start="25.125" data-duration="4.875" data-track-index="6" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:6"></div>
+
+      <audio id="musik" src="assets/musik.wav" data-start="0" data-duration="30" data-volume="0.9" data-fade-in="0.05" data-fade-out="1.2"></audio>
+      <audio id="ketik-qty" src="assets/ketik.wav" data-start="0.5" data-volume="1.4"></audio>
+      <audio id="klik-kirim" src="assets/klik1.wav" data-start="4.21" data-volume="1.6"></audio>
+      <audio id="klik-setuju" src="assets/klik2.wav" data-start="7.02" data-volume="1.6"></audio>
+      <audio id="klik-terima" src="assets/klik1.wav" data-start="14.52" data-volume="1.6"></audio>
+      <audio id="klik-bayar" src="assets/klik2.wav" data-start="17.33" data-volume="1.6"></audio>
+      <audio id="klik-selesai" src="assets/klik1.wav" data-start="19.21" data-volume="1.6"></audio>
+      <audio id="klik-do" src="assets/klik2.wav" data-start="22.49" data-volume="1.8"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

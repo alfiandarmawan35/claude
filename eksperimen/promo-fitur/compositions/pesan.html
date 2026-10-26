@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #1f3b7a; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; }
+    #p-judul { position: absolute; left: 64px; top: 220px; color: #fff; font-weight: 800; font-size: 112px; letter-spacing: -0.03em; line-height: 1; }
+    #p-sub { position: absolute; left: 64px; top: 360px; color: #c9d6f2; font-weight: 700; font-size: 48px; }
+    #p-sub span { display: inline-block; }
+    .p-oren { color: #ff8a3d; }
+    #p-kartu { position: absolute; left: 60px; top: 520px; width: 960px; height: 720px; background: #fff; border-radius: 28px; box-shadow: 0 30px 60px rgba(8, 16, 40, 0.35); color: #0f1b3d; }
+    #p-kepala { position: absolute; left: 48px; top: 44px; font-weight: 800; font-size: 46px; letter-spacing: -0.01em; }
+    #p-meta { position: absolute; left: 48px; top: 112px; font-weight: 600; font-size: 30px; color: #5b6b86; }
+    #p-garis { position: absolute; left: 48px; right: 48px; top: 176px; height: 3px; background: #e4eaf4; }
+    #p-nama { position: absolute; left: 48px; top: 214px; font-weight: 800; font-size: 44px; }
+    #p-kode { position: absolute; left: 48px; top: 272px; font-weight: 600; font-size: 30px; color: #5b6b86; }
+    .p-lbl { position: absolute; top: 352px; font-weight: 700; font-size: 28px; color: #5b6b86; }
+    .p-kotak { position: absolute; top: 396px; height: 104px; border: 3px solid #d5deec; border-radius: 16px; display: flex; align-items: center; font-weight: 700; font-size: 40px; padding: 0 28px; }
+    #p-dek { left: 48px; width: 300px; justify-content: space-between; }
+    #p-stok { left: 380px; width: 230px; justify-content: flex-end; border-color: transparent; background: #f3f6fb; }
+    #p-qty { left: 642px; width: 270px; justify-content: flex-end; border-color: #213a7c; box-shadow: 0 0 0 6px rgba(33, 58, 124, 0.15); }
+    #p-caret { width: 4px; height: 52px; background: #213a7c; margin-left: 6px; }
+    #p-enam { display: inline-block; font-size: 48px; font-weight: 800; }
+    .p-tombol { position: absolute; top: 576px; height: 100px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 36px; }
+    #p-draft { left: 300px; width: 280px; border: 3px solid #d5deec; color: #0f1b3d; }
+    #p-kirim { left: 600px; width: 312px; background: #213a7c; color: #fff; }
+    #p-catatan { position: absolute; left: 64px; top: 1268px; font-weight: 600; font-size: 28px; color: #9fb2da; }
+    #p-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="pesan" data-width="1080" data-height="1920">
+    <div id="p-judul">Pesan dari kapal</div>
+    <div id="p-sub"><span>AQUA</span> <span class="p-oren">6&nbsp;pcs</span> <span>untuk</span> <span>Dek&nbsp;3</span></div>
+
+    <div id="p-kartu">
+      <div id="p-kepala">Permintaan barang baru</div>
+      <div id="p-meta">KM Awu · DC-JKT · Voyage 23/2026</div>
+      <div id="p-garis"></div>
+      <div id="p-nama">AQUA BTL1500 ML/12</div>
+      <div id="p-kode">SBI-000000006 PCS</div>
+      <div class="p-lbl" style="left: 48px">Dek</div>
+      <div class="p-lbl" style="left: 380px">Stok DC</div>
+      <div class="p-lbl" style="left: 642px">Dipesan</div>
+      <div id="p-dek" class="p-kotak"><span>Dek 3</span><span style="color: #5b6b86">▾</span></div>
+      <div id="p-stok" class="p-kotak">114</div>
+      <div id="p-qty" class="p-kotak"><span id="p-enam">6</span><span id="p-caret"></span></div>
+      <div id="p-draft" class="p-tombol">Simpan draft</div>
+      <div id="p-kirim" class="p-tombol">Kirim ke DC</div>
+    </div>
+    <div id="p-catatan">Contoh data uji dari manual PID POS</div>
+
+    <svg id="p-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // qty diketik di ketukan pertama
+    tl.fromTo("#p-enam", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.47);
+    tl.fromTo("#p-caret", { opacity: 1 }, { opacity: 0, duration: 0.01 }, 0.47);
+    tl.fromTo("#p-sub span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.09 }, 0.9);
+    // kursor masuk dari kanan bawah, berhenti di Kirim ke DC
+    tl.fromTo("#p-kursor", { x: 1180, y: 1760 }, { x: 790, y: 1150, duration: 1.0, ease: "power2.inOut" }, 2.6);
+    tl.fromTo("#p-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 4.14);
+    tl.fromTo("#p-kirim", { scale: 1 }, { scale: 0.94, duration: 0.07, yoyo: true, repeat: 1 }, 4.14);
+    window.__timelines["pesan"] = tl;
+  </script>
+</template>

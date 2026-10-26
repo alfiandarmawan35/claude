@@ -1,0 +1,58 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #eef2f8; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; color: #0f1b3d; }
+    #d-isi { position: absolute; inset: 0; }
+    #d-judul { position: absolute; left: 64px; top: 210px; font-weight: 800; font-size: 104px; letter-spacing: -0.03em; line-height: 1.02; }
+    #d-judul span { display: inline-block; }
+    #d-kartu { position: absolute; left: 60px; top: 520px; width: 960px; height: 640px; background: #fff; border-radius: 28px; box-shadow: 0 30px 60px rgba(15, 27, 61, 0.16); }
+    #d-kepala { position: absolute; left: 44px; top: 40px; font-weight: 800; font-size: 50px; }
+    #d-shift { position: absolute; left: 44px; top: 112px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #d-stat { position: absolute; left: 44px; right: 44px; top: 176px; height: 206px; border-radius: 20px; border: 3px solid #e4eaf4; padding: 28px 32px; }
+    .d-kecil { font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #d-angka { font-weight: 800; font-size: 76px; letter-spacing: -0.02em; margin: 6px 0; }
+    #d-belum { position: absolute; left: 44px; top: 410px; font-weight: 700; font-size: 30px; color: #b45309; }
+    #d-tombol { position: absolute; left: 44px; right: 44px; top: 480px; height: 108px; border-radius: 20px; border: 4px solid #213a7c; color: #213a7c; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 40px; }
+    #d-toast { position: absolute; left: 90px; width: 900px; top: 1196px; height: 120px; border-radius: 60px; background: #213a7c; display: flex; align-items: center; justify-content: center; box-shadow: 0 24px 50px rgba(15, 27, 61, 0.3); }
+    #d-toast-teks { color: #fff; font-weight: 800; font-size: 40px; white-space: nowrap; }
+    #d-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="kirimdo" data-width="1080" data-height="1920">
+    <div id="d-isi">
+      <div id="d-judul"><span>Tutup hari,</span><br /><span>kirim DO</span></div>
+      <div id="d-kartu">
+        <div id="d-kepala">Rekap shift</div>
+        <div id="d-shift">SHIFT-DEK3-AWU/2610/0002</div>
+        <div id="d-stat">
+          <div class="d-kecil">Penjualan</div>
+          <div id="d-angka">Rp 38.000</div>
+          <div class="d-kecil">1 struk, 2 item</div>
+        </div>
+        <div id="d-belum">1 struk belum masuk SAP</div>
+        <div id="d-tombol">Kirim DO hari ini</div>
+      </div>
+    </div>
+    <div id="d-toast"><span id="d-toast-teks">DO 266000512 terkirim ke SAP</span></div>
+    <svg id="d-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // hening: semuanya sudah di tempat, hanya kursor yang bergerak pelan
+    tl.fromTo("#d-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, stagger: 0.1 }, 0.05);
+    tl.fromTo("#d-toast", { opacity: 0, scale: 0.4 }, { opacity: 0, scale: 0.4, duration: 0.01 }, 0);
+    tl.fromTo("#d-kursor", { x: 1180, y: 1700 }, { x: 560, y: 1040, duration: 1.2, ease: "power2.inOut" }, 0.4);
+    // klik tepat di drop musik (22,5 s = lokal 1,875)
+    tl.fromTo("#d-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 1.81);
+    tl.to("#d-tombol", { backgroundColor: "#213a7c", color: "#ffffff", duration: 0.1 }, 1.875);
+    tl.to("#d-belum", { color: "#17663a", duration: 0.1 }, 1.875);
+    tl.to("#d-toast", { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 1.875);
+    tl.to("#d-kursor", { opacity: 0, duration: 0.15 }, 2.3);
+    // toast tumbuh memenuhi layar dan menjadi latar penutup
+    tl.to("#d-toast-teks", { opacity: 0, duration: 0.15 }, 3.9);
+    tl.to("#d-isi", { filter: "blur(14px)", opacity: 0.4, duration: 0.3 }, 3.9);
+    tl.to("#d-toast", { scaleX: 1.4, scaleY: 18, borderRadius: 0, y: -300, duration: 0.6, ease: "power2.inOut" }, 3.9);
+    window.__timelines["kirimdo"] = tl;
+  </script>
+</template>

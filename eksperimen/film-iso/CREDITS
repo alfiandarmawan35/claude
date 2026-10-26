@@ -1,0 +1,9 @@
+Satu Alur (PID POS) — film isometrik
+
+Gaya dan engine: Lemo-Opuscar, styles/iso-infographic (MIT; lihat LICENSE-lemo-opuscar). engine.js disalin dan
+  hurufnya diganti. Tidak ada aset demo lain yang dipakai.
+Huruf: Plus Jakarta Sans (SIL Open Font License 1.1; fonts/OFL-PlusJakartaSans.txt).
+Narasi: Microsoft Edge TTS, suara id-ID-GadisNeural (layanan online Microsoft; tunduk pada ketentuan Microsoft).
+Musik, foley, ambience: disintesis dengan numpy di mix.py (orisinal, tanpa sampel).
+Data di layar: contoh data uji dari manual PID POS (AQUA 6 pcs Dek 3, Teh Pucuk 24 pcs Dek 7, DO 266000512, Rp 38.000).
+Pengguna bertanggung jawab atas bahan yang dipakai di film ini.

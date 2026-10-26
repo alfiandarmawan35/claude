@@ -1,0 +1,59 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Plus Jakarta Sans"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; font-family: "Plus Jakarta Sans", sans-serif; overflow: hidden; }
+    #t-dunia { position: absolute; inset: 0; background: #ff6b1a; color: #0f1b3d; }
+    #t-judul { position: absolute; left: 64px; top: 210px; font-weight: 800; font-size: 104px; letter-spacing: -0.03em; line-height: 1.02; }
+    #t-kartu { position: absolute; left: 60px; top: 480px; width: 960px; height: 850px; background: #fff; border-radius: 28px; box-shadow: 0 30px 60px rgba(90, 30, 0, 0.28); }
+    #t-ket { position: absolute; left: 48px; top: 40px; font-weight: 700; font-size: 28px; color: #5b6b86; }
+    #t-no { position: absolute; left: 48px; top: 80px; font-weight: 800; font-size: 52px; }
+    #t-isi { position: absolute; left: 48px; top: 150px; font-weight: 600; font-size: 30px; color: #3c4c6c; }
+    #t-isi b { color: #17663a; }
+    #t-cek-judul { position: absolute; left: 48px; top: 232px; font-weight: 800; font-size: 32px; }
+    .t-butir { position: absolute; left: 48px; right: 40px; display: flex; align-items: center; gap: 22px; font-weight: 600; font-size: 29px; line-height: 1.25; }
+    .t-kotak { flex: none; width: 46px; height: 46px; border-radius: 10px; border: 3px solid #b8c4d6; position: relative; }
+    .t-centang { position: absolute; inset: -3px; border-radius: 10px; background: #213a7c; display: flex; align-items: center; justify-content: center; }
+    #t-setujui { position: absolute; left: 480px; width: 432px; top: 720px; height: 100px; border-radius: 18px; background: #213a7c; display: flex; align-items: center; justify-content: center; }
+    #t-setujui-teks { color: #fff; font-weight: 700; font-size: 36px; }
+    #t-tolak { position: absolute; left: 48px; width: 180px; top: 720px; height: 100px; border-radius: 18px; border: 3px solid #f0b4ad; color: #c0392b; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 34px; }
+    #t-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="terima" data-width="1080" data-height="1920">
+    <div id="t-dunia">
+      <div id="t-judul">Diterima,<br />dicek di dek</div>
+      <div id="t-kartu">
+        <div id="t-ket">Terima barang · Inventory Transfer</div>
+        <div id="t-no">262000146</div>
+        <div id="t-isi">AQUA BTL1500 ML/12 · dikirim 6 · <b>diterima baik 6</b></div>
+        <div id="t-cek-judul">Checklist terima barang (wajib semua)</div>
+        <div class="t-butir" style="top: 292px"><div class="t-kotak"><div id="t-c1" class="t-centang"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>Jumlah barang sesuai surat jalan / Inventory Transfer</div>
+        <div class="t-butir" style="top: 372px"><div class="t-kotak"><div id="t-c2" class="t-centang"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>Kondisi kemasan baik; barang rusak dicatat di kolom rusak</div>
+        <div class="t-butir" style="top: 452px"><div class="t-kotak"><div id="t-c3" class="t-centang"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>Tanggal kedaluwarsa diperiksa (tidak kedaluwarsa / tidak terlalu dekat)</div>
+        <div class="t-butir" style="top: 532px"><div class="t-kotak"><div id="t-c4" class="t-centang"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>Kode &amp; nama barang sesuai (tidak tertukar)</div>
+        <div class="t-butir" style="top: 612px"><div class="t-kotak"><div id="t-c5" class="t-centang"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round" /></svg></div></div>Barang sudah disimpan di gudang / rak toko yang benar</div>
+        <div id="t-tolak">Tolak</div>
+        <div id="t-setujui"><span id="t-setujui-teks">Setujui (Kepala toko)</span></div>
+      </div>
+    </div>
+    <svg id="t-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // masuk dengan whip dari bawah, menyambung gerak adegan sebelumnya
+    tl.fromTo("#t-dunia", { y: 1500, filter: "blur(18px)" }, { y: 0, filter: "blur(0px)", duration: 0.42, ease: "power3.out" }, 0);
+    // lima butir checklist tercentang satu per satu
+    ["#t-c1", "#t-c2", "#t-c3", "#t-c4", "#t-c5"].forEach((id, i) => {
+      tl.fromTo(id, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.2)" }, 0.9 + i * 0.47);
+    });
+    // kursor ke Setujui (Kepala toko), klik di ketukan 31 (lokal 5,156 s)
+    tl.fromTo("#t-kursor", { x: 1180, y: 1760 }, { x: 740, y: 1240, duration: 1.0, ease: "power2.inOut" }, 3.7);
+    tl.fromTo("#t-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 5.08);
+    tl.to("#t-kursor", { opacity: 0, duration: 0.08 }, 5.2);
+    // zoom tembus: tombol membesar sampai warnanya menjadi latar adegan kasir
+    tl.to("#t-setujui-teks", { opacity: 0, duration: 0.1 }, 5.16);
+    tl.fromTo("#t-setujui", { scale: 1 }, { scale: 28, duration: 0.42, ease: "power3.in" }, 5.16);
+    window.__timelines["terima"] = tl;
+  </script>
+</template>

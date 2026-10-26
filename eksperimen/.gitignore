@@ -1,0 +1,8 @@
+out/
+.hyperframes/
+node_modules/
+*/out/
+*/.hyperframes/
+*/node_modules/
+film-iso/suara/*.wav
+promo-fitur/assets/musik.wav

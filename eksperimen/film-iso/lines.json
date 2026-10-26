@@ -1,0 +1,10 @@
+[
+ {"id": "L1", "text": "Dari dek kapal, admin memesan barang ke DC.", "say": "Dari dek kapal, admin memesan barang ke D-C."},
+ {"id": "L2", "text": "Approve SO menyetujui. Sales Order per dek langsung masuk SAP.", "say": "apruv es o menyetujui. Sels Order per dek langsung masuk es a pe."},
+ {"id": "L3", "text": "Di DC, AQUA diambil dari stok. Teh Pucuk kosong, jadi dibeli.", "say": "Di D-C, Akua diambil dari stok. Teh Pucuk kosong, jadi dibeli."},
+ {"id": "L4", "text": "Purchase Request, Purchase Order, lalu GRPO saat barang vendor tiba.", "say": "Percis Rikues, Percis Order, lalu G-R-P-O saat barang vendor tiba."},
+ {"id": "L5", "text": "Inventory Transfer mengirim barang ke setiap dek.", "say": "Inventori Transfer mengirim barang ke setiap dek."},
+ {"id": "L6", "text": "Kapal menerima. Kepala toko dan P2 menyetujui, stok dek bertambah.", "say": "Kapal menerima. Kepala toko dan pe dua menyetujui, stok dek bertambah."},
+ {"id": "L7", "text": "Kasir menjual, dan Delivery Order masuk SAP setiap hari.", "say": "Kasir menjual, dan Delivery Order masuk es a pe setiap hari."},
+ {"id": "L8", "text": "Satu permintaan, delapan dokumen SAP. Satu alur di PID POS.", "say": "Satu permintaan, delapan dokumen es a pe. Satu alur di P-I-D pos."}
+]
