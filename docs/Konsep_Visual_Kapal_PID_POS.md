@@ -86,3 +86,23 @@ Stok footage kapal PELNI yang berlisensi bebas hampir tidak ada. Pexels dan Pixa
 **Saran:** pakai **Cetak Biru (1)** untuk video peluncuran sekarang karena bisa langsung dibuat. Sambil itu, kirim **daftar gambar (4)** ke kru kapal agar versi berikutnya memakai footage asli.
 
 > Video klip dari YouTube atau media berita tidak dipakai, karena hak ciptanya milik pembuatnya.
+
+---
+
+## Lampiran: Foto Kapal PELNI Berlisensi Bebas (Wikimedia Commons)
+
+Tidak ada **video** PELNI di Wikimedia Commons, tetapi ada beberapa foto yang bisa dipakai untuk konsep 5. Semuanya CC BY-SA, jadi **wajib mencantumkan nama pembuat dan lisensi** di kredit video.
+
+| Foto | Isi | Lisensi · Pembuat |
+|---|---|---|
+| [New Livery kapal PELNI](https://commons.wikimedia.org/wiki/File:New_Livery_kapal_PELNI.jpg) | KM Kelud, livery biru baru | CC BY-SA 4.0 · Mybottle6969 |
+| [KM Tilong Kabila menuju laut terbuka](https://commons.wikimedia.org/wiki/File:KM_Tilong_Kabila_menuju_laut_terbuka.jpg) | Kapal berlayar, sudut 3/4 | CC BY-SA 4.0 · Sabung.hamster |
+| [KM Tilong Kabila, Benoa](https://commons.wikimedia.org/wiki/File:KM_Tilong_Kabila,_Benoa.jpg) | Kapal di Benoa, sore | CC BY-SA 4.0 · Sabung.hamster |
+| [KM Tilkong Kabila, Benoa - sisi samping](https://commons.wikimedia.org/wiki/File:KM_Tilkong_Kabila,_Benoa_-_sisi_samping.jpg) | Tampak samping penuh | CC BY-SA 4.0 · Sabung.hamster |
+| [KM Sinabung, Bitung](https://commons.wikimedia.org/wiki/File:KM_Sinabung_Pelni_Ferry_Bitung_Sulawesi_Utara.jpg) | Kapal sandar, langit biru | CC BY-SA 4.0 · Rainer Jehl |
+| [KM Dorolonda, Pantoloan](https://commons.wikimedia.org/wiki/File:KM_Dorolonda_at_port_of_Pantoloan.jpg) | Dermaga dan penumpang | CC BY-SA 4.0 · Sandarw |
+| [KM Dorolonda, Bitung](https://commons.wikimedia.org/wiki/File:Pelni_KM_Dorolonda_PortBitung.jpg) | Bongkar muat kontainer | CC BY-SA 4.0 · Sandarw |
+| [Pelni Bordkiosk](https://commons.wikimedia.org/wiki/File:Pelni_Bordkiosk.jpg) | Kios "TOKO" di dalam kapal | CC BY-SA 3.0 · Maximilian Dörrbecker |
+| [KM Bukit Siguntang, deck scene](https://commons.wikimedia.org/wiki/File:KM_Bukit_Siguntang_PELNI_ferry_Makassar-Maumere_deck_scene.jpg) | Suasana dek penumpang | CC BY-SA 4.0 · Rainer Jehl |
+
+Sebagian foto ini sudah lama (livery lama krem-kuning). Untuk video resmi, foto arsip humas PELNI tetap lebih tepat.
