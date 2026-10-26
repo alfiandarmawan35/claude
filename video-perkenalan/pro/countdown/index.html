@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0b1a3a; }
+      #root { width: 100%; height: 100%; font-family: "Jakarta", sans-serif; color: #fff; }
+      /* panggung sama dengan video perkenalan: navy gelap dengan kisi tipis */
+      #panggung { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background-color: #0b1a3a;
+        background-image: radial-gradient(circle at 960px 575px, rgba(61, 111, 194, 0.35), rgba(11, 26, 58, 0) 520px),
+          linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+        background-size: 100% 100%, 80px 80px, 80px 80px; }
+      #hitung { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      #logo { position: absolute; left: 660px; top: 64px; width: 600px; height: 112px; background: #fff; border-radius: 24px; display: flex; align-items: center; justify-content: center; gap: 34px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4); }
+      #logo-danantara { height: 56px; }
+      #logo-pelni { height: 70px; }
+      .garis-tegak { width: 2px; height: 64px; background: #d5deec; }
+      #label { position: absolute; left: 0; right: 0; top: 232px; text-align: center; font-weight: 700; font-size: 30px; letter-spacing: 0.3em; color: #8fa6d8; }
+      #cincin { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      .angka { position: absolute; left: 660px; top: 375px; width: 600px; height: 400px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 300px; letter-spacing: -0.04em; line-height: 1; opacity: 0; }
+      #tanggal { position: absolute; left: 0; right: 0; top: 880px; text-align: center; font-weight: 700; font-size: 44px; }
+      #tanggal b { color: #ff6b1a; font-weight: 800; }
+      #kilat { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #fff; opacity: 0; }
+      #akhir { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; opacity: 0; }
+      #akhir-kartu { position: absolute; left: 260px; top: 290px; width: 1400px; height: 230px; background: #fff; border-radius: 30px; display: flex; align-items: center; justify-content: center; gap: 46px; box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45); }
+      #akhir-danantara { height: 100px; }
+      #akhir-pelni { width: 340px; }
+      .akhir-garis { width: 3px; height: 120px; background: #d5deec; }
+      #akhir-nama { font-weight: 800; font-size: 104px; color: #1f3b7a; letter-spacing: -0.02em; white-space: nowrap; }
+      #akhir-teks { position: absolute; left: 0; right: 0; top: 580px; text-align: center; font-weight: 800; font-size: 64px; letter-spacing: -0.01em; }
+      #akhir-teks span { display: inline-block; }
+      #akhir-pita { position: absolute; left: 660px; width: 600px; top: 700px; height: 84px; border-radius: 42px; background: #ff6b1a; color: #0b1a3a; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 38px; white-space: nowrap; }
+      #tirai { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #050c1e; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <!-- Hitung mundur peluncuran PID POS (15 s), gaya video perkenalan profesional. Audio: assets/musik.wav (suara.py). -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1920" data-height="1080">
+      <div id="panggung" class="clip" data-start="0" data-duration="15" data-track-index="0" style="z-index:0"></div>
+      <div id="hitung" class="clip" data-start="0" data-duration="12.4" data-track-index="1" style="z-index:1">
+        <div id="logo"><img id="logo-danantara" src="assets/danantara_gelap.png" alt="Danantara Indonesia" /><div class="garis-tegak"></div><img id="logo-pelni" src="assets/pelni_services.png" alt="PELNI Services" /></div>
+        <div id="label">PELUNCURAN PID POS</div>
+        <svg id="cincin" viewBox="0 0 1920 1080">
+          <circle id="jejak" cx="960" cy="575" r="250" fill="none" stroke="#1f3b7a" stroke-width="14" />
+          <circle id="sisa" cx="960" cy="575" r="250" fill="none" stroke="#ff6b1a" stroke-width="14" stroke-linecap="round" transform="rotate(-90 960 575)" />
+          <circle id="d10" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d9" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d8" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d7" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d6" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d5" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d4" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d3" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d2" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+          <circle id="d1" class="denyut" cx="960" cy="575" r="250" fill="none" stroke="#ffffff" stroke-width="3" opacity="0" />
+        </svg>
+        <div class="angka" id="n10">10</div><div class="angka" id="n9">9</div><div class="angka" id="n8">8</div><div class="angka" id="n7">7</div><div class="angka" id="n6">6</div>
+        <div class="angka" id="n5">5</div><div class="angka" id="n4">4</div><div class="angka" id="n3">3</div><div class="angka" id="n2">2</div><div class="angka" id="n1">1</div>
+        <div id="tanggal">Selasa, <b>27 Oktober 2026</b></div>
+      </div>
+      <div id="akhir" class="clip" data-start="11.8" data-duration="3.2" data-track-index="2" style="z-index:2">
+        <div id="akhir-kartu">
+          <img id="akhir-danantara" src="assets/danantara_gelap.png" alt="Danantara Indonesia" />
+          <div class="akhir-garis"></div>
+          <img id="akhir-pelni" src="assets/pelni_services.png" alt="PELNI Services" />
+          <div class="akhir-garis"></div>
+          <div id="akhir-nama">PID POS</div>
+        </div>
+        <div id="akhir-teks"><span>Resmi</span> <span>diluncurkan</span></div>
+        <div id="akhir-pita">Selasa, 27 Oktober 2026</div>
+      </div>
+      <div id="kilat" class="clip" data-start="11.7" data-duration="0.8" data-track-index="3" style="z-index:3"></div>
+      <div id="tirai" class="clip" data-start="14.3" data-duration="0.7" data-track-index="4" style="z-index:4"></div>
+      <audio id="musik" src="assets/musik.wav" data-start="0" data-duration="15" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const MULAI = 1.8;          // angka 10 muncul; tiap angka 1 detik, angka 1 selesai di 11,8
+      const AKHIR = MULAI + 10;
+      const K = 2 * Math.PI * 250;
+
+      // pembuka
+      tl.fromTo("#logo", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.2);
+      tl.fromTo("#label", { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }, 0.5);
+      tl.fromTo("#jejak", { strokeDasharray: K, strokeDashoffset: K }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 0.6);
+      tl.fromTo("#sisa", { strokeDasharray: K, strokeDashoffset: K }, { strokeDashoffset: 0, duration: 1.0, ease: "power2.inOut" }, 0.75);
+      tl.fromTo("#tanggal", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 1.0);
+
+      // cincin oranye menyusut terus selama 10 detik
+      tl.to("#sisa", { strokeDashoffset: -K, duration: 10, ease: "none" }, MULAI);
+
+      // angka: masuk tajam, keluar sebelum angka berikutnya; denyut cincin di tiap detik
+      for (let n = 10; n >= 1; n--) {
+        const t = MULAI + (10 - n);
+        tl.fromTo("#n" + n, { opacity: 0, scale: 1.25, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.28, ease: "expo.out" }, t);
+        tl.to("#n" + n, { opacity: 0, scale: 0.92, duration: 0.18, ease: "power2.in" }, t + 0.8);
+        tl.fromTo("#d" + n, { opacity: 0.8, scale: 1, svgOrigin: "960 575" }, { opacity: 0, scale: 1.14, duration: 0.6, ease: "power2.out", immediateRender: false }, t);
+        if (n <= 3) tl.to("#n" + n, { color: "#ff6b1a", duration: 0.01 }, t);
+      }
+      tl.to("#label", { color: "#ff6b1a", duration: 0.3 }, MULAI + 7);
+
+      // nol: kilat putih, lalu kartu peluncuran
+      tl.to("#hitung", { opacity: 0, scale: 1.06, duration: 0.25, ease: "power2.in" }, AKHIR - 0.15);
+      tl.fromTo("#kilat", { opacity: 0 }, { opacity: 0.9, duration: 0.1 }, AKHIR - 0.1);
+      tl.to("#kilat", { opacity: 0, duration: 0.6, ease: "power2.out" }, AKHIR);
+      tl.fromTo("#akhir", { opacity: 0 }, { opacity: 1, duration: 0.01 }, AKHIR);
+      tl.fromTo("#akhir-kartu", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.8, ease: "expo.out" }, AKHIR);
+      tl.fromTo("#akhir-teks span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, stagger: 0.15 }, AKHIR + 0.5);
+      tl.fromTo("#akhir-pita", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, AKHIR + 0.95);
+      tl.fromTo("#akhir-kartu", { y: 0 }, { y: -10, duration: 2.4, ease: "none" }, AKHIR + 0.8);
+
+      tl.fromTo("#tirai", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.in" }, 14.35);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -2,3 +2,6 @@ video/out/
 video/.hyperframes/
 video/assets/mix.wav
 suara/*.wav
+countdown/out/
+countdown/.hyperframes/
+countdown/assets/musik.wav
