@@ -18,6 +18,7 @@ const all = [
   ['Skit-Approve', 'Skit_Approve_Mana_yang_disetujui'],
   ['Arus', 'Showreel_ARUS_45s'],
   ['Countdown-Arus', 'Countdown_ARUS_10detik'],
+  ['Countdown-Arus-Vertikal', 'Countdown_ARUS_10detik_9x16'],
   ['Countdown', 'Countdown_Peluncuran_16x9'],
   ['Countdown-Vertikal', 'Countdown_Peluncuran_9x16'],
 ];

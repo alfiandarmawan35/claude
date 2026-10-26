@@ -16,8 +16,10 @@ const TOTAL = 38;
 export const CDA_FRAMES = TOTAL * BT;
 const bt = (x: number) => Math.round(x * BT);
 
-const W = 1920;
-const H = 1080;
+const useUkuran = () => {
+  const {width: W, height: H} = useVideoConfig();
+  return {W, H, tegak: H > W, u: Math.min(W, H) / 1080};
+};
 const big: React.CSSProperties = {fontFamily, fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 0.82, whiteSpace: 'nowrap'};
 const Mono: React.FC<{children: React.ReactNode; style?: React.CSSProperties}> = ({children, style}) => (
   <div style={{fontFamily: monoFamily, fontWeight: 500, fontSize: 24, letterSpacing: 3, ...style}}>{children}</div>
@@ -41,17 +43,18 @@ const kontras = (bg: string) => (bg === A.white || bg === A.orange ? A.ink : A.w
 
 const Tetes: React.FC = () => {
   const f = useCurrentFrame();
+  const {W, H} = useUkuran();
   const hit = bt(0.5);
   const jatuh = interpolate(f, [0, hit], [0, 1], {...cl, easing: easeIn});
   const out = interpolate(f, [bt(3.4), bt(4)], [1, 0], cl);
   return (
     <AbsoluteFill style={{background: '#05080F'}}>
-      {f < hit ? <div style={{position: 'absolute', left: W / 2 - 14, top: -60 + jatuh * 640, width: 28, height: 40, borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%', background: A.orange, boxShadow: `0 0 30px ${A.orange}`}} /> : null}
+      {f < hit ? <div style={{position: 'absolute', left: W / 2 - 14, top: -60 + jatuh * (H * 0.54 + 60), width: 28, height: 40, borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%', background: A.orange, boxShadow: `0 0 30px ${A.orange}`}} /> : null}
       <svg width={W} height={H} style={{position: 'absolute', inset: 0, opacity: out}}>
         {[0, 1, 2, 3, 4].map((k) => {
           const t0 = hit + k * 8;
           const p = interpolate(f, [t0, t0 + 100], [0, 1], cl);
-          return f >= t0 ? <ellipse key={k} cx={W / 2} cy={580} rx={30 + p * 1100} ry={(30 + p * 1100) * 0.32} fill="none" stroke={k % 2 ? A.electric : A.orange} strokeWidth={6 * (1 - p) + 1} opacity={1 - p} /> : null;
+          return f >= t0 ? <ellipse key={k} cx={W / 2} cy={H * 0.54} rx={30 + p * 1100} ry={(30 + p * 1100) * 0.32} fill="none" stroke={k % 2 ? A.electric : A.orange} strokeWidth={6 * (1 - p) + 1} opacity={1 - p} /> : null;
         })}
       </svg>
       <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', opacity: interpolate(f, [bt(1.2), bt(2)], [0, 1], cl) * out}}>
@@ -65,6 +68,7 @@ const Tetes: React.FC = () => {
 const Detik: React.FC<{k: number}> = ({k}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const {tegak} = useUkuran();
   const n = 10 - k;
   const [bg, plane, pita] = WARNA[k];
   const dur = bt(2);
@@ -74,7 +78,7 @@ const Detik: React.FC<{k: number}> = ({k}) => {
   const hisap = last ? interpolate(f, [bt(1.2), dur], [0, 1], {...cl, easing: easeIn}) : 0;
   const angka = (color: string) => (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{...big, fontSize: 820, color, transform: `scale(${(0.7 + 0.3 * s) * (1 - hisap)}) rotate(${hisap * 200}deg)`, marginTop: -60}}>{n}</div>
+      <div style={{...big, fontSize: tegak ? 900 : 820, color, transform: `scale(${(0.7 + 0.3 * s) * (1 - hisap)}) rotate(${hisap * 200}deg)`, marginTop: -60}}>{n}</div>
     </AbsoluteFill>
   );
   const pitaX = ((f * (k % 2 ? 18 : -18)) % 1600) - (k % 2 ? 1600 : 0);
@@ -83,7 +87,7 @@ const Detik: React.FC<{k: number}> = ({k}) => {
       {angka(plane)}
       <AbsoluteFill style={{background: plane, clipPath: `polygon(0 0, ${split}% 0, ${split - 14}% 100%, 0 100%)`}}>{angka(bg)}</AbsoluteFill>
       {/* pita kata langkah, miring di bawah */}
-      <div style={{position: 'absolute', left: -200, right: -200, bottom: 70, height: 130, background: pita, transform: `rotate(-6deg) scale(${1 - hisap})`, display: 'flex', alignItems: 'center', overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: -200, right: -200, bottom: tegak ? 260 : 70, height: tegak ? 150 : 130, background: pita, transform: `rotate(-6deg) scale(${1 - hisap})`, display: 'flex', alignItems: 'center', overflow: 'hidden'}}>
         <div style={{...big, fontSize: 110, color: pita === A.white ? A.ink : pita === A.orange ? A.ink : A.white, transform: `translateX(${pitaX}px)`}}>
           {`${LANGKAH[k]} · `.repeat(14)}
         </div>
@@ -97,9 +101,11 @@ const Detik: React.FC<{k: number}> = ({k}) => {
   );
 };
 
-const Peluncuran: React.FC = () => {
+const Peluncuran: React.FC<{tanggal?: string}> = ({tanggal}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const {W, H, tegak} = useUkuran();
+  const t3 = spring({frame: f - bt(5), fps, config: {damping: 14}});
   const mask = interpolate(f, [0, 24], [0, 2300], {...cl, easing: ease});
   const land = spring({frame: f - 4, fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
   const t1 = spring({frame: f - bt(2), fps, config: {damping: 12}});
@@ -117,20 +123,25 @@ const Peluncuran: React.FC = () => {
         const p = interpolate(f, [k * 6, 50 + k * 6], [0, 1], cl);
         return <div key={k} style={{position: 'absolute', width: 300 + p * 1500, height: 300 + p * 1500, borderRadius: '50%', border: `${8 * (1 - p)}px solid ${k === 1 ? A.electric : A.orange}`, opacity: 1 - p}} />;
       })}
-      <div style={{transform: `scale(${0.5 + 0.5 * land}) translateY(-80px)`}}>
+      <div style={{transform: `scale(${(0.5 + 0.5 * land) * (tegak ? 0.72 : 1)})`}}>
         <Logo size={1.0} />
       </div>
-      <div style={{...big, position: 'absolute', top: 700, fontSize: 150, color: A.navy, transform: `scale(${t1})`}}>
+      <div style={{...big, fontSize: tegak ? 118 : 150, color: A.navy, marginTop: tegak ? 50 : 70, transform: `scale(${t1})`}}>
         SATU APLIKASI<span style={{color: A.orange}}>.</span>
       </div>
-      <div style={{position: 'absolute', top: 890, background: A.orange, color: A.ink, fontWeight: 800, fontSize: 44, padding: '12px 34px', transform: `scale(${t2}) rotate(-2deg)`}}>
+      <div style={{marginTop: 50, background: A.orange, color: A.ink, fontWeight: 800, fontSize: 44, padding: '12px 34px', transform: `scale(${t2}) rotate(-2deg)`}}>
         SIAP DIGUNAKAN
       </div>
+      {tanggal ? (
+        <div style={{marginTop: 40, background: A.navy, color: 'white', fontWeight: 800, fontSize: tegak ? 46 : 42, padding: '14px 40px', borderRadius: 999, transform: `scale(${t3})`}}>
+          {tanggal}
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };
 
-export const CountdownArus: React.FC = () => {
+export const CountdownArus: React.FC<{tanggal?: string}> = ({tanggal}) => {
   const f = useCurrentFrame();
   const fadeEnd = interpolate(f, [bt(TOTAL - 1.5), CDA_FRAMES], [0, 1], cl);
   return (
@@ -144,7 +155,7 @@ export const CountdownArus: React.FC = () => {
         </Sequence>
       ))}
       <Sequence from={bt(GAP)} durationInFrames={CDA_FRAMES - bt(GAP)}>
-        <Peluncuran />
+        <Peluncuran tanggal={tanggal} />
       </Sequence>
       {f >= bt(GAP) && f < bt(GAP) + 8 ? <AbsoluteFill style={{background: 'white', opacity: 1 - (f - bt(GAP)) / 8}} /> : null}
       <AbsoluteFill style={{background: A.ink, opacity: fadeEnd}} />
