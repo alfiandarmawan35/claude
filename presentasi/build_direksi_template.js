@@ -91,7 +91,7 @@ const ikon = async (Icon, color) => {
   pres.addSection({title: 'Aplikasi'});
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Satu aplikasi untuk seluruh alur toko kapal', {placeholder: 'title'});
-  const baris = [[FA.FaGlobe, 'Aplikasi web', 'Untuk admin kapal, DC, dan kantor pusat: pesan barang, persetujuan, stok, kas, dan laporan.'], [FA.FaMobileAlt, 'Aplikasi kasir Android', 'Untuk kasir di setiap dek: scan, bayar tunai atau QRIS, struk, dan rekap shift.'], [FA.FaDatabase, 'Terhubung SAP Business One', 'Dokumen dibuat otomatis setelah disetujui, tanpa input ulang.']];
+  const baris = [[FA.FaGlobe, 'Aplikasi web', 'Untuk admin kapal, DC, dan kantor pusat: pesan barang, persetujuan, stok, dan laporan.'], [FA.FaMobileAlt, 'Aplikasi kasir Android', 'Untuk kasir di setiap dek: scan, bayar tunai atau QRIS, struk, dan rekap shift.'], [FA.FaDatabase, 'Terhubung SAP Business One', 'Dokumen dibuat otomatis setelah disetujui, tanpa input ulang.']];
   for (let i = 0; i < 3; i++) {
     const [Ic, j, d] = baris[i], y = 2.0 + i * 1.2;
     await lingkaranIkon(s, 0.75, y, 0.85, Ic, i === 2 ? K.accent1 : K.dk2, 'FFFFFF', j);
@@ -184,7 +184,7 @@ const ikon = async (Icon, color) => {
   // ---------- 7. keunggulan ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Keunggulan PID POS', {placeholder: 'title'});
-  const nilai = [[FA.FaEye, 'Transparan', 'Stok setiap dek dan status setiap permintaan terpantau real-time, lengkap dengan riwayatnya.'], [FA.FaShieldAlt, 'Terkendali', 'Persetujuan berjenjang di setiap tahap; retur dan kas keluar besar memerlukan PIN kepala toko.'], [FA.FaLink, 'Terintegrasi', 'Dokumen SAP Business One dibuat otomatis, dan penjualan harian setiap dek masuk SAP sebagai DO.']];
+  const nilai = [[FA.FaEye, 'Transparan', 'Stok setiap dek dan status setiap permintaan terpantau real-time, lengkap dengan riwayatnya.'], [FA.FaShieldAlt, 'Terkendali', 'Persetujuan berjenjang di setiap tahap, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan.'], [FA.FaLink, 'Terintegrasi', 'Dokumen SAP Business One dibuat otomatis, dan penjualan harian setiap dek masuk SAP sebagai DO.']];
   for (let i = 0; i < 3; i++) {
     const [Ic, j, d] = nilai[i], x = 0.75 + i * 4.0;
     kartu(s, x, 1.9, 3.75, 3.55, `Keunggulan ${j}`);
@@ -192,7 +192,7 @@ const ikon = async (Icon, color) => {
     teks(s, j, {x: x + 0.3, y: 3.35, w: 3.15, h: 0.55, fontSize: 24, bold: true, color: K.dk2});
     teks(s, d, {x: x + 0.3, y: 3.95, w: 3.15, h: 1.35, fontSize: 14, color: K.dk1});
   }
-  s.addNotes('Keunggulan PID POS ada tiga. Transparan: stok setiap dek dan status permintaan terpantau real-time. Terkendali: setiap tahap disetujui berjenjang, dan transaksi sensitif seperti retur memerlukan PIN kepala toko. Terintegrasi: dokumen SAP dibuat otomatis, termasuk penjualan harian setiap dek sebagai Delivery Order.');
+  s.addNotes('Keunggulan PID POS ada tiga. Transparan: stok setiap dek dan status permintaan terpantau real-time. Terkendali: setiap tahap disetujui berjenjang, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan. Terintegrasi: dokumen SAP dibuat otomatis, termasuk penjualan harian setiap dek sebagai Delivery Order.');
 
   // ---------- 8. penutup ----------
   pres.addSection({title: 'Penutup'});
