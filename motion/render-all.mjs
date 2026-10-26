@@ -17,6 +17,7 @@ const all = [
   ['Skit-Kasir', 'Skit_Kasir_Antrean_panjang'],
   ['Skit-Approve', 'Skit_Approve_Mana_yang_disetujui'],
   ['Arus', 'Showreel_ARUS_45s'],
+  ['Countdown-Arus', 'Countdown_ARUS_10detik'],
   ['Countdown', 'Countdown_Peluncuran_16x9'],
   ['Countdown-Vertikal', 'Countdown_Peluncuran_9x16'],
 ];
