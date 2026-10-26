@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #213a7c; font-family: "Jakarta", sans-serif; overflow: hidden; color: #fff; }
+    .mf { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .mf-ikon { position: absolute; left: 260px; top: 250px; width: 480px; height: 480px; }
+    .mf-teks { position: absolute; left: 820px; top: 380px; width: 1000px; }
+    .mf-no { font-weight: 800; font-size: 34px; letter-spacing: 0.16em; color: #ff8a3d; }
+    .mf-judul { font-weight: 800; font-size: 96px; line-height: 1.02; letter-spacing: -0.02em; margin-top: 14px; }
+    .mf-sub { font-weight: 600; font-size: 34px; color: #c9d6f2; margin-top: 20px; }
+  </style>
+  <div id="root" data-composition-id="manfaat" data-width="1920" data-height="1080">
+    <div id="mf1" class="mf">
+      <svg class="mf-ikon" viewBox="0 0 480 480">
+        <rect x="40" y="70" width="400" height="18" rx="6" fill="#c9a060" /><rect x="40" y="220" width="400" height="18" rx="6" fill="#c9a060" /><rect x="40" y="370" width="400" height="18" rx="6" fill="#c9a060" />
+        <rect id="mf1-a" x="70" y="100" width="70" height="110" rx="10" fill="#7cc3e8" /><rect x="160" y="130" width="70" height="80" rx="10" fill="#7cc3e8" /><rect x="250" y="110" width="70" height="100" rx="10" fill="#b5793a" />
+        <rect x="70" y="250" width="70" height="110" rx="10" fill="#b5793a" /><rect x="160" y="280" width="70" height="80" rx="10" fill="#e87a3a" /><rect x="250" y="260" width="70" height="100" rx="10" fill="#7cc3e8" />
+        <rect x="340" y="120" width="80" height="44" rx="22" fill="#ff8a3d" /><text x="380" y="150" font-family="Jakarta" font-weight="800" font-size="26" fill="#0f1b3d" text-anchor="middle">DEK 3</text>
+        <rect x="340" y="270" width="80" height="44" rx="22" fill="#ff8a3d" /><text x="380" y="300" font-family="Jakarta" font-weight="800" font-size="26" fill="#0f1b3d" text-anchor="middle">DEK 7</text>
+      </svg>
+      <div class="mf-teks"><div class="mf-no">01</div><div class="mf-judul">Stok terpantau per dek</div><div class="mf-sub">Terima, mutasi, dan jual tercatat di setiap dek.</div></div>
+    </div>
+    <div id="mf2" class="mf">
+      <svg class="mf-ikon" viewBox="0 0 480 480">
+        <circle cx="160" cy="300" r="110" fill="#6fa85a" /><circle cx="250" cy="230" r="110" fill="#e2b24a" /><circle cx="330" cy="160" r="110" fill="#ff8a3d" />
+        <path d="M 280 165 L 320 205 L 390 125" stroke="#fff" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="mf-teks"><div class="mf-no">02</div><div class="mf-judul">Persetujuan bertingkat</div><div class="mf-sub">Setiap langkah jelas siapa yang menyetujui.</div></div>
+    </div>
+    <div id="mf3" class="mf">
+      <svg class="mf-ikon" viewBox="0 0 480 480">
+        <rect x="150" y="400" width="180" height="40" rx="8" fill="#5b6b86" />
+        <rect class="mf3-b" x="160" y="352" width="160" height="44" rx="8" fill="#6fa85a" /><rect class="mf3-b" x="160" y="304" width="160" height="44" rx="8" fill="#6fa85a" />
+        <rect class="mf3-b" x="160" y="256" width="160" height="44" rx="8" fill="#e2b24a" /><rect class="mf3-b" x="160" y="208" width="160" height="44" rx="8" fill="#e87a3a" />
+        <rect class="mf3-b" x="160" y="160" width="160" height="44" rx="8" fill="#7c68b8" /><rect class="mf3-b" x="160" y="112" width="160" height="44" rx="8" fill="#c45c8e" />
+        <rect class="mf3-b" x="160" y="64" width="160" height="44" rx="8" fill="#c45c8e" /><rect class="mf3-b" x="160" y="16" width="160" height="44" rx="8" fill="#cf5140" />
+      </svg>
+      <div class="mf-teks"><div class="mf-no">03</div><div class="mf-judul">Dokumen SAP otomatis</div><div class="mf-sub">SO · PR · PO · GRPO · IT · DO</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // satu manfaat satu waktu, pada kata yang mengucapkannya (lokal 0,3 / 1,95 / 3,45)
+    [["#mf1", 0.25, 1.75], ["#mf2", 1.9, 3.3], ["#mf3", 3.4, null]].forEach(([id, t0, t1]) => {
+      tl.fromTo(id + " .mf-ikon", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, t0);
+      tl.fromTo(id + " .mf-teks", { opacity: 0, x: 60, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, t0 + 0.1);
+      if (t1) tl.to(id, { opacity: 0, filter: "blur(10px)", duration: 0.18 }, t1);
+    });
+    tl.fromTo(".mf3-b", { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)", stagger: 0.07 }, 3.45);
+    // keluar ke sapuan navy kartun pagi
+    tl.to("#mf3", { opacity: 0, duration: 0.25 }, 5.1);
+    window.__timelines["manfaat"] = tl;
+  </script>
+</template>

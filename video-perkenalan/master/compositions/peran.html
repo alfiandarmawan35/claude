@@ -1,0 +1,60 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #ffffff; font-family: "Jakarta", sans-serif; overflow: hidden; color: #1b2437; }
+    #pr-judul { position: absolute; left: 90px; top: 70px; font-weight: 800; font-size: 64px; color: #1f3b7a; letter-spacing: -0.02em; }
+    #pr-judul span { display: inline-block; }
+    .pr-oren { color: #e2550c; }
+    .pr-zona { position: absolute; top: 210px; height: 660px; border-radius: 28px; background: #eef3fb; }
+    .pr-kepala { position: absolute; left: 30px; top: 24px; font-weight: 800; font-size: 28px; letter-spacing: 0.14em; color: #5b6b86; }
+    .pr-kartu { position: absolute; left: 24px; right: 24px; height: 118px; background: #fff; border-radius: 18px; box-shadow: 0 10px 24px rgba(20, 40, 90, 0.1); padding: 18px 24px 0 34px; overflow: hidden; }
+    .pr-kartu i { position: absolute; left: 0; top: 0; bottom: 0; width: 12px; }
+    .pr-nama { font-weight: 800; font-size: 32px; white-space: nowrap; }
+    .pr-tugas { font-weight: 600; font-size: 28px; color: #5b6b86; margin-top: 6px; white-space: nowrap; }
+    #pr-alur { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #pr-tirai { position: absolute; inset: 0; background: #f2e6d0; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="peran" data-width="1920" data-height="1080">
+    <div id="pr-judul"><span>Tujuh</span> <span>peran,</span> <span class="pr-oren">satu</span> <span class="pr-oren">alur</span></div>
+    <svg id="pr-alur" viewBox="0 0 1920 1080">
+      <defs><marker id="pr-panah" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#e2550c" /></marker></defs>
+      <path id="pr-a1" d="M 560 190 C 620 150, 700 150, 760 190" fill="none" stroke="#e2550c" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#pr-panah)" />
+      <path id="pr-a2" d="M 1250 190 C 1310 150, 1390 150, 1450 190" fill="none" stroke="#e2550c" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#pr-panah)" />
+      <path id="pr-a3" d="M 1590 470 C 1590 700, 400 720, 360 600" fill="none" stroke="#e2550c" stroke-width="5" stroke-dasharray="12 10" marker-end="url(#pr-panah)" />
+    </svg>
+    <div id="pr-z1" class="pr-zona" style="left: 90px; width: 540px; height: 380px">
+      <div class="pr-kepala">KAPAL</div>
+      <div id="pr-k1" class="pr-kartu" style="top: 80px"><i style="background: #0f766e"></i><div class="pr-nama">Admin Kapal / Kepala Toko</div><div class="pr-tugas">Pesan ke DC, terima di dek</div></div>
+      <div id="pr-k7" class="pr-kartu" style="top: 214px"><i style="background: #15803d"></i><div class="pr-nama">Kasir</div><div class="pr-tugas">Jual, kirim DO harian ke SAP</div></div>
+    </div>
+    <div id="pr-z2" class="pr-zona" style="left: 680px; width: 620px">
+      <div class="pr-kepala">KANTOR PUSAT</div>
+      <div id="pr-k2" class="pr-kartu" style="top: 80px"><i style="background: #6d28d9"></i><div class="pr-nama">Approve SO (P2)</div><div class="pr-tugas">Setujui permintaan jadi Sales Order</div></div>
+      <div id="pr-k4" class="pr-kartu" style="top: 214px"><i style="background: #be185d"></i><div class="pr-nama">Approve PUR</div><div class="pr-tugas">Setujui PR, GRPO, dan transfer</div></div>
+      <div id="pr-k5" class="pr-kartu" style="top: 348px"><i style="background: #2563eb"></i><div class="pr-nama">Admin Purchase</div><div class="pr-tugas">Buat Purchase Order ke vendor</div></div>
+      <div id="pr-k6" class="pr-kartu" style="top: 482px"><i style="background: #ca8a04"></i><div class="pr-nama">Approve PO</div><div class="pr-tugas">Setujui Purchase Order</div></div>
+    </div>
+    <div id="pr-z3" class="pr-zona" style="left: 1350px; width: 480px; height: 246px">
+      <div class="pr-kepala">DC</div>
+      <div id="pr-k3" class="pr-kartu" style="top: 80px"><i style="background: #ea580c"></i><div class="pr-nama">Admin DC</div><div class="pr-tugas">Pilah stok, GRPO, transfer</div></div>
+    </div>
+    <div id="pr-tirai"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pr-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08 }, 0.1);
+    tl.fromTo(".pr-zona", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out", stagger: 0.1 }, 0.2);
+    // kartu peran muncul mengikuti urutan alur
+    ["#pr-k1", "#pr-k2", "#pr-k3", "#pr-k4", "#pr-k5", "#pr-k6", "#pr-k7"].forEach((id, i) => {
+      tl.fromTo(id, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 0.75 + i * 0.42);
+    });
+    tl.fromTo(["#pr-a1", "#pr-a2", "#pr-a3"], { opacity: 0 }, { opacity: 1, duration: 0.25, stagger: 0.25 }, 3.9);
+    tl.fromTo(["#pr-a1", "#pr-a2", "#pr-a3"], { strokeDashoffset: 0 }, { strokeDashoffset: -110, duration: 2, ease: "none" }, 3.9);
+    // banjir warna krem menuju peta isometrik
+    tl.to("#pr-tirai", { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 5.6);
+    window.__timelines["peran"] = tl;
+  </script>
+</template>

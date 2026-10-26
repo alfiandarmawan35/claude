@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="id" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #1f3b7a; }
+      #root { width: 100%; height: 100%; }
+      .penuh { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+      #tirai-iso { background: #f2e6d0; }
+      #tirai-akhir { background: #f2e6d0; }
+    </style>
+  </head>
+  <body>
+    <!-- Video perkenalan PID POS, 60 s. Lihat ../KONSEP (docs/Konsep_Video_Perkenalan_PID_POS.md).
+         Gaya: K = kartun (kartun/), I = isometrik (iso/), M = motion graphic (compositions/). -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="60" data-width="1920" data-height="1080">
+      <!-- 1  K  malam di toko kapal -->
+      <video id="kartun-malam" class="clip penuh" src="assets/kartun_malam.mp4" muted playsinline data-start="0" data-duration="7.6" data-track-index="1" style="z-index:1"></video>
+      <!-- 2–4  M  pengenalan, apa itu, tujuh peran -->
+      <div id="kenal" data-composition-id="kenal" data-composition-src="compositions/kenal.html" data-start="7.6" data-duration="5.0" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="apa" data-composition-id="apa" data-composition-src="compositions/apa.html" data-start="12.4" data-duration="7.5" data-track-index="3" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>
+      <div id="peran" data-composition-id="peran" data-composition-src="compositions/peran.html" data-start="19.8" data-duration="6.1" data-track-index="4" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:4"></div>
+      <!-- 5  I  alur di peta isometrik -->
+      <video id="iso" class="clip penuh" src="assets/iso.mp4" muted playsinline data-start="25.9" data-duration="13.3" data-track-index="5" style="z-index:5"></video>
+      <div id="tirai-iso" class="clip penuh" data-start="25.9" data-duration="0.5" data-track-index="6" style="z-index:6"></div>
+      <!-- 6–7  M  kasir, manfaat -->
+      <div id="kasir" data-composition-id="kasir" data-composition-src="compositions/kasir.html" data-start="39.2" data-duration="7.3" data-track-index="7" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:7"></div>
+      <div id="manfaat" data-composition-id="manfaat" data-composition-src="compositions/manfaat.html" data-start="46.4" data-duration="5.5" data-track-index="8" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:8"></div>
+      <!-- 8  K + M  pagi, logo dan tanggal -->
+      <video id="kartun-pagi" class="clip penuh" src="assets/kartun_pagi.mp4" muted playsinline data-start="51.8" data-duration="8.2" data-track-index="9" style="z-index:9"></video>
+      <div id="penutup" data-composition-id="penutup" data-composition-src="compositions/penutup.html" data-start="51.8" data-duration="8.2" data-track-index="10" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:10"></div>
+      <div id="tirai-akhir" class="clip penuh" data-start="59.3" data-duration="0.7" data-track-index="11" style="z-index:12"></div>
+      <!-- subtitle -->
+      <div id="teks" data-composition-id="teks" data-composition-src="compositions/teks.html" data-start="0" data-duration="60" data-track-index="12" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:11"></div>
+
+      <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="60" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#tirai-iso", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.inOut" }, 25.9);
+      tl.fromTo("#tirai-akhir", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.in" }, 59.3);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

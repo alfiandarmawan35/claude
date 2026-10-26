@@ -1,0 +1,42 @@
+[
+ {
+  "id": "N1",
+  "text": "Toko di kapal sibuk setiap hari. Pesanan, stok, dan penjualan dicatat di banyak tempat.",
+  "say": "Toko di kapal sibuk setiap hari. Pesanan, stok, dan penjualan dicatat di banyak tempat."
+ },
+ {
+  "id": "N2",
+  "text": "Kini semuanya ada di satu aplikasi: PID POS.",
+  "say": "Kini semuanya ada di satu aplikasi: P-I-D pos."
+ },
+ {
+  "id": "N3",
+  "text": "Aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One, di web dan di HP kasir.",
+  "say": "Aplikasi toko kapal PELNI Services yang terhubung langsung dengan es a pe Bisnis Wan, di web dan di ha pe kasir."
+ },
+ {
+  "id": "N4",
+  "text": "Tujuh peran bekerja di satu alur, dari kapal, DC, sampai kantor pusat.",
+  "say": "Tujuh peran bekerja di satu alur, dari kapal, D-C, sampai kantor pusat."
+ },
+ {
+  "id": "N5",
+  "text": "Kapal memesan, lalu disetujui menjadi Sales Order. DC mengirim dari stok, atau membeli lewat PO dan GRPO. Barang dikirim ke dek dengan Inventory Transfer.",
+  "say": "Kapal memesan, lalu disetujui menjadi Sels Order. D-C mengirim dari stok, atau membeli lewat pe o dan G-R-P-O. Barang dikirim ke dek dengan Inventori Transfer."
+ },
+ {
+  "id": "N6",
+  "text": "Kasir cukup scan dan bayar. Penjualan masuk SAP sebagai Delivery Order setiap hari.",
+  "say": "Kasir cukup scan dan bayar. Penjualan masuk es a pe sebagai Delivery Order setiap hari."
+ },
+ {
+  "id": "N7",
+  "text": "Stok selalu terpantau, persetujuan jelas, dokumen otomatis.",
+  "say": "Stok selalu terpantau, persetujuan jelas, dokumen otomatis."
+ },
+ {
+  "id": "N8",
+  "text": "PID POS. Satu alur, dari kapal sampai kasir.",
+  "say": "P-I-D pos. Satu alur, dari kapal sampai kasir."
+ }
+]

@@ -1,0 +1,9 @@
+out/
+.hyperframes/
+node_modules/
+*/out/
+*/.hyperframes/
+*/node_modules/
+suara/*.wav
+master/assets/*.mp4
+master/assets/mix.wav

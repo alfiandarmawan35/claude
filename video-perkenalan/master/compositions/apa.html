@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #ffffff; font-family: "Jakarta", sans-serif; overflow: hidden; color: #1b2437; }
+    #ap-judul { position: absolute; left: 90px; top: 70px; font-weight: 800; font-size: 64px; color: #1f3b7a; letter-spacing: -0.02em; }
+    #ap-judul span { display: inline-block; }
+    .ap-oren { color: #e2550c; }
+    /* laptop */
+    #ap-laptop { position: absolute; left: 90px; top: 200px; width: 840px; height: 540px; }
+    #ap-layar { position: absolute; left: 0; top: 0; width: 840px; height: 510px; background: #2b3245; border-radius: 22px; padding: 18px; }
+    #ap-layar img { width: 804px; height: 474px; object-fit: cover; object-position: top left; border-radius: 6px; display: block; }
+    #ap-alas { position: absolute; left: -50px; top: 506px; width: 940px; height: 30px; background: #c9d0dc; border-radius: 0 0 26px 26px; }
+    /* hp kasir (lanskap) */
+    #ap-hp { position: absolute; left: 1000px; top: 560px; width: 470px; height: 270px; background: #2b3245; border-radius: 30px; padding: 16px 22px; }
+    #ap-hp img { width: 426px; height: 238px; object-fit: cover; object-position: top left; border-radius: 10px; display: block; }
+    /* SAP */
+    #ap-sap { position: absolute; left: 1490px; top: 210px; width: 340px; height: 290px; background: #1f3b7a; border-radius: 28px; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 24px 50px rgba(31, 59, 122, 0.3); }
+    #ap-sap-1 { font-weight: 800; font-size: 96px; letter-spacing: 0.02em; line-height: 1; }
+    #ap-sap-2 { font-weight: 700; font-size: 36px; margin-top: 10px; color: #c9d6f2; }
+    #ap-garis { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .ap-label { position: absolute; font-weight: 700; font-size: 32px; display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+    .ap-label b { display: inline-block; padding: 6px 16px; border-radius: 999px; color: #fff; font-size: 28px; }
+  </style>
+  <div id="root" data-composition-id="apa" data-width="1920" data-height="1080">
+    <div id="ap-judul"><span>Satu</span> <span>aplikasi,</span> <span class="ap-oren">dua</span> <span class="ap-oren">layar</span></div>
+    <svg id="ap-garis" viewBox="0 0 1920 1080">
+      <path id="ap-g1" d="M 930 420 C 1150 420, 1260 340, 1490 340" fill="none" stroke="#1f3b7a" stroke-width="5" stroke-dasharray="14 12" />
+      <path id="ap-g2" d="M 1470 650 C 1600 650, 1660 600, 1660 500" fill="none" stroke="#1f3b7a" stroke-width="5" stroke-dasharray="14 12" />
+    </svg>
+    <div id="ap-laptop"><div id="ap-layar"><img src="assets/img/g01.png" alt="Beranda kapal PID POS" /></div><div id="ap-alas"></div></div>
+    <div id="ap-hp"><img src="assets/img/g45.png" alt="Layar kasir PID POS" /></div>
+    <div id="ap-sap"><div id="ap-sap-1">SAP</div><div id="ap-sap-2">Business One</div></div>
+    <div id="ap-l1" class="ap-label" style="left: 100px; top: 780px"><b style="background: #0f766e">Web</b> untuk admin dan persetujuan</div>
+    <div id="ap-l2" class="ap-label" style="left: 1000px; top: 858px; font-size: 28px"><b style="background: #15803d">Android</b> untuk kasir dek</div>
+    <div id="ap-l3" class="ap-label" style="left: 1500px; top: 520px"><b style="background: #e2550c">Terhubung</b></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ap-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.08 }, 0.25);
+    tl.fromTo("#ap-laptop", { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 0.3);
+    tl.fromTo("#ap-hp", { x: 140, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 0.75);
+    // SAP muncul saat kata "SAP" diucapkan (lokal 3,6)
+    tl.fromTo("#ap-sap", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 3.55);
+    tl.fromTo(["#ap-g1", "#ap-g2"], { opacity: 0 }, { opacity: 1, duration: 0.2 }, 3.85);
+    tl.fromTo(["#ap-g1", "#ap-g2"], { strokeDashoffset: 0 }, { strokeDashoffset: -300, duration: 3.6, ease: "none" }, 3.85);
+    tl.fromTo("#ap-l3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 4.1);
+    tl.fromTo("#ap-l1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 5.3);
+    tl.fromTo("#ap-l2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 5.9);
+    // keluar: blur swap di latar yang sama
+    tl.to(["#ap-judul", "#ap-laptop", "#ap-hp", "#ap-garis", ".ap-label"], { opacity: 0, filter: "blur(8px)", duration: 0.2 }, 7.1);
+    tl.to("#ap-sap", { scale: 0.3, x: -760, y: -60, opacity: 0, duration: 0.35, ease: "power3.in" }, 7.05);
+    window.__timelines["apa"] = tl;
+  </script>
+</template>

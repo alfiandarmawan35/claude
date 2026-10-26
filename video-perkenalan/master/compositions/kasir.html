@@ -1,0 +1,126 @@
+<template>
+  <style>
+    @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+    @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+    #root { position: absolute; inset: 0; background: #eef2f8; font-family: "Jakarta", sans-serif; overflow: hidden; color: #0f1b3d; }
+    #ks-isi { position: absolute; inset: 0; }
+    #ks-judul { position: absolute; left: 90px; top: 64px; font-weight: 800; font-size: 64px; color: #1f3b7a; letter-spacing: -0.02em; }
+    #ks-judul span { display: inline-block; }
+    .ks-oren { color: #e2550c; }
+    .ks-kartu { position: absolute; background: #fff; border-radius: 28px; box-shadow: 0 24px 50px rgba(15, 27, 61, 0.14); }
+    #ks-kasir { left: 90px; top: 180px; width: 900px; height: 700px; }
+    .ks-lapis { position: absolute; inset: 0; }
+    #ks-scan { position: absolute; left: 36px; right: 36px; top: 36px; height: 80px; border-radius: 16px; background: #f3f6fb; display: flex; align-items: center; padding: 0 26px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #ks-baris { position: absolute; left: 36px; right: 36px; top: 140px; height: 116px; border-radius: 16px; background: #e9f0fb; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; }
+    .ks-nama { font-weight: 800; font-size: 32px; } .ks-kecil { font-weight: 600; font-size: 28px; color: #5b6b86; }
+    .ks-tukar { position: relative; display: inline-block; height: 44px; font-weight: 800; font-size: 34px; }
+    .ks-tukar span { position: absolute; right: 0; top: 0; white-space: nowrap; }
+    #ks-panel { position: absolute; left: 36px; right: 36px; top: 280px; height: 230px; border-radius: 22px; background: #213a7c; color: #fff; padding: 28px 34px; }
+    #ks-panel .ks-kecil { color: #c9d6f2; }
+    #ks-total { position: relative; height: 120px; font-weight: 800; font-size: 104px; letter-spacing: -0.02em; }
+    #ks-total span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+    #ks-bayar { position: absolute; left: 36px; right: 36px; top: 548px; height: 112px; border-radius: 20px; background: #2f7a3a; color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 34px; font-weight: 800; font-size: 42px; }
+    #ks-bayar small { font-size: 28px; padding: 6px 14px; border-radius: 10px; background: rgba(255, 255, 255, 0.2); }
+    #ks-pil { position: absolute; left: 36px; right: 36px; top: 36px; display: flex; gap: 20px; }
+    .ks-p { flex: 1; height: 92px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 34px; border: 3px solid #d5deec; }
+    .ks-p.on { border: 4px solid #213a7c; background: #e9f0fb; }
+    #ks-lbl { position: absolute; left: 36px; top: 160px; font-weight: 700; font-size: 28px; color: #5b6b86; }
+    #ks-uang { position: absolute; left: 36px; right: 36px; top: 200px; height: 120px; border-radius: 18px; border: 4px solid #213a7c; display: flex; align-items: center; justify-content: flex-end; padding: 0 30px; font-weight: 800; font-size: 68px; }
+    #ks-kembali { position: absolute; left: 36px; right: 36px; top: 360px; display: flex; justify-content: space-between; align-items: baseline; }
+    #ks-kembali span:first-child { font-weight: 600; font-size: 38px; color: #3c4c6c; }
+    #ks-kembali-n { font-weight: 800; font-size: 58px; color: #2f7a3a; }
+    #ks-selesai { position: absolute; left: 36px; right: 36px; top: 548px; height: 112px; border-radius: 20px; background: #213a7c; color: #fff; font-weight: 800; font-size: 38px; }
+    #ks-selesai span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    #ks-rekap { left: 1050px; top: 180px; width: 780px; height: 420px; }
+    #ks-rk { position: absolute; left: 40px; top: 34px; font-weight: 800; font-size: 46px; }
+    #ks-rk2 { position: absolute; left: 40px; top: 100px; font-weight: 600; font-size: 28px; color: #5b6b86; }
+    #ks-jual { position: absolute; left: 40px; top: 150px; font-weight: 800; font-size: 64px; }
+    #ks-belum { position: absolute; left: 40px; top: 240px; font-weight: 700; font-size: 28px; color: #b45309; }
+    #ks-belum span { position: absolute; left: 0; top: 0; white-space: nowrap; }
+    #ks-do { position: absolute; left: 40px; right: 40px; top: 296px; height: 96px; border-radius: 18px; border: 4px solid #213a7c; color: #213a7c; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 36px; }
+    #ks-sap { left: 1050px; top: 640px; width: 780px; height: 240px; display: flex; align-items: flex-end; gap: 10px; padding: 0 40px 36px; }
+    #ks-sap-lbl { position: absolute; left: 40px; top: 26px; font-weight: 800; font-size: 28px; letter-spacing: 0.14em; color: #5b6b86; }
+    .ks-dok { width: 74px; border-radius: 10px; }
+    #ks-toast { position: absolute; left: 1090px; width: 700px; top: 50px; height: 100px; border-radius: 50px; background: #213a7c; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(15, 27, 61, 0.3); }
+    #ks-toast-teks { color: #fff; font-weight: 800; font-size: 36px; white-space: nowrap; }
+    #ks-kursor { position: absolute; left: 0; top: 0; width: 64px; height: 80px; z-index: 10; }
+  </style>
+  <div id="root" data-composition-id="kasir" data-width="1920" data-height="1080">
+    <div id="ks-isi">
+      <div id="ks-judul"><span>Di</span> <span>kasir:</span> <span class="ks-oren">scan,</span> <span class="ks-oren">bayar,</span> <span class="ks-oren">beres</span></div>
+      <div id="ks-kasir" class="ks-kartu">
+        <div id="ks-a" class="ks-lapis">
+          <div id="ks-scan">Scan barcode, atau ketik nama / kode lalu Enter</div>
+          <div id="ks-baris"><div><div class="ks-nama">AQUA BTL1500 ML/12</div><div class="ks-kecil">19.000 · Dek 3</div></div><div class="ks-tukar" style="width: 60px"><span id="ks-q1">× 1</span><span id="ks-q2">× 2</span></div><div class="ks-tukar" style="width: 150px"><span id="ks-j1">19.000</span><span id="ks-j2">38.000</span></div></div>
+          <div id="ks-panel"><div class="ks-kecil">Total · harga sudah termasuk PPN</div><div id="ks-total"><span id="ks-t1">Rp 19.000</span><span id="ks-t2">Rp 38.000</span></div></div>
+          <div id="ks-bayar"><span>Bayar</span><small>F12</small></div>
+        </div>
+        <div id="ks-b" class="ks-lapis">
+          <div id="ks-pil"><div class="ks-p on">Tunai</div><div class="ks-p">QRIS</div></div>
+          <div id="ks-lbl">Uang diterima</div>
+          <div id="ks-uang">50.000</div>
+          <div id="ks-kembali"><span>Kembalian</span><span id="ks-kembali-n">Rp 12.000</span></div>
+          <div id="ks-selesai"><span id="ks-s1">Selesaikan pembayaran</span><span id="ks-s2">✓ Struk tercetak</span></div>
+        </div>
+      </div>
+      <div id="ks-rekap" class="ks-kartu">
+        <div id="ks-rk">Rekap shift</div>
+        <div id="ks-rk2">SHIFT-DEK3-AWU/2610/0002</div>
+        <div id="ks-jual">Rp 38.000</div>
+        <div id="ks-belum"><span id="ks-b1">1 struk belum masuk SAP</span><span id="ks-b2" style="color: #17663a">✓ Semua struk masuk SAP</span></div>
+        <div id="ks-do">Kirim DO hari ini</div>
+      </div>
+      <div id="ks-sap" class="ks-kartu">
+        <div id="ks-sap-lbl">DOKUMEN SAP</div>
+        <div class="ks-dok" style="height: 60px; background: #6fa85a"></div>
+        <div class="ks-dok" style="height: 60px; background: #6fa85a"></div>
+        <div class="ks-dok" style="height: 60px; background: #e2b24a"></div>
+        <div class="ks-dok" style="height: 60px; background: #e87a3a"></div>
+        <div class="ks-dok" style="height: 60px; background: #7c68b8"></div>
+        <div class="ks-dok" style="height: 60px; background: #c45c8e"></div>
+        <div class="ks-dok" style="height: 60px; background: #c45c8e"></div>
+        <div id="ks-dok-do" class="ks-dok" style="height: 60px; background: #cf5140"></div>
+      </div>
+    </div>
+    <div id="ks-toast"><span id="ks-toast-teks">DO 266000512 terkirim ke SAP</span></div>
+    <svg id="ks-kursor" viewBox="0 0 32 40"><path d="M2 2 L2 32 L10 25 L15 37 L20 35 L15 23 L26 23 Z" fill="#fff" stroke="#0f1b3d" stroke-width="2.4" stroke-linejoin="round" /></svg>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ks-isi", { scale: 1.12, filter: "blur(14px)", opacity: 0 }, { scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.4, ease: "expo.out" }, 0);
+    tl.fromTo("#ks-judul span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.07 }, 0.2);
+    tl.fromTo(["#ks-b", "#ks-q2", "#ks-j2", "#ks-t2", "#ks-s2", "#ks-b2", "#ks-dok-do", "#ks-toast"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    // scan (kata "scan" lokal 0,7), qty 1 -> 2
+    tl.fromTo("#ks-baris", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.65);
+    tl.to(["#ks-q1", "#ks-j1", "#ks-t1"], { opacity: 0, duration: 0.06 }, 1.2);
+    tl.fromTo(["#ks-q2", "#ks-j2", "#ks-t2"], { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.2);
+    // klik Bayar (lokal 1,75)
+    tl.fromTo("#ks-kursor", { x: 1100, y: 1100 }, { x: 560, y: 760, duration: 0.6, ease: "power2.inOut" }, 1.05);
+    tl.fromTo("#ks-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 1.7);
+    tl.fromTo("#ks-bayar", { scale: 1 }, { scale: 0.96, duration: 0.07, yoyo: true, repeat: 1 }, 1.7);
+    tl.to("#ks-a", { opacity: 0, filter: "blur(8px)", duration: 0.15 }, 1.8);
+    tl.fromTo("#ks-b", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15 }, 1.88);
+    tl.fromTo("#ks-kembali-n", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 2.3);
+    // klik Selesaikan (lokal 2,95)
+    tl.fromTo("#ks-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 2.9);
+    tl.to("#ks-selesai", { backgroundColor: "#2f7a3a", duration: 0.12 }, 2.97);
+    tl.to("#ks-s1", { opacity: 0, duration: 0.1 }, 2.97);
+    tl.fromTo("#ks-s2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.0);
+    // ke Rekap shift, klik Kirim DO hari ini (lokal 3,9 = kata "SAP")
+    tl.to("#ks-kursor", { x: 1440, y: 540, duration: 0.6, ease: "power2.inOut" }, 3.2);
+    tl.fromTo("#ks-kursor", { scale: 1 }, { scale: 0.86, duration: 0.07, yoyo: true, repeat: 1 }, 3.85);
+    tl.to("#ks-do", { backgroundColor: "#213a7c", color: "#ffffff", duration: 0.1 }, 3.92);
+    tl.fromTo("#ks-toast", { opacity: 0, y: -30, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, 3.95);
+    tl.to("#ks-b1", { opacity: 0, duration: 0.1 }, 4.0);
+    tl.fromTo("#ks-b2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 4.05);
+    tl.fromTo("#ks-dok-do", { opacity: 0, y: -260 }, { opacity: 1, y: 0, duration: 0.5, ease: "bounce.out" }, 4.6);
+    tl.to("#ks-kursor", { x: 1300, y: 1150, duration: 0.6, ease: "power2.in" }, 4.4);
+    // toast tumbuh memenuhi layar menjadi latar navy adegan manfaat
+    tl.to("#ks-toast-teks", { opacity: 0, duration: 0.15 }, 6.6);
+    tl.to("#ks-isi", { opacity: 0.35, filter: "blur(12px)", duration: 0.3 }, 6.6);
+    tl.to("#ks-toast", { scaleX: 3.4, scaleY: 13, x: -480, y: 440, borderRadius: 0, duration: 0.6, ease: "power2.inOut" }, 6.65);
+    window.__timelines["kasir"] = tl;
+  </script>
+</template>
