@@ -103,7 +103,7 @@ const ikon = async (Icon, color) => {
   // ---------- 3. alur ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Alur end-to-end: setiap langkah tercatat di SAP', {placeholder: 'title'});
-  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'Kantor pusat', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
+  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'Kantor pusat · P2', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
   const nw = 1.78, gap = 0.235, y1 = 2.2, chip = (x, y, d) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.84, h: 0.34, rectRadius: 0.08, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Dokumen ${d}`});
     s.addText(d, {x, y, w: 0.84, h: 0.34, fontSize: 12, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
@@ -124,7 +124,7 @@ const ikon = async (Icon, color) => {
   const xb0 = 0.75 + 2 * (nw + gap), y2 = 3.9;
   teks(s, 'Bila stok DC kurang:', {x: 0.75, y: y2 + 0.32, w: 3.85, h: 0.4, fontSize: 14, italic: true, color: K.accent5, align: 'right'});
   s.addShape(pres.shapes.LINE, {x: xb0 + nw / 2, y: y1 + 1.05, w: 0, h: y2 - y1 - 1.05, line: {color: K.accent3, width: 2, dashType: 'dash', endArrowType: 'triangle'}, objectName: 'Cabang pembelian'});
-  [['Permintaan pembelian', 'Kantor pusat', 'PR'], ['Pesanan ke vendor', 'Purchasing', 'PO'], ['Barang vendor tiba', 'Admin DC', 'GRPO']].forEach(([j, p, d], i) => {
+  [['Permintaan pembelian', 'Pergudangan', 'PR'], ['Pesanan ke vendor', 'Purchasing', 'PO'], ['Barang vendor tiba', 'Admin DC', 'GRPO']].forEach(([j, p, d], i) => {
     const x = xb0 + i * (nw + gap);
     kartu(s, x, y2, nw, 1.05, `Cabang ${j}`, K.lt2);
     s.addText([{text: j, options: {bold: true, fontSize: 14, color: K.dk2, breakLine: true}}, {text: p, options: {fontSize: 12, color: K.accent5}}], {x: x + 0.1, y: y2 + 0.08, w: nw - 0.2, h: 0.9, margin: 0, align: 'center', valign: 'middle', isTextBox: true});
@@ -150,7 +150,7 @@ const ikon = async (Icon, color) => {
   s.addText('Tujuh peran, masing-masing melihat tugasnya sendiri', {placeholder: 'title'});
   const zona = [
     [FA.FaShip, 'Kapal', [['Admin Kapal / Kepala Toko', 'Pesan ke DC, terima barang di dek'], ['Kasir', 'Jual, kirim penjualan harian ke SAP']]],
-    [FA.FaBuilding, 'Kantor pusat', [['Approve Sales Order', 'Setujui permintaan kapal ke DC'], ['Approve Purchase Request', 'Setujui pembelian, penerimaan, transfer'], ['Admin Purchase', 'Buat Purchase Order ke vendor'], ['Approve Purchase Order', 'Setujui pesanan ke vendor']]],
+    [FA.FaBuilding, 'Kantor pusat', [['Approve SO (P2)', 'Setujui permintaan kapal jadi Sales Order'], ['Approve PUR (Pergudangan)', 'Setujui Purchase Request, penerimaan, transfer'], ['Approve PO (Purchasing)', 'Setujui Purchase Order ke vendor'], ['Admin PO (Purchasing)', 'Buat Purchase Order ke vendor']]],
     [FA.FaWarehouse, 'DC', [['Admin DC', 'Pilah stok, ajukan penerimaan dan transfer']]],
   ];
   const zw = [3.7, 4.45, 3.1];
@@ -167,7 +167,7 @@ const ikon = async (Icon, color) => {
     });
     zx += zw[z] + 0.3;
   }
-  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve Sales Order, Approve Purchase Request, Admin Purchase, dan Approve Purchase Order. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
+  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve SO oleh P2, Approve PUR oleh Pergudangan, serta Approve PO dan Admin PO oleh Purchasing. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
 
   // ---------- 5. fitur web ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
