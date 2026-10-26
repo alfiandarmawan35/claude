@@ -85,7 +85,6 @@ const ikon = async (Icon, color) => {
   s.addText('PID POS', {placeholder: 'title'});
   teks(s, 'Aplikasi Toko Kapal Terintegrasi SAP Business One', {x: 0.67, y: 3.55, w: 7.4, h: 0.5, fontSize: 22, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  teks(s, 'Paparan kepada Direksi · Oktober 2026', {x: 0.67, y: 4.55, w: 7.4, h: 0.4, fontSize: 14, color: 'A9C4EA'});
   s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, fitur utama, kasir, dan keunggulannya.');
 
   // ---------- 2. satu aplikasi ----------
