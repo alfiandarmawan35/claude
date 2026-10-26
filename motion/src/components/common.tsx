@@ -257,7 +257,7 @@ export const Logo: React.FC<{size?: number}> = ({size = 1}) => (
   >
     <Img src={staticFile('brand/pelni_services.png')} style={{width: 470 * size}} />
     <div style={{width: 4 * size, alignSelf: 'stretch', background: C.line, borderRadius: 2}} />
-    <div style={{fontSize: 120 * size, fontWeight: 800, color: C.navy, letterSpacing: -2, lineHeight: 1}}>PID POS</div>
+    <div style={{fontSize: 120 * size, fontWeight: 800, color: C.navy, letterSpacing: -2, lineHeight: 1, whiteSpace: 'nowrap'}}>PID POS</div>
   </div>
 );
 

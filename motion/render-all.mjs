@@ -16,6 +16,8 @@ const all = [
   ['Skit-Gudang', 'Skit_Gudang_Stok_kurang'],
   ['Skit-Kasir', 'Skit_Kasir_Antrean_panjang'],
   ['Skit-Approve', 'Skit_Approve_Mana_yang_disetujui'],
+  ['Countdown', 'Countdown_Peluncuran_16x9'],
+  ['Countdown-Vertikal', 'Countdown_Peluncuran_9x16'],
 ];
 const pick = process.argv.slice(2);
 for (const [id, name] of all) {
