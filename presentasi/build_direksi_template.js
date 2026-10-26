@@ -144,7 +144,7 @@ const ikon = async (Icon, color) => {
   s.addText('Tujuh peran, masing-masing melihat tugasnya sendiri', {placeholder: 'title'});
   const zona = [
     [FA.FaShip, 'Kapal', [['Admin Kapal / Kepala Toko', 'Pesan ke DC, terima barang di dek'], ['Kasir', 'Jual, kirim penjualan harian ke SAP']]],
-    [FA.FaBuilding, 'Kantor pusat', [['Approve Sales Order', 'Setujui permintaan kapal ke DC'], ['Approve Purchasing', 'Setujui pembelian, penerimaan, transfer'], ['Admin Purchase', 'Buat Purchase Order ke vendor'], ['Approve Purchase Order', 'Setujui pesanan ke vendor']]],
+    [FA.FaBuilding, 'Kantor pusat', [['Approve Sales Order', 'Setujui permintaan kapal ke DC'], ['Approve Purchase Request', 'Setujui pembelian, penerimaan, transfer'], ['Admin Purchase', 'Buat Purchase Order ke vendor'], ['Approve Purchase Order', 'Setujui pesanan ke vendor']]],
     [FA.FaWarehouse, 'DC', [['Admin DC', 'Pilah stok, ajukan penerimaan dan transfer']]],
   ];
   const zw = [3.7, 4.45, 3.1];
@@ -161,7 +161,7 @@ const ikon = async (Icon, color) => {
     });
     zx += zw[z] + 0.3;
   }
-  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve Sales Order, Approve Purchasing, Admin Purchase, dan Approve Purchase Order. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
+  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve Sales Order, Approve Purchase Request, Admin Purchase, dan Approve Purchase Order. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
 
   // ---------- 5. fitur web ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
