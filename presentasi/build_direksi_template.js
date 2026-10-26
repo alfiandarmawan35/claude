@@ -91,19 +91,19 @@ const ikon = async (Icon, color) => {
   pres.addSection({title: 'Aplikasi'});
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Satu aplikasi untuk seluruh alur toko kapal', {placeholder: 'title'});
-  const baris = [[FA.FaGlobe, 'Aplikasi web', 'Untuk admin kapal, DC, dan kantor pusat: pesan barang, persetujuan, stok, dan laporan.'], [FA.FaMobileAlt, 'Aplikasi kasir Android', 'Untuk kasir di setiap dek: scan, bayar tunai atau QRIS, struk, dan rekap shift.'], [FA.FaDatabase, 'Terhubung SAP Business One', 'Dokumen dibuat otomatis setelah disetujui, tanpa input ulang.']];
+  const baris = [[FA.FaGlobe, 'Aplikasi web', 'Untuk admin kapal, Distribution Center (DC), dan kantor pusat: pesan barang, persetujuan, stok, dan laporan.'], [FA.FaMobileAlt, 'Aplikasi kasir Android', 'Untuk kasir di setiap dek: scan, bayar tunai atau QRIS, struk, dan rekap shift.'], [FA.FaDatabase, 'Terhubung SAP Business One', 'Dokumen dibuat otomatis setelah disetujui, tanpa input ulang.']];
   for (let i = 0; i < 3; i++) {
     const [Ic, j, d] = baris[i], y = 2.0 + i * 1.2;
     await lingkaranIkon(s, 0.75, y, 0.85, Ic, i === 2 ? K.accent1 : K.dk2, 'FFFFFF', j);
     teks(s, [{text: j, options: {bold: true, fontSize: 19, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 14, color: K.dk1}}], {x: 1.85, y: y - 0.05, w: 4.9, h: 1.1});
   }
   gambar(s, 'g01', {x: 7.0, y: 1.95, w: 5.6, h: 4.3}, 'Beranda admin kapal');
-  s.addNotes('PID POS terdiri dari aplikasi web untuk admin kapal, DC, dan kantor pusat, serta aplikasi kasir Android untuk setiap dek. Keduanya terhubung langsung dengan SAP Business One, sehingga dokumen dibuat otomatis setelah disetujui.');
+  s.addNotes('PID POS terdiri dari aplikasi web untuk admin kapal, Distribution Center atau DC, dan kantor pusat, serta aplikasi kasir Android untuk setiap dek. Keduanya terhubung langsung dengan SAP Business One, sehingga dokumen dibuat otomatis setelah disetujui.');
 
   // ---------- 3. alur ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Alur end-to-end: setiap langkah tercatat di SAP', {placeholder: 'title'});
-  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Approve SO', 'Kantor pusat', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko · P2', null], ['Jual di kasir', 'Kasir', 'DO']];
+  const atas = [['Pesan ke DC', 'Admin kapal', null], ['Persetujuan permintaan', 'Kantor pusat', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko', null], ['Jual di kasir', 'Kasir', 'DO']];
   const nw = 1.78, gap = 0.235, y1 = 1.95, chip = (x, y, d) => {
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.84, h: 0.34, rectRadius: 0.08, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Dokumen ${d}`});
     s.addText(d, {x, y, w: 0.84, h: 0.34, fontSize: 12, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
@@ -118,7 +118,7 @@ const ikon = async (Icon, color) => {
   const xb0 = 0.75 + 2 * (nw + gap), y2 = 3.7;
   teks(s, 'Bila stok DC kurang:', {x: 0.75, y: y2 + 0.32, w: 3.85, h: 0.4, fontSize: 14, italic: true, color: K.accent5, align: 'right'});
   s.addShape(pres.shapes.LINE, {x: xb0 + nw / 2, y: y1 + 1.05, w: 0, h: y2 - y1 - 1.05, line: {color: K.accent3, width: 2, dashType: 'dash', endArrowType: 'triangle'}, objectName: 'Cabang pembelian'});
-  [['Purchase Request', 'Approve PUR', 'PR'], ['Purchase Order', 'Purchasing', 'PO'], ['Barang vendor tiba', 'Admin DC', 'GRPO']].forEach(([j, p, d], i) => {
+  [['Permintaan pembelian', 'Kantor pusat', 'PR'], ['Pesanan ke vendor', 'Purchasing', 'PO'], ['Barang vendor tiba', 'Admin DC', 'GRPO']].forEach(([j, p, d], i) => {
     const x = xb0 + i * (nw + gap);
     kartu(s, x, y2, nw, 1.05, `Cabang ${j}`, K.lt2);
     s.addText([{text: j, options: {bold: true, fontSize: 14, color: K.dk2, breakLine: true}}, {text: p, options: {fontSize: 12, color: K.accent5}}], {x: x + 0.1, y: y2 + 0.08, w: nw - 0.2, h: 0.9, margin: 0, align: 'center', valign: 'middle', isTextBox: true});
@@ -127,17 +127,25 @@ const ikon = async (Icon, color) => {
   });
   const x3 = 0.75 + 3 * (nw + gap) + nw / 2, x4 = 0.75 + 4 * (nw + gap) + nw / 2;
   s.addShape(pres.shapes.LINE, {x: x3, y: y1 + 1.52, w: x4 - x3, h: y2 - y1 - 1.52, line: {color: K.accent3, width: 2, dashType: 'dash', beginArrowType: 'triangle'}, objectName: 'Kembali ke transfer'});
-  kartu(s, 1.75, 5.55, 10.85, 0.8, 'Kesimpulan alur', K.lt2);
-  teks(s, [{text: '6 jenis dokumen SAP dibuat otomatis: ', options: {bold: true, color: K.dk2}}, {text: 'SO, PR, PO, GRPO, IT, dan DO, tanpa input ulang.', options: {color: K.dk1}}], {x: 2.05, y: 5.55, w: 10.35, h: 0.8, fontSize: 15, valign: 'middle'});
-  s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko dan P2, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan GRPO saat barang tiba di DC.');
+  // keterangan singkatan: 6 dokumen SAP yang dibuat otomatis
+  kartu(s, 1.75, 5.35, 10.85, 1.3, 'Keterangan dokumen SAP', K.lt2);
+  teks(s, 'Dokumen SAP yang dibuat otomatis:', {x: 2.0, y: 5.43, w: 6, h: 0.3, fontSize: 13, bold: true, color: K.dk2});
+  [['SO', 'Sales Order', 'pesanan per dek'], ['PR', 'Purchase Request', 'permintaan pembelian'], ['PO', 'Purchase Order', 'pesanan ke vendor'],
+   ['GRPO', 'Goods Receipt PO', 'penerimaan barang vendor'], ['IT', 'Inventory Transfer', 'kiriman DC ke dek'], ['DO', 'Delivery Order', 'penjualan harian kasir']].forEach(([d, n, a], i) => {
+    const x = 2.0 + (i % 3) * 3.55, y = 5.8 + Math.floor(i / 3) * 0.4;
+    s.addShape(pres.shapes.ROUNDED_RECTANGLE, {x, y, w: 0.72, h: 0.3, rectRadius: 0.06, fill: {color: DOK[d]}, line: {color: DOK[d]}, objectName: `Keterangan ${d}`});
+    s.addText(d, {x, y, w: 0.72, h: 0.3, fontSize: 11, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
+    teks(s, [{text: n, options: {bold: true, color: K.dk2}}, {text: ' · ' + a, options: {color: K.accent5}}], {x: x + 0.82, y: y - 0.02, w: 2.65, h: 0.34, fontSize: 12, valign: 'middle'});
+  });
+  s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan Goods Receipt PO (GRPO) saat barang tiba di DC.');
 
   // ---------- 4. tujuh peran ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Tujuh peran, masing-masing melihat tugasnya sendiri', {placeholder: 'title'});
   const zona = [
-    [FA.FaShip, 'Kapal', [['Admin Kapal / Kepala Toko', 'Pesan ke DC, terima barang di dek'], ['Kasir', 'Jual, kirim DO harian ke SAP']]],
-    [FA.FaBuilding, 'Kantor pusat', [['Approve SO (P2)', 'Setujui permintaan jadi Sales Order'], ['Approve PUR', 'Setujui PR, GRPO, dan transfer'], ['Admin Purchase', 'Buat Purchase Order ke vendor'], ['Approve PO', 'Setujui Purchase Order']]],
-    [FA.FaWarehouse, 'DC', [['Admin DC', 'Pilah stok, ajukan GRPO dan transfer']]],
+    [FA.FaShip, 'Kapal', [['Admin Kapal / Kepala Toko', 'Pesan ke DC, terima barang di dek'], ['Kasir', 'Jual, kirim penjualan harian ke SAP']]],
+    [FA.FaBuilding, 'Kantor pusat', [['Approve Sales Order', 'Setujui permintaan kapal ke DC'], ['Approve Purchasing', 'Setujui pembelian, penerimaan, transfer'], ['Admin Purchase', 'Buat Purchase Order ke vendor'], ['Approve Purchase Order', 'Setujui pesanan ke vendor']]],
+    [FA.FaWarehouse, 'DC', [['Admin DC', 'Pilah stok, ajukan penerimaan dan transfer']]],
   ];
   const zw = [3.7, 4.45, 3.1];
   let zx = 0.75;
@@ -153,7 +161,7 @@ const ikon = async (Icon, color) => {
     });
     zx += zw[z] + 0.3;
   }
-  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve SO, Approve PUR, Admin Purchase, dan Approve PO. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
+  s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve Sales Order, Approve Purchasing, Admin Purchase, dan Approve Purchase Order. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
 
   // ---------- 5. fitur web ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
@@ -172,7 +180,7 @@ const ikon = async (Icon, color) => {
   s.addText('Kasir di setiap dek', {placeholder: 'title'});
   gambar(s, 'g45', {x: 0.75, y: 1.95, w: 5.75, h: 3.3}, 'Kasir: scan barang');
   gambar(s, 'g46', {x: 6.85, y: 1.95, w: 5.75, h: 3.3}, 'Kasir: pembayaran');
-  const L = [['1', 'Scan barang', 'barcode, atau ketik nama/kode'], ['2', 'Bayar', 'tunai atau QRIS, kembalian otomatis'], ['3', 'Struk tercetak', 'cetak ulang dari riwayat'], ['4', 'Kirim DO', 'penjualan harian masuk SAP']];
+  const L = [['1', 'Scan barang', 'barcode, atau ketik nama/kode'], ['2', 'Bayar', 'tunai atau QRIS, kembalian otomatis'], ['3', 'Struk tercetak', 'cetak ulang dari riwayat'], ['4', 'Kirim Delivery Order', 'penjualan harian masuk SAP']];
   L.forEach(([n, j, d], i) => {
     const x = 1.75 + i * 2.72;
     s.addShape(pres.shapes.OVAL, {x, y: 5.65, w: 0.52, h: 0.52, fill: {color: i === 3 ? K.accent4 : K.dk2}, line: {color: i === 3 ? K.accent4 : K.dk2}, objectName: `Langkah ${n}`});
@@ -184,7 +192,7 @@ const ikon = async (Icon, color) => {
   // ---------- 7. keunggulan ----------
   s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Keunggulan PID POS', {placeholder: 'title'});
-  const nilai = [[FA.FaEye, 'Transparan', 'Stok setiap dek dan status setiap permintaan terpantau real-time, lengkap dengan riwayatnya.'], [FA.FaShieldAlt, 'Terkendali', 'Persetujuan berjenjang di setiap tahap, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan.'], [FA.FaLink, 'Terintegrasi', 'Dokumen SAP Business One dibuat otomatis, dan penjualan harian setiap dek masuk SAP sebagai DO.']];
+  const nilai = [[FA.FaEye, 'Transparan', 'Stok setiap dek dan status setiap permintaan terpantau real-time, lengkap dengan riwayatnya.'], [FA.FaShieldAlt, 'Terkendali', 'Persetujuan berjenjang di setiap tahap, dan setiap persetujuan tercatat lengkap dengan siapa dan kapan.'], [FA.FaLink, 'Terintegrasi', 'Dokumen SAP Business One dibuat otomatis, dan penjualan harian setiap dek masuk SAP sebagai Delivery Order.']];
   for (let i = 0; i < 3; i++) {
     const [Ic, j, d] = nilai[i], x = 0.75 + i * 4.0;
     kartu(s, x, 1.9, 3.75, 3.55, `Keunggulan ${j}`);
