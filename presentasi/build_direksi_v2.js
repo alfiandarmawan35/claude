@@ -1,4 +1,4 @@
-// Paparan direksi PID POS (versi 2, 8 halaman), selaras dengan video perkenalan versi profesional:
+// Paparan direksi PID POS (versi 2, 8 halaman, khusus tentang aplikasi), selaras dengan video perkenalan versi profesional:
 // navy gelap, aksen oranye, logo Danantara · PELNI Services, layar aplikasi asli.
 // Pakai: npm install && node build_direksi_v2.js  ->  ../docs/PID_POS_Paparan_Direksi_v2.pptx
 const fs = require('fs');
@@ -15,7 +15,7 @@ const IMG = (g) => path.join(ROOT, 'motion/public/img', `${g}.png`);
 const PELNI = path.join(ROOT, 'motion/public/brand/pelni_services.png');
 const DANANTARA = path.join(ROOT, 'brand/danantara_gelap.png');
 const OUT = path.join(ROOT, 'docs/PID_POS_Paparan_Direksi_v2.pptx');
-const DIMS = {g01: [2049, 1180], g45: [2049, 1200], g19: [1419, 1260]};
+const DIMS = {g01: [2049, 1180], g02: [2049, 974], g11: [2049, 590], g19: [1419, 1260], g45: [2049, 1200], g46: [2049, 995]};
 
 const THEME = {
   name: 'PID POS Direksi',
@@ -96,26 +96,11 @@ const ikon = async (Icon, color) => {
   s.addText('Aplikasi toko kapal yang terhubung langsung dengan SAP Business One', {x: 0.7, y: 3.95, w: 6.4, h: 0.95, fontSize: 22, color: 'CADCFC', margin: 0, valign: 'top', isTextBox: true});
   s.addText('Paparan kepada Direksi · Oktober 2026', {x: 0.7, y: 6.55, w: 6, h: 0.35, fontSize: 14, color: '8FA6D8', margin: 0, isTextBox: true});
   gambar(s, 'g01', {x: 7.75, y: 1.75, w: 5.0, h: 4.0}, 'Beranda admin kapal');
-  s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, manfaatnya, rencana peluncuran, dan dukungan yang kami mohonkan.');
+  s.addNotes('PID POS adalah aplikasi toko kapal PELNI Services yang terhubung langsung dengan SAP Business One. Paparan ini menyampaikan apa itu PID POS, alurnya, peran yang terlibat, fitur utamanya, kasir, dan keunggulannya.');
 
-  // ---------- 2. ringkasan ----------
-  pres.addSection({title: 'Ringkasan'});
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Ringkasan'});
-  s.addText('Ringkasan: PID POS siap digunakan 27 Oktober 2026', {placeholder: 'title'});
-  const stat = [['1', 'alur terintegrasi', 'dari permintaan kapal sampai penjualan di kasir'], ['7', 'peran pengguna', 'di kapal, DC, dan kantor pusat'], ['6', 'jenis dokumen SAP', 'dibuat otomatis setelah disetujui']];
-  stat.forEach(([n, a, b], i) => {
-    const x = 0.7 + i * 4.05;
-    kartu(s, x, 1.65, 3.75, 2.6, `Angka ${a}`);
-    s.addText(n, {x: x + 0.35, y: 1.8, w: 3.0, h: 1.2, fontSize: 66, bold: true, color: C.accent1, margin: 0, isTextBox: true});
-    s.addText([{text: a, options: {bold: true, fontSize: 20, color: K.dk2, breakLine: true}}, {text: b, options: {fontSize: 14, color: K.accent5}}], {x: x + 0.35, y: 3.0, w: 3.1, h: 1.1, margin: 0, valign: 'top', isTextBox: true});
-  });
-  kartu(s, 0.7, 4.65, 11.85, 1.95, 'Permohonan', K.dk2);
-  s.addText([{text: 'Yang kami mohonkan', options: {bold: true, fontSize: 20, color: 'FFFFFF', breakLine: true}}, {text: 'Persetujuan penerapan PID POS di toko kapal, DC, dan kantor pusat, serta arahan kepada unit terkait untuk menjalankan permintaan barang dan penjualan melalui PID POS.', options: {fontSize: 16, color: 'CADCFC'}}], {x: 1.1, y: 4.85, w: 11.1, h: 1.55, margin: 0, valign: 'middle', isTextBox: true});
-  s.addNotes('Pesan utamanya: PID POS siap digunakan mulai 27 Oktober 2026. Satu alur dari permintaan kapal sampai penjualan, tujuh peran, dan enam jenis dokumen SAP yang dibuat otomatis. Di akhir paparan kami memohon persetujuan penerapan dan arahan kepada unit terkait.');
-
-  // ---------- 3. apa itu ----------
-  pres.addSection({title: 'Isi'});
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Isi'});
+  // ---------- 2. apa itu ----------
+  pres.addSection({title: 'Aplikasi'});
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Satu aplikasi untuk seluruh alur toko kapal', {placeholder: 'title'});
   const baris = [[FA.FaGlobe, 'Aplikasi web', 'Untuk admin kapal, DC, dan kantor pusat: pesan barang, persetujuan, stok, kas, dan laporan.'], [FA.FaMobileAlt, 'Aplikasi kasir Android', 'Untuk kasir di setiap dek: scan, bayar tunai atau QRIS, struk, dan rekap shift.'], [FA.FaDatabase, 'Terhubung SAP Business One', 'Dokumen dibuat otomatis setelah disetujui, tanpa input ulang.']];
   for (let i = 0; i < baris.length; i++) {
@@ -126,8 +111,8 @@ const ikon = async (Icon, color) => {
   gambar(s, 'g01', {x: 7.2, y: 1.75, w: 5.55, h: 4.7}, 'Beranda admin kapal');
   s.addNotes('PID POS terdiri dari aplikasi web untuk admin kapal, DC, dan kantor pusat, serta aplikasi kasir Android untuk setiap dek. Keduanya terhubung langsung dengan SAP Business One, sehingga dokumen dibuat otomatis setelah disetujui. Gambar di kanan adalah beranda admin kapal.');
 
-  // ---------- 4. alur ----------
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Isi'});
+  // ---------- 3. alur ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Alur end-to-end: setiap langkah tercatat di SAP', {placeholder: 'title'});
   const atas = [['Pesan ke DC', 'Admin kapal', null], ['Approve SO', 'Kantor pusat', 'SO'], ['Pilah stok', 'Admin DC', null], ['Transfer ke dek', 'Admin DC', 'IT'], ['Terima di dek', 'Kepala toko · P2', null], ['Jual di kasir', 'Kasir', 'DO']];
   const nw = 1.78, gap = 0.25, y1 = 1.9;
@@ -160,8 +145,8 @@ const ikon = async (Icon, color) => {
   s.addText([{text: '6 jenis dokumen SAP dibuat otomatis: ', options: {bold: true, color: K.dk2}}, {text: 'SO, PR, PO, GRPO, IT (Inventory Transfer), dan DO (Delivery Order), tanpa input ulang.', options: {color: K.dk1}}], {x: 1.0, y: 5.75, w: 11.3, h: 0.9, fontSize: 16, margin: 0, valign: 'middle', isTextBox: true});
   s.addNotes('Jalur atas selalu dijalani: kapal memesan ke DC, kantor pusat menyetujui sehingga Sales Order terbentuk di SAP, DC memilah stok, barang dikirim ke dek dengan Inventory Transfer, diterima kepala toko dan P2, lalu dijual di kasir dan masuk SAP sebagai Delivery Order. Bila stok DC kurang, jalur pembelian berjalan: Purchase Request, Purchase Order ke vendor, dan GRPO saat barang tiba di DC.');
 
-  // ---------- 5. tujuh peran ----------
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Isi'});
+  // ---------- 4. tujuh peran ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
   s.addText('Tujuh peran, masing-masing melihat tugasnya sendiri', {placeholder: 'title'});
   const zona = [
     [FA.FaShip, 'Kapal', [['Admin Kapal / Kepala Toko', 'Pesan ke DC, terima barang di dek'], ['Kasir', 'Jual, kirim DO harian ke SAP']]],
@@ -184,9 +169,35 @@ const ikon = async (Icon, color) => {
   }
   s.addNotes('Ada tujuh peran. Di kapal: admin kapal atau kepala toko, dan kasir. Di kantor pusat: Approve SO, Approve PUR, Admin Purchase, dan Approve PO. Di DC: admin DC. Setiap peran hanya melihat tugas yang menunggunya, lewat lonceng dan tab Giliran saya.');
 
-  // ---------- 6. manfaat ----------
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Isi'});
-  s.addText('Nilai bagi perusahaan', {placeholder: 'title'});
+  // ---------- 5. fitur web: layar asli ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
+  s.addText('Fitur utama aplikasi web', {placeholder: 'title'});
+  const F = [['g02', 'Pesan ke DC', 'Pilih barang dan dek tujuan, lalu kirim permintaan ke DC.'], ['g19', 'Persetujuan berjenjang', 'Status tiap tahap terlihat; setelah disetujui jadi Sales Order di SAP.'], ['g11', 'Posisi stok per dek', 'Stok setiap dek, total, dan penjualan 7 hari dalam satu tabel.']];
+  F.forEach(([g, j, d], i) => {
+    const x = 0.7 + i * 4.05;
+    kartu(s, x, 1.65, 3.75, 4.95, `Fitur ${j}`);
+    gambar(s, g, {x: x + 0.25, y: 1.95, w: 3.25, h: 2.55}, j);
+    s.addText([{text: j, options: {bold: true, fontSize: 20, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 14, color: K.dk1}}], {x: x + 0.3, y: 4.75, w: 3.15, h: 1.7, margin: 0, valign: 'top', paraSpaceAfter: 6, isTextBox: true});
+  });
+  s.addNotes('Tiga fitur utama aplikasi web: admin kapal memesan barang ke DC per dek; setiap permintaan disetujui berjenjang dan statusnya terlihat per tahap, lalu menjadi Sales Order di SAP; dan posisi stok setiap dek terpantau dalam satu tabel.');
+
+  // ---------- 6. kasir ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
+  s.addText('Kasir di setiap dek', {placeholder: 'title'});
+  gambar(s, 'g45', {x: 0.7, y: 1.7, w: 5.5, h: 3.4}, 'Kasir: scan barang');
+  gambar(s, 'g46', {x: 6.45, y: 1.7, w: 5.5, h: 3.4}, 'Kasir: pembayaran');
+  const L = [['1', 'Scan barang', 'barcode, atau ketik nama/kode'], ['2', 'Bayar', 'tunai atau QRIS, kembalian otomatis'], ['3', 'Struk tercetak', 'cetak ulang dari riwayat'], ['4', 'Kirim DO', 'penjualan harian masuk SAP']];
+  L.forEach(([n, j, d], i) => {
+    const x = 0.7 + i * 2.97;
+    s.addShape(pres.shapes.OVAL, {x, y: 5.6, w: 0.55, h: 0.55, fill: {color: i === 3 ? K.accent1 : K.dk2}, line: {color: i === 3 ? K.accent1 : K.dk2}, objectName: `Langkah ${n}`});
+    s.addText(n, {x, y: 5.6, w: 0.55, h: 0.55, fontSize: 15, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
+    s.addText([{text: j, options: {bold: true, fontSize: 16, color: K.dk2, breakLine: true}}, {text: d, options: {fontSize: 12, color: K.accent5}}], {x: x + 0.7, y: 5.5, w: 2.15, h: 0.85, margin: 0, valign: 'middle', isTextBox: true});
+  });
+  s.addNotes('Di setiap dek, kasir cukup scan barang, menerima pembayaran tunai atau QRIS dengan kembalian dihitung otomatis, lalu struk tercetak. Di akhir hari, penjualan dikirim ke SAP sebagai Delivery Order.');
+
+  // ---------- 7. keunggulan ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
+  s.addText('Keunggulan PID POS', {placeholder: 'title'});
   const nilai = [[FA.FaEye, 'Transparan', 'Stok setiap dek dan status setiap permintaan terpantau real-time, lengkap dengan riwayatnya.'], [FA.FaShieldAlt, 'Terkendali', 'Persetujuan berjenjang di setiap tahap; retur dan kas keluar besar memerlukan PIN kepala toko.'], [FA.FaLink, 'Terintegrasi', 'Dokumen SAP Business One dibuat otomatis, dan penjualan harian setiap dek masuk SAP sebagai DO.']];
   for (let i = 0; i < 3; i++) {
     const [Ic, j, d] = nilai[i], x = 0.7 + i * 4.05;
@@ -197,35 +208,14 @@ const ikon = async (Icon, color) => {
   }
   s.addNotes('Nilainya bagi perusahaan ada tiga. Transparan: stok setiap dek dan status permintaan terpantau real-time. Terkendali: setiap tahap disetujui berjenjang, dan transaksi sensitif seperti retur memerlukan PIN kepala toko. Terintegrasi: dokumen SAP dibuat otomatis, termasuk penjualan harian setiap dek sebagai Delivery Order.');
 
-  // ---------- 7. kesiapan ----------
-  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Isi'});
-  s.addText('Kesiapan dan rencana peluncuran', {placeholder: 'title'});
-  const tahap = [['Uji coba alur', 'Alur end-to-end diuji dengan data uji di lingkungan pengujian (SAP DB_TEST).'], ['Materi pendukung', 'Manual book per peran, video tutorial, dan video perkenalan.'], ['Peluncuran', 'Mulai digunakan Selasa, 27 Oktober 2026.'], ['Pendampingan', 'Tim TI PIDC sebagai kontak teknis selama masa awal penggunaan.']];
-  s.addShape(pres.shapes.LINE, {x: 1.2, y: 2.75, w: 10.85, h: 0, line: {color: K.accent6, width: 3}, objectName: 'Garis waktu'});
-  for (let i = 0; i < 4; i++) {
-    const [j, d] = tahap[i], x = 0.7 + i * 2.97, inti = i === 2;
-    s.addShape(pres.shapes.OVAL, {x: x + 0.3, y: 2.45, w: 0.6, h: 0.6, fill: {color: inti ? K.accent1 : K.dk2}, line: {color: 'FFFFFF', width: 3}, objectName: `Titik ${j}`});
-    s.addText(String(i + 1), {x: x + 0.3, y: 2.45, w: 0.6, h: 0.6, fontSize: 16, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
-    kartu(s, x, 3.35, 2.7, 2.25, `Tahap ${j}`, inti ? K.dk2 : K.lt1);
-    s.addText([{text: j, options: {bold: true, fontSize: 18, color: inti ? 'FFFFFF' : K.dk2, breakLine: true}}, {text: d, options: {fontSize: 14, color: inti ? 'CADCFC' : K.dk1}}], {x: x + 0.25, y: 3.55, w: 2.25, h: 2.25, margin: 0, valign: 'top', paraSpaceAfter: 6, isTextBox: true});
-  }
-  s.addText('Usulan rencana; tanggal selain peluncuran disesuaikan dengan keputusan Direksi.', {x: 0.7, y: 5.95, w: 11.85, h: 0.4, fontSize: 12, italic: true, color: K.accent5, margin: 0, isTextBox: true});
-  s.addNotes('Kesiapan: alur end-to-end sudah diuji dengan data uji di lingkungan pengujian SAP DB_TEST, dan materi pendukung sudah tersedia berupa manual book per peran, video tutorial, dan video perkenalan. Peluncuran direncanakan Selasa, 27 Oktober 2026, dengan Tim TI PIDC sebagai kontak teknis selama masa awal penggunaan.');
-
   // ---------- 8. penutup ----------
   pres.addSection({title: 'Penutup'});
   s = pres.addSlide({masterName: 'GELAP', sectionTitle: 'Penutup'});
   logoLockup(s, 0.7, 0.6, 4.6);
-  s.addText('Dukungan yang dimohonkan', {x: 0.7, y: 2.05, w: 11.9, h: 0.8, fontSize: 36, bold: true, color: 'FFFFFF', margin: 0, isTextBox: true});
-  const mohon = ['Persetujuan penerapan PID POS di toko kapal, DC, dan kantor pusat mulai 27 Oktober 2026.', 'Arahan kepada unit terkait untuk menjalankan permintaan barang dan penjualan melalui PID POS.'];
-  for (let i = 0; i < 2; i++) {
-    const y = 3.05 + i * 1.25;
-    s.addShape(pres.shapes.OVAL, {x: 0.7, y: y + 0.1, w: 0.7, h: 0.7, fill: {color: K.accent1}, line: {color: K.accent1}, objectName: `Nomor ${i + 1}`});
-    s.addText(String(i + 1), {x: 0.7, y: y + 0.1, w: 0.7, h: 0.7, fontSize: 20, bold: true, color: 'FFFFFF', align: 'center', valign: 'middle', margin: 0, isTextBox: true});
-    s.addText(mohon[i], {x: 1.65, y, w: 10.9, h: 0.9, fontSize: 20, color: 'FFFFFF', margin: 0, valign: 'middle', isTextBox: true});
-  }
-  s.addText([{text: 'Terima kasih', options: {bold: true, fontSize: 30, color: 'FFFFFF', breakLine: true}}, {text: 'PID POS · Satu alur, dari kapal sampai kasir.', options: {fontSize: 16, color: '8FA6D8'}}], {x: 0.7, y: 5.75, w: 11.9, h: 1.15, margin: 0, valign: 'top', isTextBox: true});
-  s.addNotes('Kami memohon dua hal: persetujuan penerapan PID POS di toko kapal, DC, dan kantor pusat mulai 27 Oktober 2026, serta arahan kepada unit terkait untuk menjalankan permintaan barang dan penjualan melalui PID POS. Terima kasih.');
+  s.addText('PID POS', {placeholder: 'title'});
+  s.addText('Satu alur, dari kapal sampai kasir.', {x: 0.7, y: 3.95, w: 8, h: 0.6, fontSize: 24, color: 'CADCFC', margin: 0, isTextBox: true});
+  s.addText([{text: 'Terima kasih', options: {bold: true, fontSize: 30, color: 'FFFFFF', breakLine: true}}, {text: 'Aplikasi toko kapal PELNI Services, terhubung SAP Business One.', options: {fontSize: 16, color: '8FA6D8'}}], {x: 0.7, y: 5.75, w: 11.9, h: 1.15, margin: 0, valign: 'top', isTextBox: true});
+  s.addNotes('PID POS: satu alur, dari kapal sampai kasir. Terima kasih.');
 
   await pres.writeFile({fileName: OUT});
   await applyTheme(OUT, THEME);
