@@ -1,0 +1,62 @@
+      @font-face { font-family: "Jakarta"; font-weight: 500; src: url("assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jakarta"; font-weight: 600; src: url("assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jakarta"; font-weight: 700; src: url("assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2"); }
+      @font-face { font-family: "Jakarta"; font-weight: 800; src: url("assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0b1a3a; }
+      #root { width: 100%; height: 100%; font-family: "Jakarta", sans-serif; color: #fff; }
+      /* panggung sama dengan video perkenalan: navy gelap dengan kisi tipis */
+      #panggung { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background-color: #0b1a3a;
+        background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+        background-size: 80px 80px; }
+      .adegan { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      #tirai { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; background: #050c1e; opacity: 0; }
+
+      /* teks tayang */
+      .teks { position: absolute; left: 160px; right: 160px; top: 948px; height: 100px; display: flex; justify-content: center; }
+      .tt { position: absolute; max-width: 1500px; padding: 10px 26px; border-radius: 14px; background: rgba(5, 12, 30, 0.82);
+        font-weight: 600; font-size: 33px; line-height: 1.35; text-align: center; opacity: 0; }
+
+      /* judul & penutup */
+      .kartu-logo { position: absolute; left: 260px; top: 250px; width: 1400px; height: 230px; background: #fff; border-radius: 30px;
+        display: flex; align-items: center; justify-content: center; gap: 46px; box-shadow: 0 40px 90px rgba(0,0,0,.45); }
+      .lg-d { height: 100px; } .lg-p { width: 340px; }
+      .kartu-logo .garis { width: 3px; height: 120px; background: #d5deec; }
+      .kartu-logo .nama { font-weight: 800; font-size: 104px; color: #1f3b7a; letter-spacing: -0.02em; white-space: nowrap; }
+      .j-label { position: absolute; left: 0; right: 0; top: 540px; text-align: center; font-weight: 700; font-size: 28px; letter-spacing: .3em; color: #8fa6d8; }
+      .j-judul { position: absolute; left: 0; right: 0; top: 585px; text-align: center; font-weight: 800; font-size: 72px; letter-spacing: -0.02em; }
+      .j-sub { position: absolute; left: 0; right: 0; top: 690px; text-align: center; font-weight: 600; font-size: 36px; color: #c9d6f2; }
+
+      /* alur */
+      .al-k { position: absolute; top: 330px; width: 380px; height: 190px; border-radius: 24px; background: #13265a; border: 3px solid #3d6fc2;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center; padding: 0 18px; }
+      .al-k b { font-weight: 800; font-size: 38px; line-height: 1.1; } .al-k small { font-weight: 600; font-size: 24px; color: #8fa6d8; }
+      #S02-k2 { background: #fff; border-color: #fff; } #S02-k2 b { color: #1f3b7a; } #S02-k2 small { color: #5b6b86; }
+      .al-p { position: absolute; top: 418px; width: 190px; height: 6px; background: #ff6b1a; border-radius: 3px; transform-origin: 0 50%; }
+      .al-p::after { content: ""; position: absolute; right: -6px; top: -9px; border-left: 18px solid #ff6b1a; border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+      .al-lv { position: absolute; left: 700px; top: 560px; width: 590px; display: flex; justify-content: space-between; gap: 12px; }
+      .al-lv span { flex: 1; text-align: center; padding: 10px 0; border-radius: 12px; background: rgba(61,111,194,.25); font-weight: 700; font-size: 22px; color: #c9d6f2; white-space: nowrap; }
+
+      /* bagian */
+      .bg-no { position: absolute; left: 860px; top: 270px; width: 200px; height: 200px; border-radius: 50%; background: #ff6b1a; color: #0b1a3a;
+        display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 120px; }
+      .bg-label { position: absolute; left: 0; right: 0; top: 520px; text-align: center; font-weight: 700; font-size: 28px; letter-spacing: .3em; color: #8fa6d8; }
+      .bg-judul { position: absolute; left: 0; right: 0; top: 570px; text-align: center; font-weight: 800; font-size: 88px; letter-spacing: -0.02em; }
+
+      /* layar */
+      .ly-bagian { position: absolute; left: 90px; top: 170px; width: 520px; font-weight: 700; font-size: 24px; letter-spacing: .24em; color: #ff6b1a; }
+      .ly-judul { position: absolute; left: 90px; top: 214px; width: 520px; font-weight: 800; font-size: 54px; line-height: 1.12; letter-spacing: -0.015em; }
+      .bingkai { position: absolute; left: 650px; top: 140px; width: 1180px; height: 750px; border-radius: 18px; background: #fff; overflow: hidden;
+        box-shadow: 0 40px 90px rgba(0,0,0,.5); }
+      .bar { height: 44px; background: #e8edf5; display: flex; align-items: center; gap: 9px; padding: 0 18px; }
+      .bar i { width: 13px; height: 13px; border-radius: 50%; background: #c3cddd; }
+      .bar span { margin-left: 18px; padding: 4px 16px; border-radius: 8px; background: #fff; color: #5b6b86; font-weight: 600; font-size: 17px; }
+      .vp { position: relative; width: 1180px; height: 706px; overflow: hidden; background: #eef2f8; }
+      .vp img { position: absolute; left: 0; top: 0; transform-origin: 0 0; display: block; max-width: none; }
+      .sorot { position: absolute; border: 5px solid #ff6b1a; border-radius: 14px; box-shadow: 0 0 0 4000px rgba(8, 16, 36, 0.38); opacity: 0; }
+
+      /* catatan */
+      .ct { position: absolute; left: 360px; width: 1200px; height: 190px; border-radius: 24px; background: #fff; color: #0b1a3a; padding: 40px 56px 0 120px; }
+      .ct::before { content: "!"; position: absolute; left: 40px; top: 46px; width: 56px; height: 56px; border-radius: 50%; background: #ff6b1a; color: #fff;
+        font-weight: 800; font-size: 36px; display: flex; align-items: center; justify-content: center; }
+      .ct b { display: block; font-weight: 800; font-size: 40px; color: #1f3b7a; } .ct span { display: block; margin-top: 12px; font-weight: 600; font-size: 28px; color: #5b6b86; }
