@@ -234,17 +234,41 @@ const ikon = async (Icon, color) => {
   }
   s.addNotes(catatan(7));
 
+  // ---------- 9. timeline setelah go-live ----------
+  s = pres.addSlide({masterName: 'ISI', sectionTitle: 'Aplikasi'});
+  s.addText('Timeline setelah go-live', {placeholder: 'title'});
+  const fase = [
+    ['27 Okt 2026', 'Go-live', 'PID POS resmi digunakan di kapal, DC, dan kantor pusat.'],
+    ['27 Okt – 9 Nov', 'Pendampingan intensif', 'Tim pendamping siaga setiap hari; kendala pengguna ditangani cepat.'],
+    ['10 – 30 Nov', 'Stabilisasi', 'Pemantauan transaksi dan sinkron SAP, penyesuaian kecil, pelatihan ulang bila perlu.'],
+    ['Desember 2026', 'Evaluasi', 'Laporan evaluasi kepada Direksi: penggunaan, stok, dan kecepatan persetujuan.'],
+    ['2027', 'Pengembangan lanjutan', 'Aktivasi retur dan kas keluar, serta kajian aplikasi kasir iOS.'],
+  ];
+  const fw = 2.25, fg = 0.15, yGaris = 2.55;
+  s.addShape(pres.shapes.LINE, {x: 0.75 + fw / 2, y: yGaris, w: 4 * (fw + fg), h: 0, line: {color: K.accent1, width: 3}, objectName: 'Garis timeline'});
+  fase.forEach(([tgl, j, d], i) => {
+    const x = 0.75 + i * (fw + fg), cx = x + fw / 2, aktif = i === 0;
+    teks(s, tgl, {x, y: 1.85, w: fw, h: 0.35, fontSize: 13, bold: true, color: aktif ? K.accent4 : K.accent5, align: 'center'});
+    s.addShape(pres.shapes.OVAL, {x: cx - 0.18, y: yGaris - 0.18, w: 0.36, h: 0.36, fill: {color: aktif ? K.accent4 : K.dk2}, line: {color: 'FFFFFF', width: 2.5}, objectName: `Titik ${j}`});
+    kartu(s, x, 2.95, fw, 2.55, `Fase ${j}`, aktif ? K.lt1 : K.lt2);
+    s.addShape(pres.shapes.RECTANGLE, {x: x + 0.2, y: 3.15, w: 0.45, h: 0.06, fill: {color: aktif ? K.accent4 : K.accent1}, line: {color: aktif ? K.accent4 : K.accent1}, objectName: 'Aksen'});
+    teks(s, j, {x: x + 0.2, y: 3.3, w: fw - 0.4, h: 0.75, fontSize: 17, bold: true, color: K.dk2, valign: 'top'});
+    teks(s, d, {x: x + 0.2, y: 4.05, w: fw - 0.4, h: 1.35, fontSize: 12.5, color: K.dk1});
+  });
+  teks(s, 'Jadwal di atas adalah usulan dan dapat disesuaikan dengan keputusan Direksi.', {x: 1.75, y: 5.75, w: 10.85, h: 0.35, fontSize: 12, italic: true, color: K.accent5});
+  s.addNotes(catatan(8));
+
   // ---------- 8. penutup ----------
   pres.addSection({title: 'Penutup'});
   s = pres.addSlide({masterName: 'SAMPUL', sectionTitle: 'Penutup'});
   s.addText('Terima Kasih', {placeholder: 'title'});
   teks(s, 'PID POS · Satu alur, dari kapal sampai kasir.', {x: 0.67, y: 3.55, w: 7.4, h: 0.5, fontSize: 20, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes(catatan(8));
+  s.addNotes(catatan(9));
 
   await pres.writeFile({fileName: OUT});
   // naskah yang sama sebagai dokumen untuk pembicara
-  const md = ['# Naskah Paparan Direksi: PID POS', '', 'Perkiraan durasi total ± 9 menit. Naskah ini juga tersimpan sebagai catatan pembicara di setiap halaman deck.', '',
+  const md = ['# Naskah Paparan Direksi: PID POS', '', 'Perkiraan durasi total ± 10 menit. Naskah ini juga tersimpan sebagai catatan pembicara di setiap halaman deck.', '',
     ...NASKAH.flatMap((h, i) => ['---', '', `## Halaman ${i + 1}: ${h.judul}`, '', `*Durasi ± ${h.durasi}*`, '', ...h.teks.flatMap((t) => [t, ''])])];
   fs.writeFileSync(path.join(__dirname, '..', 'docs', 'Naskah_Paparan_Direksi_PID_POS.md'), md.join('\n'));
   await applyTheme(OUT, THEME);

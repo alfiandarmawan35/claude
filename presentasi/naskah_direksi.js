@@ -6,7 +6,7 @@ module.exports = [
     teks: [
       'Selamat pagi, Bapak dan Ibu Direksi.',
       'Pada kesempatan ini kami memaparkan PID POS, aplikasi toko kapal PT Pelita Indonesia Djaya yang terhubung langsung dengan SAP Business One.',
-      'Kami akan menyampaikan apa itu PID POS, bagaimana alurnya, siapa saja yang terlibat, fitur utamanya, kasir di setiap dek, keunggulan, dan batasannya saat ini.',
+      'Kami akan menyampaikan apa itu PID POS, bagaimana alurnya, siapa saja yang terlibat, fitur utamanya, kasir di setiap dek, keunggulan, batasan saat ini, serta timeline setelah go-live.',
     ],
   },
   {
@@ -74,6 +74,18 @@ module.exports = [
       'Kami juga perlu menyampaikan dua batasan PID POS saat ini.',
       'Pertama, aplikasi memerlukan koneksi internet. Aplikasi web dan aplikasi kasir hanya dapat digunakan saat perangkat terhubung ke internet. Karena itu, koneksi internet di kapal, DC, dan kantor pusat perlu disiapkan.',
       'Kedua, aplikasi kasir baru tersedia di Android. Versi iOS untuk iPhone dan iPad belum tersedia, sehingga perangkat kasir di setiap dek perlu menggunakan Android.',
+    ],
+  },
+  {
+    judul: 'Timeline setelah go-live', durasi: '1:00',
+    teks: [
+      'Berikut usulan timeline setelah go-live.',
+      'PID POS mulai digunakan pada 27 Oktober 2026.',
+      'Dua minggu pertama, sampai 9 November, adalah masa pendampingan intensif. Tim pendamping siaga setiap hari, dan setiap kendala pengguna ditangani dengan cepat.',
+      'Sampai akhir November, aplikasi masuk tahap stabilisasi: transaksi dan sinkronisasi ke SAP dipantau, penyesuaian kecil dilakukan, dan pelatihan ulang diberikan bila perlu.',
+      'Pada Desember 2026, kami menyampaikan laporan evaluasi kepada Direksi, mencakup tingkat penggunaan, akurasi stok, dan kecepatan persetujuan.',
+      'Selanjutnya pada 2027, pengembangan berlanjut dengan aktivasi fitur retur dan kas keluar, serta kajian aplikasi kasir untuk iOS.',
+      'Jadwal ini masih usulan dan dapat disesuaikan dengan arahan Direksi.',
     ],
   },
   {

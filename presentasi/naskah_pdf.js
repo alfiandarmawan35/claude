@@ -1,5 +1,5 @@
 // Naskah paparan direksi -> PDF A4: gambar tiap halaman deck + naskahnya.
-// Pakai: node naskah_pdf.js <folder gambar th-1.jpg..th-9.jpg> <keluaran.pdf>
+// Pakai: node naskah_pdf.js <folder gambar th-N.jpg dari pdftoppm> <keluaran.pdf>
 const {chromium} = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -7,10 +7,12 @@ const NASKAH = require('./naskah_direksi.js');
 const [dir, out] = process.argv.slice(2);
 const font = (w) => path.join(__dirname, '..', 'video-perkenalan', 'pro', 'video', 'assets', 'fonts', `plus-jakarta-sans-latin-${w}-normal.woff2`);
 
+// pdftoppm menambah nol di depan nomor bila halaman >= 10 (th-01.jpg), jadi cari berkas per nomor
+const gambarHal = (n) => fs.readdirSync(dir).find((f) => new RegExp(`^th-0*${n}\\.jpg$`).test(f));
 const isi = NASKAH.map((h, i) => `
 <section>
   <div class="kepala"><span class="no">${i + 1}</span><h2>${h.judul}</h2><span class="dur">± ${h.durasi}</span></div>
-  <img src="file://${path.resolve(dir, `th-${i + 1}.jpg`)}" alt="Halaman ${i + 1}">
+  <img src="file://${path.resolve(dir, gambarHal(i + 1))}" alt="Halaman ${i + 1}">
   ${h.teks.map((t) => `<p>${t}</p>`).join('')}
 </section>`).join('');
 
@@ -35,7 +37,7 @@ img{width:62%;display:block;border:1px solid #dfe6f0;border-radius:2mm;margin:0 
 p{margin:0 0 2mm}
 </style></head><body>
 <div class="sampul"><small>NASKAH PAPARAN</small><h1>PID POS<br>Paparan kepada Direksi</h1><p>PT Pelita Indonesia Djaya (PELNI Services)</p>
-<table><tr><td>Jumlah halaman</td><td>${NASKAH.length}</td></tr><tr><td>Perkiraan durasi</td><td>± 9 menit</td></tr></table></div>
+<table><tr><td>Jumlah halaman</td><td>${NASKAH.length}</td></tr><tr><td>Perkiraan durasi</td><td>± 10 menit</td></tr></table></div>
 ${isi}</body></html>`;
 
 (async () => {
