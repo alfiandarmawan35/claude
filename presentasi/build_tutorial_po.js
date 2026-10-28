@@ -1,5 +1,5 @@
 // Panduan peran Admin Purchase & Approve PO di atas template perusahaan, isi dari Manual Book (doc Claude) dan video tutorial.
-// Gambar layar: ../video-tutorial/po/assets/img (diambil dari manual). Sorotan oranye memakai koordinat piksel gambar asli.
+// Hanya tugas kedua peran itu (tanpa persiapan admin dan GRPO). Gambar layar: ../video-tutorial/po/assets/img (diambil dari manual). Sorotan oranye memakai koordinat piksel gambar asli.
 // Pakai: node build_tutorial_po.js  ->  ../docs/PID_POS_Panduan_Admin_Purchase_Approve_PO.pptx
 const path = require('path');
 const pptxgen = require('pptxgenjs');
@@ -12,7 +12,7 @@ const {applyTheme} = require('./apply_theme.js');
 const ROOT = path.resolve(__dirname, '..');
 const IMG = (g) => path.join(ROOT, 'video-tutorial/po/assets/img', `${g}.png`);
 const OUT = path.join(ROOT, 'docs/PID_POS_Panduan_Admin_Purchase_Approve_PO.pptx');
-const DIMS = {lvl_admin: [1140, 645], lvl_po: [1140, 615], pajak: [1410, 299], tab_po: [2160, 1500], vendor: [1491, 1170], cari: [1491, 1100],
+const DIMS = {tab_po: [2160, 1500], vendor: [1491, 1170], cari: [1491, 1100],
   terisi: [1491, 1428], approval: [1320, 276], ditolak: [1371, 254]};
 
 const THEME = {
@@ -100,7 +100,7 @@ const ikon = async (Icon, color) => {
   s.addText('Panduan Admin Purchase & Approve PO', {placeholder: 'title'});
   teks(s, 'PID POS · Membuat dan menyetujui Purchase Order', {x: 0.67, y: 3.55, w: 7.6, h: 0.5, fontSize: 20, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes('Panduan ini untuk dua peran di web PID POS, menu Permintaan DC: admin purchase yang membuat Purchase Order (PO) per vendor dari sisa Purchase Request (PUR), dan Approve PO yang menyetujuinya level demi level sampai PO final di SAP. Penerimaan barang (GRPO) dibahas di panduan terpisah.');
+  s.addNotes('Panduan ini untuk dua peran di web PID POS, menu Permintaan DC: admin purchase yang membuat Purchase Order (PO) per vendor dari sisa Purchase Request (PUR), dan Approve PO yang menyetujuinya level demi level sampai PO final di SAP.');
 
   // ---------- 2. dua peran ----------
   s = pres.addSlide({masterName: 'ISI'});
@@ -119,7 +119,7 @@ const ikon = async (Icon, color) => {
     teks(s, [b('Tombol utama: ', {color: K.accent5}), n(tombol, {bold: true, color: K.dk2})], {x: x + 0.35, y: 4.2, w: 5.1, h: 0.4, fontSize: 13});
     teks(s, [b('Tugas Anda saat status: ', {color: K.accent5}), n(status, {bold: true, color: K.dk2})], {x: x + 0.35, y: 4.7, w: 5.1, h: 0.4, fontSize: 13});
   }
-  teks(s, [n('Keduanya bekerja di '), b('Permintaan DC → tab Giliran saya'), n(' (yang menunggu Anda) atau '), b('tab PO'), n(' (semua permintaan di tahap PO). Akun admin boleh melakukan semua tahap.')],
+  teks(s, [n('Keduanya bekerja di '), b('Permintaan DC → tab Giliran saya'), n(' (yang menunggu Anda) atau '), b('tab PO'), n(' (semua permintaan di tahap PO).')],
     {x: 1.75, y: 5.75, w: 10.85, h: 0.45, fontSize: 13, color: K.accent5});
   s.addNotes('Ada dua peran. Admin purchase membuat PO per vendor dari sisa PUR dan memperbaiki PO yang ditolak. Approve PO memeriksa lalu menyetujui atau menolak PO per level. Keduanya bekerja di Permintaan DC, tab Giliran saya atau tab PO.');
 
@@ -127,14 +127,14 @@ const ikon = async (Icon, color) => {
   s = pres.addSlide({masterName: 'ISI'});
   s.addText('Alur status PO: final hanya setelah level approval terakhir', {placeholder: 'title'});
   const atas = [['Buat PO', 'admin purchase', K.lt1, K.dk2], ['Draft', 'di web, qty dicadangkan', K.lt1, K.dk2], ['Menunggu approval', 'Draft SAP · level 1 s.d. n', K.lt1, K.dk2],
-    ['PO final di SAP', 'nomor PO terbit', K.dk2, 'FFFFFF'], ['Terima barang', 'GRPO (panduan terpisah)', K.lt2, K.dk2]];
+    ['PO final di SAP', 'nomor PO terbit', K.dk2, 'FFFFFF']];
   const bw = 2.15, bg = 0.28, y1 = 2.25;
   atas.forEach(([j, d, fill, warna], i) => {
     const x = 0.75 + i * (bw + bg);
     kartu(s, x, y1, bw, 1.0, `Status ${j}`, fill);
     s.addText([{text: j, options: {bold: true, fontSize: 15, color: warna, breakLine: true}}, {text: d, options: {fontSize: 11.5, color: fill === K.dk2 ? 'D6E4F5' : K.accent5}}],
       {x: x + 0.08, y: y1 + 0.08, w: bw - 0.16, h: 0.84, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
-    if (i < 4) s.addShape(pres.shapes.LINE, {x: x + bw + 0.03, y: y1 + 0.5, w: bg - 0.06, h: 0, line: {color: K.accent3, width: 2, endArrowType: 'triangle'}, objectName: 'Panah'});
+    if (i < 3) s.addShape(pres.shapes.LINE, {x: x + bw + 0.03, y: y1 + 0.5, w: bg - 0.06, h: 0, line: {color: K.accent3, width: 2, endArrowType: 'triangle'}, objectName: 'Panah'});
   });
   // label di atas panah: Draft -> Menunggu (Ajukan), Menunggu -> Final (Setujui level terakhir)
   teks(s, 'Ajukan', {x: 4.87, y: 1.92, w: 1.2, h: 0.3, fontSize: 11, color: K.accent5, align: 'center'});
@@ -154,32 +154,9 @@ const ikon = async (Icon, color) => {
     {x: 0.83, y: y2 + 0.08, w: bw - 0.16, h: 0.84, align: 'center', valign: 'middle', margin: 0, isTextBox: true});
   s.addShape(pres.shapes.LINE, {x: 0.75 + bw / 2, y: y1 + 1.03, w: 0, h: y2 - y1 - 1.06, line: {color: K.accent5, width: 1.5, dashType: 'dash', endArrowType: 'triangle'}, objectName: 'Ke dibatalkan'});
   teks(s, 'Batalkan', {x: 0.75 + bw / 2 + 0.1, y: y1 + 1.25, w: 1.2, h: 0.3, fontSize: 11, color: K.accent5});
-  kartu(s, 9.95, 4.05, 2.65, 1.25, 'Catatan final', K.lt2);
-  teks(s, [b('PO final', {breakLine: true}), n('tidak bisa diubah atau dibatalkan dari web; pembatalannya di SAP.')], {x: 10.1, y: 4.15, w: 2.4, h: 1.1, fontSize: 12.5});
-  s.addNotes('Admin purchase membuat PO, bisa disimpan sebagai draft di web dulu (qty sudah dicadangkan), lalu diajukan sehingga masuk SAP sebagai Draft dan menunggu approval level 1 sampai level terakhir. Hanya persetujuan level terakhir yang membuat PO final. PO ditolak kembali ke admin purchase untuk diubah dan diajukan ulang; PO yang dibatalkan mengembalikan qty ke sisa PUR. PO final lanjut ke penerimaan barang (GRPO).');
-
-  // ---------- 4. persiapan: level approval ----------
-  s = pres.addSlide({masterName: 'ISI'});
-  s.addText('Persiapan (admin, sekali): Level approval', {placeholder: 'title'});
-  gambar(s, 'lvl_admin', {x: 0.75, y: 1.95, w: 5.75, h: 3.3}, 'Level approval, tab Admin purchase', [[370, 100, 196, 58, 1], [16, 372, 478, 120, 2]]);
-  gambar(s, 'lvl_po', {x: 6.85, y: 1.95, w: 5.75, h: 3.3}, 'Level approval, tab Approval PO', [[570, 100, 164, 58, 3], [30, 515, 240, 70, 4], [915, 515, 197, 70, 5]]);
-  teks(s, [b('Permintaan DC → tombol Level approval (kanan atas).', {breakLine: true}),
-    n('1 Tab Admin purchase · 2 centang akun yang boleh membuat dan mengajukan PO (kosong = penyetuju PUR level terakhir bertindak sebagai admin purchase) · 3 Tab Approval PO · 4 Tambah level, satu baris per level · 5 Simpan level.')],
-    {x: 1.75, y: 5.45, w: 10.85, h: 0.9, fontSize: 13});
-  s.addNotes('Sebelum mulai, admin menentukan siapa admin purchase dan penyetuju PO di Permintaan DC, tombol Level approval. Di tab Admin purchase, centang akun yang boleh membuat PO. Di tab Approval PO, buat satu baris per level dan centang penyetujunya; level tanpa akun dicentang berarti semua admin boleh menyetujui level itu. Klik Simpan level; perubahan juga berlaku untuk PO yang sedang menunggu.');
-
-  // ---------- 5. persiapan: pajak ----------
-  s = pres.addSlide({masterName: 'ISI'});
-  s.addText('Persiapan: aturan pajak pembelian', {placeholder: 'title'});
-  gambar(s, 'pajak', {x: 0.75, y: 1.9, w: 11.85, h: 2.6}, 'Aturan pajak pembelian');
-  tabel(s, [['Isian', 'Pilihan', 'Dipakai bila'],
-    ['Sumber pajak bawaan', [tb('Ikut master barang SAP')][0], 'Pajak pembelian di master barang sudah benar'],
-    ['', [tb('Selalu pakai pajak templat PO (VAT I-E)')][0], 'Master barang belum rapi'],
-    ['Ganti kode pajak', 'Kode kiri → kode kanan, mis. VAT I-B → VAT I-E', 'Master barang masih VAT I-B (10%), padahal PPN masukan 11% = VAT I-E']],
-    {x: 1.75, y: 4.6, w: 10.85, colW: [2.2, 4.1, 4.55]});
-  teks(s, [n('Pengaturan → tab '), b('Templat SAP'), n(' → kartu '), b('Aturan pajak pembelian (PO / GRPO)'), n(', lalu '), b('Simpan aturan pajak'), n('. Aturan ini hanya mengisi bawaan kolom Pajak; admin purchase tetap bisa mengubahnya per baris.')],
-    {x: 1.75, y: 6.25, w: 10.85, h: 0.5, fontSize: 12.5, color: K.accent5});
-  s.addNotes('Aturan pajak pembelian ada di Pengaturan, tab Templat SAP. Pilih sumber pajak bawaan dan, bila perlu, aturan ganti kode pajak, misalnya VAT I-B ke VAT I-E. Aturan hanya mengisi bawaan kolom pajak. Catatan: approval PO aktif secara bawaan (sakelar dc.po_approval_required); bila dimatikan, PO langsung final di SAP saat diajukan. Sakelar ini belum ada di halaman Pengaturan dan diubah oleh tim IT.');
+  kartu(s, 10.45, 2.25, 2.15, 2.8, 'Catatan final', K.lt2);
+  teks(s, [b('PO final', {breakLine: true}), n('tidak bisa diubah atau dibatalkan dari web; pembatalannya di SAP.')], {x: 10.6, y: 2.4, w: 1.85, h: 2.5, fontSize: 12.5});
+  s.addNotes('Admin purchase membuat PO, bisa disimpan sebagai draft di web dulu (qty sudah dicadangkan), lalu diajukan sehingga masuk SAP sebagai Draft dan menunggu approval level 1 sampai level terakhir. Hanya persetujuan level terakhir yang membuat PO final. PO ditolak kembali ke admin purchase untuk diubah dan diajukan ulang; PO yang dibatalkan mengembalikan qty ke sisa PUR. PO final tidak bisa diubah atau dibatalkan dari web.');
 
   // ---------- 6. admin purchase: menemukan permintaan ----------
   pres.addSection({title: 'Admin purchase'});
@@ -228,7 +205,7 @@ const ikon = async (Icon, color) => {
     [tb('Draft'), 'Ubah · Ajukan · Batalkan', 'Ajukan = Draft SAP, approval mulai level 1'],
     [tb('Menunggu approval'), 'Ubah · Batalkan', 'Ubah + Ajukan = Draft SAP diperbarui, approval mulai lagi dari level 1; Ubah + Simpan draft = pengajuan ditarik'],
     [tb('Ditolak', MERAH), 'Ubah & ajukan ulang · Ajukan · Batalkan', 'Alasan penolakan tampil merah di kartu'],
-    [tb('Final', HIJAU), 'Lihat', 'Tidak bisa diubah/dibatalkan dari web; lanjut ke tab GRPO'],
+    [tb('Final', HIJAU), 'Lihat', 'Tidak bisa diubah/dibatalkan dari web; pembatalan di SAP'],
     [tb('Dibatalkan', K.accent5), 'Lihat', 'Draft SAP dihapus; qty kembali menjadi sisa PUR']],
     {x: 0.75, y: 1.9, w: 11.85, colW: [2.2, 3.4, 6.25], fontSize: 12.5});
   gambar(s, 'ditolak', {x: 0.75, y: 5.05, w: 6.6, h: 1.4}, 'Kartu PO ditolak', [[886, 122, 226, 55]]);
@@ -257,7 +234,7 @@ const ikon = async (Icon, color) => {
   gambar(s, 'approval', {x: 0.75, y: 1.9, w: 11.85, h: 2.05}, 'Kotak Approval PO', [[1164, 184, 133, 71, 1], [22, 112, 1275, 68, 2], [22, 184, 114, 71, 3]]);
   tabel(s, [['Tindakan', 'Cara', 'Hasil'],
     [tb('1 Setujui (belum level terakhir)'), 'Klik Setujui; catatan opsional', 'PO naik ke level berikutnya'],
-    [tb('1 Setujui (level terakhir)', HIJAU), 'Klik Setujui', 'Draft SAP dipromosikan menjadi PO final; nomor PO SAP tampil di kartu; PO pindah ke tab GRPO'],
+    [tb('1 Setujui (level terakhir)', HIJAU), 'Klik Setujui', 'Draft SAP dipromosikan menjadi PO final; nomor PO SAP tampil di kartu'],
     [tb('2 + 3 Tolak', MERAH), 'Isi Catatan (wajib), klik Tolak', 'Draft SAP dihapus, status Ditolak, qty kembali menjadi sisa; alasan tampil untuk admin purchase']],
     {x: 0.75, y: 4.15, w: 11.85, colW: [3.0, 3.0, 5.85], fontSize: 12.5});
   teks(s, [b('Bila pembuatan PO di SAP gagal: '), n('status kartu menjadi Gagal kirim ke SAP. Setelah penyebabnya diatasi (mis. koneksi SAP pulih), klik Setujui lagi; PO tidak terbuat dobel.')],
@@ -273,7 +250,6 @@ const ikon = async (Icon, color) => {
     ['“Isi harga beli.”', 'Harga kosong / 0', 'Isi harga sebelum PPN'],
     ['“Pilih vendor.”', 'Vendor belum dipilih', 'Cari dan klik vendor'],
     ['“… sedang menunggu approval PO.”', 'Ada PO lain yang menunggu', 'Tunggu keputusan, atau batalkan PO itu'],
-    ['“Purchase Request ini sudah ditutup/dibatalkan di SAP”', 'PUR diproses langsung di SAP', 'Barangnya diterima lewat tab PO dari SAP'],
     ['“Daftar vendor tidak bisa dibaca dari SAP”', 'Koneksi SAP terputus', 'Coba lagi beberapa menit; bila berlanjut hubungi tim IT'],
     ['“Isi alasan penolakan.”', 'Tolak tanpa catatan', 'Isi catatan lalu Tolak lagi']],
     {x: 0.75, y: 1.9, w: 11.85, colW: [4.4, 3.2, 4.25], fontSize: 12.5});
@@ -284,11 +260,11 @@ const ikon = async (Icon, color) => {
   s.addText('Pertanyaan yang sering muncul', {placeholder: 'title'});
   const faq = [
     ['Kenapa form PO kosong?', 'Sengaja, supaya hanya barang yang dibeli dari vendor itu yang masuk.'],
-    ['Kenapa pajak baris VAT I-B (10%)?', 'Bawaannya dari master barang SAP. Ubah per baris, atau minta admin menambah aturan VAT I-B → VAT I-E.'],
+    ['Kenapa pajak baris VAT I-B (10%)?', 'Bawaannya dari master barang SAP. Ubah kolom Pajak per baris bila tidak sesuai.'],
     ['Bisakah PO final dibatalkan dari web?', 'Tidak; batalkan di SAP.'],
     ['Bolehkah mengubah PO yang sudah disetujui level 1?', 'Boleh selama belum final, tetapi approval mulai lagi dari level 1.'],
     ['Dari mana harga beli terisi sendiri?', 'Dari PO final terakhir vendor yang sama untuk barang itu; tetap bisa diubah.'],
-    ['Di mana menerima barang setelah PO final?', 'Tab GRPO (admin DC), dijelaskan di panduan GRPO.'],
+    ['Bisakah satu PUR dibagi ke beberapa vendor?', 'Bisa: buat PO pertama, lalu + Buat PO lagi untuk sisanya. Qty tidak bisa dobel.'],
   ];
   faq.forEach(([q, a], i) => {
     const x = 0.75 + (i % 2) * 6.05, y = 1.9 + Math.floor(i / 2) * 1.5;
@@ -300,9 +276,9 @@ const ikon = async (Icon, color) => {
   // ---------- 14. penutup ----------
   s = pres.addSlide({masterName: 'SAMPUL'});
   s.addText('Terima Kasih', {placeholder: 'title'});
-  teks(s, 'Video tutorial dan manual book tersedia untuk dipelajari ulang.', {x: 0.67, y: 3.55, w: 7.6, h: 0.5, fontSize: 18, bold: true, color: 'FFFFFF'});
+  teks(s, 'Video tutorial tersedia untuk dipelajari ulang.', {x: 0.67, y: 3.55, w: 7.6, h: 0.5, fontSize: 18, bold: true, color: 'FFFFFF'});
   teks(s, 'PT Pelita Indonesia Djaya (PELNI Services)', {x: 0.67, y: 4.1, w: 7.4, h: 0.4, fontSize: 16, color: 'D6E4F5'});
-  s.addNotes('Terima kasih. Untuk belajar ulang, gunakan video tutorial dan manual book Admin Purchase & Approve PO.');
+  s.addNotes('Terima kasih. Untuk belajar ulang, gunakan video tutorial Admin Purchase & Approve PO.');
 
   await pres.writeFile({fileName: OUT});
   await applyTheme(OUT, THEME);

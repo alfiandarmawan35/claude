@@ -66,7 +66,7 @@ for a in SPEC["adegan"]:
             j += 1
         sc["fokus"] = fok
     if a["jenis"] in ("alur", "catatan"):
-        kunci = {"alur": ["Admin", "Approve", "final"], "catatan": ["Ingat", "Setelah"]}[a["jenis"]]
+        kunci = {"alur": ["Admin", "Approve", "final"], "catatan": ["Ingat", "bila"]}[a["jenis"]]
         j, ts = 0, []
         for k in kunci:
             j = cari_kata(k, w["kata"], j); ts.append(round(AWAL + w["kata"][j][1], 2)); j += 1
@@ -100,13 +100,13 @@ def blok(sc):
   {"".join(f'<div class="sorot" id="{i}-s{k}" style="left:{f["kotak"][0]}px;top:{f["kotak"][1]}px;width:{f["kotak"][2]}px;height:{f["kotak"][3]}px"></div>' for k, f in enumerate(sc["fokus"]) if f["kotak"])}</div></div>'''
     elif j == "catatan":
         isi = f'''<div class="j-label" style="top:200px">PERLU DIINGAT</div>
-<div class="ct" id="{i}-c0" style="top:290px"><b>PO final tidak bisa dibatalkan dari web</b><span>Pembatalan PO yang sudah final dilakukan di SAP.</span></div>
-<div class="ct" id="{i}-c1" style="top:520px"><b>Setelah final: terima barang di tab GRPO</b><span>Admin DC menerima barang; dijelaskan di manual GRPO.</span></div>'''
+<div class="ct" id="{i}-c0" style="top:290px"><b>PO final tidak bisa diubah atau dibatalkan dari web</b><span>Pembatalan PO yang sudah final dilakukan di SAP.</span></div>
+<div class="ct" id="{i}-c1" style="top:520px"><b>PO menunggu approval diubah?</b><span>Approval mulai lagi dari level 1.</span></div>'''
     else:
         isi = f'''<div class="kartu-logo" id="{i}-kartu"><img src="assets/danantara_gelap.png" alt="Danantara Indonesia" class="lg-d"><div class="garis"></div>
   <img src="assets/pelni_services.png" alt="PELNI Services" class="lg-p"><div class="garis"></div><div class="nama">PID POS</div></div>
 <div class="j-judul" id="{i}-judul" style="top:600px">Selamat bekerja dengan PID POS</div>
-<div class="j-sub" id="{i}-sub" style="top:690px">Panduan lengkap: Manual Book Admin Purchase &amp; Approve PO</div>'''
+<div class="j-sub" id="{i}-sub" style="top:690px">Admin Purchase &amp; Approve PO</div>'''
     return f'<div id="{i}" class="clip adegan" data-start="{sc["mulai"]}" data-duration="{sc["dur"]}" data-track-index="1">{isi}<div class="teks">{teks}</div></div>'
 
 css = (D / "gaya.css").read_text()
